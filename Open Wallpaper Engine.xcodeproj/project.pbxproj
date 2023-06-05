@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5EC47E7A2A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */; };
+		5EC47E7C2A2DB2E600120CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ContentView.swift */; };
+		5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */; };
+		5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */; };
+		5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E822A2DB2E700120CCC /* Persistence.swift */; };
+		5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */; };
+		5EC47E912A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */; };
+		5EC47E9B2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */; };
+		5EC47E9D2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5EC47E8D2A2DB2E700120CCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC47E6E2A2DB2E600120CCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EC47E752A2DB2E600120CCC;
+			remoteInfo = "Open Wallpaper Engine";
+		};
+		5EC47E972A2DB2E700120CCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5EC47E6E2A2DB2E600120CCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EC47E752A2DB2E600120CCC;
+			remoteInfo = "Open Wallpaper Engine";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Wallpaper Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineApp.swift; sourceTree = "<group>"; };
+		5EC47E7B2A2DB2E600120CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5EC47E822A2DB2E700120CCC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Open_Wallpaper_Engine.xcdatamodel; sourceTree = "<group>"; };
+		5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Open_Wallpaper_Engine.entitlements; sourceTree = "<group>"; };
+		5EC47E8C2A2DB2E700120CCC /* Open Wallpaper EngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open Wallpaper EngineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineTests.swift; sourceTree = "<group>"; };
+		5EC47E962A2DB2E700120CCC /* Open Wallpaper EngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open Wallpaper EngineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineUITests.swift; sourceTree = "<group>"; };
+		5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5EC47E732A2DB2E600120CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E892A2DB2E700120CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E932A2DB2E700120CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5EC47E6D2A2DB2E600120CCC = {
+			isa = PBXGroup;
+			children = (
+				5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */,
+				5EC47E8F2A2DB2E700120CCC /* Open Wallpaper EngineTests */,
+				5EC47E992A2DB2E700120CCC /* Open Wallpaper EngineUITests */,
+				5EC47E772A2DB2E600120CCC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5EC47E772A2DB2E600120CCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */,
+				5EC47E8C2A2DB2E700120CCC /* Open Wallpaper EngineTests.xctest */,
+				5EC47E962A2DB2E700120CCC /* Open Wallpaper EngineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */,
+				5EC47E7B2A2DB2E600120CCC /* ContentView.swift */,
+				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
+				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
+				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
+				5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */,
+				5EC47E7F2A2DB2E700120CCC /* Preview Content */,
+			);
+			path = "Open Wallpaper Engine";
+			sourceTree = "<group>";
+		};
+		5EC47E7F2A2DB2E700120CCC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5EC47E8F2A2DB2E700120CCC /* Open Wallpaper EngineTests */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */,
+			);
+			path = "Open Wallpaper EngineTests";
+			sourceTree = "<group>";
+		};
+		5EC47E992A2DB2E700120CCC /* Open Wallpaper EngineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */,
+				5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */,
+			);
+			path = "Open Wallpaper EngineUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5EC47E752A2DB2E600120CCC /* Open Wallpaper Engine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EC47EA02A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper Engine" */;
+			buildPhases = (
+				5EC47E722A2DB2E600120CCC /* Sources */,
+				5EC47E732A2DB2E600120CCC /* Frameworks */,
+				5EC47E742A2DB2E600120CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Open Wallpaper Engine";
+			productName = "Open Wallpaper Engine";
+			productReference = 5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5EC47E8B2A2DB2E700120CCC /* Open Wallpaper EngineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EC47EA32A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper EngineTests" */;
+			buildPhases = (
+				5EC47E882A2DB2E700120CCC /* Sources */,
+				5EC47E892A2DB2E700120CCC /* Frameworks */,
+				5EC47E8A2A2DB2E700120CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5EC47E8E2A2DB2E700120CCC /* PBXTargetDependency */,
+			);
+			name = "Open Wallpaper EngineTests";
+			productName = "Open Wallpaper EngineTests";
+			productReference = 5EC47E8C2A2DB2E700120CCC /* Open Wallpaper EngineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5EC47E952A2DB2E700120CCC /* Open Wallpaper EngineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EC47EA62A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper EngineUITests" */;
+			buildPhases = (
+				5EC47E922A2DB2E700120CCC /* Sources */,
+				5EC47E932A2DB2E700120CCC /* Frameworks */,
+				5EC47E942A2DB2E700120CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5EC47E982A2DB2E700120CCC /* PBXTargetDependency */,
+			);
+			name = "Open Wallpaper EngineUITests";
+			productName = "Open Wallpaper EngineUITests";
+			productReference = 5EC47E962A2DB2E700120CCC /* Open Wallpaper EngineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5EC47E6E2A2DB2E600120CCC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5EC47E752A2DB2E600120CCC = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					5EC47E8B2A2DB2E700120CCC = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 5EC47E752A2DB2E600120CCC;
+					};
+					5EC47E952A2DB2E700120CCC = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 5EC47E752A2DB2E600120CCC;
+					};
+				};
+			};
+			buildConfigurationList = 5EC47E712A2DB2E600120CCC /* Build configuration list for PBXProject "Open Wallpaper Engine" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5EC47E6D2A2DB2E600120CCC;
+			productRefGroup = 5EC47E772A2DB2E600120CCC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5EC47E752A2DB2E600120CCC /* Open Wallpaper Engine */,
+				5EC47E8B2A2DB2E700120CCC /* Open Wallpaper EngineTests */,
+				5EC47E952A2DB2E700120CCC /* Open Wallpaper EngineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5EC47E742A2DB2E600120CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */,
+				5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E8A2A2DB2E700120CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E942A2DB2E700120CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5EC47E722A2DB2E600120CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */,
+				5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */,
+				5EC47E7C2A2DB2E600120CCC /* ContentView.swift in Sources */,
+				5EC47E7A2A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E882A2DB2E700120CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EC47E912A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EC47E922A2DB2E700120CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EC47E9B2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift in Sources */,
+				5EC47E9D2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5EC47E8E2A2DB2E700120CCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EC47E752A2DB2E600120CCC /* Open Wallpaper Engine */;
+			targetProxy = 5EC47E8D2A2DB2E700120CCC /* PBXContainerItemProxy */;
+		};
+		5EC47E982A2DB2E700120CCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EC47E752A2DB2E600120CCC /* Open Wallpaper Engine */;
+			targetProxy = 5EC47E972A2DB2E700120CCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5EC47E9E2A2DB2E700120CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5EC47E9F2A2DB2E700120CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		5EC47EA12A2DB2E700120CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Open Wallpaper Engine/Preview Content\"";
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-Engine";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5EC47EA22A2DB2E700120CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Open Wallpaper Engine/Preview Content\"";
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-Engine";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5EC47EA42A2DB2E700120CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-EngineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Open Wallpaper Engine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Open Wallpaper Engine";
+			};
+			name = Debug;
+		};
+		5EC47EA52A2DB2E700120CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-EngineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Open Wallpaper Engine.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Open Wallpaper Engine";
+			};
+			name = Release;
+		};
+		5EC47EA72A2DB2E700120CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-EngineUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Open Wallpaper Engine";
+			};
+			name = Debug;
+		};
+		5EC47EA82A2DB2E700120CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24Q962SK3B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.Open-Wallpaper-EngineUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Open Wallpaper Engine";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5EC47E712A2DB2E600120CCC /* Build configuration list for PBXProject "Open Wallpaper Engine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EC47E9E2A2DB2E700120CCC /* Debug */,
+				5EC47E9F2A2DB2E700120CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EC47EA02A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper Engine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EC47EA12A2DB2E700120CCC /* Debug */,
+				5EC47EA22A2DB2E700120CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EC47EA32A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper EngineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EC47EA42A2DB2E700120CCC /* Debug */,
+				5EC47EA52A2DB2E700120CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EC47EA62A2DB2E700120CCC /* Build configuration list for PBXNativeTarget "Open Wallpaper EngineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EC47EA72A2DB2E700120CCC /* Debug */,
+				5EC47EA82A2DB2E700120CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */,
+			);
+			currentVersion = 5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */;
+			path = Open_Wallpaper_Engine.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5EC47E6E2A2DB2E600120CCC /* Project object */;
+}
