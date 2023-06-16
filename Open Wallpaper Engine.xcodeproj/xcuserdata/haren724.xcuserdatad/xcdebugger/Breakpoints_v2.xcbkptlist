@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "EFEB5F61-F42C-4BAF-91C2-0E6AA527EE79"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "710644D9-17D3-44B6-A53E-BBE37D67300D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/Open_Wallpaper_EngineApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "710644D9-17D3-44B6-A53E-BBE37D67300D - 492e1437c21bd602"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.Open_Wallpaper_EngineApp.body.getter : some"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/Open_Wallpaper_EngineApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "1652">
+               </Location>
+               <Location
+                  uuid = "710644D9-17D3-44B6-A53E-BBE37D67300D - 1e9168181dc24b88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; Open_Wallpaper_Engine.SettingsView in Open_Wallpaper_Engine.Open_Wallpaper_EngineApp.body.getter : some"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/Open_Wallpaper_EngineApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3ABEADD-7FB4-4029-A68F-9192DD8F77E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "setWallpaperWindow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "305BB689-BC18-43EB-BBD9-AA1F2C4D8517"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "openMainWindow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDD439CA-63BE-469E-9C21-1E33DAF4D294"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/WallpaperView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "setAVPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DDD439CA-63BE-469E-9C21-1E33DAF4D294 - 859b6bafafc7ba6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.WallpaperViewController.setAVPlayer() -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/WallpaperView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "DDD439CA-63BE-469E-9C21-1E33DAF4D294 - 859b6bafafc7ba6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.WallpaperViewController.setAVPlayer() -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/WallpaperView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60BDF6B0-31DC-42C3-B03C-198266FD73AC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/WallpaperView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "WallpaperViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

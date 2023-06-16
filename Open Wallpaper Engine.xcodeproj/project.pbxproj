@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
+		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
+		5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665252A2DC30D00E0E4B4 /* WEProject.swift */; };
+		5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665272A2E076400E0E4B4 /* ToolbarView.swift */; };
+		5E76652A2A2E231400E0E4B4 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665292A2E231400E0E4B4 /* AboutUsView.swift */; };
+		5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */; };
 		5EC47E7A2A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */; };
-		5EC47E7C2A2DB2E600120CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ContentView.swift */; };
+		5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */; };
 		5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */; };
 		5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */; };
 		5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E822A2DB2E700120CCC /* Persistence.swift */; };
@@ -16,6 +22,10 @@
 		5EC47E912A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */; };
 		5EC47E9B2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */; };
 		5EC47E9D2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */; };
+		5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47EA92A2DB32900120CCC /* ContentView.swift */; };
+		5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */; };
+		5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */; };
+		5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFBB0BA2A2F10EA00E39BEC /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
+		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
+		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
+		5E7665272A2E076400E0E4B4 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		5E7665292A2E231400E0E4B4 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Wallpaper Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineApp.swift; sourceTree = "<group>"; };
-		5EC47E7B2A2DB2E600120CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EC47E822A2DB2E700120CCC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -49,6 +65,10 @@
 		5EC47E962A2DB2E700120CCC /* Open Wallpaper EngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open Wallpaper EngineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineUITests.swift; sourceTree = "<group>"; };
 		5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5EC47EA92A2DB32900120CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperView.swift; sourceTree = "<group>"; };
+		5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5EFBB0BA2A2F10EA00E39BEC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +119,18 @@
 		5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */ = {
 			isa = PBXGroup;
 			children = (
+				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
+				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
 				5EC47E792A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift */,
-				5EC47E7B2A2DB2E600120CCC /* ContentView.swift */,
+				5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */,
+				5E7665292A2E231400E0E4B4 /* AboutUsView.swift */,
+				5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */,
+				5EC47EA92A2DB32900120CCC /* ContentView.swift */,
+				5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */,
+				5E7665272A2E076400E0E4B4 /* ToolbarView.swift */,
+				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
+				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
+				5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */,
 				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
 				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
 				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
@@ -240,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */,
+				5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */,
 				5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,9 +296,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */,
+				5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */,
+				5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */,
 				5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */,
+				5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */,
+				5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */,
+				5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */,
+				5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */,
+				5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */,
 				5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */,
-				5EC47E7C2A2DB2E600120CCC /* ContentView.swift in Sources */,
+				5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */,
+				5E76652A2A2E231400E0E4B4 /* AboutUsView.swift in Sources */,
 				5EC47E7A2A2DB2E600120CCC /* Open_Wallpaper_EngineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -432,6 +473,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +492,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -459,6 +502,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
