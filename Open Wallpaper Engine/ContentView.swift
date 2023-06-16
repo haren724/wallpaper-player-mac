@@ -20,8 +20,6 @@ class CustomAccessoryViewController: NSTitlebarAccessoryViewController {
 }
 
 struct ContentView: View {
-//    @EnvironmentObject private var appDelegate: Open_wallpaper_EngineAppDelegate
-    @Environment(\.openWindow) private var openWindow
     
     @State var isDropTargeted = false
     @State var isParseFinished = false
