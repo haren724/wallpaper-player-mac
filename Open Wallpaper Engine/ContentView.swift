@@ -129,12 +129,12 @@ struct ContentView: View {
                                             ZStack {
                                                 Rectangle()
                                                     .frame(height: 30)
-                                                    .foregroundStyle(Color(white: 0, opacity: 0.25))
+                                                    .foregroundStyle(Color(white: 0, opacity: 0.4))
                                                 Text("Sumeru【Genshin Impact】")
                                                     .font(.footnote)
                                                     .lineLimit(2)
                                                     .multilineTextAlignment(.center)
-                                                    .foregroundStyle(Color(white: 0.75))
+                                                    .foregroundStyle(Color(white: 0.7))
                                                     .padding(.horizontal)
                                             }
                                         }
@@ -343,63 +343,7 @@ struct ContentView: View {
             .frame(minWidth: 250, maxWidth: 500)
         }
         .frame(minWidth: 800, minHeight: 600)
-//        Toggle(isOn: $isDockIconHidden) {
-//            Label("Hide the dock icon", systemImage: "power")
-//        }
-//        .toggleStyle(.checkbox)
-//        .onChange(of: isDockIconHidden) { newValue in
-//            NSApplication.shared.setActivationPolicy(newValue ? .accessory : .regular)
-//        }
-//        VStack(spacing: 100) {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 16.0)
-//                    .stroke(lineWidth: 1)
-//                    .foregroundColor(.secondary)
-//                    .frame(minWidth: 80, maxWidth: 320, minHeight: 60, maxHeight: 240)
-//                RoundedRectangle(cornerRadius: 16.0)
-//                    .opacity(isDropTargeted ? 0.5 : 0)
-//                    .animation(.default, value: isDropTargeted)
-//                    .frame(minWidth: 80, maxWidth: 320, minHeight: 60, maxHeight: 240)
-//                if isParseFinished {
-//                    VStack {
-//                        Text(project.title)
-//                    }
-//                } else {
-//                    if isDropTargeted {
-//                        Text("Release to parse to folder").font(.largeTitle)
-//                    } else {
-//                        Text("Drop your folder here ...").font(.largeTitle)
-//                    }
-//                }
-//            }
-//            .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
-//                isParseFinished = false
-//                // 确认拖入文件数量只有一个
-//                if providers.count != 1 { return false }
-//                let folder = providers.first!
-//                // 确认拖入文件为`文件夹`类型
-//                if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
-//                // 解析文件夹目录位置
-//                folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
-//                    let projectUrl = (item as! URL)
-//                    self.projectUrl = projectUrl
-//                    do {
-//                        // 根据解析出的目录下的project.json文件得到壁纸信息
-//                        let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
-//                        project = try JSONDecoder().decode(WEProject.self, from: projectData)
-//                        isParseFinished = true
-//                    } catch {
-//                        return
-//                    }
-//                }
-//                return true
-//            }
-//            Button("Start") {
-//                
-//            }
-//            .disabled(!isParseFinished)
-//            TextField("Greet Message", text: $greet)
-//        }
+        .padding(.top)
     }
 }
 
