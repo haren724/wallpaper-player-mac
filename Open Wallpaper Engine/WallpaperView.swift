@@ -18,12 +18,19 @@ class WallpaperViewController: NSViewController {
         super.viewDidLoad()
         self.setAVPlayer()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidStopPlaying(_:)), name: .AVPlayerItemPlaybackStalled, object: nil)
     }
     
     @objc func playerDidFinishPlaying(_ notification: Notification) {
-        print("replaying")
+        print("replaying...")
         // 重新播放视频
         self.player.seek(to: CMTime.zero)
+        self.player.play()
+    }
+    
+    @objc func playerDidStopPlaying(_ notification: Notification) {
+        print("stopped, trying to resume...")
+        // 重新播放视频
         self.player.play()
     }
     
