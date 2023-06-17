@@ -7,30 +7,21 @@
 
 import SwiftUI
 
-class CustomAccessoryViewController: NSTitlebarAccessoryViewController {
-    override func loadView() {
-        // 在此处创建和配置自定义视图
-        let customView = NSView(frame: NSRect(x: 0, y: 0, width: 100, height: 20))
-        customView.wantsLayer = true
-        customView.layer?.backgroundColor = NSColor.red.cgColor
-
-        // 将自定义视图设置为 view
-        self.view = customView
-    }
-}
-
 struct ContentView: View {
     
     @State var isDropTargeted = false
     @State var isParseFinished = false
+    @State var isFilterReveal = false
     
-    @State var imageScale = 1.0
+    @State var imageScales = [Double](repeating: 1.0, count: 6)
     
     @State var isDockIconHidden = false
     
     @State var project: WEProject!
     @State var projectUrl: URL!
     @State var greet: String = "Hello, world!"
+    
+    let columns = [GridItem](repeating: GridItem(.flexible()), count: 4)
     
     var body: some View {
         HSplitView {
@@ -93,7 +84,9 @@ struct ContentView: View {
                             }
                         }
                         .frame(width: 160)
-                    Button { } label: {
+                    Button {
+                        isFilterReveal.toggle()
+                    } label: {
                         Label("Filter Results", systemImage: "checklist.checked")
                     }
                     .buttonStyle(.borderedProminent)
@@ -112,68 +105,81 @@ struct ContentView: View {
                     }
                     .frame(width: 160)
                 }
-                ScrollView {
-                    Grid {
-                        ForEach(0..<30) { _ in
-                            GridRow {
-                                ForEach(0..<5) { _ in
-                                    ZStack {
-                                        Image("sumeru")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .scaleEffect(imageScale)
-                                            .clipShape(Rectangle())
-                                            .animation(.default, value: imageScale)
-                                        VStack {
-                                            Spacer()
-                                            ZStack {
-                                                Rectangle()
-                                                    .frame(height: 30)
-                                                    .foregroundStyle(Color(white: 0, opacity: 0.4))
-                                                Text("Sumeru【Genshin Impact】")
-                                                    .font(.footnote)
-                                                    .lineLimit(2)
-                                                    .multilineTextAlignment(.center)
-                                                    .foregroundStyle(Color(white: 0.7))
-                                                    .padding(.horizontal)
-                                            }
+                HStack(spacing: 0) {
+                    HStack {
+                        VStack {
+                            ScrollView {
+                                
+                            }
+                        }
+                        Divider()
+                            .opacity(isFilterReveal ? 1 : 0)
+                            
+                    }
+                    .frame(width: isFilterReveal ? 150 : 0)
+                    ScrollView {
+                        LazyVGrid(columns: columns) {
+                            ForEach(0..<2, id: \.self) { index in
+                                ZStack {
+                                    Image("sumeru")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .scaleEffect(imageScales[index])
+                                        .clipShape(Rectangle())
+                                        .border(Color.accentColor, width: 5 * (imageScales[index] - 1))
+                                        .selected()
+                                        .animation(.default, value: imageScales)
+                                    VStack {
+                                        Spacer()
+                                        ZStack {
+                                            Rectangle()
+                                                .frame(height: 30)
+                                                .foregroundStyle(Color(white: 0, opacity: 0.4))
+                                            Text("Sumeru【Genshin Impact】")
+                                                .font(.footnote)
+                                                .lineLimit(2)
+                                                .multilineTextAlignment(.center)
+                                                .foregroundStyle(Color(white: 0.7))
                                         }
                                     }
-                                    .onHover {
-                                        if $0 {
-                                            imageScale = 1.2
-                                        } else {
-                                            imageScale = 1.0
-                                        }
+                                }
+                                .onHover {
+                                    if $0 {
+                                        imageScales[index] = 1.2
+                                    } else {
+                                        imageScales[index] = 1.0
                                     }
                                 }
                             }
                         }
+                        .padding(.trailing)
+                        .frame(maxWidth: .infinity)
                     }
-                    .padding(.trailing)
-                }
-                .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
-                    isParseFinished = false
-                    // 确认拖入文件数量只有一个
-                    if providers.count != 1 { return false }
-                    let folder = providers.first!
-                    // 确认拖入文件为`文件夹`类型
-                    if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
-                    // 解析文件夹目录位置
-                    folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
-                        let projectUrl = (item as! URL)
-                        self.projectUrl = projectUrl
-                        do {
-                            // 根据解析出的目录下的project.json文件得到壁纸信息
-                            let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
-                            project = try JSONDecoder().decode(WEProject.self, from: projectData)
-                            isParseFinished = true
-                        } catch {
-                            return
+                    .padding(.leading, isFilterReveal ? 10 : 0)
+                    .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
+                        isParseFinished = false
+                        // 确认拖入文件数量只有一个
+                        if providers.count != 1 { return false }
+                        let folder = providers.first!
+                        // 确认拖入文件为`文件夹`类型
+                        if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
+                        // 解析文件夹目录位置
+                        folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
+                            let projectUrl = (item as! URL)
+                            self.projectUrl = projectUrl
+                            do {
+                                // 根据解析出的目录下的project.json文件得到壁纸信息
+                                let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
+                                project = try JSONDecoder().decode(WEProject.self, from: projectData)
+                                isParseFinished = true
+                            } catch {
+                                return
+                            }
                         }
+                        return true
                     }
-                    return true
                 }
+                .animation(.spring, value: isFilterReveal)
                 VStack {
                     HStack {
                         Text("Playlist").font(.largeTitle)
@@ -287,6 +293,28 @@ struct ContentView: View {
                                     .overlay(Color.accentColor)
                             }
                         }
+                        VStack(spacing: 16) {
+                            ColorPicker(selection: .constant(.red), supportsOpacity: true) {
+                                HStack {
+                                    Label("Scheme Color", systemImage: "paintpalette.fill")
+                                    Spacer()
+                                }
+                            }
+                            HStack {
+                                Label("Volume", systemImage: "speaker.wave.3.fill")
+                                Spacer()
+                                Slider(value: $imageScales.last!, in: 0...1).frame(width: 100)
+                                Text(String(format: "%.0f", imageScales.last! * 100))
+                                    .frame(width: 25)
+                            }
+                            HStack {
+                                Label("Playback Rate", systemImage: "play.fill")
+                                Spacer()
+                                Slider(value: $imageScales.last!, in: 0...1).frame(width: 100)
+                                Text(String(format: "%.0f", imageScales.last! * 100))
+                                    .frame(width: 25)
+                            }
+                        }
                         VStack(spacing: 3) {
                             HStack(spacing: 3) {
                                 Text("Your Presets")
@@ -346,6 +374,27 @@ struct ContentView: View {
         .padding(.top)
     }
 }
+
+// MARK: - View Modifiers Extension
+struct SelectedItem: ViewModifier {
+    var selected: Bool
+    
+    init(_ selected: Bool) {
+        self.selected = selected
+    }
+    
+    func body(content: Content) -> some View {
+        return content
+            .border(Color.accentColor, width: selected ? 3 : 0)
+    }
+}
+
+extension View {
+    func selected(_ selected: Bool = true) -> some View {
+        return modifier(SelectedItem(selected))
+    }
+}
+// MARK: -
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
