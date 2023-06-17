@@ -11,9 +11,10 @@ struct ContentView: View {
     
     @State var isDropTargeted = false
     @State var isParseFinished = false
-    @State var isFilterReveal = false
+    @State var isFilterReveal = true
     
     @State var imageScales = [Double](repeating: 1.0, count: 6)
+    @State var selectedIndex: Int!
     
     @State var isDockIconHidden = false
     
@@ -108,15 +109,66 @@ struct ContentView: View {
                 HStack(spacing: 0) {
                     HStack {
                         VStack {
+                            // MARK: Filter Results
                             ScrollView {
-                                
+                                VStack(alignment: .leading) {
+                                    Group {
+                                        Toggle(isOn: .constant(true)) {
+                                            HStack(spacing: 2) {
+                                                Image(systemName: "trophy.fill")
+                                                    .foregroundStyle(Color.green)
+                                                Text("Approved")
+                                            }
+                                        }
+                                        Toggle(isOn: .constant(true)) {
+                                            HStack(spacing: 2) {
+                                                Image(systemName: "heart.fill")
+                                                    .foregroundStyle(Color.pink)
+                                                Text("My Favourites")
+                                            }
+                                        }
+                                        Toggle(isOn: .constant(true)) {
+                                            HStack(spacing: 2) {
+                                                Image(systemName: "iphone.gen3")
+                                                    .foregroundStyle(Color.orange)
+                                                Text("Mobile Compatible")
+                                            }
+                                        }
+                                        Toggle(isOn: .constant(true)) {
+                                            Text("Audio Responsive")
+                                        }
+                                        Toggle(isOn: .constant(true)) {
+                                            Text("Customizable")
+                                        }
+                                    }
+                                }
+                                .padding(.all)
+                                .padding(.top)
+                                .overlay {
+                                    ZStack {
+                                        Rectangle()
+                                            .stroke(lineWidth: 1)
+                                            .foregroundStyle(Color(nsColor: NSColor.unemphasizedSelectedTextBackgroundColor))
+                                            .padding(.top, 8)
+                                        VStack {
+                                            HStack {
+                                                Text("Show Only:")
+                                                    .background(Color(nsColor: NSColor.windowBackgroundColor))
+                                                    .padding(.leading, 5)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                        }
+                                    }
+                                    
+                                }
                             }
                         }
+                        Spacer()
                         Divider()
-                            .opacity(isFilterReveal ? 1 : 0)
-                            
                     }
-                    .frame(width: isFilterReveal ? 150 : 0)
+                    .frame(width: isFilterReveal ? 200 : 0)
+                    .opacity(isFilterReveal ? 1 : 0)
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(0..<2, id: \.self) { index in
@@ -127,7 +179,7 @@ struct ContentView: View {
                                         .scaleEffect(imageScales[index])
                                         .clipShape(Rectangle())
                                         .border(Color.accentColor, width: 5 * (imageScales[index] - 1))
-                                        .selected()
+                                        .selected(index == selectedIndex ?? 0)
                                         .animation(.default, value: imageScales)
                                     VStack {
                                         Spacer()
@@ -141,6 +193,11 @@ struct ContentView: View {
                                                 .multilineTextAlignment(.center)
                                                 .foregroundStyle(Color(white: 0.7))
                                         }
+                                    }
+                                }
+                                .onTapGesture {
+                                    withAnimation(.default.speed(2)) {
+                                        selectedIndex = index
                                     }
                                 }
                                 .onHover {
@@ -179,7 +236,8 @@ struct ContentView: View {
                         return true
                     }
                 }
-                .animation(.spring, value: isFilterReveal)
+                .lineLimit(1)
+                .animation(.default, value: isFilterReveal)
                 VStack {
                     HStack {
                         Text("Playlist").font(.largeTitle)
@@ -285,6 +343,7 @@ struct ContentView: View {
                                 }
                             }
                         }
+                        // MARK: Properties
                         HStack(spacing: 3) {
                             Text("Properties")
                             VStack {
