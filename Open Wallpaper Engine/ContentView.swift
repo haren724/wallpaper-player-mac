@@ -245,15 +245,17 @@ struct ContentView: View {
                                         ZStack {
                                             Rectangle()
                                                 .frame(height: 30)
-                                                .foregroundStyle(Color(white: 0, opacity: 0.4))
+                                                .opacity(imageScales[index] == 1 ? 0.4 : 0.2)
                                             Text("Sumeru【Genshin Impact】")
                                                 .font(.footnote)
                                                 .lineLimit(2)
                                                 .multilineTextAlignment(.center)
-                                                .foregroundStyle(Color(white: 0.7))
+                                                .foregroundStyle(Color(white: imageScales[index] == 1 ? 0.7 : 0.9))
                                         }
+                                        .animation(.default, value: imageScales)
                                     }
                                 }
+                                .animation(.default, value: isFilterReveal)
                                 .onTapGesture {
                                     withAnimation(.default.speed(2)) {
                                         selectedIndex = index
