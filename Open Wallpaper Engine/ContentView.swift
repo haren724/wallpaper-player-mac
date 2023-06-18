@@ -23,8 +23,6 @@ struct ContentView: View {
     @State var projectUrl: URL!
     @State var greet: String = "Hello, world!"
     
-    let columns = [GridItem](repeating: GridItem(.flexible()), count: 4)
-    
     var body: some View {
         HSplitView {
             VStack(spacing: 5) {
@@ -231,7 +229,7 @@ struct ContentView: View {
                     .frame(width: isFilterReveal ? 200 : 0)
                     .opacity(isFilterReveal ? 1 : 0)
                     ScrollView {
-                        LazyVGrid(columns: columns) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 300))]) {
                             ForEach(0..<2, id: \.self) { index in
                                 ZStack {
                                     Image("sumeru")
