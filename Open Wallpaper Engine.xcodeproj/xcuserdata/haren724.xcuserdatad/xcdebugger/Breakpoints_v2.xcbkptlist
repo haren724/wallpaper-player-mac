@@ -94,8 +94,8 @@
             filePath = "Open Wallpaper Engine/WallpaperView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "setAVPlayer()"
             landmarkType = "7">
             <Locations>
@@ -142,8 +142,8 @@
             filePath = "Open Wallpaper Engine/WallpaperView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "WallpaperViewController"
             landmarkType = "3">
          </BreakpointContent>

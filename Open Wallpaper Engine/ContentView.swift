@@ -107,64 +107,122 @@ struct ContentView: View {
                     .frame(width: 160)
                 }
                 HStack(spacing: 0) {
-                    HStack {
+                    HStack(spacing: 0) {
                         VStack {
                             // MARK: Filter Results
                             ScrollView {
-                                VStack(alignment: .leading) {
-                                    Group {
-                                        Toggle(isOn: .constant(true)) {
-                                            HStack(spacing: 2) {
-                                                Image(systemName: "trophy.fill")
-                                                    .foregroundStyle(Color.green)
-                                                Text("Approved")
+                                VStack {
+                                    Button {
+                                         
+                                    } label: {
+                                        Label("Reset Filters", systemImage: "arrow.triangle.2.circlepath")
+                                            .frame(maxWidth: .infinity)
+                                            .padding(.vertical, 5)
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    VStack(alignment: .leading) {
+                                        Group {
+                                            Toggle(isOn: .constant(true)) {
+                                                HStack(spacing: 2) {
+                                                    Image(systemName: "trophy.fill")
+                                                        .foregroundStyle(Color.green)
+                                                    Text("Approved")
+                                                }
                                             }
-                                        }
-                                        Toggle(isOn: .constant(true)) {
-                                            HStack(spacing: 2) {
-                                                Image(systemName: "heart.fill")
-                                                    .foregroundStyle(Color.pink)
-                                                Text("My Favourites")
+                                            Toggle(isOn: .constant(true)) {
+                                                HStack(spacing: 2) {
+                                                    Image(systemName: "heart.fill")
+                                                        .foregroundStyle(Color.pink)
+                                                    Text("My Favourites")
+                                                }
                                             }
-                                        }
-                                        Toggle(isOn: .constant(true)) {
-                                            HStack(spacing: 2) {
-                                                Image(systemName: "iphone.gen3")
-                                                    .foregroundStyle(Color.orange)
-                                                Text("Mobile Compatible")
+                                            Toggle(isOn: .constant(true)) {
+                                                HStack(spacing: 2) {
+                                                    Image(systemName: "iphone.gen3")
+                                                        .foregroundStyle(Color.orange)
+                                                    Text("Mobile Compatible")
+                                                }
                                             }
-                                        }
-                                        Toggle(isOn: .constant(true)) {
-                                            Text("Audio Responsive")
-                                        }
-                                        Toggle(isOn: .constant(true)) {
-                                            Text("Customizable")
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Audio Responsive")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Customizable")
+                                            }
                                         }
                                     }
-                                }
-                                .padding(.all)
-                                .padding(.top)
-                                .overlay {
-                                    ZStack {
-                                        Rectangle()
-                                            .stroke(lineWidth: 1)
-                                            .foregroundStyle(Color(nsColor: NSColor.unemphasizedSelectedTextBackgroundColor))
-                                            .padding(.top, 8)
-                                        VStack {
-                                            HStack {
-                                                Text("Show Only:")
-                                                    .background(Color(nsColor: NSColor.windowBackgroundColor))
-                                                    .padding(.leading, 5)
+                                    .padding(.all)
+                                    .padding(.top)
+                                    .overlay {
+                                        ZStack {
+                                            Rectangle()
+                                                .stroke(lineWidth: 1)
+                                                .foregroundStyle(Color(nsColor: NSColor.unemphasizedSelectedTextBackgroundColor))
+                                                .padding(.top, 8)
+                                            VStack {
+                                                HStack {
+                                                    Text("Show Only:")
+                                                        .background(Color(nsColor: NSColor.windowBackgroundColor))
+                                                        .padding(.leading, 5)
+                                                    Spacer()
+                                                }
                                                 Spacer()
                                             }
-                                            Spacer()
+                                        }
+                                        
+                                    }
+                                    Section("Hello") {
+                                        VStack(alignment: .leading) {
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Scene")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Video")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Web")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Application")
+                                            }
+                                            Divider()
+                                                .overlay(Color.accentColor)
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Wallpaper")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Preset")
+                                            }
                                         }
                                     }
-                                    
+                                    Section("Age Rating") {
+                                        VStack(alignment: .leading) {
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Scene")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Video")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Web")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Application")
+                                            }
+                                            Divider()
+                                                .overlay(Color.accentColor)
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Wallpaper")
+                                            }
+                                            Toggle(isOn: .constant(true)) {
+                                                Text("Preset")
+                                            }
+                                        }
+                                    }
                                 }
+                                .padding(.trailing)
                             }
                         }
-                        Spacer()
                         Divider()
                     }
                     .frame(width: isFilterReveal ? 200 : 0)
