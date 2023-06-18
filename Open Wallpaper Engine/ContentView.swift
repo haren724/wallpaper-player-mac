@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var isDropTargeted = false
     @State var isParseFinished = false
     @State var isFilterReveal = true
+    @State var isDisplaySettingsReveal = false
     
     @State var imageScales = [Double](repeating: 1.0, count: 6)
     @State var selectedIndex: Int!
@@ -58,7 +59,9 @@ struct ContentView: View {
                             Button { } label: {
                                 Label("Mobile", systemImage: "platter.filled.bottom.iphone")
                             }
-                            Button { } label: {
+                            Button {
+                                isDisplaySettingsReveal = true
+                            } label: {
                                 Label("Displays", systemImage: "display")
                             }
                             Button{
@@ -486,6 +489,84 @@ struct ContentView: View {
                 .padding()
             }
             .frame(minWidth: 250, maxWidth: 500)
+        }
+        .sheet(isPresented: $isDisplaySettingsReveal) {
+            VStack(spacing: 20) {
+                Button {
+                    isDisplaySettingsReveal = false
+                } label: {
+                    Image(systemName: "chevron.up")
+                        .font(.largeTitle)
+                        .bold()
+                }
+                .buttonStyle(.link)
+                Text("Choose Display")
+                    .font(.largeTitle)
+                
+                VStack(spacing: 5) {
+                    Picker(selection: .constant(0)) {
+                        Text("Wallpaper Per Display").tag(0)
+                        Text("").tag(1)
+                    } label: { }
+                    HStack(spacing: 5) {
+                        Button {
+                            
+                        } label: {
+                            Label("Split", systemImage: "scissors")
+                                .frame(maxWidth: .infinity)
+                        }
+                        Button {
+                            
+                        } label: {
+                            Label("Group", systemImage: "square.on.square.squareshape.controlhandles")
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                    HStack(spacing: 5) {
+                        Button {
+                            
+                        } label: {
+                            Label("Load Profile", systemImage: "doc.text.fill")
+                                .frame(maxWidth: .infinity)
+                        }
+                        Button {
+                            
+                        } label: {
+                            Label("Save Profile", systemImage: "")
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                }
+                Image("sumeru")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                    .overlay {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("2048x2048 MacBook Pro 14''")
+                                    .font(.footnote)
+                                    .foregroundStyle(Color.white)
+                                    .background(Color.secondary)
+                                Spacer()
+                                Image(systemName: "speaker.wave.3.fill")
+                                    .padding(5)
+                                    .background(Color.secondary)
+                            }
+                            Spacer()
+                        }
+                        .padding(3)
+                        .border(Color.accentColor, width: 3)
+                    }
+                HStack {
+                    Button("Change Wallpaper") { }
+                        .buttonStyle(.borderedProminent)
+                    Button("Remove Wallpaper") { }
+                }
+                Spacer()
+            }
+            .padding()
+            .frame(width: 520, height: 450)
         }
         .frame(minWidth: 800, minHeight: 600)
         .padding(.top)
