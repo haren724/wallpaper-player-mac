@@ -239,7 +239,7 @@ struct ContentView: View {
                     .frame(width: viewModel.isFilterReveal ? 200 : 0)
                     .opacity(viewModel.isFilterReveal ? 1 : 0)
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 300))]) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))]) {
                             ForEach(0..<2, id: \.self) { index in
                                 ZStack {
                                     Image("sumeru")
