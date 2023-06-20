@@ -220,8 +220,8 @@ struct ContentView: View {
                                         }
                                         
                                     }
-                                    Section("Hello") {
-                                        VStack(alignment: .leading) {
+                                    VStack(spacing: 15) {
+                                        FilterSection("Type", alignment: .leading) {
                                             Toggle(isOn: .constant(true)) {
                                                 Text("Scene")
                                             }
@@ -243,29 +243,25 @@ struct ContentView: View {
                                                 Text("Preset")
                                             }
                                         }
-                                    }
-                                    Section("Age Rating") {
-                                        VStack(alignment: .leading) {
+                                        FilterSection("Age Rating", alignment: .leading) {
                                             Toggle(isOn: .constant(true)) {
-                                                Text("Scene")
+                                                Text("Everyone")
                                             }
                                             Toggle(isOn: .constant(true)) {
-                                                Text("Video")
+                                                Text("Partial Nudity")
                                             }
                                             Toggle(isOn: .constant(true)) {
-                                                Text("Web")
+                                                Text("Mature")
                                             }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Application")
-                                            }
-                                            Divider()
-                                                .overlay(Color.accentColor)
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Wallpaper")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Preset")
-                                            }
+                                        }
+                                        FilterSection("Resolution") {
+                                            
+                                        }
+                                        FilterSection("Source") {
+                                            
+                                        }
+                                        FilterSection("Tags") {
+                                            
                                         }
                                     }
                                 }
