@@ -17,10 +17,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var wallpaperWindow: NSWindow!
     
+    var contentViewModel: ContentViewModel!
+    
     static var shared = AppDelegate()
     
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
+        contentViewModel = ContentViewModel()
+        
         // 创建化左上角菜单栏
         setMainMenu()
         
@@ -69,6 +73,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @MainActor @objc func toggleFilter() {
+        self.contentViewModel.isFilterReveal.toggle()
+    }
+    
 // MARK: - Set Main Menu
     func setMainMenu() {
         // 主菜单
@@ -98,11 +106,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .init(title: "Close Window", action: #selector(NSApplication.shared.keyWindow?.close), keyEquivalent: "w")
         ]
         
+        // 查看菜单
+        let viewMenu = NSMenu()
+        let viewMenuItem = NSMenuItem(title: "View", action: nil, keyEquivalent: "")
+        viewMenuItem.submenu = viewMenu
+        viewMenu.items = [
+            {
+                let item = NSMenuItem(title: "Show Filter Results", action: #selector(self.toggleFilter), keyEquivalent: "s")
+                item.keyEquivalentModifierMask = [.command, .control]
+                return item
+            }()
+        ]
+        
         // 主菜单栏
         let mainMenu = NSMenu()
         mainMenu.items = [
             appMenuItem,
-            fileMenuItem
+            fileMenuItem,
+            viewMenuItem
         ]
         
         NSApplication.shared.mainMenu = mainMenu
@@ -138,7 +159,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.mainWindow.titlebarAppearsTransparent = true
         self.mainWindow.center()
         self.mainWindow.setFrameAutosaveName("MainWindow")
-        self.mainWindow.contentView = NSHostingView(rootView: ContentView())
+        self.mainWindow.contentView = NSHostingView(rootView: ContentView(viewModel: self.contentViewModel))
     }
 
 // MARK: Set Settings Window

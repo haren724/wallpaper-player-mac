@@ -7,7 +7,17 @@
 
 import SwiftUI
 
+@MainActor
+class ContentViewModel: ObservableObject {
+    @Published var isFilterReveal = true
+    
+    func toggleFilter() {
+        isFilterReveal.toggle()
+    }
+}
+
 struct ContentView: View {
+    @ObservedObject var viewModel: ContentViewModel
     
     @State var isDropTargeted = false
     @State var isParseFinished = false
@@ -87,7 +97,7 @@ struct ContentView: View {
                         }
                         .frame(width: 160)
                     Button {
-                        isFilterReveal.toggle()
+                        viewModel.isFilterReveal.toggle()
                     } label: {
                         Label("Filter Results", systemImage: "checklist.checked")
                     }
@@ -226,8 +236,8 @@ struct ContentView: View {
                         }
                         Divider()
                     }
-                    .frame(width: isFilterReveal ? 200 : 0)
-                    .opacity(isFilterReveal ? 1 : 0)
+                    .frame(width: viewModel.isFilterReveal ? 200 : 0)
+                    .opacity(viewModel.isFilterReveal ? 1 : 0)
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 300))]) {
                             ForEach(0..<2, id: \.self) { index in
@@ -255,7 +265,7 @@ struct ContentView: View {
                                         .animation(.default, value: imageScales)
                                     }
                                 }
-                                .animation(.default, value: isFilterReveal)
+                                .animation(.default, value: viewModel.isFilterReveal)
                                 .onTapGesture {
                                     withAnimation(.default.speed(2)) {
                                         selectedIndex = index
@@ -273,7 +283,7 @@ struct ContentView: View {
                         .padding(.trailing)
                         .frame(maxWidth: .infinity)
                     }
-                    .padding(.leading, isFilterReveal ? 10 : 0)
+                    .padding(.leading, viewModel.isFilterReveal ? 10 : 0)
                     .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
                         isParseFinished = false
                         // 确认拖入文件数量只有一个
@@ -298,7 +308,7 @@ struct ContentView: View {
                     }
                 }
                 .lineLimit(1)
-                .animation(.default, value: isFilterReveal)
+                .animation(.default, value: viewModel.isFilterReveal)
                 VStack {
                     HStack {
                         Text("Playlist").font(.largeTitle)
@@ -593,9 +603,8 @@ extension View {
     }
 }
 // MARK: -
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: .init())
     }
 }
