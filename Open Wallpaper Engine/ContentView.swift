@@ -160,7 +160,7 @@ struct ContentView: View {
                         VStack {
                             // MARK: Filter Results
                             ScrollView {
-                                VStack {
+                                VStack(spacing: 30) {
                                     Button {
                                          
                                     } label: {
