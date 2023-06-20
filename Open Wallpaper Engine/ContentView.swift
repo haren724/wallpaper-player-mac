@@ -255,6 +255,7 @@ struct ContentView: View {
                                         ZStack {
                                             Rectangle()
                                                 .frame(height: 30)
+                                                .foregroundStyle(Color.black)
                                                 .opacity(imageScales[index] == 1 ? 0.4 : 0.2)
                                             Text("Sumeru【Genshin Impact】")
                                                 .font(.footnote)
