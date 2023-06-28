@@ -9,6 +9,14 @@ import Cocoa
 import SwiftUI
 import AVKit
 
+extension NSMenuItem {
+    public convenience init(title: String, systemImage: String, action: Selector?, keyEquivalent: String) {
+        self.init(title: title, action: action, keyEquivalent: keyEquivalent)
+        self.image = NSImage(systemSymbolName: systemImage, accessibilityDescription: nil)
+        
+    }
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusItem: NSStatusItem!
