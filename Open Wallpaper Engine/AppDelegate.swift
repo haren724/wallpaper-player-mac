@@ -33,12 +33,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         contentViewModel = ContentViewModel()
         
-        // 创建化左上角菜单栏
-        setMainMenu()
-        
-        // 创建化右上角常驻菜单栏
-        setStatusMenu()
-        
         // 创建主视窗
         setMainWindow()
         
@@ -47,6 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // 创建桌面壁纸视窗
         setWallpaperWindow()
+        
+        // 创建化左上角菜单栏
+        setMainMenu()
+        
+        // 创建化右上角常驻菜单栏
+        setStatusMenu()
         
         // 显示桌面壁纸
         self.wallpaperWindow.center()
