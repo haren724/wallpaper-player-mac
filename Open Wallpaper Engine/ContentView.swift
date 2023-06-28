@@ -19,7 +19,7 @@ class ContentViewModel: ObservableObject {
 struct FilterSection<Content>: View where Content: View {
     private let content: Content
     private let alignment: HorizontalAlignment
-    private let spacing: CGFloat?
+    private var spacing: CGFloat?
     private let titleKey: LocalizedStringKey
     
     @State private var isExpanded: Bool = true
@@ -40,6 +40,7 @@ struct FilterSection<Content>: View where Content: View {
             } label: {
                 HStack {
                     Image(systemName: "arrowtriangle.down.fill")
+                        .font(.caption)
                         .rotationEffect(isExpanded ? .zero : .degrees(-90.0))
                         .animation(.spring, value: isExpanded)
                     Text(self.titleKey)
@@ -48,7 +49,7 @@ struct FilterSection<Content>: View where Content: View {
             }
             .buttonStyle(.plain)
             if isExpanded {
-                content
+                content.padding(.leading, (self.alignment == .leading) ? 10 : 0)
             }
         }
     }
