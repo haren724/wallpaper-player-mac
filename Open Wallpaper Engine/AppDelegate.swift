@@ -81,6 +81,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @objc func pause() {
+        (self.wallpaperWindow.contentViewController as? WallpaperViewController)?.pause()
+    }
+    
     @MainActor @objc func toggleFilter() {
         self.contentViewModel.isFilterReveal.toggle()
     }
@@ -141,11 +145,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func setStatusMenu() {
         let menu = NSMenu()
         menu.items = [
-            .init(title: "Show Open Wallpaper Engine", action: #selector(openMainWindow), keyEquivalent: ""),
+            .init(title: "Show Open Wallpaper Engine", systemImage: "photo", action: #selector(openMainWindow), keyEquivalent: ""),
+            .init(title: "Recent Wallpapers", systemImage: "", action: nil, keyEquivalent: ""),
+            .init(title: "Change Screensaver", systemImage: "moon.stars", action: nil, keyEquivalent: ""),
             .separator(),
-            .init(title: "Change Wallpaper", action: nil, keyEquivalent: ""),
+            .init(title: "Browse Workshop", systemImage: "globe", action: nil, keyEquivalent: ""),
+            .init(title: "Create Wallpaper", systemImage: "pencil.and.ruler.fill", action: nil, keyEquivalent: ""),
+            .init(title: "Settings", systemImage: "gearshape.fill", action: nil, keyEquivalent: ""),
             .separator(),
-            .init(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+            .init(title: "Support & FAQ", systemImage: "person.fill.questionmark", action: nil, keyEquivalent: ""),
+            .separator(),
+            .init(title: "Take Screenshot", systemImage: "camera.fill", action: nil, keyEquivalent: ""),
+            .init(title: "Mute", systemImage: "speaker.slash.fill", action: nil, keyEquivalent: ""),
+            .init(title: "Pause", systemImage: "pause.fill", action: #selector(pause), keyEquivalent: ""),
+            .init(title: "Quit", systemImage: "power", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         ]
         
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
