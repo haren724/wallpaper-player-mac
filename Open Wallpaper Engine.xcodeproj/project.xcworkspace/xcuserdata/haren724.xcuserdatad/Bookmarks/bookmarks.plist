@@ -3,48 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>top-level-items</key>
-	<array>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingLineNumber</key>
-					<string>39</string>
-					<key>StartingLineNumber</key>
-					<string>39</string>
-					<key>Timestamp</key>
-					<string>709294747.929896</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Open Wallpaper Engine/AppDelegate.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        setSettingsWindow()
-</string>
-				<key>leading</key>
-				<string>        
-        // 创建设置视窗
-</string>
-				<key>trailing</key>
-				<string>        
-        // 创建桌面壁纸视窗
-        setWallpaperWindow()
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
 		5E24F6562A4206C9008BA9EB /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E24F6552A4206C9008BA9EB /* preview.gif */; };
+		5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */; };
 		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
 		5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665252A2DC30D00E0E4B4 /* WEProject.swift */; };
 		5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665272A2E076400E0E4B4 /* ToolbarView.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
 		5E24F6552A4206C9008BA9EB /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
+		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
 		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
 		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
 		5E7665272A2E076400E0E4B4 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				5E7665292A2E231400E0E4B4 /* AboutUsView.swift */,
 				5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */,
 				5EC47EA92A2DB32900120CCC /* ContentView.swift */,
+				5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */,
 				5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */,
 				5E7665272A2E076400E0E4B4 /* ToolbarView.swift */,
 				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
@@ -311,6 +314,7 @@
 				5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */,
 				5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */,
 				5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */,
+				5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */,
 				5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */,
 				5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */,
 				5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */,
