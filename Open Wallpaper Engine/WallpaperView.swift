@@ -11,30 +11,37 @@ import AVKit
 
 class WallpaperViewController: NSViewController {
     
-    var player: AVPlayer!
-    var playerView: AVPlayerView!
+    private var player: AVPlayer!
+    private var playerView: AVPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setAVPlayer()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(playerDidStopPlaying(_:)), name: .AVPlayerItemPlaybackStalled, object: nil)
     }
     
-    @objc func playerDidFinishPlaying(_ notification: Notification) {
+    public func pause() {
+        self.player.pause()
+    }
+    
+    public func resume() {
+        self.player.play()
+    }
+    
+    @objc private func playerDidFinishPlaying(_ notification: Notification) {
         print("replaying...")
         // 重新播放视频
         self.player.seek(to: CMTime.zero)
         self.player.play()
     }
     
-    @objc func playerDidStopPlaying(_ notification: Notification) {
+    @objc private func playerDidStopPlaying(_ notification: Notification) {
         print("stopped, trying to resume...")
         // 重新播放视频
         self.player.play()
     }
     
-    func setAVPlayer() {
+    private func setAVPlayer() {
         self.player = AVPlayer(url: Bundle.main.url(forResource: "sumeruWP_4", withExtension: "mp4")!)
         self.playerView = AVPlayerView()
         self.view = self.playerView
