@@ -16,6 +16,38 @@ class ContentViewModel: ObservableObject {
     }
 }
 
+struct GifImage: NSViewControllerRepresentable {
+    class GifImageViewController: NSViewController {
+        var gifName: String = "preview"
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            let imageView = NSImageView(frame: NSRect(x: 407, y: 474, width: 92, height: 74))
+            imageView.canDrawSubviewsIntoLayer = true
+            imageView.imageScaling = .scaleProportionallyUpOrDown
+            imageView.animates = true
+            if let path = Bundle.main.path(forResource: self.gifName, ofType: "gif") {
+                imageView.image = NSImage(byReferencing: URL(fileURLWithPath: path))
+                print("LJKFDSkljfkldsjklfjdsklfjkls")
+            }
+            self.view = imageView
+        }
+    }
+    
+    var gifName: String
+    
+    func makeNSViewController(context: Context) -> NSViewController {
+        let controller = GifImageViewController()
+        controller.gifName = self.gifName
+        return controller
+    }
+    
+    func updateNSViewController(_ nsViewController: NSViewController, context: Context) {
+        
+    }
+}
+
 struct FilterSection<Content>: View where Content: View {
     private let content: Content
     private let alignment: HorizontalAlignment
@@ -384,9 +416,7 @@ struct ContentView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         VStack {
-                            Image("sumeru")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                            GifImage(gifName: "preview")
                             Text("Sumeru 【Genshin Impact】")
                                 .lineLimit(1)
                         }
