@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
 		5E24F6562A4206C9008BA9EB /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E24F6552A4206C9008BA9EB /* preview.gif */; };
+		5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */; };
 		5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */; };
 		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
 		5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665252A2DC30D00E0E4B4 /* WEProject.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
 		5E24F6552A4206C9008BA9EB /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
+		5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
 		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
 		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				5E7665272A2E076400E0E4B4 /* ToolbarView.swift */,
 				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
 				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
+				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
 				5E24F6552A4206C9008BA9EB /* preview.gif */,
 				5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */,
 				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 5EC47E6D2A2DB2E600120CCC;
 			productRefGroup = 5EC47E772A2DB2E600120CCC /* Products */;
@@ -279,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */,
+				5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */,
 				5E24F6562A4206C9008BA9EB /* preview.gif in Resources */,
 				5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */,
 				5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */,

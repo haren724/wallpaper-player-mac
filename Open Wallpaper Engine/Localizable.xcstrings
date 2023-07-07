@@ -1,5 +1,61 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "_approved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approved"
+          }
+        }
+      }
+    },
+    "_audioResponsive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Responsive"
+          }
+        }
+      }
+    },
+    "_customizable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customizable"
+          }
+        }
+      }
+    },
+    "_mobileCompatible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mobile Compatible"
+          }
+        }
+      }
+    },
+    "_myFavourites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Favourites"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }
