@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "_approved" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -55,6 +58,396 @@
           }
         }
       }
+    },
+    "< Pending >" : {
+
+    },
+    "40 MB" : {
+
+    },
+    "720 x 1280" : {
+
+    },
+    "1080 x 1920" : {
+
+    },
+    "1280 x 720" : {
+
+    },
+    "1440 x 2560" : {
+
+    },
+    "1920 x 1080 - Full HD" : {
+
+    },
+    "2048x2048 MacBook Pro 14''" : {
+
+    },
+    "2160 x 3840" : {
+
+    },
+    "2560 x 1080" : {
+
+    },
+    "2560 x 1440" : {
+
+    },
+    "3440 x 1440" : {
+
+    },
+    "3840 x 1080" : {
+
+    },
+    "3840 x 2160" : {
+
+    },
+    "3840 x 2160 - 4K" : {
+
+    },
+    "4096 x 768" : {
+
+    },
+    "5120 x 1440" : {
+
+    },
+    "5760 x 1080" : {
+
+    },
+    "7680 x 1440" : {
+
+    },
+    "7680 x 2160" : {
+
+    },
+    "11520 x 2160" : {
+
+    },
+    "About" : {
+
+    },
+    "Add Item" : {
+
+    },
+    "Add Wallpaper" : {
+
+    },
+    "Age Rating" : {
+
+    },
+    "All" : {
+
+    },
+    "Application" : {
+
+    },
+    "Apply to all Wallpapers" : {
+
+    },
+    "Approved" : {
+
+    },
+    "Audio Responsive" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Change Wallpaper" : {
+
+    },
+    "Choose Display" : {
+
+    },
+    "Comment" : {
+
+    },
+    "Configure" : {
+
+    },
+    "Customizable" : {
+
+    },
+    "Discover" : {
+
+    },
+    "Displays" : {
+
+    },
+    "Drag here to import wallpapers" : {
+
+    },
+    "Dual Monitor" : {
+
+    },
+    "Dual Standard" : {
+
+    },
+    "Dynamic Resolution" : {
+
+    },
+    "Everyone" : {
+
+    },
+    "Fantasy" : {
+
+    },
+    "Favorite" : {
+
+    },
+    "File Size" : {
+
+    },
+    "Filter Results" : {
+
+    },
+    "General" : {
+
+    },
+    "Group" : {
+
+    },
+    "Hello" : {
+
+    },
+    "High" : {
+
+    },
+    "Installed" : {
+
+    },
+    "Item at %@" : {
+
+    },
+    "Keep Running" : {
+
+    },
+    "Last Updated" : {
+
+    },
+    "Load" : {
+
+    },
+    "Load Profile" : {
+
+    },
+    "Low" : {
+
+    },
+    "Made with ❤️ by @haren724" : {
+
+    },
+    "Mature" : {
+
+    },
+    "Medium" : {
+
+    },
+    "Mobile" : {
+
+    },
+    "Mobile Compatible" : {
+
+    },
+    "Mute" : {
+
+    },
+    "My Favourites" : {
+
+    },
+    "My Wallpapers" : {
+
+    },
+    "Name" : {
+
+    },
+    "None" : {
+
+    },
+    "Official" : {
+
+    },
+    "OK" : {
+
+    },
+    "Open Wallpaper" : {
+
+    },
+    "Open Wallpaper Engine" : {
+
+    },
+    "Other Application Focused:" : {
+
+    },
+    "Other Application Fullscreen:" : {
+
+    },
+    "Other Application Maximized:" : {
+
+    },
+    "Other Application Playing Audio:" : {
+
+    },
+    "Other Resolution" : {
+
+    },
+    "Partial Nudity" : {
+
+    },
+    "Pause" : {
+
+    },
+    "Performance" : {
+
+    },
+    "Playback" : {
+
+    },
+    "Playback Rate" : {
+
+    },
+    "Playlist" : {
+
+    },
+    "Plugins" : {
+
+    },
+    "Potrait Monitor / Phone" : {
+
+    },
+    "Potrait Standard" : {
+
+    },
+    "Preset" : {
+
+    },
+    "Properties" : {
+
+    },
+    "Quality" : {
+
+    },
+    "Rating" : {
+
+    },
+    "Remove Wallpaper" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Reset Filters" : {
+
+    },
+    "Resolution" : {
+
+    },
+    "Save" : {
+
+    },
+    "Save Profile" : {
+
+    },
+    "Scene" : {
+
+    },
+    "Scheme Color" : {
+
+    },
+    "Search" : {
+
+    },
+    "Select an item" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share JSON" : {
+
+    },
+    "Show Only:" : {
+
+    },
+    "Source" : {
+
+    },
+    "Spacer" : {
+
+    },
+    "Split" : {
+
+    },
+    "Standard Definition" : {
+
+    },
+    "Stop (free memory)" : {
+
+    },
+    "Subscription Date" : {
+
+    },
+    "Sumeru 【Genshin Impact】" : {
+
+    },
+    "Sumeru【Genshin Impact】" : {
+
+    },
+    "Tags" : {
+
+    },
+    "Triple Monitor" : {
+
+    },
+    "Triple Standard" : {
+
+    },
+    "Type" : {
+
+    },
+    "Ultra" : {
+
+    },
+    "Ultra Widescreen" : {
+
+    },
+    "Ultrawide Standard" : {
+
+    },
+    "Unsubscribe" : {
+
+    },
+    "version: v0.1" : {
+
+    },
+    "Video" : {
+
+    },
+    "Volume" : {
+
+    },
+    "Wallpaper" : {
+
+    },
+    "Wallpaper Editor" : {
+
+    },
+    "Wallpaper Engine for Mac" : {
+
+    },
+    "Wallpaper Per Display" : {
+
+    },
+    "Web" : {
+
+    },
+    "Widescreen" : {
+
+    },
+    "Workshop" : {
+
+    },
+    "Your Presets" : {
+
     }
   },
   "version" : "1.0"

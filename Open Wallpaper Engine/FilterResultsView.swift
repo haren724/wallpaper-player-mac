@@ -6,16 +6,295 @@
 //
 
 import SwiftUI
+import Combine
 
-class FilterResultsViewModel: ObservableObject {
-    @AppStorage("Approved") var approved = true
-    @AppStorage("MyFavourites") var myFavourites = true
-    @AppStorage("MobileCompatible") var mobileCompatible = true
+enum GeneralControl {
+    case all, none
+}
+
+protocol FilterResultsModel<ObjectType>: AnyObject, ObservableObject where ObjectType: ObservableObject {
+    associatedtype ObjectType
     
-    func reset() {
+    var parent: ObjectType? { get set }
+    
+    init()
+    
+    init(_ parent: ObjectType?)
+    
+    func reset(to resetValue: Bool)
+}
+
+extension FilterResultsModel {
+    init(_ parent: ObjectType?) {
+        self.init()
+        self.parent = parent
+    }
+    
+    func reset(to resetValue: Bool = true) {
+        let mirror = Mirror(reflecting: self)
+        for case let (label?, _) in mirror.children {
+            if let boolValue = mirror.descendant(label) as? AppStorage<Bool> {
+                boolValue.projectedValue.wrappedValue = resetValue
+            }
+        }
         
+        guard let parent = self.parent else { return }
+        (parent.objectWillChange as? ObservableObjectPublisher)?.send()
     }
 }
+
+class FRShowOnly<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("Approved") public var approved = false
+    @AppStorage("MyFavourites") public var myFavourites = false
+    @AppStorage("MobileCompatible") public var mobileCompatible = false
+    @AppStorage("AudioResponsive") public var audioResponsive = false
+    @AppStorage("Customizable") public var customizable = false
+}
+
+struct FRType: OptionSet {
+    let rawValue: Int
+    
+    static let allOptions = [
+        "Scene",
+        "Video",
+        "Web",
+        "Application",
+        "Wallpaper",
+        "Preset"
+    ]
+    
+    static let scene            = FRType(rawValue: 1 << 0)
+    static let video            = FRType(rawValue: 1 << 1)
+    static let web              = FRType(rawValue: 1 << 2)
+    static let application      = FRType(rawValue: 1 << 3)
+    static let wallpaper        = FRType(rawValue: 1 << 4)
+    static let preset           = FRType(rawValue: 1 << 5)
+    
+    static let all: FRType      = [.scene, .video, .web, .application, .wallpaper, .preset]
+    static let none: FRType     = []
+}
+
+struct FRAgeRating: OptionSet {
+    let rawValue: Int
+    
+    static let allOptions = [
+        "Everyone",
+        "Partial Nudity",
+        "Mature"
+    ]
+    
+    static let everyone             = FRAgeRating(rawValue: 1 << 0)
+    static let partialNudity        = FRAgeRating(rawValue: 1 << 1)
+    static let mature               = FRAgeRating(rawValue: 1 << 2)
+    
+    static let all: FRAgeRating     = [.everyone, .partialNudity, .mature]
+    static let none: FRAgeRating    = []
+}
+
+class FRWidescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("StandardDefinition") public var standardDefinition = true
+    @AppStorage("1280x720") public var resolution1280x720 = true
+    @AppStorage("1920x1080-FullHD") public var resolution1920x1080 = true
+    @AppStorage("2560x1440") public var resolution2560x1440 = true
+    @AppStorage("3840x2160-4K") public var resolution3840x2160 = true
+}
+
+class FRUltraWidescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("UltrawideStandard") public var ultrawideStandard = true
+    @AppStorage("2560x1080") public var resolution2560x1080 = true
+    @AppStorage("3440x1440") public var resolution3440x1440 = true
+    @AppStorage("DualStandard") public var dualStandard = true
+    @AppStorage("3840x1080") public var resolution3840x1080 = true
+    @AppStorage("5120x1440") public var resolution5120x1440 = true
+    @AppStorage("7680x2160") public var resolution7680x2160 = true
+}
+
+class FRTriplescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("TripleStandard") public var tripleStandard = true
+    @AppStorage("4096x768") public var resolution4096x768 = true
+    @AppStorage("5760x1080") public var resolution5760x1080 = true
+    @AppStorage("7680x1440") public var resolution7680x1440 = true
+    @AppStorage("11520x2160") public var resolution11520x2160 = true
+}
+
+class FRPotraitscreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("PotraitStandard") public var potraitStandard = true
+    @AppStorage("720x1280") public var resolution720x1280 = true
+    @AppStorage("1080x1920") public var resolution1080x1920 = true
+    @AppStorage("1440x2560") public var resolution1440x2560 = true
+    @AppStorage("2160x3840") public var resolution2160x3840 = true
+}
+
+class FRMiscResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("OtherResolution") public var otherResolution = true
+    @AppStorage("DynamicResolution") public var dynamicResolution = true
+}
+
+class FRSource<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
+    weak var parent: ObjectType?
+    
+    required init() {}
+    
+    @AppStorage("Official") public var official = true
+    @AppStorage("Workshop") public var workshop = true
+    @AppStorage("MyWallpapers") public var myWallpapers = true
+}
+
+struct FRTag: OptionSet {
+    let rawValue: Int
+    
+    static let allOptions = [
+        "Abstract",
+        "Animal",
+        "Anime",
+        "Cartoon",
+        "CGI",
+        "Cyberpunk",
+        "Fantasy",
+        "Game",
+        "Girls",
+        "Guys",
+        "Landscape",
+        "Medieval",
+        "Memes",
+        "MMD",
+        "Music",
+        "Nature",
+        "PixelArt",
+        "Relaxing",
+        "Retro",
+        "Sci-Fi",
+        "Sports",
+        "Technology",
+        "Television",
+        "Vehicle",
+        "UnspecifiedGenre"
+    ]
+    
+    static let abstract             = FRTag(rawValue: 1 << 0)
+    static let animal               = FRTag(rawValue: 1 << 1)
+    static let anime                = FRTag(rawValue: 1 << 2)
+    static let cartoon              = FRTag(rawValue: 1 << 3)
+    static let cgi                  = FRTag(rawValue: 1 << 4)
+    static let cyberpunk            = FRTag(rawValue: 1 << 5)
+    static let fantasy              = FRTag(rawValue: 1 << 6)
+    static let game                 = FRTag(rawValue: 1 << 7)
+    static let girls                = FRTag(rawValue: 1 << 8)
+    static let guys                 = FRTag(rawValue: 1 << 9)
+    static let landscape            = FRTag(rawValue: 1 << 10)
+    static let medieval             = FRTag(rawValue: 1 << 11)
+    static let memes                = FRTag(rawValue: 1 << 12)
+    static let mmd                  = FRTag(rawValue: 1 << 13)
+    static let music                = FRTag(rawValue: 1 << 14)
+    static let nature               = FRTag(rawValue: 1 << 15)
+    static let pixelArt             = FRTag(rawValue: 1 << 16)
+    static let relaxing             = FRTag(rawValue: 1 << 17)
+    static let retro                = FRTag(rawValue: 1 << 18)
+    static let sciFi                = FRTag(rawValue: 1 << 19)
+    static let sports               = FRTag(rawValue: 1 << 20)
+    static let technology           = FRTag(rawValue: 1 << 21)
+    static let television           = FRTag(rawValue: 1 << 22)
+    static let vehicle              = FRTag(rawValue: 1 << 23)
+    static let unspecifiedGenre     = FRTag(rawValue: 1 << 24)
+    
+    static let all: FRTag = [
+        .abstract, .animal, .anime, .cartoon, .cgi, .cyberpunk, .fantasy, .game, .girls,
+        .guys, .landscape, .medieval, .memes, .mmd, .music, .nature, .pixelArt, .relaxing,
+        .retro, .sciFi, .sports, .technology, .television, .vehicle, .unspecifiedGenre
+    ]
+    static let none: FRTag = []
+}
+
+// MARK: -
+class FilterResultsViewModel: ObservableObject {
+    @Published public var showOnly = FRShowOnly<FilterResultsViewModel>()
+    @AppStorage("FRType") public var type = FRType.all
+    @AppStorage("FRAgeRating") public var ageRating = FRAgeRating.all
+    @Published public var widescreenResolution = FRWidescreenResolution<FilterResultsViewModel>()
+    @Published public var ultraWidescreenResolution = FRUltraWidescreenResolution<FilterResultsViewModel>()
+    @Published public var triplescreenResolution = FRTriplescreenResolution<FilterResultsViewModel>()
+    @Published public var potraitscreenResolution = FRPotraitscreenResolution<FilterResultsViewModel>()
+    @Published public var miscResolution = FRMiscResolution<FilterResultsViewModel>()
+    @Published public var source = FRSource<FilterResultsViewModel>()
+    @AppStorage("FRTag") public var tag = FRTag.all
+    
+    let tags: [String] = [
+        "Abstract",
+        "Animal",
+        "Anime",
+        "Cartoon",
+        "CGI",
+        "Cyberpunk",
+        "Fantasy",
+        "Game",
+        "Girls",
+        "Guys",
+        "Landscape",
+        "Medieval",
+        "Memes",
+        "MMD (Miku-Miku Dance)",
+        "Music",
+        "Nature",
+        "Pixel Art",
+        "Relaxing",
+        "Retro",
+        "Sci-Fi",
+        "Sports",
+        "Technology",
+        "Television",
+        "Vehicle",
+        "Unspecified Genre"
+   ]
+    
+    public func widescreenGeneral(_ control: GeneralControl) {
+        let mirror = Mirror(reflecting: self)
+        for case let (label?, _) in mirror.children {
+            if ["_standardDefinition", "_resolution1280x720", "_resolution1920x1080", "_resolution2560x1440", " _resolution3840x2160"].contains(label) {
+                (mirror.descendant(label) as? AppStorage<Bool>)?.wrappedValue = (control == .all ? true : false)
+            }
+        }
+    }
+    
+    public func reset() {
+        self.showOnly.reset(to: false)
+        self.type = .all
+        self.ageRating = .all
+        self.widescreenResolution.reset()
+        self.ultraWidescreenResolution.reset()
+        self.triplescreenResolution.reset()
+        self.potraitscreenResolution.reset()
+        self.miscResolution.reset()
+        self.source.reset()
+        self.tag = .all
+    }
+}
+
+// 是不是傻，直接用OptionSet不就行了
+// 核心错误是之前认为必须给每一个checkbox都设置一个UserDefault键
 
 struct FilterResults: View {
     @ObservedObject var viewModel: FilterResultsViewModel
@@ -25,7 +304,7 @@ struct FilterResults: View {
             ScrollView {
                 VStack(spacing: 30) {
                     Button {
-                        viewModel.showOnly.reset()
+                        viewModel.reset()
                     } label: {
                         Label("Reset Filters", systemImage: "arrow.triangle.2.circlepath")
                             .frame(maxWidth: .infinity)
@@ -33,16 +312,6 @@ struct FilterResults: View {
                     }
                     .buttonStyle(.borderedProminent)
                     VStack(alignment: .leading) {
-//                        let mirror = Mirror(reflecting: viewModel)
-//                        ForEach(Array(mirror.children), id: \.label) { child in
-//                            Toggle(isOn: (mirror.descendant(child.label!) as! AppStorage<Bool>).projectedValue) {
-//                                HStack(spacing: 2) {
-//                                    Image(systemName: "trophy.fill")
-//                                        .foregroundStyle(Color.green)
-//                                    Text("Approved")
-//                                }
-//                            }
-//                        }
                         Group {
                             Toggle(isOn: $viewModel.showOnly.approved) {
                                 HStack(spacing: 2) {
@@ -96,36 +365,35 @@ struct FilterResults: View {
                     }
                     VStack(spacing: 15) {
                         FilterSection("Type", alignment: .leading) {
-                            Toggle(isOn: $viewModel.type.scene) {
-                                Text("Scene")
-                            }
-                            Toggle(isOn: $viewModel.type.video) {
-                                Text("Video")
-                            }
-                            Toggle(isOn: $viewModel.type.web) {
-                                Text("Web")
-                            }
-                            Toggle(isOn: $viewModel.type.application) {
-                                Text("Application")
-                            }
-                            Divider()
-                                .overlay(Color.accentColor)
-                            Toggle(isOn: $viewModel.type.wallpaper) {
-                                Text("Wallpaper")
-                            }
-                            Toggle(isOn: $viewModel.type.preset) {
-                                Text("Preset")
+                            ForEach(Array(zip(FRType.allOptions.indices, FRType.allOptions)), id: \.0) { (i, option) in
+                                Toggle(option, isOn: Binding<Bool>(get: {
+                                    viewModel.type.contains(FRType(rawValue: 1 << i))
+                                }, set: {
+                                    if $0 {
+                                        viewModel.type.insert(FRType(rawValue: 1 << i))
+                                    } else {
+                                        viewModel.type.remove(FRType(rawValue: 1 << i))
+                                    }
+                                    print(String(describing: viewModel.type))
+                                }))
+                                if i == 3 {
+                                    Divider()
+                                        .overlay(Color.accentColor)
+                                }
                             }
                         }
                         FilterSection("Age Rating", alignment: .leading) {
-                            Toggle(isOn: $viewModel.ageRating.everyone) {
-                                Text("Everyone")
-                            }
-                            Toggle(isOn: $viewModel.ageRating.partialNudity) {
-                                Text("Partial Nudity")
-                            }
-                            Toggle(isOn: $viewModel.ageRating.mature) {
-                                Text("Mature")
+                            ForEach(Array(zip(FRAgeRating.allOptions.indices, FRAgeRating.allOptions)), id: \.0) { (i, option) in
+                                Toggle(option, isOn: Binding<Bool>(get: {
+                                    viewModel.ageRating.contains(FRAgeRating(rawValue: 1 << i))
+                                }, set: {
+                                    if $0 {
+                                        viewModel.ageRating.insert(FRAgeRating(rawValue: 1 << i))
+                                    } else {
+                                        viewModel.ageRating.remove(FRAgeRating(rawValue: 1 << i))
+                                    }
+                                    print(String(describing: viewModel.ageRating))
+                                }))
                             }
                         }
                         FilterSection("Resolution", alignment: .leading) {
@@ -256,14 +524,23 @@ struct FilterResults: View {
                         }
                         FilterSection("Tags", alignment: .leading) {
                             HStack {
-                                Button("All")  { }
-                                Button("None") { }
+                                Button("All")  { viewModel.tag = .all }
+                                Button("None") { viewModel.tag = .none }
                             }
                             .buttonStyle(.link)
                             Group {
-//                                ForEach(Array(viewModel.tags.enumerated()), id: \.1) { index, tag in
-//                                    Toggle(tag, isOn: viewModel.getTag(index))
-//                                }
+                                ForEach(Array(zip(FRTag.allOptions.indices, FRTag.allOptions)), id: \.0) { (i, option) in
+                                    Toggle(option, isOn: Binding<Bool>(get: {
+                                        viewModel.tag.contains(FRTag(rawValue: 1 << i))
+                                    }, set: {
+                                        if $0 {
+                                            viewModel.tag.insert(FRTag(rawValue: 1 << i))
+                                        } else {
+                                            viewModel.tag.remove(FRTag(rawValue: 1 << i))
+                                        }
+                                        print(String(describing: viewModel.tag))
+                                    }))
+                                }
                             }
                             .toggleStyle(.checkbox)
                         }

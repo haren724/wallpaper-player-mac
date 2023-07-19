@@ -317,5 +317,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "255E5670-B142-4CAB-BA9F-87A601865B47"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/FilterResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "reset(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "255E5670-B142-4CAB-BA9F-87A601865B47 - 53b913e9f32f6644"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.FilterResultsModel.reset(to: Swift.Bool) -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/FilterResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "896">
+               </Location>
+               <Location
+                  uuid = "255E5670-B142-4CAB-BA9F-87A601865B47 - 53b913e9f32f6644"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.FilterResultsModel.reset(to: Swift.Bool) -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/FilterResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "892">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
