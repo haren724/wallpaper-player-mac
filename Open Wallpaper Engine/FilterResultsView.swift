@@ -43,16 +43,25 @@ extension FilterResultsModel {
     }
 }
 
-class FRShowOnly<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRShowOnly: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions = [
+        ("Approved", "trophy.fill"),
+        ("My Favourites", "heart.fill"),
+        ("Mobile Compatible", "iphone.gen3"),
+        ("Audio Responsive", ""),
+        ("Customizable", "")
+    ]
     
-    @AppStorage("Approved") public var approved = false
-    @AppStorage("MyFavourites") public var myFavourites = false
-    @AppStorage("MobileCompatible") public var mobileCompatible = false
-    @AppStorage("AudioResponsive") public var audioResponsive = false
-    @AppStorage("Customizable") public var customizable = false
+    static let approved             = FRShowOnly(rawValue: 1 << 0)
+    static let myFavourites         = FRShowOnly(rawValue: 1 << 1)
+    static let mobileCompatible     = FRShowOnly(rawValue: 1 << 2)
+    static let audioResponsive      = FRShowOnly(rawValue: 1 << 3)
+    static let customizable         = FRShowOnly(rawValue: 1 << 4)
+    
+    static let all: FRShowOnly = [.approved, myFavourites, mobileCompatible, .audioResponsive, .customizable]
+    static let none: FRShowOnly = []
 }
 
 struct FRType: OptionSet {
@@ -231,7 +240,7 @@ struct FRTag: OptionSet {
 
 // MARK: -
 class FilterResultsViewModel: ObservableObject {
-    @Published public var showOnly = FRShowOnly<FilterResultsViewModel>()
+    @AppStorage("FRShowOnly") public var showOnly = FRShowOnly.all
     @AppStorage("FRType") public var type = FRType.all
     @AppStorage("FRAgeRating") public var ageRating = FRAgeRating.all
     @Published public var widescreenResolution = FRWidescreenResolution<FilterResultsViewModel>()
@@ -241,34 +250,6 @@ class FilterResultsViewModel: ObservableObject {
     @Published public var miscResolution = FRMiscResolution<FilterResultsViewModel>()
     @Published public var source = FRSource<FilterResultsViewModel>()
     @AppStorage("FRTag") public var tag = FRTag.all
-    
-    let tags: [String] = [
-        "Abstract",
-        "Animal",
-        "Anime",
-        "Cartoon",
-        "CGI",
-        "Cyberpunk",
-        "Fantasy",
-        "Game",
-        "Girls",
-        "Guys",
-        "Landscape",
-        "Medieval",
-        "Memes",
-        "MMD (Miku-Miku Dance)",
-        "Music",
-        "Nature",
-        "Pixel Art",
-        "Relaxing",
-        "Retro",
-        "Sci-Fi",
-        "Sports",
-        "Technology",
-        "Television",
-        "Vehicle",
-        "Unspecified Genre"
-   ]
     
     public func widescreenGeneral(_ control: GeneralControl) {
         let mirror = Mirror(reflecting: self)
@@ -280,7 +261,7 @@ class FilterResultsViewModel: ObservableObject {
     }
     
     public func reset() {
-        self.showOnly.reset(to: false)
+        self.showOnly = .none
         self.type = .all
         self.ageRating = .all
         self.widescreenResolution.reset()
@@ -290,11 +271,18 @@ class FilterResultsViewModel: ObservableObject {
         self.miscResolution.reset()
         self.source.reset()
         self.tag = .all
+//        self.showOnly                   = .all
+//        self.type                       = .all
+//        self.ageRating                  = .all
+//        self.widescreenResolution       = .all
+//        self.ultraWidescreenResolution  = .all
+//        self.triplescreenResolution     = .all
+//        self.potraitscreenResolution    = .all
+//        self.miscResolution             = .all
+//        self.source                     = .all
+//        self.tag                        = .all
     }
 }
-
-// 是不是傻，直接用OptionSet不就行了
-// 核心错误是之前认为必须给每一个checkbox都设置一个UserDefault键
 
 struct FilterResults: View {
     @ObservedObject var viewModel: FilterResultsViewModel
@@ -313,32 +301,34 @@ struct FilterResults: View {
                     .buttonStyle(.borderedProminent)
                     VStack(alignment: .leading) {
                         Group {
-                            Toggle(isOn: $viewModel.showOnly.approved) {
-                                HStack(spacing: 2) {
-                                    Image(systemName: "trophy.fill")
-                                        .foregroundStyle(Color.green)
-                                    Text("Approved")
+                            ForEach(Array(zip(FRShowOnly.allOptions.indices, FRShowOnly.allOptions)), id: \.0) { (i, option) in
+                                let (option, image) = option
+                                let color = if i == 0 {
+                                    Color.green
+                                } else if i == 1 {
+                                    Color.pink
+                                } else if i == 2 {
+                                    Color.orange
+                                } else {
+                                    Color.accentColor
                                 }
-                            }
-                            Toggle(isOn: $viewModel.showOnly.myFavourites) {
-                                HStack(spacing: 2) {
-                                    Image(systemName: "heart.fill")
-                                        .foregroundStyle(Color.pink)
-                                    Text("My Favourites")
+                                
+                                Toggle(isOn: Binding<Bool>(get: {
+                                    viewModel.showOnly.contains(FRShowOnly(rawValue: 1 << i))
+                                }, set: {
+                                    if $0 {
+                                        viewModel.showOnly.insert(FRShowOnly(rawValue: 1 << i))
+                                    } else {
+                                        viewModel.showOnly.remove(FRShowOnly(rawValue: 1 << i))
+                                    }
+                                    print(String(describing: viewModel.showOnly))
+                                })) {
+                                    HStack(spacing: 2) {
+                                        Image(systemName: image)
+                                            .foregroundStyle(color)
+                                        Text(option)
+                                    }
                                 }
-                            }
-                            Toggle(isOn: $viewModel.showOnly.mobileCompatible) {
-                                HStack(spacing: 2) {
-                                    Image(systemName: "iphone.gen3")
-                                        .foregroundStyle(Color.orange)
-                                    Text("Mobile Compatible")
-                                }
-                            }
-                            Toggle(isOn: $viewModel.showOnly.audioResponsive) {
-                                Text("Audio Responsive")
-                            }
-                            Toggle(isOn: $viewModel.showOnly.customizable) {
-                                Text("Customizable")
                             }
                         }
                         .toggleStyle(.checkbox)
