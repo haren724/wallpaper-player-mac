@@ -29,7 +29,18 @@ extension Array: RawRepresentable where Element: Codable {
 
 @MainActor
 class ContentViewModel: ObservableObject {
-    @Published var isFilterReveal = true
+    @AppStorage("FilterReveal") var isFilterReveal = false
+    @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
+    
+    var wallpapers: [WEWallpaper] {
+        get {
+            if wallpaperUrls.isEmpty {
+                
+            }
+            let url = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appending(path: "2816680522")
+            return try! [.init(wallpaperURL: url)]
+        }
+    }
     
     func toggleFilter() {
         isFilterReveal.toggle()
@@ -49,7 +60,6 @@ struct GifImage: NSViewControllerRepresentable {
             imageView.animates = true
             if let path = Bundle.main.path(forResource: self.gifName, ofType: "gif") {
                 imageView.image = NSImage(byReferencing: URL(fileURLWithPath: path))
-                print("LJKFDSkljfkldsjklfjdsklfjkls")
             }
             self.view = imageView
         }
@@ -110,12 +120,14 @@ struct FilterSection<Content>: View where Content: View {
 struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
     
+    @StateObject var filterResultsViewModel = FilterResultsViewModel()
+    
     @State var isDropTargeted = false
     @State var isParseFinished = false
     @State var isFilterReveal = true
     @State var isDisplaySettingsReveal = false
     
-    @State var imageScales = [Double](repeating: 1.0, count: 6)
+    @State var imageScaleIndex: Int = -1
     @State var selectedIndex: Int!
     
     @State var isDockIconHidden = false
@@ -152,8 +164,10 @@ struct ContentView: View {
                                 .stroke(lineWidth: 1)
                                 .foregroundStyle(Color.accentColor))
                         }
+                        .fixedSize()
                         .buttonStyle(.plain)
                         Spacer()
+                            .frame(minWidth: 10)
                         Group {
                             Button { } label: {
                                 Label("Mobile", systemImage: "platter.filled.bottom.iphone")
@@ -169,8 +183,10 @@ struct ContentView: View {
                                 Label("Settings", systemImage: "gearshape.fill")
                             }
                         }
+                        .fixedSize()
                         .buttonStyle(.plain)
                     }
+                    .offset(x: 0.5)
                     Divider()
                         .frame(height: 2)
                         .overlay(Color.accentColor)
@@ -210,166 +226,93 @@ struct ContentView: View {
                 }
                 HStack(spacing: 0) {
                     HStack(spacing: 0) {
-                        VStack {
-                            // MARK: Filter Results
-                            ScrollView {
-                                VStack(spacing: 30) {
-                                    Button {
-                                         
-                                    } label: {
-                                        Label("Reset Filters", systemImage: "arrow.triangle.2.circlepath")
-                                            .frame(maxWidth: .infinity)
-                                            .padding(.vertical, 5)
-                                    }
-                                    .buttonStyle(.borderedProminent)
-                                    VStack(alignment: .leading) {
-                                        Group {
-                                            Toggle(isOn: .constant(true)) {
-                                                HStack(spacing: 2) {
-                                                    Image(systemName: "trophy.fill")
-                                                        .foregroundStyle(Color.green)
-                                                    Text("Approved")
-                                                }
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                HStack(spacing: 2) {
-                                                    Image(systemName: "heart.fill")
-                                                        .foregroundStyle(Color.pink)
-                                                    Text("My Favourites")
-                                                }
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                HStack(spacing: 2) {
-                                                    Image(systemName: "iphone.gen3")
-                                                        .foregroundStyle(Color.orange)
-                                                    Text("Mobile Compatible")
-                                                }
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Audio Responsive")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Customizable")
-                                            }
-                                        }
-                                    }
-                                    .padding(.all)
-                                    .padding(.top)
-                                    .overlay {
-                                        ZStack {
-                                            Rectangle()
-                                                .stroke(lineWidth: 1)
-                                                .foregroundStyle(Color(nsColor: NSColor.unemphasizedSelectedTextBackgroundColor))
-                                                .padding(.top, 8)
-                                            VStack {
-                                                HStack {
-                                                    Text("Show Only:")
-                                                        .background(Color(nsColor: NSColor.windowBackgroundColor))
-                                                        .padding(.leading, 5)
-                                                    Spacer()
-                                                }
-                                                Spacer()
-                                            }
-                                        }
-                                        
-                                    }
-                                    VStack(spacing: 15) {
-                                        FilterSection("Type", alignment: .leading) {
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Scene")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Video")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Web")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Application")
-                                            }
-                                            Divider()
-                                                .overlay(Color.accentColor)
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Wallpaper")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Preset")
-                                            }
-                                        }
-                                        FilterSection("Age Rating", alignment: .leading) {
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Everyone")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Partial Nudity")
-                                            }
-                                            Toggle(isOn: .constant(true)) {
-                                                Text("Mature")
-                                            }
-                                        }
-                                        FilterSection("Resolution") {
-                                            
-                                        }
-                                        FilterSection("Source") {
-                                            
-                                        }
-                                        FilterSection("Tags") {
-                                            
-                                        }
-                                    }
-                                }
-                                .padding(.trailing)
-                            }
-                        }
-                        Divider()
+                        // MARK: Filter Results
+                        FilterResults(viewModel: self.filterResultsViewModel)
                     }
                     .frame(width: viewModel.isFilterReveal ? 200 : 0)
                     .opacity(viewModel.isFilterReveal ? 1 : 0)
+                    .animation(.spring, value: viewModel.isFilterReveal)
                     ScrollView {
+                        // MARK: Items
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))]) {
-                            ForEach(0..<2, id: \.self) { index in
-                                ZStack {
-                                    Image("sumeru")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaleEffect(imageScales[index])
-                                        .clipShape(Rectangle())
-                                        .border(Color.accentColor, width: 5 * (imageScales[index] - 1))
-                                        .selected(index == selectedIndex ?? 0)
-                                        .animation(.default, value: imageScales)
-                                    VStack {
-                                        Spacer()
-                                        ZStack {
-                                            Rectangle()
-                                                .frame(height: 30)
-                                                .foregroundStyle(Color.black)
-                                                .opacity(imageScales[index] == 1 ? 0.4 : 0.2)
-                                            Text("Sumeru【Genshin Impact】")
-                                                .font(.footnote)
-                                                .lineLimit(2)
-                                                .multilineTextAlignment(.center)
-                                                .foregroundStyle(Color(white: imageScales[index] == 1 ? 0.7 : 0.9))
-                                        }
-                                        .animation(.default, value: imageScales)
-                                    }
+                            if viewModel.wallpapers.isEmpty {
+                                VStack {
+                                    Text("Drag here to import wallpapers").font(.title)
+                                        .lineLimit(nil)
                                 }
-                                .animation(.default, value: viewModel.isFilterReveal)
+                                .padding()
+                                .frame(width: 200, height: 200)
+                                .background(Color(nsColor: .controlBackgroundColor))
                                 .onTapGesture {
-                                    withAnimation(.default.speed(2)) {
-                                        selectedIndex = index
-                                    }
+                                    print(String(describing: viewModel.wallpapers.first))
                                 }
-                                .onHover {
-                                    if $0 {
-                                        imageScales[index] = 1.2
-                                    } else {
-                                        imageScales[index] = 1.0
+                                .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
+                                    isParseFinished = false
+                                    // 确认拖入文件数量只有一个
+                                    if providers.count != 1 { return false }
+                                    let folder = providers.first!
+                                    // 确认拖入文件为`文件夹`类型
+                                    if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
+                                    // 解析文件夹目录位置
+                                    folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
+                                        let projectUrl = (item as! URL)
+                                        self.projectUrl = projectUrl
+                                        do {
+                                            // 根据解析出的目录下的project.json文件得到壁纸信息
+                                            let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
+                                            project = try JSONDecoder().decode(WEProject.self, from: projectData)
+                                            isParseFinished = true
+                                        } catch {
+                                            return
+                                        }
                                     }
+                                    return true
                                 }
+                            } else {
+                                
                             }
+                            
+                            //                            ForEach(viewModel.wallpapers) { wallpaper in
+                            //                                ZStack {
+                            //                                    GifImage(gifName: wallpaper.preview.filename ?? "")
+                            //                                            .resizable()
+                            //                                            .aspectRatio(contentMode: .fit)
+                            //                                            .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
+                            //                                            .clipShape(Rectangle())
+                            //                                            .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
+                            //                                            .selected(index == selectedIndex ?? 0)
+                            //                                            .animation(.spring, value: imageScaleIndex == index ? 1.2 : 1.0)
+                            //                                    VStack {
+                            //                                        Spacer()
+                            //                                        ZStack {
+                            //                                            Rectangle()
+                            //                                                .frame(height: 30)
+                            //                                                .foregroundStyle(Color.black)
+                            //                                                .opacity(imageScaleIndex == index ? 0.4 : 0.2)
+                            //                                                .animation(.default, value: imageScaleIndex)
+                            //                                            Text("Sumeru【Genshin Impact】")
+                            //                                                .font(.footnote)
+                            //                                                .lineLimit(2)
+                            //                                                .multilineTextAlignment(.center)
+                            //                                                .foregroundStyle(Color(white: imageScaleIndex == index ? 0.7 : 0.9))
+                            //                                        }
+                            //                                    }
+                            //                                }
+                            //                                .onTapGesture {
+                            //                                    withAnimation(.default.speed(2)) {
+                            //                                        selectedIndex = index
+                            //                                    }
+                            //                                }
+                            //                                .onHover { onHover in
+                            //                                    if onHover {
+                            //                                        imageScaleIndex = index
+                            //                                    }
+                            //                                }
+                            //                            }
+                            //                        }
+                            //                        .padding(.trailing)
+                            //                        .frame(maxWidth: .infinity)
                         }
-                        .padding(.trailing)
-                        .frame(maxWidth: .infinity)
                     }
                     .padding(.leading, viewModel.isFilterReveal ? 10 : 0)
                     .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
@@ -447,7 +390,7 @@ struct ContentView: View {
                             Text("< Pending >")
                         }
                         HStack {
-                             HStack(spacing: 5) {
+                            HStack(spacing: 5) {
                                 Image(systemName: "star.fill")
                                 Image(systemName: "star.fill")
                                 Image(systemName: "star.fill")
@@ -519,15 +462,15 @@ struct ContentView: View {
                             HStack {
                                 Label("Volume", systemImage: "speaker.wave.3.fill")
                                 Spacer()
-                                Slider(value: $imageScales.last!, in: 0...1).frame(width: 100)
-                                Text(String(format: "%.0f", imageScales.last! * 100))
+                                Slider(value: .constant(0.5), in: 0...1).frame(width: 100)
+                                Text(String(format: "%.0f", 0.5))
                                     .frame(width: 25)
                             }
                             HStack {
                                 Label("Playback Rate", systemImage: "play.fill")
                                 Spacer()
-                                Slider(value: $imageScales.last!, in: 0...1).frame(width: 100)
-                                Text(String(format: "%.0f", imageScales.last! * 100))
+                                Slider(value: .constant(0.5), in: 0...1).frame(width: 100)
+                                Text(String(format: "%.0f", 0.5))
                                     .frame(width: 25)
                             }
                         }
@@ -577,7 +520,7 @@ struct ContentView: View {
                     } label: {
                         Text("OK").frame(width: 50)
                     }
-                        .buttonStyle(.borderedProminent)
+                    .buttonStyle(.borderedProminent)
                     Button { } label: {
                         Text("Cancel").frame(width: 50)
                     }
