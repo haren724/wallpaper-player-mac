@@ -27,6 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var contentViewModel: ContentViewModel!
     
+    var importOpenPanel: NSOpenPanel!
+    
     static var shared = AppDelegate()
     
 // MARK: - delegate methods
@@ -85,6 +87,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         (self.wallpaperWindow.contentViewController as? WallpaperViewController)?.pause()
     }
     
+    @objc func openImportPanel(_ allowsMultipleSelection: Bool = false) {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = allowsMultipleSelection
+        
+        self.importOpenPanel = panel
+        self.importOpenPanel.beginSheetModal(for: self.mainWindow) { response in
+            print(String(describing: self.importOpenPanel.urls))
+            DispatchQueue.main.sync {
+                self.contentViewModel.wallpaperUrls.append(contentsOf: self.importOpenPanel.urls)
+            }
+        }
+    }
+    
     @MainActor @objc func toggleFilter() {
         self.contentViewModel.isFilterReveal.toggle()
     }
@@ -109,12 +126,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }()
         ]
         
+        // 导入子菜单
+        let importMenu = NSMenu()
+        let importMenuItem = NSMenuItem(title: "Import", action: nil, keyEquivalent: "")
+        importMenuItem.submenu = importMenu
+        importMenu.items = [
+            .init(title: "Wallpaper from Folder", action: #selector(openImportPanel), keyEquivalent: "i"),
+            .init(title: "Wallpapers in Folder", action: nil, keyEquivalent: "")
+        ]
+        
         // 文件菜单
         let fileMenu = NSMenu()
         let fileMenuItem = NSMenuItem(title: "File", action: nil, keyEquivalent: "")
         fileMenuItem.submenu = fileMenu
         fileMenu.items = [
             // 在此处添加子菜单项
+            importMenuItem,
+            .separator(),
             .init(title: "Close Window", action: #selector(NSApplication.shared.keyWindow?.close), keyEquivalent: "w")
         ]
         
