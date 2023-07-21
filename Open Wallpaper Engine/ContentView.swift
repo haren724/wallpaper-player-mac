@@ -584,7 +584,8 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .frame(minWidth: 250, maxWidth: 500)
+            .frame(maxWidth: 320)
+            
         }
         .sheet(isPresented: $isDisplaySettingsReveal) {
             VStack(spacing: 20) {
@@ -664,7 +665,7 @@ struct ContentView: View {
             .padding()
             .frame(width: 520, height: 450)
         }
-        .frame(minWidth: 800, minHeight: 600)
+        .frame(minWidth: 1000, minHeight: 400, idealHeight: 600)
         .padding(.top)
     }
 }
