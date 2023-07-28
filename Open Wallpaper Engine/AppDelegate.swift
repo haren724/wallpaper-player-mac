@@ -17,7 +17,7 @@ extension NSMenuItem {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     
     var statusItem: NSStatusItem!
     var mainWindow: NSWindow!
@@ -26,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var wallpaperWindow: NSWindow!
     
     var contentViewModel: ContentViewModel!
+    var wallpaperViewModel: WallpaperViewModel!
+    var globalSettingsViewModel: GlobalSettingsViewModel!
     
     var importOpenPanel: NSOpenPanel!
     
@@ -34,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
         contentViewModel = ContentViewModel()
+        wallpaperViewModel = WallpaperViewModel()
+        globalSettingsViewModel = GlobalSettingsViewModel()
         
         // 创建主视窗
         setMainWindow()
@@ -210,15 +214,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.mainWindow.setFrameAutosaveName("MainWindow")
         self.mainWindow.contentView = NSHostingView(rootView: ContentView(viewModel: self.contentViewModel))
     }
-
+    
 // MARK: Set Settings Window
     func setSettingsWindow() {
         self.settingsWindow = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [.titled, .closable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
+        self.settingsWindow.title = "Settings"
         self.settingsWindow.isReleasedWhenClosed = false
-        self.settingsWindow.contentView = NSHostingView(rootView: SettingsView())
+        self.settingsWindow.toolbarStyle = .preference
+        
+        let toolbar = NSToolbar(identifier: "SettingsToolbar")
+        toolbar.delegate = self
+        
+        toolbar.selectedItemIdentifier = SettingsToolbarIdentifiers.performance
+        
+        self.settingsWindow.toolbar = toolbar
+        self.settingsWindow.contentView = NSHostingView(rootView: SettingsView().environmentObject(self.globalSettingsViewModel))
     }
     
 // MARK: Set Wallpaper Window - Most efforts
@@ -236,6 +249,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.wallpaperWindow.canBecomeVisibleWithoutLogin = true
         self.wallpaperWindow.isReleasedWhenClosed = false
         
-        self.wallpaperWindow.contentViewController = WallpaperViewController()
+        self.wallpaperWindow.contentView = NSHostingView(rootView: WallpaperView(viewModel: self.wallpaperViewModel))
     }
+    
+    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        [SettingsToolbarIdentifiers.performance, SettingsToolbarIdentifiers.general, SettingsToolbarIdentifiers.plugins, SettingsToolbarIdentifiers.about]
+    }
+        
+    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        [SettingsToolbarIdentifiers.performance, SettingsToolbarIdentifiers.general, SettingsToolbarIdentifiers.plugins, SettingsToolbarIdentifiers.about]
+    }
+    
+    func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        [SettingsToolbarIdentifiers.performance, SettingsToolbarIdentifiers.general, SettingsToolbarIdentifiers.plugins, SettingsToolbarIdentifiers.about]
+    }
+    
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
+        
+        switch itemIdentifier {
+        case SettingsToolbarIdentifiers.performance:
+            toolbarItem.action = #selector(jumpToPerformance)
+            toolbarItem.image = NSImage(systemSymbolName: "speedometer", accessibilityDescription: nil)
+            toolbarItem.label = "Performance"
+
+        case SettingsToolbarIdentifiers.general:
+            toolbarItem.action = #selector(jumpToGeneral)
+            toolbarItem.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)
+            toolbarItem.label = "General"
+            
+        case SettingsToolbarIdentifiers.plugins:
+            toolbarItem.action = #selector(jumpToPlugins)
+            toolbarItem.image = NSImage(systemSymbolName: "puzzlepiece.extension", accessibilityDescription: nil)
+            toolbarItem.label = "Plugins"
+            
+        case SettingsToolbarIdentifiers.about:
+            toolbarItem.action = #selector(jumpToAbout)
+            toolbarItem.image = NSImage(systemSymbolName: "person.3", accessibilityDescription: nil)
+            toolbarItem.label = "About"
+            
+        default:
+            fatalError()
+        }
+        
+        toolbarItem.isBordered = false
+        
+        return toolbarItem
+    }
+}
+
+enum SettingsToolbarIdentifiers {
+    static let performance = NSToolbarItem.Identifier(rawValue: "performance")
+    static let general = NSToolbarItem.Identifier(rawValue: "general")
+    static let plugins = NSToolbarItem.Identifier(rawValue: "plugins")
+    static let about = NSToolbarItem.Identifier(rawValue: "about")
 }
