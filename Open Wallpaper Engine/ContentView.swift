@@ -231,7 +231,7 @@ struct ContentView: View {
                     }
                     .frame(width: viewModel.isFilterReveal ? 200 : 0)
                     .opacity(viewModel.isFilterReveal ? 1 : 0)
-                    .animation(.spring, value: viewModel.isFilterReveal)
+                    .animation(.spring(), value: viewModel.isFilterReveal)
                     ScrollView {
                         // MARK: Items
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))]) {

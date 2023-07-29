@@ -303,15 +303,15 @@ struct FilterResults: View {
                         Group {
                             ForEach(Array(zip(FRShowOnly.allOptions.indices, FRShowOnly.allOptions)), id: \.0) { (i, option) in
                                 let (option, image) = option
-                                let color = {
+                                let color: Color = {
                                     if i == 0 {
-                                        Color.green
+                                        return Color.green
                                     } else if i == 1 {
-                                        Color.pink
+                                        return Color.pink
                                     } else if i == 2 {
-                                        Color.orange
+                                        return Color.orange
                                     } else {
-                                        Color.accentColor
+                                        return Color.accentColor
                                     }
                                 }()
                                 
