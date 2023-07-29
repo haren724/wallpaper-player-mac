@@ -9,6 +9,21 @@ import Cocoa
 import SwiftUI
 import AVKit
 
+// Provide Wallpaper Database for WallpaperView and ContentView etc.
+class WallpaperViewModel: ObservableObject {
+    
+}
+
+
+struct WallpaperView: View {
+    @ObservedObject var viewModel: WallpaperViewModel
+    @EnvironmentObject var contentViewModel: ContentViewModel
+    
+    var body: some View {
+        Text("Hello")
+    }
+}
+
 class WallpaperViewController: NSViewController {
     
     private var player: AVPlayer!
