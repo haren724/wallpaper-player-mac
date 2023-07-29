@@ -59,6 +59,9 @@
         }
       }
     },
+    "×8 MSAA is only recommended for powerful high-end desktop graphics cards." : {
+
+    },
     "< Pending >" : {
 
     },
@@ -122,13 +125,13 @@
     "11520 x 2160" : {
 
     },
-    "About" : {
-
-    },
     "Add Item" : {
 
     },
     "Add Wallpaper" : {
+
+    },
+    "Advanced" : {
 
     },
     "Age Rating" : {
@@ -137,7 +140,28 @@
     "All" : {
 
     },
+    "Anti-aliasing" : {
+
+    },
+    "Appearance" : {
+
+    },
+    "Application Rules" : {
+
+    },
     "Apply to all Wallpapers" : {
+
+    },
+    "Audio" : {
+
+    },
+    "Automatic" : {
+
+    },
+    "Automatic Startup" : {
+
+    },
+    "Basic Setup" : {
 
     },
     "Cancel" : {
@@ -155,7 +179,16 @@
     "Configure" : {
 
     },
+    "Developer" : {
+
+    },
+    "Disabled" : {
+
+    },
     "Discover" : {
+
+    },
+    "Display asleep" : {
 
     },
     "Displays" : {
@@ -173,6 +206,12 @@
     "Dynamic Resolution" : {
 
     },
+    "Edit" : {
+
+    },
+    "Enabled" : {
+
+    },
     "Everyone" : {
 
     },
@@ -188,7 +227,7 @@
     "Filter Results" : {
 
     },
-    "General" : {
+    "FPS" : {
 
     },
     "Group" : {
@@ -200,6 +239,18 @@
     "High" : {
 
     },
+    "High FPS may slow down your PC!" : {
+
+    },
+    "High FPS may slow down your PC! We're serious, this is too much 🔥." : {
+
+    },
+    "High Performance" : {
+
+    },
+    "High Quality" : {
+
+    },
     "Installed" : {
 
     },
@@ -207,6 +258,9 @@
 
     },
     "Keep Running" : {
+
+    },
+    "Laptop on battery" : {
 
     },
     "Last Updated" : {
@@ -221,6 +275,9 @@
     "Low" : {
 
     },
+    "macOS" : {
+
+    },
     "Made with ❤️ by @haren724" : {
 
     },
@@ -228,6 +285,15 @@
 
     },
     "Mobile" : {
+
+    },
+    "MSAA x2" : {
+
+    },
+    "MSAA x4" : {
+
+    },
+    "MSAA x8" : {
 
     },
     "Mute" : {
@@ -272,9 +338,6 @@
     "Pause" : {
 
     },
-    "Performance" : {
-
-    },
     "Playback" : {
 
     },
@@ -284,7 +347,7 @@
     "Playlist" : {
 
     },
-    "Plugins" : {
+    "Post-Processing" : {
 
     },
     "Potrait Monitor / Phone" : {
@@ -302,10 +365,19 @@
     "Rating" : {
 
     },
+    "Reflection" : {
+
+    },
+    "Reflections" : {
+
+    },
     "Remove Wallpaper" : {
 
     },
     "Reset" : {
+
+    },
+    "Reset Config" : {
 
     },
     "Reset Filters" : {
@@ -341,9 +413,6 @@
     "Source" : {
 
     },
-    "Spacer" : {
-
-    },
     "Split" : {
 
     },
@@ -362,6 +431,9 @@
     "Tags" : {
 
     },
+    "Texture Resolution" : {
+
+    },
     "Triple Monitor" : {
 
     },
@@ -372,6 +444,9 @@
 
     },
     "Ultra" : {
+
+    },
+    "Ultra mode adds HDR bloom to supported wallpapers and is only recommended for powerful high-end desktop graphics cards." : {
 
     },
     "Ultra Widescreen" : {
@@ -402,6 +477,9 @@
 
     },
     "Widescreen" : {
+
+    },
+    "Working on it" : {
 
     },
     "Workshop" : {
