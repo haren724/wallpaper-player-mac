@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum GSQuality {
+    case low, medium, high, ultra
+}
+
 enum GSPlayback: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
     case keepRunning, mute, pause, stop
@@ -14,17 +18,17 @@ enum GSPlayback: String, CaseIterable, Identifiable, Codable {
 
 enum GSAntiAliasingQuality: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
-    case low, medium, high, ultra
+    case none, msaa_x2, msaa_x4, msaa_x8
 }
 
 enum GSPostProcessingQuality: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
-    case low, medium, high, ultra
+    case disabled, enabled, ultra
 }
 
 enum GSTextureResolutionQuality: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
-    case low, medium, high, ultra
+    case highQuality, highPerformance, automatic
 }
 
 struct GlobalSettings: Codable {
@@ -35,22 +39,55 @@ struct GlobalSettings: Codable {
     var displayAsleep = GSPlayback.keepRunning
     var laptopOnBattery = GSPlayback.keepRunning
     
-    var antiAliasing = GSAntiAliasingQuality.medium
+    var antiAliasing = GSAntiAliasingQuality.msaa_x2
+    var postProcessing = GSPostProcessingQuality.disabled
+    var textureResolution = GSTextureResolutionQuality.automatic
+    var reflections = false
     var fps: Double = 30
 }
 
 class GlobalSettingsViewModel: ObservableObject {
     @Published var settings: GlobalSettings = (try? JSONDecoder()
         .decode(GlobalSettings.self,
-            from: UserDefaults.standard.data(forKey: "GlobalSettings") ?? Data()))
+            from: UserDefaults.standard.data(forKey: "GlobalSettings")
+        ?? Data()))
     ?? GlobalSettings()
     
-    @Published var selection = 1
+    @Published var selection = 0
     
     func save() {
         let data = try! JSONEncoder().encode(settings)
         print(String(describing: String(data: data, encoding: .utf8)))
         UserDefaults.standard.set(data, forKey: "GlobalSettings")
+    }
+    
+    func setQuality(_ quality: GSQuality) {
+        switch quality {
+        case .low:
+            self.settings.antiAliasing = .none
+            self.settings.postProcessing = .disabled
+            self.settings.textureResolution = .highQuality
+            self.settings.fps = 10
+            self.settings.reflections = false
+        case .medium:
+            self.settings.antiAliasing = .none
+            self.settings.postProcessing = .enabled
+            self.settings.textureResolution = .highQuality
+            self.settings.fps = 15
+            self.settings.reflections = true
+        case .high:
+            self.settings.antiAliasing = .msaa_x2
+            self.settings.postProcessing = .enabled
+            self.settings.textureResolution = .highQuality
+            self.settings.fps = 25
+            self.settings.reflections = true
+        case .ultra:
+            self.settings.antiAliasing = .msaa_x2
+            self.settings.postProcessing = .ultra
+            self.settings.textureResolution = .highQuality
+            self.settings.fps = 30
+            self.settings.reflections = true
+        }
     }
 }
 
@@ -76,6 +113,7 @@ struct SettingsView: View {
     @EnvironmentObject var viewModel: GlobalSettingsViewModel
     
     @State private var selection = 0
+    @State private var isEditingFPS = false
     
     var performance: some View {
         Form {
@@ -83,62 +121,62 @@ struct SettingsView: View {
                 HStack {
                     Text("Other Application Focused:")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Mute").tag(1)
-                        Text("Pause").tag(2)
+                    Picker("", selection: $viewModel.settings.otherApplicationFocused) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Mute").tag(GSPlayback.mute)
+                        Text("Pause").tag(GSPlayback.pause)
                     }
                     .frame(width: 200)
                 }
                 HStack {
                     Text("Other Application Maximized:")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Mute").tag(1)
-                        Text("Pause").tag(2)
-                        Text("Stop (free memory)").tag(3)
+                    Picker("", selection: $viewModel.settings.otherApplicationMaximized) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Mute").tag(GSPlayback.mute)
+                        Text("Pause").tag(GSPlayback.pause)
+                        Text("Stop (free memory)").tag(GSPlayback.stop)
                     }
                     .frame(width: 200)
                 }
                 HStack {
                     Text("Other Application Fullscreen:")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Mute").tag(1)
-                        Text("Pause").tag(2)
-                        Text("Stop (free memory)").tag(3)
+                    Picker("", selection: $viewModel.settings.otherApplicationFullscreen) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Mute").tag(GSPlayback.mute)
+                        Text("Pause").tag(GSPlayback.pause)
+                        Text("Stop (free memory)").tag(GSPlayback.stop)
                     }
                     .frame(width: 200)
                 }
                 HStack {
                     Text("Other Application Playing Audio:")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Mute").tag(1)
-                        Text("Pause").tag(2)
+                    Picker("", selection: $viewModel.settings.otherApplicationPlayingAudio) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Mute").tag(GSPlayback.mute)
+                        Text("Pause").tag(GSPlayback.pause)
                     }
                     .frame(width: 200)
                 }
                 HStack {
                     Text("Display asleep")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Pause").tag(1)
-                        Text("Stop (free memory)").tag(2)
+                    Picker("", selection: $viewModel.settings.displayAsleep) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Pause").tag(GSPlayback.pause)
+                        Text("Stop (free memory)").tag(GSPlayback.stop)
                     }
                     .frame(width: 200)
                 }
                 HStack {
                     Text("Laptop on battery")
                     Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Keep Running").tag(0)
-                        Text("Pause").tag(1)
-                        Text("Stop (free memory)").tag(2)
+                    Picker("", selection: $viewModel.settings.laptopOnBattery) {
+                        Text("Keep Running").tag(GSPlayback.keepRunning)
+                        Text("Pause").tag(GSPlayback.pause)
+                        Text("Stop (free memory)").tag(GSPlayback.stop)
                     }
                     .frame(width: 200)
                 }
@@ -158,25 +196,25 @@ struct SettingsView: View {
             Section {
                 HStack(spacing: 1) {
                     Button {
-                        
+                        viewModel.setQuality(.low)
                     } label: {
                         Text("Low").frame(maxWidth: .infinity)
                     }
                     Divider()
                     Button {
-                        
+                        viewModel.setQuality(.medium)
                     } label: {
                         Text("Medium").frame(maxWidth: .infinity)
                     }
                     Divider()
                     Button {
-                        
+                        viewModel.setQuality(.high)
                     } label: {
                         Text("High").frame(maxWidth: .infinity)
                     }
                     Divider()
                     Button {
-                        
+                        viewModel.setQuality(.ultra)
                     } label: {
                         Text("Ultra").frame(maxWidth: .infinity)
                     }
@@ -185,44 +223,101 @@ struct SettingsView: View {
                 .background(Color(nsColor: NSColor.unemphasizedSelectedContentBackgroundColor))
                 .buttonStyle(.borderless)
                 .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                HStack {
-                    Text("Anti-aliasing")
-                    Spacer()
-                    Picker("", selection: $selection) {
-                        Text("None").tag(0)
-                        Text("MSAA x2").tag(1)
-                        Text("MSAA x4").tag(2)
-                        Text("MSAA x8").tag(3)
-                    }
-                    .frame(width: 200)
+                Picker("Anti-aliasing", selection: $viewModel.settings.antiAliasing) {
+                    Text("None").tag(GSAntiAliasingQuality.none)
+                    Text("MSAA x2").tag(GSAntiAliasingQuality.msaa_x2)
+                    Text("MSAA x4").tag(GSAntiAliasingQuality.msaa_x4)
+                    Text("MSAA x8").tag(GSAntiAliasingQuality.msaa_x8)
                 }
-                HStack {
-                    Text("Post-precessing")
-                    Spacer()
-                    Picker("", selection: $selection) {
-                        Text("Disabled").tag(0)
-                        Text("Enabled").tag(1)
-                        Text("Ultra").tag(2)
+                .overlay {
+                    HStack {
+                        Spacer(); Spacer()
+                        if viewModel.settings.antiAliasing == .msaa_x8 {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.red)
+                                .help("×8 MSAA is only recommended for powerful high-end desktop graphics cards.")
+                        }
+                        Spacer()
                     }
-                    .frame(width: 200)
+                    
                 }
-                Picker("Texture Resolution", selection: $selection) {
-                    Text("High Quality").tag(0)
-                    Text("High Performance").tag(1)
-                    Text("Automatic").tag(2)
+                Picker("Post-Processing", selection: $viewModel.settings.postProcessing) {
+                    Text("Disabled").tag(GSPostProcessingQuality.disabled)
+                    Text("Enabled").tag(GSPostProcessingQuality.enabled)
+                    Text("Ultra").tag(GSPostProcessingQuality.ultra)
+                }
+                .overlay {
+                    HStack {
+                        Spacer(); Spacer()
+                        if viewModel.settings.postProcessing == .ultra {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.yellow)
+                                .help("Ultra mode adds HDR bloom to supported wallpapers and is only recommended for powerful high-end desktop graphics cards.")
+                        }
+                        Spacer()
+                    }
+                    
+                }
+                Picker("Texture Resolution", selection: $viewModel.settings.textureResolution) {
+                    Text("High Quality").tag(GSTextureResolutionQuality.highQuality)
+                    Text("High Performance").tag(GSTextureResolutionQuality.highPerformance)
+                    Text("Automatic").tag(GSTextureResolutionQuality.automatic)
                 }
                 HStack {
                     Text("FPS")
                     Spacer()
                     Slider(value: $viewModel.settings.fps, in: 10...120)
-                    .frame(width: 200)
-                    Text(String(format: "%.00f", viewModel.settings.fps))
-                        .frame(width: 25)
+                        .frame(width: 150)
+                    if isEditingFPS {
+                        TextField("FPS", text: Binding<String>(get: {
+                            String(format: "%.00f", viewModel.settings.fps)
+                        }, set: {
+                            if let newValue = Double($0) {
+                                if newValue > 120 {
+                                    viewModel.settings.fps = 120
+                                } else if newValue < 10 {
+                                    viewModel.settings.fps = 10
+                                } else {
+                                    viewModel.settings.fps = newValue
+                                }
+                            }
+                        }))
+                        .textFieldStyle(.roundedBorder)
+                        .labelsHidden()
+                        .frame(width: 50, height: 20)
+                        .onSubmit {
+                            isEditingFPS = false
+                        }
+                    } else {
+                        Text(String(format: "%.00f", viewModel.settings.fps))
+                            .frame(width: 25)
+                            .onTapGesture(count: 2) {
+                                isEditingFPS = true
+                            }
+                    }
+                }
+                .overlay {
+                    HStack {
+                        Spacer(); Spacer()
+                        if !isEditingFPS {
+                            if viewModel.settings.fps > 60 {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundStyle(.red)
+                                    .help("High FPS may slow down your PC! We're serious, this is too much 🔥.")
+                            } else if viewModel.settings.fps > 30 {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundStyle(.yellow)
+                                    .help("High FPS may slow down your PC!")
+                            }
+                        }
+                        Spacer()
+                    }
+                    
                 }
                 HStack {
                     Text("Reflections")
                     Spacer()
-                    Toggle("Reflection", isOn: .constant(true))
+                    Toggle("Reflection", isOn: $viewModel.settings.reflections)
                         .toggleStyle(.checkbox)
                         .labelsHidden()
                 }
@@ -408,6 +503,7 @@ struct SettingsView: View {
             }
             .padding(20)
         }
+        .frame(minWidth: 500)
     }
 }
 
