@@ -67,7 +67,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        self.mainWindow.makeKeyAndOrderFront(nil)
+        if !mainWindow.isVisible && !settingsWindow.isVisible {
+            self.mainWindow.makeKeyAndOrderFront(nil)
+        }
         
         return true
     }
@@ -162,12 +164,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
             }()
         ]
         
+        // 窗口菜单
+        let windowMenu = NSMenu()
+        let windowMenuItem = NSMenuItem(title: "Window", action: nil, keyEquivalent: "")
+        windowMenuItem.submenu = windowMenu
+        windowMenu.items = [
+            {
+                let item = NSMenuItem(title: "Wallpaper Explorer", action: #selector(openMainWindow), keyEquivalent: "1")
+                item.keyEquivalentModifierMask = [.command, .shift]
+                return item
+            }()
+        ]
+        
+        // 帮助菜单
+        let helpMenu = NSMenu()
+        let helpMenuItem = NSMenuItem(title: "Help", action: nil, keyEquivalent: "")
+        helpMenuItem.submenu = helpMenu
+        helpMenu.items = [
+            
+        ]
+        
         // 主菜单栏
         let mainMenu = NSMenu()
         mainMenu.items = [
             appMenuItem,
             fileMenuItem,
-            viewMenuItem
+            viewMenuItem,
+            windowMenuItem,
+            helpMenuItem
         ]
         
         NSApplication.shared.mainMenu = mainMenu
@@ -183,7 +207,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
             .separator(),
             .init(title: "Browse Workshop", systemImage: "globe", action: nil, keyEquivalent: ""),
             .init(title: "Create Wallpaper", systemImage: "pencil.and.ruler.fill", action: nil, keyEquivalent: ""),
-            .init(title: "Settings", systemImage: "gearshape.fill", action: nil, keyEquivalent: ""),
+            .init(title: "Settings", systemImage: "gearshape.fill", action: #selector(openSettingsWindow), keyEquivalent: ""),
             .separator(),
             .init(title: "Support & FAQ", systemImage: "person.fill.questionmark", action: nil, keyEquivalent: ""),
             .separator(),
@@ -249,7 +273,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
         self.wallpaperWindow.canBecomeVisibleWithoutLogin = true
         self.wallpaperWindow.isReleasedWhenClosed = false
         
-        self.wallpaperWindow.contentView = NSHostingView(rootView: WallpaperView(viewModel: self.wallpaperViewModel))
+        self.wallpaperWindow.contentViewController = WallpaperViewController()
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
