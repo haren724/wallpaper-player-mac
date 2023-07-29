@@ -303,15 +303,18 @@ struct FilterResults: View {
                         Group {
                             ForEach(Array(zip(FRShowOnly.allOptions.indices, FRShowOnly.allOptions)), id: \.0) { (i, option) in
                                 let (option, image) = option
-                                let color = if i == 0 {
-                                    Color.green
-                                } else if i == 1 {
-                                    Color.pink
-                                } else if i == 2 {
-                                    Color.orange
-                                } else {
-                                    Color.accentColor
-                                }
+                                let color = {
+                                    if i == 0 {
+                                        Color.green
+                                    } else if i == 1 {
+                                        Color.pink
+                                    } else if i == 2 {
+                                        Color.orange
+                                    } else {
+                                        Color.accentColor
+                                    }
+                                }()
+                                
                                 
                                 Toggle(isOn: Binding<Bool>(get: {
                                     viewModel.showOnly.contains(FRShowOnly(rawValue: 1 << i))
