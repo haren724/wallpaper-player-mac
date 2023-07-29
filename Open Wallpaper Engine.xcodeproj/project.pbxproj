@@ -106,6 +106,7 @@
 		5EC47E6D2A2DB2E600120CCC = {
 			isa = PBXGroup;
 			children = (
+				5EEE8D5D2A7501C800DCE41A /* resources */,
 				5EF4C24C2A4C98FA009831E5 /* README.md */,
 				5EF4C24A2A4C9871009831E5 /* CNAME */,
 				5EF4C24B2A4C9872009831E5 /* LICENSE */,
@@ -175,6 +176,13 @@
 				5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */,
 			);
 			path = "Open Wallpaper EngineUITests";
+			sourceTree = "<group>";
+		};
+		5EEE8D5D2A7501C800DCE41A /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
