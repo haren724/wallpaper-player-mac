@@ -303,15 +303,14 @@ struct FilterResults: View {
                         Group {
                             ForEach(Array(zip(FRShowOnly.allOptions.indices, FRShowOnly.allOptions)), id: \.0) { (i, option) in
                                 let (option, image) = option
-                                let color: Color
-                                if i == 0 {
-                                    color = Color.green
+                                let color = if i == 0 {
+                                    Color.green
                                 } else if i == 1 {
-                                    color = Color.pink
+                                    Color.pink
                                 } else if i == 2 {
-                                    color = Color.orange
+                                    Color.orange
                                 } else {
-                                    color = Color.accentColor
+                                    Color.accentColor
                                 }
                                 
                                 Toggle(isOn: Binding<Bool>(get: {
