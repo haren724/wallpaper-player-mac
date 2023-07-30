@@ -31,7 +31,7 @@ enum GSTextureResolutionQuality: String, CaseIterable, Identifiable, Codable {
     case highQuality, highPerformance, automatic
 }
 
-struct GlobalSettings: Codable {
+struct GlobalSettings: Codable, Equatable {
     var otherApplicationFocused = GSPlayback.keepRunning
     var otherApplicationMaximized = GSPlayback.keepRunning
     var otherApplicationFullscreen = GSPlayback.keepRunning
@@ -54,6 +54,14 @@ class GlobalSettingsViewModel: ObservableObject {
     ?? GlobalSettings()
     
     @Published var selection = 0
+    
+    func reset() {
+        settings = (try? JSONDecoder()
+            .decode(GlobalSettings.self,
+                from: UserDefaults.standard.data(forKey: "GlobalSettings")
+            ?? Data()))
+        ?? GlobalSettings()
+    }
     
     func save() {
         let data = try! JSONEncoder().encode(settings)
@@ -487,6 +495,15 @@ struct SettingsView: View {
             
             
             HStack {
+                if let savedSettings = try? JSONDecoder()
+                    .decode(GlobalSettings.self,
+                        from: UserDefaults.standard.data(forKey: "GlobalSettings")
+                            ?? Data()), viewModel.settings != savedSettings {
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .foregroundStyle(.yellow)
+                    Text("Your changes haven't been saved")
+                        .foregroundStyle(.secondary)
+                }
                 Spacer()
                 Button {
                     viewModel.save()
@@ -496,6 +513,7 @@ struct SettingsView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 Button {
+                    /*here should be a call of viewModel.reset() but I move it to the delegate */
                     AppDelegate.shared.settingsWindow.close()
                 } label: {
                     Text("Cancel").frame(width: 50)
@@ -514,3 +532,5 @@ struct SettingsView_Previews: PreviewProvider {
             .frame(width: 500, height: 600)
     }
 }
+
+

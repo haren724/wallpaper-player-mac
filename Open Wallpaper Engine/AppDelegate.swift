@@ -17,7 +17,7 @@ extension NSMenuItem {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowDelegate {
     
     var statusItem: NSStatusItem!
     var mainWindow: NSWindow!
@@ -249,6 +249,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
         self.settingsWindow.isReleasedWhenClosed = false
         self.settingsWindow.toolbarStyle = .preference
         
+        self.settingsWindow.delegate = self
+        
         let toolbar = NSToolbar(identifier: "SettingsToolbar")
         toolbar.delegate = self
         
@@ -319,6 +321,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
         toolbarItem.isBordered = false
         
         return toolbarItem
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        globalSettingsViewModel.reset()
     }
 }
 
