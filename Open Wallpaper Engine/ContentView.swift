@@ -105,7 +105,7 @@ struct FilterSection<Content>: View where Content: View {
                     Image(systemName: "arrowtriangle.down.fill")
                         .font(.caption)
                         .rotationEffect(isExpanded ? .zero : .degrees(-90.0))
-                        .animation(.spring, value: isExpanded)
+                        .animation(.spring(), value: isExpanded)
                     Text(self.titleKey)
                     Spacer()
                 }
