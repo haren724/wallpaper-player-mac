@@ -29,9 +29,12 @@ class WallpaperViewController: NSViewController {
     private var player: AVPlayer!
     private var playerView: AVPlayerView!
     
+    override func loadView() {
+        self.setAVPlayer()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setAVPlayer()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
