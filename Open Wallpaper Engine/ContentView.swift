@@ -38,7 +38,8 @@ class ContentViewModel: ObservableObject {
                 
             }
             let url = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appending(path: "2816680522")
-            return try! [.init(wallpaperURL: url)]
+            guard let wallpaper = try? WEWallpaper(wallpaperURL: url) else { return [] }
+            return [wallpaper]
         }
     }
     
@@ -231,7 +232,7 @@ struct ContentView: View {
                     }
                     .frame(width: viewModel.isFilterReveal ? 200 : 0)
                     .opacity(viewModel.isFilterReveal ? 1 : 0)
-                    .animation(.spring, value: viewModel.isFilterReveal)
+                    .animation(.spring(), value: viewModel.isFilterReveal)
                     ScrollView {
                         // MARK: Items
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))]) {
@@ -379,7 +380,7 @@ struct ContentView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         VStack {
-                            GifImage(gifName: "preview")
+//                            GifImage(gifName: "preview")
                             Text("Sumeru 【Genshin Impact】")
                                 .lineLimit(1)
                         }
