@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
         self.importOpenPanel = panel
         self.importOpenPanel.beginSheetModal(for: self.mainWindow) { response in
             print(String(describing: self.importOpenPanel.urls))
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.contentViewModel.wallpaperUrls.append(contentsOf: self.importOpenPanel.urls)
             }
         }
