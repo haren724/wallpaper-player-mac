@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         self.importOpenPanel = panel
         self.importOpenPanel.beginSheetModal(for: self.mainWindow) { response in
             print(String(describing: self.importOpenPanel.urls))
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.contentViewModel.wallpaperUrls.append(contentsOf: self.importOpenPanel.urls)
             }
         }
@@ -115,10 +115,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
 // MARK: - Set Main Menu
     func setMainMenu() {
         // 主菜单
-        let appMenu = NSMenu()
-        let appMenuItem = NSMenuItem()
-        appMenuItem.submenu = appMenu
-        appMenu.items = [
+        let appMenu = NSMenuItem()
+        appMenu.submenu = NSMenu(title: "Open Wallpaper Engine")
+        appMenu.submenu?.items = [
             // 在此处添加子菜单项
             .init(title: "Settings...", action: #selector(openSettingsWindow), keyEquivalent: ","),
             .separator(),
@@ -133,30 +132,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         ]
         
         // 导入子菜单
-        let importMenu = NSMenu()
-        let importMenuItem = NSMenuItem(title: "Import", action: nil, keyEquivalent: "")
-        importMenuItem.submenu = importMenu
-        importMenu.items = [
+        let importMenu = NSMenuItem(title: "Import", action: nil, keyEquivalent: "")
+        importMenu.submenu = NSMenu()
+        importMenu.submenu?.items = [
             .init(title: "Wallpaper from Folder", action: #selector(openImportPanel), keyEquivalent: "i"),
             .init(title: "Wallpapers in Folder", action: nil, keyEquivalent: "")
         ]
         
         // 文件菜单
-        let fileMenu = NSMenu()
-        let fileMenuItem = NSMenuItem(title: "File", action: nil, keyEquivalent: "")
-        fileMenuItem.submenu = fileMenu
-        fileMenu.items = [
+        let fileMenu = NSMenuItem()
+        fileMenu.submenu = NSMenu(title: "File")
+        fileMenu.submenu?.items = [
             // 在此处添加子菜单项
-            importMenuItem,
+            importMenu,
             .separator(),
             .init(title: "Close Window", action: #selector(NSApplication.shared.keyWindow?.close), keyEquivalent: "w")
         ]
         
         // 查看菜单
-        let viewMenu = NSMenu()
-        let viewMenuItem = NSMenuItem(title: "View", action: nil, keyEquivalent: "")
-        viewMenuItem.submenu = viewMenu
-        viewMenu.items = [
+        let viewMenu = NSMenuItem()
+        viewMenu.submenu = NSMenu(title: "View")
+        viewMenu.submenu?.items = [
             {
                 let item = NSMenuItem(title: "Show Filter Results", action: #selector(self.toggleFilter), keyEquivalent: "s")
                 item.keyEquivalentModifierMask = [.command, .control]
@@ -165,10 +161,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         ]
         
         // 窗口菜单
-        let windowMenu = NSMenu()
-        let windowMenuItem = NSMenuItem(title: "Window", action: nil, keyEquivalent: "")
-        windowMenuItem.submenu = windowMenu
-        windowMenu.items = [
+        let windowMenu = NSMenuItem()
+        windowMenu.submenu = NSMenu(title: "Window")
+        windowMenu.submenu?.items = [
             {
                 let item = NSMenuItem(title: "Wallpaper Explorer", action: #selector(openMainWindow), keyEquivalent: "1")
                 item.keyEquivalentModifierMask = [.command, .shift]
@@ -177,21 +172,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         ]
         
         // 帮助菜单
-        let helpMenu = NSMenu()
-        let helpMenuItem = NSMenuItem(title: "Help", action: nil, keyEquivalent: "")
-        helpMenuItem.submenu = helpMenu
-        helpMenu.items = [
+        let helpMenu = NSMenuItem()
+        helpMenu.submenu = NSMenu(title: "Help")
+        helpMenu.submenu?.items = [
             
         ]
         
         // 主菜单栏
         let mainMenu = NSMenu()
         mainMenu.items = [
-            appMenuItem,
-            fileMenuItem,
-            viewMenuItem,
-            windowMenuItem,
-            helpMenuItem
+            appMenu,
+            fileMenu,
+            viewMenu,
+            windowMenu,
+            helpMenu
         ]
         
         NSApplication.shared.mainMenu = mainMenu

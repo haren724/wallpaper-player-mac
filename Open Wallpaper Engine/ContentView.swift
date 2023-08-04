@@ -38,7 +38,8 @@ class ContentViewModel: ObservableObject {
                 
             }
             let url = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appending(path: "2816680522")
-            return try! [.init(wallpaperURL: url)]
+            guard let wallpaper = try? WEWallpaper(wallpaperURL: url) else { return [] }
+            return [wallpaper]
         }
     }
     
@@ -104,7 +105,7 @@ struct FilterSection<Content>: View where Content: View {
                     Image(systemName: "arrowtriangle.down.fill")
                         .font(.caption)
                         .rotationEffect(isExpanded ? .zero : .degrees(-90.0))
-                        .animation(.spring, value: isExpanded)
+                        .animation(.spring(), value: isExpanded)
                     Text(self.titleKey)
                     Spacer()
                 }
@@ -379,7 +380,7 @@ struct ContentView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         VStack {
-                            GifImage(gifName: "preview")
+//                            GifImage(gifName: "preview")
                             Text("Sumeru 【Genshin Impact】")
                                 .lineLimit(1)
                         }
