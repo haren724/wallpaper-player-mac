@@ -230,7 +230,7 @@ struct ContentView: View {
                         // MARK: Filter Results
                         FilterResults(viewModel: self.filterResultsViewModel)
                     }
-                    .frame(width: viewModel.isFilterReveal ? 200 : 0)
+                    .frame(width: viewModel.isFilterReveal ? 225 : 0)
                     .opacity(viewModel.isFilterReveal ? 1 : 0)
                     .animation(.spring(), value: viewModel.isFilterReveal)
                     ScrollView {
