@@ -18,7 +18,7 @@
 		5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */; };
 		5EA969A32A7D4BA30027B963 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */; };
 		5EA969A62A7D9B810027B963 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A52A7D9B810027B963 /* project.json */; };
-		5EA969A82A7D9B8D0027B963 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A72A7D9B8D0027B963 /* preview.gif */; };
+		5EA969AA2A7D9CBB0027B963 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A92A7D9CBB0027B963 /* preview.gif */; };
 		5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */; };
 		5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */; };
 		5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */; };
@@ -62,7 +62,7 @@
 		5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		5EA969A52A7D9B810027B963 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = project.json; sourceTree = "<group>"; };
-		5EA969A72A7D9B8D0027B963 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = preview.gif; path = ../../../../Downloads/2854415058/preview.gif; sourceTree = "<group>"; };
+		5EA969A92A7D9CBB0027B963 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
 		5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Wallpaper Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,9 +112,9 @@
 		5EA969A42A7D9B4B0027B963 /* 2854415058 */ = {
 			isa = PBXGroup;
 			children = (
+				5EA969A92A7D9CBB0027B963 /* preview.gif */,
 				5EA969A52A7D9B810027B963 /* project.json */,
 				5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */,
-				5EA969A72A7D9B8D0027B963 /* preview.gif */,
 			);
 			path = 2854415058;
 			sourceTree = "<group>";
@@ -310,9 +310,9 @@
 				5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */,
 				5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */,
 				5EA969A62A7D9B810027B963 /* project.json in Resources */,
-				5EA969A82A7D9B8D0027B963 /* preview.gif in Resources */,
 				5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */,
 				5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */,
+				5EA969AA2A7D9CBB0027B963 /* preview.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
