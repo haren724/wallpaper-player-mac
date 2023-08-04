@@ -55,6 +55,8 @@ class GlobalSettingsViewModel: ObservableObject {
     
     @Published var selection = 0
     
+    @Published var isFirstLaunch = UserDefaults.standard.value(forKey: "IsFirstLaunch") as? Bool ?? true
+    
     func reset() {
         settings = (try? JSONDecoder()
             .decode(GlobalSettings.self,

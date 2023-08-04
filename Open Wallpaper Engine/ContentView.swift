@@ -127,6 +127,8 @@ struct FilterSection<Content>: View where Content: View {
 }
 
 struct ContentView: View {
+    @EnvironmentObject var globalSettingsViewModel: GlobalSettingsViewModel
+    
     @ObservedObject var viewModel: ContentViewModel
     @StateObject var filterResultsViewModel = FilterResultsViewModel()
     
@@ -541,6 +543,10 @@ struct ContentView: View {
         .alert(isPresented: $viewModel.importAlertPresented, error: viewModel.importAlertError) {
             
         }
+        .sheet(isPresented: $globalSettingsViewModel.isFirstLaunch) {
+            FirstLaunchView()
+                .environmentObject(globalSettingsViewModel)
+        }
         .sheet(isPresented: $isDisplaySettingsReveal) {
             VStack(spacing: 20) {
                 Button {
@@ -647,5 +653,6 @@ extension View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(viewModel: .init())
+            .environmentObject(GlobalSettingsViewModel())
     }
 }

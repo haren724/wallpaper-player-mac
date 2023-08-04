@@ -160,7 +160,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         let helpMenu = NSMenuItem()
         helpMenu.submenu = NSMenu(title: "Help")
         helpMenu.submenu?.items = [
-            
+            .init(title: "Reset First Launch", action: #selector(resetFirstLaunch), keyEquivalent: "")
         ]
         
         // 主菜单栏
@@ -215,7 +215,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         self.mainWindow.titlebarAppearsTransparent = true
         self.mainWindow.center()
         self.mainWindow.setFrameAutosaveName("MainWindow")
-        self.mainWindow.contentView = NSHostingView(rootView: ContentView(viewModel: self.contentViewModel))
+        self.mainWindow.contentView = NSHostingView(rootView: ContentView(viewModel: self.contentViewModel)
+            .environmentObject(self.globalSettingsViewModel))
     }
     
 // MARK: Set Settings Window
