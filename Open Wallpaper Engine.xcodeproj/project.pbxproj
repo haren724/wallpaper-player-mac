@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
-		5E24F6562A4206C9008BA9EB /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E24F6552A4206C9008BA9EB /* preview.gif */; };
 		5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */; };
 		5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */; };
 		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
@@ -18,6 +17,8 @@
 		5E76652A2A2E231400E0E4B4 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665292A2E231400E0E4B4 /* AboutUsView.swift */; };
 		5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */; };
 		5EA969A32A7D4BA30027B963 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */; };
+		5EA969A62A7D9B810027B963 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A52A7D9B810027B963 /* project.json */; };
+		5EA969A82A7D9B8D0027B963 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A72A7D9B8D0027B963 /* preview.gif */; };
 		5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */; };
 		5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */; };
 		5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */; };
@@ -51,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
-		5E24F6552A4206C9008BA9EB /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
 		5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
 		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		5E7665292A2E231400E0E4B4 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
+		5EA969A52A7D9B810027B963 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = project.json; sourceTree = "<group>"; };
+		5EA969A72A7D9B8D0027B963 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = preview.gif; path = ../../../../Downloads/2854415058/preview.gif; sourceTree = "<group>"; };
 		5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Wallpaper Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EA969A42A7D9B4B0027B963 /* 2854415058 */ = {
+			isa = PBXGroup;
+			children = (
+				5EA969A52A7D9B810027B963 /* project.json */,
+				5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */,
+				5EA969A72A7D9B8D0027B963 /* preview.gif */,
+			);
+			path = 2854415058;
+			sourceTree = "<group>";
+		};
 		5EC47E6D2A2DB2E600120CCC = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +146,7 @@
 		5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */ = {
 			isa = PBXGroup;
 			children = (
+				5EA969A42A7D9B4B0027B963 /* 2854415058 */,
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
 				5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */,
@@ -148,8 +161,6 @@
 				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
 				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
 				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
-				5E24F6552A4206C9008BA9EB /* preview.gif */,
-				5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */,
 				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
 				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
 				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
@@ -298,7 +309,8 @@
 			files = (
 				5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */,
 				5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */,
-				5E24F6562A4206C9008BA9EB /* preview.gif in Resources */,
+				5EA969A62A7D9B810027B963 /* project.json in Resources */,
+				5EA969A82A7D9B8D0027B963 /* preview.gif in Resources */,
 				5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */,
 				5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */,
 			);
