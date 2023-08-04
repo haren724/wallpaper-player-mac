@@ -503,7 +503,7 @@ struct SettingsView: View {
                             ?? Data()), viewModel.settings != savedSettings {
                     Image(systemName: "exclamationmark.circle.fill")
                         .foregroundStyle(.yellow)
-                    Text("Your changes haven't been saved")
+                    Text("Edited")
                         .foregroundStyle(.secondary)
                 }
                 Spacer()

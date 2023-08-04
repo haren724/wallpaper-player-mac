@@ -125,9 +125,6 @@
     "11520 x 2160" : {
 
     },
-    "Add Item" : {
-
-    },
     "Add Wallpaper" : {
 
     },
@@ -321,6 +318,9 @@
     "Edit" : {
 
     },
+    "Edited" : {
+
+    },
     "Enabled" : {
 
     },
@@ -377,10 +377,10 @@
     "High Quality" : {
 
     },
-    "Installed" : {
+    "Import Wallpapers from Steam Workshop" : {
 
     },
-    "Item at %@" : {
+    "Installed" : {
 
     },
     "Keep Running" : {
@@ -429,6 +429,9 @@
 
     },
     "Name" : {
+
+    },
+    "Never show this again until next update" : {
 
     },
     "None" : {
@@ -524,9 +527,6 @@
     "Search" : {
 
     },
-    "Select an item" : {
-
-    },
     "Settings" : {
 
     },
@@ -534,6 +534,9 @@
 
     },
     "Show Only:" : {
+
+    },
+    "Similar UI Layout to Wallpaper Engine on Steam" : {
 
     },
     "Source" : {
@@ -552,6 +555,9 @@
 
     },
     "Sumeru 【Genshin Impact】" : {
+
+    },
+    "Super High Performance" : {
 
     },
     "Tags" : {
@@ -602,6 +608,18 @@
     "Wallpaper Per Display" : {
 
     },
+    "We brings you a smoother app animation experience. Powered by the lightweight, modern SwiftUI Framework." : {
+
+    },
+    "We Take Care of Your Laptop's Battery Life" : {
+
+    },
+    "What's New in Open Wallpaper Engine" : {
+
+    },
+    "When it comes to without pluging to the power adapter, we reduced the power consumption as much as possible, without just stoping the playback." : {
+
+    },
     "Widescreen" : {
 
     },
@@ -611,7 +629,10 @@
     "Workshop" : {
 
     },
-    "Your changes haven't been saved" : {
+    "You can easily import video type wallpapers from steam workshop of Wallpaper Engine and modify some properties as well, like playback rate, volume, etc." : {
+
+    },
+    "You may feel familar when using this dynamic desktop wallpaper tool since it almost has the same layout to its ancesstor." : {
 
     },
     "Your Presets" : {
