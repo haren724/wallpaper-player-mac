@@ -32,6 +32,9 @@ class ContentViewModel: ObservableObject {
     @AppStorage("FilterReveal") var isFilterReveal = false
     @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
     
+    @Published var importAlertPresented = false
+    var importAlertError: WPImportError? = nil
+    
     var wallpapers: [WEWallpaper] {
         get {
             if wallpaperUrls.isEmpty {
@@ -45,6 +48,11 @@ class ContentViewModel: ObservableObject {
     
     func toggleFilter() {
         isFilterReveal.toggle()
+    }
+    
+    func alertImportModal(which error: WPImportError) {
+        self.importAlertError = error
+        self.importAlertPresented = true
     }
 }
 
@@ -120,7 +128,6 @@ struct FilterSection<Content>: View where Content: View {
 
 struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
-    
     @StateObject var filterResultsViewModel = FilterResultsViewModel()
     
     @State var isDropTargeted = false
@@ -529,6 +536,9 @@ struct ContentView: View {
                 .padding()
             }
             .frame(maxWidth: 320)
+            
+        }
+        .alert(isPresented: $viewModel.importAlertPresented, error: viewModel.importAlertError) {
             
         }
         .sheet(isPresented: $isDisplaySettingsReveal) {

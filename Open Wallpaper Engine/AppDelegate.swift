@@ -93,21 +93,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         (self.wallpaperWindow.contentViewController as? WallpaperViewController)?.pause()
     }
     
-    @objc func openImportPanel(_ allowsMultipleSelection: Bool = false) {
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = allowsMultipleSelection
-        
-        self.importOpenPanel = panel
-        self.importOpenPanel.beginSheetModal(for: self.mainWindow) { response in
-            print(String(describing: self.importOpenPanel.urls))
-            DispatchQueue.main.async {
-                self.contentViewModel.wallpaperUrls.append(contentsOf: self.importOpenPanel.urls)
-            }
-        }
-    }
-    
     @MainActor @objc func toggleFilter() {
         self.contentViewModel.isFilterReveal.toggle()
     }
@@ -135,8 +120,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate, NSWindowD
         let importMenu = NSMenuItem(title: "Import", action: nil, keyEquivalent: "")
         importMenu.submenu = NSMenu()
         importMenu.submenu?.items = [
-            .init(title: "Wallpaper from Folder", action: #selector(openImportPanel), keyEquivalent: "i"),
-            .init(title: "Wallpapers in Folder", action: nil, keyEquivalent: "")
+            .init(title: "Wallpaper from Folder", action: #selector(openImportFromFolderPanel), keyEquivalent: "i"),
+            .init(title: "Wallpapers in Folders", action: #selector(openImportFromFoldersPanel), keyEquivalent: "")
         ]
         
         // 文件菜单
