@@ -56,33 +56,25 @@ class ContentViewModel: ObservableObject {
     }
 }
 
-struct GifImage: NSViewControllerRepresentable {
-    class GifImageViewController: NSViewController {
-        var gifName: String = "preview"
-        
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            let imageView = NSImageView(frame: NSRect(x: 407, y: 474, width: 92, height: 74))
-            imageView.canDrawSubviewsIntoLayer = true
-            imageView.imageScaling = .scaleProportionallyUpOrDown
-            imageView.animates = true
-            if let path = Bundle.main.path(forResource: self.gifName, ofType: "gif") {
-                imageView.image = NSImage(byReferencing: URL(fileURLWithPath: path))
-            }
-            self.view = imageView
-        }
-    }
-    
+struct GifImage: NSViewRepresentable {
     var gifName: String
     
-    func makeNSViewController(context: Context) -> NSViewController {
-        let controller = GifImageViewController()
-        controller.gifName = self.gifName
-        return controller
+    func makeNSView(context: Context) -> some NSView {
+        let imageView = NSImageView(frame: NSRect(x: 407, y: 474, width: 92, height: 74))
+        imageView.canDrawSubviewsIntoLayer = true
+        imageView.imageScaling = .scaleProportionallyUpOrDown
+        imageView.animates = true
+        if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
+            if let image = NSImage(contentsOf: url) {
+                var gifRep = image.representations[0] as? NSBitmapImageRep
+                gifRep?.setProperty(.loopCount, withValue: 0)
+                imageView.image = image
+            }
+        }
+        return imageView
     }
     
-    func updateNSViewController(_ nsViewController: NSViewController, context: Context) {
+    func updateNSView(_ nsView: NSViewType, context: Context) {
         
     }
 }
@@ -389,7 +381,7 @@ struct ContentView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         VStack {
-//                            GifImage(gifName: "preview")
+                            GifImage(gifName: "preview")
                             Text("Sumeru 【Genshin Impact】")
                                 .lineLimit(1)
                         }
