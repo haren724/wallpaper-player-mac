@@ -104,16 +104,26 @@ struct FRAgeRating: OptionSet {
     static let none: FRAgeRating    = []
 }
 
-class FRWidescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRWidescreenResolution: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions = [
+        "StandardDefinition",
+        "1280x720",
+        "Mature",
+        "1920x1080-FullHD",
+        "2560x1440",
+        "3840x2160-4K"
+    ]
     
-    @AppStorage("StandardDefinition") public var standardDefinition = true
-    @AppStorage("1280x720") public var resolution1280x720 = true
-    @AppStorage("1920x1080-FullHD") public var resolution1920x1080 = true
-    @AppStorage("2560x1440") public var resolution2560x1440 = true
-    @AppStorage("3840x2160-4K") public var resolution3840x2160 = true
+    static let standardDefinition   = Self.init(rawValue: 1 << 0)
+    static let resolution1280x720   = Self.init(rawValue: 1 << 1)
+    static let resolution1920x1080  = Self.init(rawValue: 1 << 2)
+    static let resolution2560x1440  = Self.init(rawValue: 1 << 3)
+    static let resolution3840x2160  = Self.init(rawValue: 1 << 4)
+    
+    static let all: Self            = [.standardDefinition, resolution1280x720, resolution1920x1080, .resolution2560x1440, .resolution3840x2160]
+    static let none: Self           = []
 }
 
 class FRUltraWidescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
@@ -243,7 +253,7 @@ class FilterResultsViewModel: ObservableObject {
     @AppStorage("FRShowOnly") public var showOnly = FRShowOnly.all
     @AppStorage("FRType") public var type = FRType.all
     @AppStorage("FRAgeRating") public var ageRating = FRAgeRating.all
-    @Published public var widescreenResolution = FRWidescreenResolution<FilterResultsViewModel>()
+    @AppStorage("FRWidescreenResolution") public var widescreenResolution = FRWidescreenResolution.all
     @Published public var ultraWidescreenResolution = FRUltraWidescreenResolution<FilterResultsViewModel>()
     @Published public var triplescreenResolution = FRTriplescreenResolution<FilterResultsViewModel>()
     @Published public var potraitscreenResolution = FRPotraitscreenResolution<FilterResultsViewModel>()
@@ -264,7 +274,7 @@ class FilterResultsViewModel: ObservableObject {
         self.showOnly = .none
         self.type = .all
         self.ageRating = .all
-        self.widescreenResolution.reset()
+        self.widescreenResolution = .all
         self.ultraWidescreenResolution.reset()
         self.triplescreenResolution.reset()
         self.potraitscreenResolution.reset()
@@ -406,11 +416,18 @@ struct FilterResults: View {
                                 }
                                 .padding(.top, 5)
                                 Group {
-                                    Toggle("Standard Definition",   isOn: $viewModel.widescreenResolution.standardDefinition)
-                                    Toggle("1280 x 720",            isOn: $viewModel.widescreenResolution.resolution1280x720)
-                                    Toggle("1920 x 1080 - Full HD", isOn: $viewModel.widescreenResolution.resolution1920x1080)
-                                    Toggle("2560 x 1440",           isOn: $viewModel.widescreenResolution.resolution2560x1440)
-                                    Toggle("3840 x 2160 - 4K",      isOn: $viewModel.widescreenResolution.resolution3840x2160)
+                                    ForEach(Array(zip(FRWidescreenResolution.allOptions.indices, FRWidescreenResolution.allOptions)), id: \.0) { (i, option) in
+                                        Toggle(option, isOn: Binding<Bool>(get: {
+                                            viewModel.widescreenResolution.contains(FRWidescreenResolution(rawValue: 1 << i))
+                                        }, set: {
+                                            if $0 {
+                                                viewModel.widescreenResolution.insert(FRWidescreenResolution(rawValue: 1 << i))
+                                            } else {
+                                                viewModel.widescreenResolution.remove(FRWidescreenResolution(rawValue: 1 << i))
+                                            }
+                                            print(String(describing: viewModel.widescreenResolution))
+                                        }))
+                                    }
                                 }
                                 .toggleStyle(.checkbox)
                                 Divider()
