@@ -66,7 +66,7 @@ struct GifImage: NSViewRepresentable {
         imageView.animates = true
         if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
             if let image = NSImage(contentsOf: url) {
-                var gifRep = image.representations[0] as? NSBitmapImageRep
+                let gifRep = image.representations[0] as? NSBitmapImageRep
                 gifRep?.setProperty(.loopCount, withValue: 0)
                 imageView.image = image
             }
@@ -236,7 +236,45 @@ struct ContentView: View {
                     .animation(.spring(), value: viewModel.isFilterReveal)
                     ScrollView {
                         // MARK: Items
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))]) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))],
+                                  alignment: .leading) {
+                            ForEach(0..<3) { index in
+                                GifImage(gifName: "preview")
+                                    .frame(maxWidth: 150, maxHeight: 150)
+                                    .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
+                                    .clipShape(Rectangle())
+                                    .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
+                                    .selected(index == selectedIndex)
+                                    .animation(.spring, value: imageScaleIndex == index ? 1.2 : 1.0)
+                                    .overlay {
+                                        VStack {
+                                            Spacer()
+                                            ZStack {
+                                                Rectangle()
+                                                    .frame(height: 30)
+                                                    .foregroundStyle(Color.black)
+                                                    .opacity(imageScaleIndex == index ? 0.4 : 0.2)
+                                                    .animation(.default, value: imageScaleIndex)
+                                                Text("Sumeru【Genshin Impact】")
+                                                    .font(.footnote)
+                                                    .lineLimit(2)
+                                                    .multilineTextAlignment(.center)
+                                                    .foregroundStyle(Color(white: imageScaleIndex == index ? 0.7 : 0.9))
+                                            }
+                                        }
+                                    }
+                                    .onTapGesture {
+                                        withAnimation(.default.speed(2)) {
+                                            selectedIndex = index
+                                        }
+                                    }
+                                    .onHover { onHover in
+                                        if onHover {
+                                            print(index)
+                                            imageScaleIndex = index
+                                        }
+                                    }
+                            }
                             if viewModel.wallpapers.isEmpty {
                                 VStack {
                                     Text("Drag here to import wallpapers").font(.title)
@@ -315,6 +353,58 @@ struct ContentView: View {
                             //                        .padding(.trailing)
                             //                        .frame(maxWidth: .infinity)
                         }
+                    }
+                    .contextMenu {
+                        Section {
+                            Button {
+                                
+                            } label: {
+                                Label("Add to Playlist", systemImage: "plus")
+                            }
+                            Button {
+                                
+                            } label: {
+                                Label("Unsubscribe", systemImage: "xmark")
+                            }
+                            Button {
+                                
+                            } label: {
+                                Label("Add to Favorites", systemImage: "heart.fill")
+                            }
+                        }
+                        .labelStyle(.titleAndIcon)
+                        Section {
+                            Button {
+                                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path())
+                            } label: {
+                                Label("Open Wallpapers Folder in Finder", systemImage: "folder.badge.gearshape")
+                            }
+                            Picker("View", selection: .constant(0)) {
+                                Section {
+                                    Button("Small Icons") {
+                                        
+                                    }
+                                    Button("Small Icons") {
+                                        
+                                    }
+                                    Button("Small Icons") {
+                                        
+                                    }
+                                }
+                                Section {
+                                    Button("50 per Page") {
+                                        
+                                    }
+                                    Button("100 per Page") {
+                                        
+                                    }
+                                    Button("200 per Page") {
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        .labelStyle(.titleAndIcon)
                     }
                     .padding(.leading, viewModel.isFilterReveal ? 10 : 0)
                     .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
