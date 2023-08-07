@@ -20,7 +20,11 @@ struct AboutUsView: View {
             }
             VStack(spacing: 20) {
                 Text("version: v0.1")
-                Text("Made with ❤️ by @haren724").font(.footnote)
+                HStack {
+                    Text("Made with ❤️ by")
+                    Link("@haren724", destination: URL(string: "https://github.com/haren724")!)
+                }
+                .font(.footnote)
             }
         }
         .padding()
