@@ -15,7 +15,7 @@ struct FirstLaunchView: View {
     
     var body: some View {
         VStack {
-            VStack {
+            VStack(spacing: 5) {
                 Text("What's New in Open Wallpaper Engine")
                     .font(.largeTitle)
                 Divider()
