@@ -59,6 +59,9 @@
         }
       }
     },
+    "@haren724" : {
+
+    },
     "×8 MSAA is only recommended for powerful high-end desktop graphics cards." : {
 
     },
@@ -68,19 +71,22 @@
     "40 MB" : {
 
     },
+    "50 per Page" : {
+
+    },
+    "100 per Page" : {
+
+    },
+    "200 per Page" : {
+
+    },
     "720 x 1280" : {
 
     },
     "1080 x 1920" : {
 
     },
-    "1280 x 720" : {
-
-    },
     "1440 x 2560" : {
-
-    },
-    "1920 x 1080 - Full HD" : {
 
     },
     "2048x2048 MacBook Pro 14''" : {
@@ -92,9 +98,6 @@
     "2560 x 1080" : {
 
     },
-    "2560 x 1440" : {
-
-    },
     "3440 x 1440" : {
 
     },
@@ -102,9 +105,6 @@
 
     },
     "3840 x 2160" : {
-
-    },
-    "3840 x 2160 - 4K" : {
 
     },
     "4096 x 768" : {
@@ -123,6 +123,12 @@
 
     },
     "11520 x 2160" : {
+
+    },
+    "Add to Favorites" : {
+
+    },
+    "Add to Playlist" : {
 
     },
     "Add Wallpaper" : {
@@ -404,7 +410,7 @@
     "macOS" : {
 
     },
-    "Made with ❤️ by @haren724" : {
+    "Made with ❤️ by" : {
 
     },
     "Medium" : {
@@ -447,6 +453,9 @@
 
     },
     "Open Wallpaper Engine" : {
+
+    },
+    "Open Wallpapers Folder in Finder" : {
 
     },
     "Other Application Focused:" : {
@@ -539,13 +548,13 @@
     "Similar UI Layout to Wallpaper Engine on Steam" : {
 
     },
+    "Small Icons" : {
+
+    },
     "Source" : {
 
     },
     "Split" : {
-
-    },
-    "Standard Definition" : {
 
     },
     "Stop (free memory)" : {
@@ -555,6 +564,9 @@
 
     },
     "Sumeru 【Genshin Impact】" : {
+
+    },
+    "Sumeru【Genshin Impact】" : {
 
     },
     "Super High Performance" : {
@@ -594,6 +606,9 @@
 
     },
     "Video" : {
+
+    },
+    "View" : {
 
     },
     "Volume" : {
