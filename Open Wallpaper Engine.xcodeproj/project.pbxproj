@@ -10,6 +10,7 @@
 		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
 		5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */; };
 		5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */; };
+		5E51EB5B2A81A223006DDCF9 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51EB5A2A81A223006DDCF9 /* MainWindowController.swift */; };
 		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
 		5E615E222A7D2F9700A37EB8 /* ImportPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */; };
 		5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665252A2DC30D00E0E4B4 /* WEProject.swift */; };
@@ -54,6 +55,7 @@
 		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
 		5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
+		5E51EB5A2A81A223006DDCF9 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
 		5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportPanels.swift; sourceTree = "<group>"; };
 		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				5EA969A42A7D9B4B0027B963 /* 2854415058 */,
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
+				5E51EB5A2A81A223006DDCF9 /* MainWindowController.swift */,
 				5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */,
 				5E7665292A2E231400E0E4B4 /* AboutUsView.swift */,
 				5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */,
@@ -343,6 +346,7 @@
 				5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */,
 				5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */,
 				5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */,
+				5E51EB5B2A81A223006DDCF9 /* MainWindowController.swift in Sources */,
 				5EA969A32A7D4BA30027B963 /* FirstLaunchView.swift in Sources */,
 				5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */,
 				5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */,
