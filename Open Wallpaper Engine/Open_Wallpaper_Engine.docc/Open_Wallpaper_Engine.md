@@ -1,6 +1,14 @@
 # ``Open_Wallpaper_Engine``
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+@Metadata {
+    @PageImage(
+        purpose: icon, 
+        source: "OpenWallpaperEngine-icon", 
+        alt: "A technology icon representing the OpenWallpaperEngine framework.")
+    @PageColor(blue)
+}
+
+An open source wallpaper engine for Mac
 
 ## Overview
 
