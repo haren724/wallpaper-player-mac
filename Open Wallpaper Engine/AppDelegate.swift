@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     var importOpenPanel: NSOpenPanel!
     
-    class var shared: AppDelegate { AppDelegate() }
+    static var shared = AppDelegate()
     
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
 // MARK: - misc methods
-    @objc func openSettingsWindow() {
+    @objc public func openSettingsWindow() {
         self.settingsWindow.center()
         self.settingsWindow.makeKeyAndOrderFront(nil)
     }
@@ -90,22 +90,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @MainActor @objc func toggleFilter() {
         self.contentViewModel.isFilterReveal.toggle()
     }
-    
-// MARK: Set Main Window
-//    func setMainWindow() {
-//        self.mainWindow = NSWindow(
-//            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-//            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-//            backing: .buffered, defer: false)
-//        self.mainWindow.isReleasedWhenClosed = false
-//        self.mainWindow.title = "Open Wallpaper Engine 0.1.0 - Unofficial Edition"
-//        self.mainWindow.titlebarAppearsTransparent = true
-//        self.mainWindow.center()
-//        self.mainWindow.setFrameAutosaveName("MainWindow")
-//        self.mainWindow.contentView = NSHostingView(rootView: ContentView(viewModel: self.contentViewModel)
-//            .environmentObject(self.globalSettingsViewModel))
-//        self.mainWindow.contentView = nil
-//    }
     
 // MARK: Set Settings Window
     func setSettingsWindow() {
