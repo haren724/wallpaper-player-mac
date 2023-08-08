@@ -115,6 +115,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E98F6C82A826E2700C12E34 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				5E98F6C62A81D8B200C12E34 /* MainWindowController.swift */,
+				5EC47EA92A2DB32900120CCC /* ContentView.swift */,
+				5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */,
+				5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */,
+				5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		5E98F6C92A826E5300C12E34 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5E98F6CA2A826E8B00C12E34 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */,
+				5E7665292A2E231400E0E4B4 /* AboutUsView.swift */,
+				5E7665272A2E076400E0E4B4 /* ToolbarView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		5E98F6CB2A826EB000C12E34 /* WallpaperView */ = {
+			isa = PBXGroup;
+			children = (
+				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
+			);
+			path = WallpaperView;
+			sourceTree = "<group>";
+		};
+		5E98F6CC2A826ED500C12E34 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5EA969A42A7D9B4B0027B963 /* 2854415058 */,
+				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
+				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
+				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
+				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
+				5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5EA969A42A7D9B4B0027B963 /* 2854415058 */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,27 +203,16 @@
 		5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */ = {
 			isa = PBXGroup;
 			children = (
-				5EFC591B2A81ABCF005F97E2 /* MenuBars */,
-				5EA969A42A7D9B4B0027B963 /* 2854415058 */,
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
-				5E98F6C62A81D8B200C12E34 /* MainWindowController.swift */,
-				5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */,
-				5E7665292A2E231400E0E4B4 /* AboutUsView.swift */,
+				5EFC591B2A81ABCF005F97E2 /* MenuBars */,
+				5E98F6C82A826E2700C12E34 /* ContentView */,
+				5E98F6CA2A826E8B00C12E34 /* SettingsView */,
+				5E98F6CB2A826EB000C12E34 /* WallpaperView */,
+				5E98F6C92A826E5300C12E34 /* Services */,
 				5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */,
-				5EC47EA92A2DB32900120CCC /* ContentView.swift */,
-				5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */,
-				5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */,
-				5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */,
 				5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */,
-				5E7665272A2E076400E0E4B4 /* ToolbarView.swift */,
-				5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */,
-				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
-				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
-				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
-				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
-				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
-				5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */,
+				5E98F6CC2A826ED500C12E34 /* Resources */,
 				5EC47E7F2A2DB2E700120CCC /* Preview Content */,
 			);
 			path = "Open Wallpaper Engine";
@@ -283,7 +323,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					5EC47E752A2DB2E600120CCC = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -412,6 +452,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -441,9 +483,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -472,6 +516,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -501,9 +547,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -531,6 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Open Wallpaper Engine/Preview Content\"";
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -563,6 +612,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Open Wallpaper Engine/Preview Content\"";
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -591,6 +641,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -610,6 +661,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -628,6 +680,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -645,6 +698,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 24Q962SK3B;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
