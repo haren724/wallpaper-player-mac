@@ -45,7 +45,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowDidBecomeKey(_ notification: Notification) {
-        if self.window.contentView == nil {
+        DispatchQueue.main.async {
             self.window.contentView = NSHostingView(rootView: ContentView(viewModel: AppDelegate.shared.contentViewModel)
                 .environmentObject(AppDelegate.shared.globalSettingsViewModel))
         }
