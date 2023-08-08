@@ -244,7 +244,7 @@ struct ContentView: View {
                                     .clipShape(Rectangle())
                                     .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
                                     .selected(index == selectedIndex)
-                                    .animation(.spring, value: imageScaleIndex == index ? 1.2 : 1.0)
+                                    .animation(.spring(), value: imageScaleIndex == index ? 1.2 : 1.0)
                                     .overlay {
                                         VStack {
                                             Spacer()
