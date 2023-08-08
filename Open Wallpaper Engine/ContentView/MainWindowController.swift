@@ -41,14 +41,13 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        self.window.contentView = nil
+        AppDelegate.shared.contentViewModel.isStaging = false
     }
     
     func windowDidBecomeKey(_ notification: Notification) {
-        if self.window.contentView == nil {
-            DispatchQueue.main.async {
-                self.window.contentView = NSHostingView(rootView: ContentView(viewModel: AppDelegate.shared.contentViewModel)
-                    .environmentObject(AppDelegate.shared.globalSettingsViewModel))
+        DispatchQueue.main.async {
+            withAnimation {
+                AppDelegate.shared.contentViewModel.isStaging = true
             }
         }
     }
