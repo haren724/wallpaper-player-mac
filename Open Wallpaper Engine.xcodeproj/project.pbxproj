@@ -10,7 +10,6 @@
 		5E21E2962A3C0EDF00DA048A /* sumeruWP_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */; };
 		5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */; };
 		5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */; };
-		5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */; };
 		5E615E222A7D2F9700A37EB8 /* ImportPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */; };
 		5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665252A2DC30D00E0E4B4 /* WEProject.swift */; };
 		5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7665272A2E076400E0E4B4 /* ToolbarView.swift */; };
@@ -20,11 +19,9 @@
 		5EA969A32A7D4BA30027B963 /* FirstLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */; };
 		5EA969A62A7D9B810027B963 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A52A7D9B810027B963 /* project.json */; };
 		5EA969AA2A7D9CBB0027B963 /* preview.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5EA969A92A7D9CBB0027B963 /* preview.gif */; };
-		5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */; };
+		5EB152A12A82ADEB007EA845 /* Open_Wallpaper_Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5EB152A02A82ADEB007EA845 /* Open_Wallpaper_Engine.docc */; };
 		5EC47E7E2A2DB2E700120CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */; };
 		5EC47E812A2DB2E700120CCC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */; };
-		5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E822A2DB2E700120CCC /* Persistence.swift */; };
-		5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */; };
 		5EC47E912A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */; };
 		5EC47E9B2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9A2A2DB2E700120CCC /* Open_Wallpaper_EngineUITests.swift */; };
 		5EC47E9D2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */; };
@@ -57,7 +54,6 @@
 		5E21E2952A3C0EDF00DA048A /* sumeruWP_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sumeruWP_4.mp4; sourceTree = "<group>"; };
 		5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
-		5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
 		5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportPanels.swift; sourceTree = "<group>"; };
 		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
 		5E7665272A2E076400E0E4B4 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
@@ -67,12 +63,10 @@
 		5EA969A22A7D4BA30027B963 /* FirstLaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchView.swift; sourceTree = "<group>"; };
 		5EA969A52A7D9B810027B963 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = project.json; sourceTree = "<group>"; };
 		5EA969A92A7D9CBB0027B963 /* preview.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = preview.gif; sourceTree = "<group>"; };
+		5EB152A02A82ADEB007EA845 /* Open_Wallpaper_Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Open_Wallpaper_Engine.docc; sourceTree = "<group>"; };
 		5EC47E762A2DB2E600120CCC /* Open Wallpaper Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Wallpaper Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EC47E802A2DB2E700120CCC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5EC47E822A2DB2E700120CCC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Open_Wallpaper_Engine.xcdatamodel; sourceTree = "<group>"; };
 		5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Open_Wallpaper_Engine.entitlements; sourceTree = "<group>"; };
 		5EC47E8C2A2DB2E700120CCC /* Open Wallpaper EngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open Wallpaper EngineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC47E902A2DB2E700120CCC /* Open_Wallpaper_EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineTests.swift; sourceTree = "<group>"; };
@@ -157,10 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA969A42A7D9B4B0027B963 /* 2854415058 */,
-				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
 				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
-				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
-				5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -204,16 +195,16 @@
 			children = (
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
-				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
 				5EFC591B2A81ABCF005F97E2 /* MenuBars */,
 				5E98F6C82A826E2700C12E34 /* ContentView */,
 				5E98F6CA2A826E8B00C12E34 /* SettingsView */,
 				5E98F6CB2A826EB000C12E34 /* WallpaperView */,
 				5E98F6C92A826E5300C12E34 /* Services */,
-				5EC47E7B2A2DB2E600120CCC /* ExampleView.swift */,
-				5E53C96A2A2ED77B002C2C0B /* ExplorerView.swift */,
 				5E98F6CC2A826ED500C12E34 /* Resources */,
 				5EC47E7F2A2DB2E700120CCC /* Preview Content */,
+				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
+				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
+				5EB152A02A82ADEB007EA845 /* Open_Wallpaper_Engine.docc */,
 			);
 			path = "Open Wallpaper Engine";
 			sourceTree = "<group>";
@@ -395,21 +386,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */,
+				5EB152A12A82ADEB007EA845 /* Open_Wallpaper_Engine.docc in Sources */,
 				5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */,
 				5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */,
 				5EFC591D2A81ACBC005F97E2 /* Status.swift in Sources */,
-				5EC47E862A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld in Sources */,
 				5E7665282A2E076400E0E4B4 /* ToolbarView.swift in Sources */,
 				5EFC591F2A81ACC3005F97E2 /* Menu.swift in Sources */,
 				5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */,
 				5E98F6C72A81D8B200C12E34 /* MainWindowController.swift in Sources */,
 				5EA969A32A7D4BA30027B963 /* FirstLaunchView.swift in Sources */,
-				5E53C96B2A2ED77B002C2C0B /* ExplorerView.swift in Sources */,
 				5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */,
 				5E32ABFE2A4D595D00A0EEEC /* FilterResultsView.swift in Sources */,
 				5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */,
-				5EC47E832A2DB2E700120CCC /* Persistence.swift in Sources */,
-				5EC47E7C2A2DB2E600120CCC /* ExampleView.swift in Sources */,
 				5E76652A2A2E231400E0E4B4 /* AboutUsView.swift in Sources */,
 				5E615E222A7D2F9700A37EB8 /* ImportPanels.swift in Sources */,
 			);
@@ -752,19 +740,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */,
-			);
-			currentVersion = 5EC47E852A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodel */;
-			path = Open_Wallpaper_Engine.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5EC47E6E2A2DB2E600120CCC /* Project object */;
 }
