@@ -160,7 +160,6 @@
 				5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */,
 				5EC47E7D2A2DB2E700120CCC /* Assets.xcassets */,
 				5EC47E822A2DB2E700120CCC /* Persistence.swift */,
-				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
 				5EC47E842A2DB2E700120CCC /* Open_Wallpaper_Engine.xcdatamodeld */,
 			);
 			path = Resources;
@@ -205,6 +204,7 @@
 			children = (
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
+				5EC47E872A2DB2E700120CCC /* Open_Wallpaper_Engine.entitlements */,
 				5EFC591B2A81ABCF005F97E2 /* MenuBars */,
 				5E98F6C82A826E2700C12E34 /* ContentView */,
 				5E98F6CA2A826E8B00C12E34 /* SettingsView */,
@@ -576,6 +576,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -609,6 +610,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Open Wallpaper Engine/Open_Wallpaper_Engine.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
