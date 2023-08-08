@@ -41,7 +41,7 @@ extension AppDelegate {
             // 在此处添加子菜单项
             importMenu,
             .separator(),
-            .init(title: "Close Window", action: #selector(AppDelegate.shared.mainWindowController.close), keyEquivalent: "w")
+            .init(title: "Close Window", action: #selector(AppDelegate.shared.mainWindowController.window.performClose), keyEquivalent: "w")
         ]
         
         // 查看菜单
