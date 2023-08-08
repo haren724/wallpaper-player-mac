@@ -1,8 +1,9 @@
 # ``Open_Wallpaper_Engine``
 
 @Metadata {
+    @DisplayName("Open Wallpaper Engine")
     @PageImage(
-        purpose: icon, 
+        purpose: icon,
         source: "OpenWallpaperEngine-icon", 
         alt: "A technology icon representing the OpenWallpaperEngine framework.")
     @PageColor(blue)
