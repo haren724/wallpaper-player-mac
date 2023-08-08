@@ -3,4 +3,54 @@
    uuid = "EFEB5F61-F42C-4BAF-91C2-0E6AA527EE79"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62127322-9EA5-4A2F-A8F0-94323D69347F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Open Wallpaper Engine/MainWindowController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "windowWillClose(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "62127322-9EA5-4A2F-A8F0-94323D69347F - c16365e7886724b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.MainWindowController.windowWillClose(Foundation.Notification) -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/MainWindowController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "62127322-9EA5-4A2F-A8F0-94323D69347F - c16365e788672a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Open_Wallpaper_Engine.MainWindowController.windowWillClose(Foundation.Notification) -&gt; ()"
+                  moduleName = "Open Wallpaper Engine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haren724/repo/Open%20Wallpaper%20Engine/Open%20Wallpaper%20Engine/MainWindowController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

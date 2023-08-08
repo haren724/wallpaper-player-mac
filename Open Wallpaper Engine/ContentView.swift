@@ -27,7 +27,6 @@ extension Array: RawRepresentable where Element: Codable {
     }
 }
 
-@MainActor
 class ContentViewModel: ObservableObject {
     @AppStorage("FilterReveal") var isFilterReveal = false
     @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
@@ -608,7 +607,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button {
-                        AppDelegate.shared.mainWindow.close()
+//                        self.mainWindowController.window.performClose(nil)
                     } label: {
                         Text("OK").frame(width: 50)
                     }

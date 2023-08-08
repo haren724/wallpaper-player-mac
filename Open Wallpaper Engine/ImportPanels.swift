@@ -35,7 +35,7 @@ extension AppDelegate {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        panel.beginSheetModal(for: self.mainWindow) { response in
+        panel.beginSheetModal(for: self.mainWindowController.window) { response in
             if response != .OK { return }
             guard let url = panel.urls.first else { return }
             
@@ -68,7 +68,7 @@ extension AppDelegate {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = true
-        panel.beginSheetModal(for: self.mainWindow) { response in
+        panel.beginSheetModal(for: self.mainWindowController.window) { response in
             if response != .OK { return }
             print(String(describing: panel.urls))
             
