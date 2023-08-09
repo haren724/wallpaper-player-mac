@@ -45,7 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         setStatusMenu()
         
         // 显示桌面壁纸
-        self.wallpaperWindow.center()
         self.wallpaperWindow.orderFront(nil)
         
         // 显示主视窗
@@ -111,14 +110,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 // MARK: Set Wallpaper Window - Most efforts
     func setWallpaperWindow() {
         self.wallpaperWindow = NSWindow()
+        
         self.wallpaperWindow.styleMask = [.borderless, .fullSizeContentView]
-        self.wallpaperWindow.setFrame(NSScreen.main!.frame, display: true)
-        self.wallpaperWindow.level = NSWindow.Level(Int(CGWindowLevelForKey(.desktopWindow)) )
+        self.wallpaperWindow.level = NSWindow.Level(Int(CGWindowLevelForKey(.desktopWindow)))
         self.wallpaperWindow.collectionBehavior = .stationary
+        
+        self.wallpaperWindow.setFrame(NSScreen.main!.frame, display: true)
         self.wallpaperWindow.isMovable = false
         self.wallpaperWindow.titlebarAppearsTransparent = true
         self.wallpaperWindow.titleVisibility = .hidden
-        self.wallpaperWindow.styleMask.insert(.fullSizeContentView)
         self.wallpaperWindow.canHide = false
         self.wallpaperWindow.canBecomeVisibleWithoutLogin = true
         self.wallpaperWindow.isReleasedWhenClosed = false
