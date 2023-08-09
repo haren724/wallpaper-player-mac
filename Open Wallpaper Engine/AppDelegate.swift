@@ -69,6 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
 // MARK: - misc methods
     @objc func openSettingsWindow() {
+        NSApp.activate(ignoringOtherApps: true)
         self.settingsWindow.center()
         self.settingsWindow.makeKeyAndOrderFront(nil)
     }
