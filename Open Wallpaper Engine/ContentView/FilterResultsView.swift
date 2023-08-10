@@ -126,61 +126,103 @@ struct FRWidescreenResolution: OptionSet {
     static let none: Self           = []
 }
 
-class FRUltraWidescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRUltraWidescreenResolution: OptionSet {
+    let rawValue: Int
     
-    required init() {}
     
-    @AppStorage("UltrawideStandard") public var ultrawideStandard = true
-    @AppStorage("2560x1080") public var resolution2560x1080 = true
-    @AppStorage("3440x1440") public var resolution3440x1440 = true
-    @AppStorage("DualStandard") public var dualStandard = true
-    @AppStorage("3840x1080") public var resolution3840x1080 = true
-    @AppStorage("5120x1440") public var resolution5120x1440 = true
-    @AppStorage("7680x2160") public var resolution7680x2160 = true
+    let allOptions: [String] = [
+        "Ultrawide Standard",
+        "2560x1080",
+        "3440x1440",
+        "Dual Standard",
+        "3840x1080",
+        "5120x1440",
+        "7680x2160"
+    ]
+    
+    static let ultrawideStandard    = FRUltraWidescreenResolution(rawValue: 1 << 0)
+    static let resolution2560x1080  = FRUltraWidescreenResolution(rawValue: 1 << 1)
+    static let resolution3440x1440  = FRUltraWidescreenResolution(rawValue: 1 << 2)
+    static let dualStandard         = FRUltraWidescreenResolution(rawValue: 1 << 3)
+    static let resolution3840x1080  = FRUltraWidescreenResolution(rawValue: 1 << 4)
+    static let resolution5120x1440  = FRUltraWidescreenResolution(rawValue: 1 << 5)
+    static let resolution7680x2160  = FRUltraWidescreenResolution(rawValue: 1 << 6)
+    
+    static let all: FRUltraWidescreenResolution = [.ultrawideStandard, resolution2560x1080, resolution3440x1440, dualStandard, resolution3840x1080, resolution5120x1440, resolution7680x2160]
+    static let none: FRUltraWidescreenResolution = []
 }
 
-class FRTriplescreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRTriplescreenResolution: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions: [String] = [
+            "Triple Standard",
+            "4096x768",
+            "5760x1080",
+            "7680x1440",
+            "11520x2160"
+        ]
     
-    @AppStorage("TripleStandard") public var tripleStandard = true
-    @AppStorage("4096x768") public var resolution4096x768 = true
-    @AppStorage("5760x1080") public var resolution5760x1080 = true
-    @AppStorage("7680x1440") public var resolution7680x1440 = true
-    @AppStorage("11520x2160") public var resolution11520x2160 = true
+    static let tripleStandard        = FRTriplescreenResolution(rawValue: 1 << 0)
+    static let resolution4096x768    = FRTriplescreenResolution(rawValue: 1 << 1)
+    static let resolution5760x1080   = FRTriplescreenResolution(rawValue: 1 << 2)
+    static let resolution7680x1440   = FRTriplescreenResolution(rawValue: 1 << 3)
+    static let resolution11520x2160  = FRTriplescreenResolution(rawValue: 1 << 4)
+    
+    static let all: FRTriplescreenResolution = [.tripleStandard, resolution4096x768, resolution5760x1080, resolution7680x1440, resolution11520x2160]
+    static let none: FRTriplescreenResolution = []
 }
 
-class FRPotraitscreenResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRPortraitScreenResolution: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions = [
+        "PotraitStandard",
+        "720x1280",
+        "1080x1920",
+        "1440x2560",
+        "2160x3840"
+    ]
     
-    @AppStorage("PotraitStandard") public var potraitStandard = true
-    @AppStorage("720x1280") public var resolution720x1280 = true
-    @AppStorage("1080x1920") public var resolution1080x1920 = true
-    @AppStorage("1440x2560") public var resolution1440x2560 = true
-    @AppStorage("2160x3840") public var resolution2160x3840 = true
+    static let portraitStandard     = Self.init(rawValue: 1 << 0)
+    static let resolution720x1280   = Self.init(rawValue: 1 << 1)
+    static let resolution1080x1920  = Self.init(rawValue: 1 << 2)
+    static let resolution1440x2560  = Self.init(rawValue: 1 << 3)
+    static let resolution2160x3840  = Self.init(rawValue: 1 << 4)
+    
+    static let all: Self            = [.portraitStandard, .resolution720x1280, .resolution1080x1920, .resolution1440x2560, .resolution2160x3840]
+    static let none: Self           = []
 }
 
-class FRMiscResolution<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRMiscResolutionOptions: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions = [
+        "OtherResolution",
+        "DynamicResolution"
+    ]
     
-    @AppStorage("OtherResolution") public var otherResolution = true
-    @AppStorage("DynamicResolution") public var dynamicResolution = true
+    static let otherResolution     = Self.init(rawValue: 1 << 0)
+    static let dynamicResolution   = Self.init(rawValue: 1 << 1)
+    
+    static let all: Self           = [.otherResolution, .dynamicResolution]
+    static let none: Self          = []
 }
-
-class FRSource<ObjectType>: FilterResultsModel where ObjectType: ObservableObject {
-    weak var parent: ObjectType?
+struct FRSourceOptions: OptionSet {
+    let rawValue: Int
     
-    required init() {}
+    static let allOptions = [
+        "Official",
+        "Workshop",
+        "MyWallpapers"
+    ]
     
-    @AppStorage("Official") public var official = true
-    @AppStorage("Workshop") public var workshop = true
-    @AppStorage("MyWallpapers") public var myWallpapers = true
+    static let official        = Self.init(rawValue: 1 << 0)
+    static let workshop        = Self.init(rawValue: 1 << 1)
+    static let myWallpapers    = Self.init(rawValue: 1 << 2)
+    
+    static let all: Self       = [.official, .workshop, .myWallpapers]
+    static let none: Self      = []
 }
 
 struct FRTag: OptionSet {
@@ -254,11 +296,12 @@ class FilterResultsViewModel: ObservableObject {
     @AppStorage("FRType") public var type = FRType.all
     @AppStorage("FRAgeRating") public var ageRating = FRAgeRating.all
     @AppStorage("FRWidescreenResolution") public var widescreenResolution = FRWidescreenResolution.all
-    @Published public var ultraWidescreenResolution = FRUltraWidescreenResolution<FilterResultsViewModel>()
-    @Published public var triplescreenResolution = FRTriplescreenResolution<FilterResultsViewModel>()
-    @Published public var potraitscreenResolution = FRPotraitscreenResolution<FilterResultsViewModel>()
-    @Published public var miscResolution = FRMiscResolution<FilterResultsViewModel>()
-    @Published public var source = FRSource<FilterResultsViewModel>()
+    @AppStorage("FRWidescreenResolution") public var ultraWidescreenResolution = FRUltraWidescreenResolution.all
+    @AppStorage("FRWidescreenResolution") public var triplescreenResolution = FRTriplescreenResolution.all
+    @AppStorage("FRWidescreenResolution") public var potraitscreenResolution = FRPortraitScreenResolution.all
+    @AppStorage("FRWidescreenResolution") public var miscResolution = FRMiscResolutionOptions.all
+    @AppStorage("FRWidescreenResolution") public var source = FRSourceOptions.all
+
     @AppStorage("FRTag") public var tag = FRTag.all
     
     public func widescreenGeneral(_ control: GeneralControl) {
@@ -271,26 +314,26 @@ class FilterResultsViewModel: ObservableObject {
     }
     
     public func reset() {
-        self.showOnly = .none
+//        self.showOnly = .none
         self.type = .all
         self.ageRating = .all
-        self.widescreenResolution = .all
-        self.ultraWidescreenResolution.reset()
-        self.triplescreenResolution.reset()
-        self.potraitscreenResolution.reset()
-        self.miscResolution.reset()
-        self.source.reset()
-        self.tag = .all
-//        self.showOnly                   = .all
-//        self.type                       = .all
-//        self.ageRating                  = .all
-//        self.widescreenResolution       = .all
-//        self.ultraWidescreenResolution  = .all
-//        self.triplescreenResolution     = .all
-//        self.potraitscreenResolution    = .all
-//        self.miscResolution             = .all
-//        self.source                     = .all
-//        self.tag                        = .all
+//        self.widescreenResolution.reset()
+//        self.ultraWidescreenResolution.reset()
+//        self.triplescreenResolution.reset()
+//        self.potraitscreenResolution.reset()
+//        self.miscResolution.reset()
+//        self.source.reset()
+//        self.tag = .all
+        self.showOnly                   = .all
+        self.type                       = .all
+        self.ageRating                  = .all
+        self.widescreenResolution       = .all
+        self.ultraWidescreenResolution  = .all
+        self.triplescreenResolution     = .all
+        self.potraitscreenResolution    = .all
+        self.miscResolution             = .all
+        self.source                     = .all
+        self.tag                        = .all
     }
 }
 
