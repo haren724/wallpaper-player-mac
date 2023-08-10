@@ -12,35 +12,8 @@ enum GeneralControl {
     case all, none
 }
 
-protocol FilterResultsModel<ObjectType>: AnyObject, ObservableObject where ObjectType: ObservableObject {
-    associatedtype ObjectType
-    
-    var parent: ObjectType? { get set }
-    
-    init()
-    
-    init(_ parent: ObjectType?)
-    
-    func reset(to resetValue: Bool)
-}
-
-extension FilterResultsModel {
-    init(_ parent: ObjectType?) {
-        self.init()
-        self.parent = parent
-    }
-    
-    func reset(to resetValue: Bool = true) {
-        let mirror = Mirror(reflecting: self)
-        for case let (label?, _) in mirror.children {
-            if let boolValue = mirror.descendant(label) as? AppStorage<Bool> {
-                boolValue.projectedValue.wrappedValue = resetValue
-            }
-        }
-        
-        guard let parent = self.parent else { return }
-        (parent.objectWillChange as? ObservableObjectPublisher)?.send()
-    }
+protocol FilterResultsModel: OptionSet where Element == Self, RawValue == Int {
+    static var allOptions: [String] { get }
 }
 
 struct FRShowOnly: OptionSet {
@@ -64,7 +37,7 @@ struct FRShowOnly: OptionSet {
     static let none: FRShowOnly = []
 }
 
-struct FRType: OptionSet {
+struct FRType: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -87,7 +60,7 @@ struct FRType: OptionSet {
     static let none: FRType     = []
 }
 
-struct FRAgeRating: OptionSet {
+struct FRAgeRating: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -104,13 +77,12 @@ struct FRAgeRating: OptionSet {
     static let none: FRAgeRating    = []
 }
 
-struct FRWidescreenResolution: OptionSet {
+struct FRWidescreenResolution: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
         "StandardDefinition",
         "1280x720",
-        "Mature",
         "1920x1080-FullHD",
         "2560x1440",
         "3840x2160-4K"
@@ -126,33 +98,44 @@ struct FRWidescreenResolution: OptionSet {
     static let none: Self           = []
 }
 
-struct FRUltraWidescreenResolution: OptionSet {
+struct FRUltraWidescreenResolution: FilterResultsModel {
     let rawValue: Int
     
     
-    let allOptions: [String] = [
+    static let allOptions: [String] = [
         "Ultrawide Standard",
         "2560x1080",
         "3440x1440",
+    ]
+    
+    static let ultrawideStandard    = FRUltraWidescreenResolution(rawValue: 1 << 0)
+    static let resolution2560x1080  = FRUltraWidescreenResolution(rawValue: 1 << 1)
+    static let resolution3440x1440  = FRUltraWidescreenResolution(rawValue: 1 << 2)
+    
+    static let all: FRUltraWidescreenResolution = [.ultrawideStandard, resolution2560x1080, .resolution3440x1440]
+    static let none: FRUltraWidescreenResolution = []
+}
+
+struct FRDualscreenResolution: FilterResultsModel {
+    let rawValue: Int
+    
+    static let allOptions: [String] = [
         "Dual Standard",
         "3840x1080",
         "5120x1440",
         "7680x2160"
     ]
     
-    static let ultrawideStandard    = FRUltraWidescreenResolution(rawValue: 1 << 0)
-    static let resolution2560x1080  = FRUltraWidescreenResolution(rawValue: 1 << 1)
-    static let resolution3440x1440  = FRUltraWidescreenResolution(rawValue: 1 << 2)
-    static let dualStandard         = FRUltraWidescreenResolution(rawValue: 1 << 3)
-    static let resolution3840x1080  = FRUltraWidescreenResolution(rawValue: 1 << 4)
-    static let resolution5120x1440  = FRUltraWidescreenResolution(rawValue: 1 << 5)
-    static let resolution7680x2160  = FRUltraWidescreenResolution(rawValue: 1 << 6)
+    static let dualStandard         = Self.init(rawValue: 1 << 0)
+    static let resolution3840x1080  = Self.init(rawValue: 1 << 1)
+    static let resolution5120x1440  = Self.init(rawValue: 1 << 2)
+    static let resolution7680x2160  = Self.init(rawValue: 1 << 3)
     
-    static let all: FRUltraWidescreenResolution = [.ultrawideStandard, resolution2560x1080, resolution3440x1440, dualStandard, resolution3840x1080, resolution5120x1440, resolution7680x2160]
-    static let none: FRUltraWidescreenResolution = []
+    static let all: Self = [.dualStandard, .resolution3840x1080, .resolution5120x1440, .resolution7680x2160]
+    static let none: Self = []
 }
 
-struct FRTriplescreenResolution: OptionSet {
+struct FRTriplescreenResolution: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions: [String] = [
@@ -173,7 +156,7 @@ struct FRTriplescreenResolution: OptionSet {
     static let none: FRTriplescreenResolution = []
 }
 
-struct FRPortraitScreenResolution: OptionSet {
+struct FRPortraitScreenResolution: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -194,7 +177,7 @@ struct FRPortraitScreenResolution: OptionSet {
     static let none: Self           = []
 }
 
-struct FRMiscResolutionOptions: OptionSet {
+struct FRMiscResolution: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -208,7 +191,8 @@ struct FRMiscResolutionOptions: OptionSet {
     static let all: Self           = [.otherResolution, .dynamicResolution]
     static let none: Self          = []
 }
-struct FRSourceOptions: OptionSet {
+
+struct FRSource: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -225,7 +209,7 @@ struct FRSourceOptions: OptionSet {
     static let none: Self      = []
 }
 
-struct FRTag: OptionSet {
+struct FRTag: FilterResultsModel {
     let rawValue: Int
     
     static let allOptions = [
@@ -290,45 +274,29 @@ struct FRTag: OptionSet {
     static let none: FRTag = []
 }
 
-// MARK: -
+// MARK: - View Model
 class FilterResultsViewModel: ObservableObject {
-    @AppStorage("FRShowOnly") public var showOnly = FRShowOnly.all
-    @AppStorage("FRType") public var type = FRType.all
-    @AppStorage("FRAgeRating") public var ageRating = FRAgeRating.all
-    @AppStorage("FRWidescreenResolution") public var widescreenResolution = FRWidescreenResolution.all
-    @AppStorage("FRWidescreenResolution") public var ultraWidescreenResolution = FRUltraWidescreenResolution.all
-    @AppStorage("FRWidescreenResolution") public var triplescreenResolution = FRTriplescreenResolution.all
-    @AppStorage("FRWidescreenResolution") public var potraitscreenResolution = FRPortraitScreenResolution.all
-    @AppStorage("FRWidescreenResolution") public var miscResolution = FRMiscResolutionOptions.all
-    @AppStorage("FRWidescreenResolution") public var source = FRSourceOptions.all
-
-    @AppStorage("FRTag") public var tag = FRTag.all
-    
-    public func widescreenGeneral(_ control: GeneralControl) {
-        let mirror = Mirror(reflecting: self)
-        for case let (label?, _) in mirror.children {
-            if ["_standardDefinition", "_resolution1280x720", "_resolution1920x1080", "_resolution2560x1440", " _resolution3840x2160"].contains(label) {
-                (mirror.descendant(label) as? AppStorage<Bool>)?.wrappedValue = (control == .all ? true : false)
-            }
-        }
-    }
+    @AppStorage("FRShowOnly")                   public var showOnly = FRShowOnly.all
+    @AppStorage("FRType")                       public var type = FRType.all
+    @AppStorage("FRAgeRating")                  public var ageRating = FRAgeRating.all
+    @AppStorage("FRWidescreenResolution")       public var widescreenResolution = FRWidescreenResolution.all
+    @AppStorage("FRUltraWidescreenResolution")  public var ultraWidescreenResolution = FRUltraWidescreenResolution.all
+    @AppStorage("FRDualscreenResolution")       public var dualscreenResolution = FRDualscreenResolution.all
+    @AppStorage("FRTriplescreenResolution")     public var triplescreenResolution = FRTriplescreenResolution.all
+    @AppStorage("FRPortraitScreenResolution")   public var potraitscreenResolution = FRPortraitScreenResolution.all
+    @AppStorage("FRMiscResolution")             public var miscResolution = FRMiscResolution.all
+    @AppStorage("FRSource")                     public var source = FRSource.all
+    @AppStorage("FRTag")                        public var tag = FRTag.all
     
     public func reset() {
-//        self.showOnly = .none
-        self.type = .all
-        self.ageRating = .all
-//        self.widescreenResolution.reset()
-//        self.ultraWidescreenResolution.reset()
-//        self.triplescreenResolution.reset()
-//        self.potraitscreenResolution.reset()
-//        self.miscResolution.reset()
-//        self.source.reset()
-//        self.tag = .all
-        self.showOnly                   = .all
+        self.showOnly                   = .none // notice it's show ONLY, it acts oppositely to the others
+        self.type                       = .all
+        self.ageRating                  = .all
         self.type                       = .all
         self.ageRating                  = .all
         self.widescreenResolution       = .all
         self.ultraWidescreenResolution  = .all
+        self.dualscreenResolution       = .all
         self.triplescreenResolution     = .all
         self.potraitscreenResolution    = .all
         self.miscResolution             = .all
@@ -367,8 +335,6 @@ struct FilterResults: View {
                                         return Color.accentColor
                                     }
                                 }()
-                                
-                                
                                 Toggle(isOn: Binding<Bool>(get: {
                                     viewModel.showOnly.contains(FRShowOnly(rawValue: 1 << i))
                                 }, set: {
@@ -407,7 +373,6 @@ struct FilterResults: View {
                                 Spacer()
                             }
                         }
-                        
                     }
                     VStack(spacing: 15) {
                         FilterSection("Type", alignment: .leading) {
@@ -449,10 +414,10 @@ struct FilterResults: View {
                                         .bold()
                                     HStack {
                                         Button("All")  {
-                                            viewModel.widescreenGeneral(.all)
+                                            viewModel.widescreenResolution = .all
                                         }
                                         Button("None") {
-                                            viewModel.widescreenGeneral(.none)
+                                            viewModel.widescreenResolution = .none
                                         }
                                     }
                                     .buttonStyle(.link)
@@ -481,37 +446,63 @@ struct FilterResults: View {
                                     Text("Ultra Widescreen")
                                         .bold()
                                     HStack {
-                                        Button("All")  { }
-                                        Button("None") { }
+                                        Button("All")  {
+                                            viewModel.ultraWidescreenResolution = .all
+                                        }
+                                        Button("None") {
+                                            viewModel.ultraWidescreenResolution = .none
+                                        }
                                     }
                                     .buttonStyle(.link)
                                 }
                                 .padding(.top, 5)
                                 Group {
-                                    Toggle("Ultrawide Standard", isOn: $viewModel.ultraWidescreenResolution.ultrawideStandard)
-                                    Toggle("2560 x 1080", isOn: $viewModel.ultraWidescreenResolution.resolution2560x1080)
-                                    Toggle("3440 x 1440", isOn: $viewModel.ultraWidescreenResolution.resolution3440x1440)
+                                    ForEach(Array(zip(FRUltraWidescreenResolution.allOptions.indices, FRUltraWidescreenResolution.allOptions)), id: \.0) { (i, option) in
+                                        Toggle(option, isOn: Binding<Bool>(get: {
+                                            viewModel.ultraWidescreenResolution.contains(FRUltraWidescreenResolution(rawValue: 1 << i))
+                                        }, set: {
+                                            if $0 {
+                                                viewModel.ultraWidescreenResolution.insert(FRUltraWidescreenResolution(rawValue: 1 << i))
+                                            } else {
+                                                viewModel.ultraWidescreenResolution.remove(FRUltraWidescreenResolution(rawValue: 1 << i))
+                                            }
+                                            print(String(describing: viewModel.ultraWidescreenResolution))
+                                        }))
+                                    }
                                 }
                                 .toggleStyle(.checkbox)
                                 Divider()
                                     .overlay(Color.accentColor)
                             }
                             VStack(alignment: .leading) {
+                                // MARK: - have trouble
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text("Dual Monitor")
                                         .bold()
                                     HStack {
-                                        Button("All")  { }
-                                        Button("None") { }
+                                        Button("All")  { 
+                                            viewModel.dualscreenResolution = .all
+                                        }
+                                        Button("None") {
+                                            viewModel.dualscreenResolution = .none
+                                        }
                                     }
                                     .buttonStyle(.link)
                                 }
                                 .padding(.top, 5)
                                 Group {
-                                    Toggle("Dual Standard", isOn: $viewModel.ultraWidescreenResolution.dualStandard)
-                                    Toggle("3840 x 1080", isOn: $viewModel.ultraWidescreenResolution.resolution3840x1080)
-                                    Toggle("5120 x 1440", isOn: $viewModel.ultraWidescreenResolution.resolution5120x1440)
-                                    Toggle("7680 x 2160", isOn: $viewModel.ultraWidescreenResolution.resolution7680x2160)
+                                    ForEach(Array(zip(FRDualscreenResolution.allOptions.indices, FRDualscreenResolution.allOptions)), id: \.0) { (i, option) in
+                                        Toggle(option, isOn: Binding<Bool>(get: {
+                                            viewModel.dualscreenResolution.contains(FRDualscreenResolution(rawValue: 1 << i))
+                                        }, set: {
+                                            if $0 {
+                                                viewModel.dualscreenResolution.insert(FRDualscreenResolution(rawValue: 1 << i))
+                                            } else {
+                                                viewModel.dualscreenResolution.remove(FRDualscreenResolution(rawValue: 1 << i))
+                                            }
+                                            print(String(describing: viewModel.dualscreenResolution))
+                                        }))
+                                    }
                                 }
                                 .toggleStyle(.checkbox)
                                 Divider()
@@ -522,18 +513,29 @@ struct FilterResults: View {
                                     Text("Triple Monitor")
                                         .bold()
                                     HStack {
-                                        Button("All")  { }
-                                        Button("None") { }
+                                        Button("All")  { 
+                                            viewModel.triplescreenResolution = .all
+                                        }
+                                        Button("None") {
+                                            viewModel.triplescreenResolution = .none
+                                        }
                                     }
                                     .buttonStyle(.link)
                                 }
                                 .padding(.top, 5)
                                 Group {
-                                    Toggle("Triple Standard", isOn: $viewModel.triplescreenResolution.tripleStandard)
-                                    Toggle("4096 x 768", isOn: $viewModel.triplescreenResolution.resolution4096x768)
-                                    Toggle("5760 x 1080", isOn: $viewModel.triplescreenResolution.resolution5760x1080)
-                                    Toggle("7680 x 1440", isOn: $viewModel.triplescreenResolution.resolution7680x1440)
-                                    Toggle("11520 x 2160", isOn: $viewModel.triplescreenResolution.resolution11520x2160)
+                                    ForEach(Array(zip(FRTriplescreenResolution.allOptions.indices, FRTriplescreenResolution.allOptions)), id: \.0) { (i, option) in
+                                        Toggle(option, isOn: Binding<Bool>(get: {
+                                            viewModel.triplescreenResolution.contains(FRTriplescreenResolution(rawValue: 1 << i))
+                                        }, set: {
+                                            if $0 {
+                                                viewModel.triplescreenResolution.insert(FRTriplescreenResolution(rawValue: 1 << i))
+                                            } else {
+                                                viewModel.triplescreenResolution.remove(FRTriplescreenResolution(rawValue: 1 << i))
+                                            }
+                                            print(String(describing: viewModel.triplescreenResolution))
+                                        }))
+                                    }
                                 }
                                 .toggleStyle(.checkbox)
                                 Divider()
@@ -544,41 +546,75 @@ struct FilterResults: View {
                                     Text("Potrait Monitor / Phone")
                                         .bold()
                                     HStack {
-                                        Button("All")  { }
-                                        Button("None") { }
+                                        Button("All")  {
+                                            viewModel.potraitscreenResolution = .all
+                                        }
+                                        Button("None") { 
+                                            viewModel.potraitscreenResolution = .none
+                                        }
                                     }
                                     .buttonStyle(.link)
                                 }
                                 .padding(.top, 5)
                                 Group {
-                                    Toggle("Potrait Standard", isOn: $viewModel.potraitscreenResolution.potraitStandard)
-                                    Toggle("720 x 1280", isOn: $viewModel.potraitscreenResolution.resolution720x1280)
-                                    Toggle("1080 x 1920", isOn: $viewModel.potraitscreenResolution.resolution1080x1920)
-                                    Toggle("1440 x 2560", isOn: $viewModel.potraitscreenResolution.resolution1440x2560)
-                                    Toggle("2160 x 3840", isOn: $viewModel.potraitscreenResolution.resolution2160x3840)
+                                    ForEach(Array(zip(FRPortraitScreenResolution.allOptions.indices, FRPortraitScreenResolution.allOptions)), id: \.0) { (i, option) in
+                                        Toggle(option, isOn: Binding<Bool>(get: {
+                                            viewModel.potraitscreenResolution.contains(FRPortraitScreenResolution(rawValue: 1 << i))
+                                        }, set: {
+                                            if $0 {
+                                                viewModel.potraitscreenResolution.insert(FRPortraitScreenResolution(rawValue: 1 << i))
+                                            } else {
+                                                viewModel.potraitscreenResolution.remove(FRPortraitScreenResolution(rawValue: 1 << i))
+                                            }
+                                            print(String(describing: viewModel.potraitscreenResolution))
+                                        }))
+                                    }
                                 }
                                 .toggleStyle(.checkbox)
                                 Divider()
                                     .overlay(Color.accentColor)
                             }
                             Group {
-                                Toggle("Other Resolution",   isOn: $viewModel.miscResolution.otherResolution)
-                                Toggle("Dynamic Resolution", isOn: $viewModel.miscResolution.dynamicResolution)
+                                ForEach(Array(zip(FRMiscResolution.allOptions.indices, FRMiscResolution.allOptions)), id: \.0) { (i, option) in
+                                    Toggle(option, isOn: Binding<Bool>(get: {
+                                        viewModel.miscResolution.contains(FRMiscResolution(rawValue: 1 << i))
+                                    }, set: {
+                                        if $0 {
+                                            viewModel.miscResolution.insert(FRMiscResolution(rawValue: 1 << i))
+                                        } else {
+                                            viewModel.miscResolution.remove(FRMiscResolution(rawValue: 1 << i))
+                                        }
+                                        print(String(describing: viewModel.miscResolution))
+                                    }))
+                                }
                             }
                             .toggleStyle(.checkbox)
                         }
                         FilterSection("Source", alignment: .leading) {
                             Group {
-                                Toggle("Official", isOn: $viewModel.source.official)
-                                Toggle("Workshop", isOn: $viewModel.source.workshop)
-                                Toggle("My Wallpapers", isOn: $viewModel.source.myWallpapers)
+                                ForEach(Array(zip(FRSource.allOptions.indices, FRSource.allOptions)), id: \.0) { (i, option) in
+                                    Toggle(option, isOn: Binding<Bool>(get: {
+                                        viewModel.source.contains(FRSource(rawValue: 1 << i))
+                                    }, set: {
+                                        if $0 {
+                                            viewModel.source.insert(FRSource(rawValue: 1 << i))
+                                        } else {
+                                            viewModel.source.remove(FRSource(rawValue: 1 << i))
+                                        }
+                                        print(String(describing: viewModel.source))
+                                    }))
+                                }
                             }
                             .toggleStyle(.checkbox)
                         }
                         FilterSection("Tags", alignment: .leading) {
                             HStack {
-                                Button("All")  { viewModel.tag = .all }
-                                Button("None") { viewModel.tag = .none }
+                                Button("All")  {
+                                    viewModel.tag = .all
+                                }
+                                Button("None") { 
+                                    viewModel.tag = .none
+                                }
                             }
                             .buttonStyle(.link)
                             Group {
