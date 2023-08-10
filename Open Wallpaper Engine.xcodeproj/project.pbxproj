@@ -56,6 +56,7 @@
 		5E32ABFD2A4D595D00A0EEEC /* FilterResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsView.swift; sourceTree = "<group>"; };
 		5E5460C62A83026D00655D85 /* wallpaper-with-windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallpaper-with-windows.png"; sourceTree = "<group>"; };
 		5E5460C72A83027400655D85 /* wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper.png; sourceTree = "<group>"; };
+		5E6091F12A83E85D00D4C36C /* AUTHORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AUTHORS.md; sourceTree = "<group>"; };
 		5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportPanels.swift; sourceTree = "<group>"; };
 		5E7665252A2DC30D00E0E4B4 /* WEProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WEProject.swift; sourceTree = "<group>"; };
 		5E7665272A2E076400E0E4B4 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 				5EF4C24C2A4C98FA009831E5 /* README.md */,
 				5EF4C24A2A4C9871009831E5 /* CNAME */,
 				5EF4C24B2A4C9872009831E5 /* LICENSE */,
+				5E6091F12A83E85D00D4C36C /* AUTHORS.md */,
 				5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */,
 				5EC47E8F2A2DB2E700120CCC /* Open Wallpaper EngineTests */,
 				5EC47E992A2DB2E700120CCC /* Open Wallpaper EngineUITests */,
