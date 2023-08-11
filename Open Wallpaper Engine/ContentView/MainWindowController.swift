@@ -21,13 +21,14 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     override init(window: NSWindow?) {
         super.init(window: NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [.titled, .closable, .miniaturizable, .resizable],
             backing: .buffered, defer: false))
         self.window.delegate = self
         self.window.isReleasedWhenClosed = false
         self.window.title = "Open Wallpaper Engine 0.1.0 - Unofficial Edition"
         self.window.titlebarAppearsTransparent = true
         self.window.setFrameAutosaveName("MainWindow")
+        self.window.isMovableByWindowBackground = true
         self.window.contentView = NSHostingView(rootView: ContentView(viewModel: AppDelegate.shared.contentViewModel)
             .environmentObject(AppDelegate.shared.globalSettingsViewModel))
     }

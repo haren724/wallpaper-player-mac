@@ -28,6 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
+        saveCurrentWallpaper()
+        AppDelegate.shared.setPlacehoderWallpaper(contentsOf: contentViewModel.selectedURL)
         
         // 创建主视窗
         self.mainWindowController = MainWindowController()
@@ -48,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.wallpaperWindow.orderFront(nil)
         
         // 显示主视窗
-        self.mainWindowController.showWindow(nil)
+//        self.mainWindowController.showWindow(nil)
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -61,6 +63,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
         
         return true
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
+            try! NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
+        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -124,11 +132,53 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.wallpaperWindow.canBecomeVisibleWithoutLogin = true
         self.wallpaperWindow.isReleasedWhenClosed = false
         
-        self.wallpaperWindow.contentViewController = WallpaperViewController()
+        self.wallpaperWindow.contentView = NSHostingView(
+            rootView: WallpaperView(viewModel: self.wallpaperViewModel)
+                .environmentObject(self.contentViewModel)
+        )
     }
     
     func windowWillClose(_ notification: Notification) {
         globalSettingsViewModel.reset()
+    }
+    
+    func saveCurrentWallpaper() {
+        var wallpaper: URL {
+            var osWallpaper: URL { NSWorkspace.shared.desktopImageURL(for: .main!)! }
+            if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
+                if wallpaper != osWallpaper {
+                    if wallpaper.lastPathComponent != "staticWP.tiff" {
+                        return wallpaper
+                    }
+                }
+            }
+            return osWallpaper
+        }
+        UserDefaults.standard.set(wallpaper, forKey: "OSWallpaper")
+    }
+    
+    func setPlacehoderWallpaper(contentsOf videoUrl: URL) {
+        let asset = AVAsset(url: videoUrl)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
+        
+        let time = CMTimeMake(value: 1, timescale: 1) // 第一帧的时间
+        imageGenerator.generateCGImagesAsynchronously(forTimes: [NSValue(time: time)]) { _, cgImage, _, _, error in
+            if let error = error {
+                print(error)
+            } else if let cgImage = cgImage {
+                let nsImage = NSImage(cgImage: cgImage, size: .zero)
+                if let data = nsImage.tiffRepresentation {
+                    do {
+                        let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appending(path: "staticWP.tiff")
+                        try data.write(to: url, options: .atomic)
+                        try NSWorkspace.shared.setDesktopImageURL(url, for: .main!)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
     }
 }
 

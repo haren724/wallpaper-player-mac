@@ -20,7 +20,19 @@ struct WallpaperView: View {
     @EnvironmentObject var contentViewModel: ContentViewModel
     
     var body: some View {
-        Text("Hello")
+        WallpaperPlayerView(url: $contentViewModel.selectedURL)
+    }
+}
+
+struct WallpaperPlayerView: NSViewControllerRepresentable {
+    @Binding var url: URL
+    
+    func makeNSViewController(context: Context) -> WallpaperViewController {
+        WallpaperViewController(url: url)
+    }
+    
+    func updateNSViewController(_ nsViewController: WallpaperViewController, context: Context) {
+        nsViewController.url = url
     }
 }
 
@@ -28,6 +40,29 @@ class WallpaperViewController: NSViewController {
     
     private var player: AVPlayer!
     private var playerView: AVPlayerView!
+    
+    private var _url: URL!
+    public var url: URL {
+        get {
+            self._url != nil ? _url : URL(fileURLWithPath: "")
+        }
+        set {
+            self._url = newValue
+            print(newValue)
+            self.player = AVPlayer(url: _url)
+            self.playerView.player = self.player
+            self.player.play()
+        }
+    }
+    
+    init(url: URL) {
+        super.init(nibName: nil, bundle: nil)
+        self._url = url
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.setAVPlayer()
@@ -60,12 +95,9 @@ class WallpaperViewController: NSViewController {
     }
     
     private func setAVPlayer() {
-        self.player = AVPlayer(url: Bundle.main.url(forResource: "sumeruWP_4", withExtension: "mp4")!)
         self.playerView = AVPlayerView()
         self.view = self.playerView
         self.view.frame = NSScreen.main!.frame
-        self.playerView.player = self.player
         self.playerView.videoGravity = .resizeAspectFill
-        self.player.play()
     }
 }

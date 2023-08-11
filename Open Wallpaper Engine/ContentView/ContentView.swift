@@ -30,11 +30,79 @@ extension Array: RawRepresentable where Element: Codable {
 class ContentViewModel: ObservableObject {
     @AppStorage("FilterReveal") var isFilterReveal = false
     @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
+    @AppStorage("SelectedIndex") var selectedIndex = 0
     
     @Published var importAlertPresented = false
-    @Published var isStaging = true
+    @Published var isStaging = false
     
     var importAlertError: WPImportError? = nil
+    
+    var urls: [URL] {
+        get {
+            if let urls = try? FileManager.default.contentsOfDirectory(
+                at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0],
+                includingPropertiesForKeys: nil,
+                options: [.skipsHiddenFiles]) {
+                var filteredURLs = [URL]()
+                for url in urls {
+                    if let files = try! FileWrapper(url: url).fileWrappers, files.contains(where: { (key, _) in
+                        if key == "project.json" {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }) {
+                        filteredURLs.append(url)
+                    }
+                }
+                return filteredURLs
+            } else {
+                return []
+            }
+        }
+        set {
+            
+        }
+    }
+    
+    var selectedURL: URL {
+        get {
+            if self.selectedIndex < self.urls.count {
+                if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
+                    return urls[self.selectedIndex].appending(path: selectedProject.file)
+                }
+            }
+            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+        }
+        set {
+            
+        }
+    }
+    
+    var selectedURLofGIF: URL {
+        if self.selectedIndex < self.urls.count {
+            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
+                return urls[self.selectedIndex].appending(path: selectedProject.preview)
+            }
+        }
+        return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+    }
+    
+    func selectedTitle(_ url: URL) -> String {
+        if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
+            return selectedProject.title
+        }
+        return "???"
+    }
+    
+    var selectedCurrentTitle: String {
+        if self.selectedIndex < self.urls.count {
+            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
+                return selectedProject.title
+            }
+        }
+        return "???"
+    }
     
     var wallpapers: [WEWallpaper] {
         get {
@@ -58,25 +126,60 @@ class ContentViewModel: ObservableObject {
 }
 
 struct GifImage: NSViewRepresentable {
-    var gifName: String
+    var gifName: String?
+    var gifUrl: URL?
     
-    func makeNSView(context: Context) -> some NSView {
+    init(_ gifName: String) {
+        self.gifName = gifName
+    }
+    
+    init(contentsOf url: URL) {
+        self.gifUrl = url
+    }
+    
+    func makeNSView(context: Context) -> NSImageView {
         let imageView = NSImageView(frame: NSRect(x: 407, y: 474, width: 92, height: 74))
         imageView.canDrawSubviewsIntoLayer = true
         imageView.imageScaling = .scaleProportionallyUpOrDown
         imageView.animates = true
-        if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
-            if let image = NSImage(contentsOf: url) {
+        
+        if let gifName = self.gifName {
+            if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
+                if let image = NSImage(contentsOf: url) {
+                    let gifRep = image.representations[0] as? NSBitmapImageRep
+                    gifRep?.setProperty(.loopCount, withValue: 0)
+                    imageView.image = image
+                }
+            }
+        }
+        if let gifUrl = self.gifUrl {
+            if let image = NSImage(contentsOf: gifUrl) {
                 let gifRep = image.representations[0] as? NSBitmapImageRep
                 gifRep?.setProperty(.loopCount, withValue: 0)
                 imageView.image = image
             }
         }
+        
         return imageView
     }
     
-    func updateNSView(_ nsView: NSViewType, context: Context) {
-        
+    func updateNSView(_ nsView: NSImageView, context: Context) {
+        if let gifName = self.gifName {
+            if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
+                if let image = NSImage(contentsOf: url) {
+                    let gifRep = image.representations[0] as? NSBitmapImageRep
+                    gifRep?.setProperty(.loopCount, withValue: 0)
+                    nsView.image = image
+                }
+            }
+        }
+        if let gifUrl = self.gifUrl {
+            if let image = NSImage(contentsOf: gifUrl) {
+                let gifRep = image.representations[0] as? NSBitmapImageRep
+                gifRep?.setProperty(.loopCount, withValue: 0)
+                nsView.image = image
+            }
+        }
     }
 }
 
@@ -241,13 +344,18 @@ struct ContentView: View {
                                 // MARK: Items
                                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))],
                                           alignment: .leading) {
-                                    ForEach(0..<3) { index in
-                                        GifImage(gifName: "preview")
+                                    ForEach(Array(zip(viewModel.urls.indices, viewModel.urls)), id: \.0) { (index, url) in
+                                        GifImage(contentsOf: { (url: URL) in
+                                            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
+                                                return url.appending(path: selectedProject.preview)
+                                            }
+                                            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+                                        }(url))
                                             .frame(maxWidth: 150, maxHeight: 150)
                                             .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
                                             .clipShape(Rectangle())
                                             .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
-                                            .selected(index == selectedIndex)
+                                            .selected(index == viewModel.selectedIndex)
                                             .animation(.spring(), value: imageScaleIndex == index ? 1.2 : 1.0)
                                             .overlay {
                                                 VStack {
@@ -258,7 +366,7 @@ struct ContentView: View {
                                                             .foregroundStyle(Color.black)
                                                             .opacity(imageScaleIndex == index ? 0.4 : 0.2)
                                                             .animation(.default, value: imageScaleIndex)
-                                                        Text("Sumeru【Genshin Impact】")
+                                                        Text(viewModel.selectedTitle(url))
                                                             .font(.footnote)
                                                             .lineLimit(2)
                                                             .multilineTextAlignment(.center)
@@ -268,7 +376,7 @@ struct ContentView: View {
                                             }
                                             .onTapGesture {
                                                 withAnimation(.default.speed(2)) {
-                                                    selectedIndex = index
+                                                    viewModel.selectedIndex = index
                                                 }
                                             }
                                             .onHover { onHover in
@@ -278,39 +386,40 @@ struct ContentView: View {
                                                 }
                                             }
                                     }
-                                    if viewModel.wallpapers.isEmpty {
+                                    if viewModel.urls.isEmpty {
                                         VStack {
-                                            Text("Drag here to import wallpapers").font(.title)
+                                            Text("Import")
+                                                .font(.title)
                                                 .lineLimit(nil)
                                         }
                                         .padding()
                                         .frame(width: 200, height: 200)
                                         .background(Color(nsColor: .controlBackgroundColor))
                                         .onTapGesture {
-                                            print(String(describing: viewModel.wallpapers.first))
+                                            AppDelegate.shared.openImportFromFolderPanel()
                                         }
-                                        .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
-                                            isParseFinished = false
-                                            // 确认拖入文件数量只有一个
-                                            if providers.count != 1 { return false }
-                                            let folder = providers.first!
-                                            // 确认拖入文件为`文件夹`类型
-                                            if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
-                                            // 解析文件夹目录位置
-                                            folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
-                                                let projectUrl = (item as! URL)
-                                                self.projectUrl = projectUrl
-                                                do {
-                                                    // 根据解析出的目录下的project.json文件得到壁纸信息
-                                                    let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
-                                                    project = try JSONDecoder().decode(WEProject.self, from: projectData)
-                                                    isParseFinished = true
-                                                } catch {
-                                                    return
-                                                }
-                                            }
-                                            return true
-                                        }
+//                                        .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
+//                                            isParseFinished = false
+//                                            // 确认拖入文件数量只有一个
+//                                            if providers.count != 1 { return false }
+//                                            let folder = providers.first!
+//                                            // 确认拖入文件为`文件夹`类型
+//                                            if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
+//                                            // 解析文件夹目录位置
+//                                            folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
+//                                                let projectUrl = (item as! URL)
+//                                                self.projectUrl = projectUrl
+//                                                do {
+//                                                    // 根据解析出的目录下的project.json文件得到壁纸信息
+//                                                    let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
+//                                                    project = try JSONDecoder().decode(WEProject.self, from: projectData)
+//                                                    isParseFinished = true
+//                                                } catch {
+//                                                    return
+//                                                }
+//                                            }
+//                                            return true
+//                                        }
                                     } else {
                                         
                                     }
@@ -323,7 +432,7 @@ struct ContentView: View {
                                     //                                            .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
                                     //                                            .clipShape(Rectangle())
                                     //                                            .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
-                                    //                                            .selected(index == selectedIndex ?? 0)
+                                    //                                            .selected(index == viewModel.selectedIndex ?? 0)
                                     //                                            .animation(.spring, value: imageScaleIndex == index ? 1.2 : 1.0)
                                     //                                    VStack {
                                     //                                        Spacer()
@@ -343,7 +452,7 @@ struct ContentView: View {
                                     //                                }
                                     //                                .onTapGesture {
                                     //                                    withAnimation(.default.speed(2)) {
-                                    //                                        selectedIndex = index
+                                    //                                        viewModel.selectedIndex = index
                                     //                                    }
                                     //                                }
                                     //                                .onHover { onHover in
@@ -356,6 +465,7 @@ struct ContentView: View {
                                     //                        .padding(.trailing)
                                     //                        .frame(maxWidth: .infinity)
                                 }
+                                .padding(.trailing)
                             }
                             .contextMenu {
                                 Section {
@@ -474,8 +584,8 @@ struct ContentView: View {
                         ScrollView {
                             VStack(spacing: 16) {
                                 VStack {
-                                    GifImage(gifName: "preview")
-                                    Text("Sumeru 【Genshin Impact】")
+                                    GifImage(contentsOf: viewModel.selectedURLofGIF)
+                                    Text(viewModel.selectedCurrentTitle)
                                         .lineLimit(1)
                                 }
                                 HStack {
@@ -605,9 +715,9 @@ struct ContentView: View {
                                     .tint(.red)
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding([.horizontal, .top])
                         }
-                        .padding(.top)
+
                         HStack {
                             Spacer()
                             Button {
@@ -721,7 +831,6 @@ struct ContentView: View {
             .frame(width: 520, height: 450)
         }
         .frame(minWidth: 1000, minHeight: 400, idealHeight: 600)
-        .padding(.top)
     }
 }
 

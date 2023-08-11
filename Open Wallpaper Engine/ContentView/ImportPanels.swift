@@ -55,10 +55,12 @@ extension AppDelegate {
                 return
             }
             
-            try! FileManager.default.copyItem(at: url, to: FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appending(path: url.lastPathComponent))
-            
             DispatchQueue.main.async {
-                self.contentViewModel.wallpaperUrls.append(contentsOf: panel.urls)
+                try? FileManager.default.copyItem(
+                    at: url,
+                    to: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        .appending(path: url.lastPathComponent)
+                )
             }
         }
     }

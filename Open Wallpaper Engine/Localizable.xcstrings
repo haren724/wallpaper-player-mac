@@ -102,6 +102,7 @@
       }
     },
     "720 x 1280" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -112,6 +113,7 @@
       }
     },
     "1080 x 1920" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -122,6 +124,7 @@
       }
     },
     "1440 x 2560" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -141,37 +144,7 @@
         }
       }
     },
-    "2160 x 3840" : {
-
-    },
-    "2560 x 1080" : {
-
-    },
-    "3440 x 1440" : {
-
-    },
-    "3840 x 1080" : {
-
-    },
     "3840 x 2160" : {
-
-    },
-    "4096 x 768" : {
-
-    },
-    "5120 x 1440" : {
-
-    },
-    "5760 x 1080" : {
-
-    },
-    "7680 x 1440" : {
-
-    },
-    "7680 x 2160" : {
-
-    },
-    "11520 x 2160" : {
 
     },
     "Add to Favorites" : {
@@ -394,6 +367,7 @@
       }
     },
     "Drag here to import wallpapers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -412,12 +386,6 @@
           }
         }
       }
-    },
-    "Dual Standard" : {
-
-    },
-    "Dynamic Resolution" : {
-
     },
     "Edit" : {
       "localizations" : {
@@ -498,9 +466,6 @@
         }
       }
     },
-    "Hello" : {
-
-    },
     "High" : {
       "localizations" : {
         "zh-Hans" : {
@@ -550,6 +515,9 @@
           }
         }
       }
+    },
+    "Import" : {
+
     },
     "Import Wallpapers from Steam Workshop" : {
 
@@ -666,6 +634,7 @@
       }
     },
     "My Wallpapers" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -697,9 +666,6 @@
           }
         }
       }
-    },
-    "Official" : {
-
     },
     "OK" : {
       "localizations" : {
@@ -767,9 +733,6 @@
         }
       }
     },
-    "Other Resolution" : {
-
-    },
     "Pause" : {
       "localizations" : {
         "zh-Hans" : {
@@ -814,9 +777,6 @@
 
     },
     "Potrait Monitor / Phone" : {
-
-    },
-    "Potrait Standard" : {
 
     },
     "Properties" : {
@@ -993,12 +953,6 @@
         }
       }
     },
-    "Sumeru 【Genshin Impact】" : {
-
-    },
-    "Sumeru【Genshin Impact】" : {
-
-    },
     "Super High Performance" : {
 
     },
@@ -1026,6 +980,7 @@
       }
     },
     "Triple Standard" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1067,9 +1022,6 @@
           }
         }
       }
-    },
-    "Ultrawide Standard" : {
-
     },
     "Unsubscribe" : {
       "localizations" : {
