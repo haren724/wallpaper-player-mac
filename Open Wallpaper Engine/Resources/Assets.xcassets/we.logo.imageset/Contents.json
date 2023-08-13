@@ -1,19 +1,14 @@
 {
   "images" : [
     {
-      "filename" : "icons8-wallpaper-engine-48(@1x).png",
-      "idiom" : "universal",
+      "filename" : "8690b2ede34b3c98175e93c8ddec0961.png",
+      "idiom" : "mac",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-wallpaper-engine-96(@2x).png",
-      "idiom" : "universal",
+      "filename" : "992522fdde859e532b1d063fbe3f3762.png",
+      "idiom" : "mac",
       "scale" : "2x"
-    },
-    {
-      "filename" : "icons8-wallpaper-engine-144(@3x).png",
-      "idiom" : "universal",
-      "scale" : "3x"
     }
   ],
   "info" : {
