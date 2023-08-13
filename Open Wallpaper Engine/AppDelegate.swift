@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
         saveCurrentWallpaper()
-        AppDelegate.shared.setPlacehoderWallpaper(contentsOf: contentViewModel.selectedURL)
+//        AppDelegate.shared.setPlacehoderWallpaper(contentsOf: contentViewModel.selectedURL)
         
         // 创建主视窗
         self.mainWindowController = MainWindowController()
