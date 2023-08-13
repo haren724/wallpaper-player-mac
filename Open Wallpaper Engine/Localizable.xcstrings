@@ -499,6 +499,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "High" : {
       "localizations" : {
         "zh-Hans" : {

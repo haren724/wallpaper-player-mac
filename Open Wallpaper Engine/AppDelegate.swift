@@ -88,7 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     @objc func pause() {
-        (self.wallpaperWindow.contentViewController as? WallpaperViewController)?.pause()
+        (self.wallpaperWindow.contentViewController as? VideoWallpaperViewController)?.pause()
     }
     
     @MainActor @objc func toggleFilter() {
