@@ -104,17 +104,6 @@ class ContentViewModel: ObservableObject {
         return "???"
     }
     
-    var wallpapers: [WEWallpaper] {
-        get {
-            if wallpaperUrls.isEmpty {
-                
-            }
-            let url = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appending(path: "2816680522")
-            guard let wallpaper = try? WEWallpaper(wallpaperURL: url) else { return [] }
-            return [wallpaper]
-        }
-    }
-    
     func toggleFilter() {
         isFilterReveal.toggle()
     }
@@ -226,6 +215,8 @@ struct ContentView: View {
     @EnvironmentObject var globalSettingsViewModel: GlobalSettingsViewModel
     
     @ObservedObject var viewModel: ContentViewModel
+    
+    @ObservedObject var wallpapersViewModel: WallpaperViewModel
     @StateObject var filterResultsViewModel = FilterResultsViewModel()
     
     @State var isDropTargeted = false
@@ -346,7 +337,8 @@ struct ContentView: View {
                                           alignment: .leading) {
                                     ForEach(Array(zip(viewModel.urls.indices, viewModel.urls)), id: \.0) { (index, url) in
                                         GifImage(contentsOf: { (url: URL) in
-                                            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
+                                            if let selectedProject = try? JSONDecoder()
+                                            .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
                                                 return url.appending(path: selectedProject.preview)
                                             }
                                             return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
@@ -856,7 +848,7 @@ extension View {
 // MARK: -
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: .init())
+        ContentView(viewModel: .init(), wallpapersViewModel: .init())
             .environmentObject(GlobalSettingsViewModel())
     }
 }
