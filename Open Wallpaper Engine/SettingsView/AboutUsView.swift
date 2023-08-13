@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+extension AppDelegate {
+    @objc func showAboutUs() {
+        let window = NSWindow()
+        window.styleMask = [.closable, .titled]
+        window.isReleasedWhenClosed = false
+        window.title = ""
+        window.contentView = NSHostingView(rootView: AboutUsView())
+        window.center()
+        window.makeKeyAndOrderFront(nil)
+    }
+}
+
 struct AboutUsView: View {
     var body: some View {
         VStack(spacing: 50) {
@@ -28,6 +40,7 @@ struct AboutUsView: View {
             }
         }
         .padding()
+        .frame(width: 400, height: 300)
     }
 }
 

@@ -14,6 +14,8 @@ extension AppDelegate {
         appMenu.submenu = NSMenu(title: "Open Wallpaper Engine")
         appMenu.submenu?.items = [
             // 在此处添加子菜单项
+            .init(title: "About Open Wallpaper Engine", action: #selector(self.showAboutUs), keyEquivalent: ""),
+            .separator(),
             .init(title: "Settings...", action: #selector(openSettingsWindow), keyEquivalent: ","),
             .separator(),
             .init(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"),
