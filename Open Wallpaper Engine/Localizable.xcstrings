@@ -170,6 +170,9 @@
         }
       }
     },
+    "Adjust Menu Bar Color" : {
+
+    },
     "Advanced" : {
       "localizations" : {
         "zh-Hans" : {
@@ -213,6 +216,9 @@
     "Appearance" : {
 
     },
+    "Apple AVKit" : {
+
+    },
     "Application Rules" : {
 
     },
@@ -235,6 +241,12 @@
           }
         }
       }
+    },
+    "Audio Output" : {
+
+    },
+    "Auto" : {
+
     },
     "Automatic" : {
       "localizations" : {
@@ -266,6 +278,9 @@
         }
       }
     },
+    "Below Normal" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "zh-Hans" : {
@@ -285,6 +300,9 @@
           }
         }
       }
+    },
+    "Chinese Simplified" : {
+
     },
     "Choose Display" : {
       "localizations" : {
@@ -315,6 +333,9 @@
           }
         }
       }
+    },
+    "Dark" : {
+
     },
     "Developer" : {
       "localizations" : {
@@ -403,6 +424,12 @@
     "Enabled" : {
 
     },
+    "English" : {
+
+    },
+    "Errors Only" : {
+
+    },
     "Everyone" : {
       "localizations" : {
         "zh-Hans" : {
@@ -446,6 +473,9 @@
         }
       }
     },
+    "Follow System" : {
+
+    },
     "FPS" : {
       "localizations" : {
         "zh-Hans" : {
@@ -455,6 +485,9 @@
           }
         }
       }
+    },
+    "Fully take over" : {
+
     },
     "Group" : {
       "localizations" : {
@@ -542,6 +575,9 @@
         }
       }
     },
+    "Language" : {
+
+    },
     "Laptop on battery" : {
       "localizations" : {
         "zh-Hans" : {
@@ -561,6 +597,9 @@
           }
         }
       }
+    },
+    "Light" : {
+
     },
     "Load" : {
       "localizations" : {
@@ -583,6 +622,9 @@
       }
     },
     "Loading..." : {
+
+    },
+    "Log Level" : {
 
     },
     "Low" : {
@@ -667,6 +709,9 @@
         }
       }
     },
+    "Normal" : {
+
+    },
     "OK" : {
       "localizations" : {
         "zh-Hans" : {
@@ -676,6 +721,9 @@
           }
         }
       }
+    },
+    "Only enabled when app is running" : {
+
     },
     "Open Wallpaper" : {
       "localizations" : {
@@ -743,6 +791,9 @@
         }
       }
     },
+    "Pause when VRAM is exhausted" : {
+
+    },
     "Playback" : {
       "localizations" : {
         "zh-Hans" : {
@@ -779,6 +830,9 @@
     "Potrait Monitor / Phone" : {
 
     },
+    "Process Piority" : {
+
+    },
     "Properties" : {
       "localizations" : {
         "zh-Hans" : {
@@ -788,6 +842,9 @@
           }
         }
       }
+    },
+    "Protect against crashes" : {
+
     },
     "Quality" : {
       "localizations" : {
@@ -813,6 +870,9 @@
 
     },
     "Reflections" : {
+
+    },
+    "Reload when changing output device" : {
 
     },
     "Remove Wallpaper" : {
@@ -849,6 +909,12 @@
       }
     },
     "Resolution" : {
+
+    },
+    "Restart after crashing" : {
+
+    },
+    "Safe start after hibernation" : {
 
     },
     "Save" : {
@@ -940,6 +1006,9 @@
     "Split" : {
 
     },
+    "Start with macOS" : {
+
+    },
     "Stop (free memory)" : {
 
     },
@@ -967,6 +1036,9 @@
       }
     },
     "Texture Resolution" : {
+
+    },
+    "Theme" : {
 
     },
     "Triple Monitor" : {
@@ -1033,6 +1105,9 @@
         }
       }
     },
+    "Verbose" : {
+
+    },
     "version: v0.1" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1044,6 +1119,9 @@
       }
     },
     "Video" : {
+
+    },
+    "Video Framework" : {
 
     },
     "View" : {
