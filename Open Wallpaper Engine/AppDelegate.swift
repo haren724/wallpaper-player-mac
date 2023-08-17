@@ -66,9 +66,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     func applicationWillTerminate(_ notification: Notification) {
-        if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
-            try! NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
-        }
+//        if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
+//            try! NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
+//        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
