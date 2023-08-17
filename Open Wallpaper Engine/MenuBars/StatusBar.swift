@@ -8,6 +8,22 @@
 import Cocoa
 
 extension AppDelegate {
+    @objc func mute() {
+        self.wallpaperViewModel.playVolume = 0
+    }
+    
+    @objc func unmute() {
+        self.wallpaperViewModel.playVolume = self.wallpaperViewModel.lastPlayVolume
+    }
+    
+    @objc func pause() {
+        self.wallpaperViewModel.playRate = 0
+    }
+    
+    @objc func resume() {
+        self.wallpaperViewModel.playRate = self.wallpaperViewModel.lastPlayRate
+    }
+    
     func setStatusMenu() {
         let menu = NSMenu()
         menu.items = [
@@ -22,7 +38,7 @@ extension AppDelegate {
             .init(title: "Support & FAQ", systemImage: "person.fill.questionmark", action: nil, keyEquivalent: ""),
             .separator(),
             .init(title: "Take Screenshot", systemImage: "camera.fill", action: nil, keyEquivalent: ""),
-            .init(title: "Mute", systemImage: "speaker.slash.fill", action: nil, keyEquivalent: ""),
+            .init(title: "Mute", systemImage: "speaker.slash.fill", action: #selector(AppDelegate.shared.mute), keyEquivalent: ""),
             .init(title: "Pause", systemImage: "pause.fill", action: #selector(pause), keyEquivalent: ""),
             .init(title: "Quit", systemImage: "power", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         ]
@@ -31,7 +47,12 @@ extension AppDelegate {
         self.statusItem.menu = menu
         
         if let button = self.statusItem.button {
-            button.image = NSImage(systemSymbolName: "play.desktopcomputer", accessibilityDescription: nil)
+            if let image = NSImage(named: "we.logo") {
+                image.isTemplate = true
+                button.image = image
+            } else {
+                button.image = NSImage(systemSymbolName: "play.desktopcomputer", accessibilityDescription: nil)
+            }
         }
     }
 }

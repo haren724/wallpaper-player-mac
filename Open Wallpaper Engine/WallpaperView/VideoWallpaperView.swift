@@ -9,22 +9,79 @@ import Cocoa
 import SwiftUI
 import AVKit
 
-struct VideoWallpaperView: NSViewControllerRepresentable {
-    @Binding var url: URL
+struct VideoWallpaperView: NSViewRepresentable {
+    @ObservedObject var wallpaperViewModel: WallpaperViewModel
+    @ObservedObject var viewModel: VideoWallpaperViewModel
     
-    func makeNSViewController(context: Context) -> VideoWallpaperViewController {
-        VideoWallpaperViewController(url: url)
+    init(viewModel: WallpaperViewModel, url: URL) {
+        self.wallpaperViewModel = viewModel
+        self.viewModel = VideoWallpaperViewModel(url: url)
     }
     
-    func updateNSViewController(_ nsViewController: VideoWallpaperViewController, context: Context) {
-        nsViewController.url = url
+    func makeNSView(context: Context) -> AVPlayerView {
+        let view = AVPlayerView()
+        view.player = viewModel.player
+        
+        // make the video boundary extends to fit the full screen without black background border
+        view.videoGravity = .resizeAspectFill
+        
+        // hide any unneeded ui component, we want just the video output
+        view.controlsStyle = .none
+        
+        // make sure this video player won't show any info in the system control center
+        view.updatesNowPlayingInfoCenter = false
+        
+        // mark the flag as unneeded, improve performance and reduce power drain
+        view.allowsVideoFrameAnalysis = false
+        
+        return view
     }
+    
+    func updateNSView(_ nsView: AVPlayerView, context: Context) {
+        if nsView.player != viewModel.player {
+            nsView.player = viewModel.player
+        }
+        
+        nsView.player?.rate = wallpaperViewModel.playRate
+        nsView.player?.volume = wallpaperViewModel.playVolume
+    }
+    
+//    func makeNSViewController(context: Context) -> VideoWallpaperViewController {
+//        VideoWallpaperViewController(url: url)
+//    }
+//
+//    func updateNSViewController(_ nsViewController: VideoWallpaperViewController, context: Context) {
+//        if nsViewController.url != url {
+//            nsViewController.url = url
+//        }
+//
+//        nsViewController.player.rate = viewModel.playRate
+//        nsViewController.player.volume = viewModel.playVolume
+//    }
 }
+
+//struct VideoWallpaperView: NSViewControllerRepresentable {
+//    @ObservedObject var viewModel: WallpaperViewModel
+//    @Binding var url: URL
+//    
+//    func makeNSViewController(context: Context) -> VideoWallpaperViewController {
+//        VideoWallpaperViewController(url: url)
+//    }
+//    
+//    func updateNSViewController(_ nsViewController: VideoWallpaperViewController, context: Context) {
+//        if nsViewController.url != url {
+//            nsViewController.url = url
+//        }
+//        
+//        nsViewController.player.rate = viewModel.playRate
+//        nsViewController.player.volume = viewModel.playVolume
+//    }
+//}
 
 class VideoWallpaperViewController: NSViewController {
     
-    private var player: AVPlayer!
-    private var playerView: AVPlayerView!
+    public var player = AVPlayer()
+    public var playerView: AVPlayerView!
     
     private var _url: URL!
     public var url: URL {
@@ -56,14 +113,6 @@ class VideoWallpaperViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-    }
-    
-    public func pause() {
-        self.player.pause()
-    }
-    
-    public func resume() {
-        self.player.play()
     }
     
     @objc private func playerDidFinishPlaying(_ notification: Notification) {

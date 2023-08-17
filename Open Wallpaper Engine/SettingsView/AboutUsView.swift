@@ -23,8 +23,8 @@ struct AboutUsView: View {
     var body: some View {
         VStack(spacing: 50) {
             HStack {
-                Image("we.logo")
-                Divider().frame(maxHeight: 80)
+                Image(nsImage: NSImage(named: "AppIcon")!)
+                Divider().frame(maxHeight: 100)
                 VStack(alignment: .leading) {
                     Text("Open Wallpaper Engine").bold().font(.title)
                     Text("Wallpaper Engine for Mac").font(.footnote)
@@ -39,7 +39,6 @@ struct AboutUsView: View {
                 .font(.footnote)
             }
         }
-        .padding()
         .frame(width: 400, height: 300)
     }
 }

@@ -87,10 +87,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    @objc func pause() {
-        (self.wallpaperWindow.contentViewController as? VideoWallpaperViewController)?.pause()
-    }
-    
     @MainActor @objc func toggleFilter() {
         self.contentViewModel.isFilterReveal.toggle()
     }

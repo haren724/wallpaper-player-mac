@@ -31,7 +31,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         self.window.isMovableByWindowBackground = true
         self.window.contentView = NSHostingView(rootView: ContentView(
                 viewModel: AppDelegate.shared.contentViewModel,
-                wallpapersViewModel: AppDelegate.shared.wallpaperViewModel
+                wallpaperViewModel: AppDelegate.shared.wallpaperViewModel
             ).environmentObject(AppDelegate.shared.globalSettingsViewModel)
         )
     }
