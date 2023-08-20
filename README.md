@@ -5,6 +5,11 @@ Open Wallpaper Engine
 
 An open source wallpaper engine for mac (which is not relative to the existing one on Steam)
 
+<p align="center">
+<a href="http://haren724.top/documentation/open_wallpaper_engine">Documentation</a>
+·
+<a href="https://github.com/haren724/open-wallpaper-engine-mac/blob/main/AUTHORS.md">Authors</a>
+</p>
 
 Menu
 =================
@@ -89,4 +94,6 @@ Then press `command ⌘ + R` to build and run
 
 
 ## Documentation
-This project's documentation can be build with `docc`. I'll upload the documentation link automatically built by github action here later.
+(newly update): a testing [DocC Documentation](http://haren724.top/documentation/open_wallpaper_engine) is currently on stage. Check it anytime if you need.
+
+(old): This project's documentation can be build with `docc`. I'll upload the documentation link automatically built by github action here later.
