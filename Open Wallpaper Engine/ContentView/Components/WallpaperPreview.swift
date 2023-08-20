@@ -22,6 +22,9 @@ struct WallpaperPreview: SubviewOfContentView {
                 VStack(spacing: 16) {
                     VStack {
                         GifImage(contentsOf: viewModel.selectedURLofGIF)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 280, height: 280)
                         Text(viewModel.selectedCurrentTitle)
                             .lineLimit(1)
                     }

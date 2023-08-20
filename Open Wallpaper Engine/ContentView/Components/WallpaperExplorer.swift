@@ -49,6 +49,7 @@ struct WallpaperExplorer: SubviewOfContentView {
                             }
                             return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
                         }(url))
+                        .resizable()
                         .frame(maxWidth: 150, maxHeight: 150)
                         .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
                         .clipShape(Rectangle())
