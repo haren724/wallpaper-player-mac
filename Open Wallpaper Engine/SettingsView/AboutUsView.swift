@@ -31,7 +31,7 @@ struct AboutUsView: View {
                 }
             }
             VStack(spacing: 20) {
-                Text("version: v0.1")
+                Text("version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String)")
                 HStack {
                     Text("Made with ❤️ by")
                     Link("@haren724", destination: URL(string: "https://github.com/haren724")!)

@@ -25,7 +25,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered, defer: false))
         self.window.delegate = self
         self.window.isReleasedWhenClosed = false
-        self.window.title = "Open Wallpaper Engine 0.1.0 - Unofficial Edition"
+        self.window.title = "Open Wallpaper Engine \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String) - Unofficial Edition"
         self.window.titlebarAppearsTransparent = true
         self.window.setFrameAutosaveName("MainWindow")
         self.window.isMovableByWindowBackground = true
