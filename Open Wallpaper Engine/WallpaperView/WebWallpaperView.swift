@@ -13,6 +13,7 @@ struct WebWallpaperView: View {
     }
 }
 
+@available(macOS 14, *)
 #Preview {
     WebWallpaperView()
 }

@@ -69,3 +69,10 @@ struct TopTabBar: SubviewOfContentView {
         }
     }
 }
+
+@available(macOS 14, *)
+#Preview {
+    TopTabBar(contentViewModel: ContentViewModel())
+        .padding()
+        .frame(width: 800)
+}
