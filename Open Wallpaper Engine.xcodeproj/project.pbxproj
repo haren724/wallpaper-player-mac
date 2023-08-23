@@ -41,6 +41,8 @@
 		5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47EA92A2DB32900120CCC /* ContentView.swift */; };
 		5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */; };
 		5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */; };
+		5EDF1E142A93B06B006617EA /* WorkingInProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF1E132A93B06B006617EA /* WorkingInProgress.swift */; };
+		5EDF1E162A93B4B6006617EA /* WallpaperDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF1E152A93B4B6006617EA /* WallpaperDiscover.swift */; };
 		5EF28EBF2A8986AC0013ABBE /* WallpaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF28EBE2A8986AC0013ABBE /* WallpaperViewModel.swift */; };
 		5EF28EC12A8990D90013ABBE /* VideoWallpaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF28EC02A8990D90013ABBE /* VideoWallpaperViewModel.swift */; };
 		5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFBB0BA2A2F10EA00E39BEC /* main.swift */; };
@@ -110,6 +112,8 @@
 		5EC47EA92A2DB32900120CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperView.swift; sourceTree = "<group>"; };
 		5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5EDF1E132A93B06B006617EA /* WorkingInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingInProgress.swift; sourceTree = "<group>"; };
+		5EDF1E152A93B4B6006617EA /* WallpaperDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDiscover.swift; sourceTree = "<group>"; };
 		5EF28EBE2A8986AC0013ABBE /* WallpaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperViewModel.swift; sourceTree = "<group>"; };
 		5EF28EC02A8990D90013ABBE /* VideoWallpaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWallpaperViewModel.swift; sourceTree = "<group>"; };
 		5EF4C24A2A4C9871009831E5 /* CNAME */ = {isa = PBXFileReference; lastKnownFileType = text; path = CNAME; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				5E66A0EB2A8BAA6500EE79D6 /* ContextMenus */,
 				5E66A0D92A8ADECC00EE79D6 /* TopTabBar.swift */,
 				5E66A0E52A8BA69B00EE79D6 /* WallpaperExplorer.swift */,
+				5EDF1E152A93B4B6006617EA /* WallpaperDiscover.swift */,
 				5E66A0E72A8BA95600EE79D6 /* WallpaperPreview.swift */,
 				5E66A0DC2A8ADF7C00EE79D6 /* ExplorerTopBar.swift */,
 				5E66A0EC2A8BABAB00EE79D6 /* DisplaySettings.swift */,
@@ -263,6 +268,7 @@
 			children = (
 				5EFBB0BA2A2F10EA00E39BEC /* main.swift */,
 				5E9D40432A2EC68600AB8A0C /* AppDelegate.swift */,
+				5EDF1E122A93B026006617EA /* GlobalComponents */,
 				5EFC591B2A81ABCF005F97E2 /* MenuBars */,
 				5E98F6C82A826E2700C12E34 /* ContentView */,
 				5E98F6CA2A826E8B00C12E34 /* SettingsView */,
@@ -300,6 +306,14 @@
 				5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */,
 			);
 			path = "Open Wallpaper EngineUITests";
+			sourceTree = "<group>";
+		};
+		5EDF1E122A93B026006617EA /* GlobalComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5EDF1E132A93B06B006617EA /* WorkingInProgress.swift */,
+			);
+			path = GlobalComponents;
 			sourceTree = "<group>";
 		};
 		5EEE8D5D2A7501C800DCE41A /* resources */ = {
@@ -458,6 +472,7 @@
 			files = (
 				5E66A0EA2A8BAA5400EE79D6 /* ExplorerGlobalMenu.swift in Sources */,
 				5E9D40442A2EC68600AB8A0C /* AppDelegate.swift in Sources */,
+				5EDF1E142A93B06B006617EA /* WorkingInProgress.swift in Sources */,
 				5EB152A12A82ADEB007EA845 /* Open_Wallpaper_Engine.docc in Sources */,
 				5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */,
 				5E7665262A2DC30E00E0E4B4 /* WEProject.swift in Sources */,
@@ -480,6 +495,7 @@
 				5EA310FC2A88E116001A65F4 /* SceneWallpaperView.swift in Sources */,
 				5E32ABFE2A4D595D00A0EEEC /* FilterResults.swift in Sources */,
 				5EAF3F722A870ED400F85685 /* GeneralPage.swift in Sources */,
+				5EDF1E162A93B4B6006617EA /* WallpaperDiscover.swift in Sources */,
 				5E66A0DD2A8ADF7C00EE79D6 /* ExplorerTopBar.swift in Sources */,
 				5EAF3F742A87110700F85685 /* PluginsPage.swift in Sources */,
 				5EDEBA5E2A2E2A7B003470CB /* SettingsView.swift in Sources */,
@@ -663,6 +679,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Open-Wallpaper-Engine-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -698,6 +715,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Open-Wallpaper-Engine-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
