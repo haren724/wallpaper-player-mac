@@ -39,7 +39,7 @@ struct WallpaperExplorer: SubviewOfContentView {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 50)
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150, maximum: 200))], alignment: .leading) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: viewModel.explorerIconSize, maximum: viewModel.explorerIconSize * 2))], alignment: .leading) {
                     ForEach(Array(zip(wallpaperViewModel.wallpapers, zip(viewModel.urls.indices, viewModel.urls))), id: \.1.0) { (wallpaper, legacy) in
                         let (index, url) = legacy
                         GifImage(contentsOf: { (url: URL) in
@@ -50,7 +50,6 @@ struct WallpaperExplorer: SubviewOfContentView {
                             return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
                         }(url))
                         .resizable()
-                        .frame(maxWidth: 150, maxHeight: 150)
                         .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
                         .clipShape(Rectangle())
                         .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
@@ -70,6 +69,7 @@ struct WallpaperExplorer: SubviewOfContentView {
                                         .lineLimit(2)
                                         .multilineTextAlignment(.center)
                                         .foregroundStyle(Color(white: imageScaleIndex == index ? 0.7 : 0.9))
+                                        .padding(4)
                                 }
                             }
                         }
@@ -84,6 +84,7 @@ struct WallpaperExplorer: SubviewOfContentView {
                                 imageScaleIndex = index
                             }
                         }
+                        .aspectRatio(contentMode: .fit)
                     }
                 }
                           .padding(.trailing)

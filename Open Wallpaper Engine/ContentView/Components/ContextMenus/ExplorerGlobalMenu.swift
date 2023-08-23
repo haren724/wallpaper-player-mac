@@ -7,11 +7,14 @@
 
 import SwiftUI
 
-struct ExplorerGlobalMenu: View {
+struct ExplorerGlobalMenu: SubviewOfContentView {
+    
+    @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
     
-    init(wallpaperViewModel: WallpaperViewModel) {
+    init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.wallpaperViewModel = wallpaperViewModel
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -39,17 +42,14 @@ struct ExplorerGlobalMenu: View {
                 } label: {
                     Label("Open Wallpapers Folder in Finder", systemImage: "folder.badge.gearshape")
                 }
-                Picker("View", selection: .constant(0)) {
+                Menu("View") {
                     Section {
-                        Button("Small Icons") {
-                            
+                        Picker("Icon Size", selection: $viewModel.explorerIconSize) {
+                            Text("Small Icons").tag(Double(100))
+                            Text("Medium Icons").tag(Double(125))
+                            Text("Large Icons").tag(Double(150))
                         }
-                        Button("Small Icons") {
-                            
-                        }
-                        Button("Small Icons") {
-                            
-                        }
+                        .pickerStyle(.inline)
                     }
                     Section {
                         Picker("Titles per page", selection: $wallpaperViewModel.wallpapersPerPage) {
@@ -59,10 +59,10 @@ struct ExplorerGlobalMenu: View {
                             Text("1 per page (developer)").tag(1)
                             Text("1 per page (developer)").tag(2)
                         }
+                        .pickerStyle(.inline)
                     }
                 }
             }
             .labelStyle(.titleAndIcon)
-        
     }
 }

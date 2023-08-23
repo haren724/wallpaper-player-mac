@@ -12,6 +12,8 @@ class ContentViewModel: ObservableObject {
     @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
     @AppStorage("SelectedIndex") var selectedIndex = 0
     
+    @AppStorage("ExplorerIconSize") var explorerIconSize: Double = 200
+    
     @Published var isDisplaySettingsReveal = false
     @Published var importAlertPresented = false
     @Published var isStaging = false

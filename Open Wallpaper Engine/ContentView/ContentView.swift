@@ -36,22 +36,34 @@ struct ContentView: View {
                 if viewModel.isStaging {
                     VStack(spacing: 5) {
                         TopTabBar(contentViewModel: viewModel)
-                        ExplorerTopBar(contentViewModel: viewModel)
-                        HStack(spacing: 0) {
+                        switch viewModel.topTabBarSelection {
+                        case 0:
+                            ExplorerTopBar(contentViewModel: viewModel)
                             HStack(spacing: 0) {
-                                // MARK: Filter Results
-                                FilterResults(viewModel: self.wallpaperViewModel)
+                                HStack(spacing: 0) {
+                                    // MARK: Filter Results
+                                    FilterResults(viewModel: self.wallpaperViewModel)
+                                }
+                                .frame(width: viewModel.isFilterReveal ? 225 : 0)
+                                .opacity(viewModel.isFilterReveal ? 1 : 0)
+                                .animation(.spring(), value: viewModel.isFilterReveal)
+                                
+                                WallpaperExplorer(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
+                                .contextMenu {
+                                    ExplorerGlobalMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
+                                }
+                                .padding(.leading, viewModel.isFilterReveal ? 10 : 0)
                             }
-                            .frame(width: viewModel.isFilterReveal ? 225 : 0)
-                            .opacity(viewModel.isFilterReveal ? 1 : 0)
-                            .animation(.spring(), value: viewModel.isFilterReveal)
-                            WallpaperExplorer(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
-                            .contextMenu {
-                                ExplorerGlobalMenu(wallpaperViewModel: wallpaperViewModel)
-                            }
-                            .padding(.leading, viewModel.isFilterReveal ? 10 : 0)
+                            .animation(.default, value: viewModel.isFilterReveal)
+                        case 1:
+                            WallpaperDiscover()
+                        case 2:
+                            ExplorerTopBar(contentViewModel: viewModel)
+                            WorkingInProgress()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        default:
+                            fatalError()
                         }
-                        .animation(.default, value: viewModel.isFilterReveal)
                         ExplorerBottomBar()
                     }
                     .padding()
