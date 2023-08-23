@@ -570,6 +570,9 @@
         }
       }
     },
+    "Icon Size" : {
+
+    },
     "Import Wallpapers from Steam Workshop" : {
 
     },
@@ -605,6 +608,9 @@
           }
         }
       }
+    },
+    "Large Icons" : {
+
     },
     "Last Updated" : {
       "localizations" : {
@@ -670,6 +676,9 @@
           }
         }
       }
+    },
+    "Medium Icons" : {
+
     },
     "Mobile" : {
 
@@ -1132,7 +1141,11 @@
     "Verbose" : {
 
     },
+    "version: %@" : {
+
+    },
     "version: v0.1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
