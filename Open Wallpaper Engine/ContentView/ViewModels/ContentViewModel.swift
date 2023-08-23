@@ -16,7 +16,16 @@ class ContentViewModel: ObservableObject {
     @Published var importAlertPresented = false
     @Published var isStaging = false
     
+    @Published var topTabBarSelection: Int = 0
+    @Published var topTabBarHoverSelection: Int = -1
+    
     var importAlertError: WPImportError? = nil
+    
+    convenience init(isStaging: Bool, topTabBarSelection: Int = 0) {
+        self.init()
+        self.isStaging = isStaging
+        self.topTabBarSelection = topTabBarSelection
+    }
     
     var urls: [URL] {
         get {

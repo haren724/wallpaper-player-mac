@@ -89,7 +89,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: .init(), wallpaperViewModel: .init())
+        ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
             .environmentObject(GlobalSettingsViewModel())
     }
 }

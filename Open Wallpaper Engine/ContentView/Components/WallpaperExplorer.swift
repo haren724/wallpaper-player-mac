@@ -88,90 +88,12 @@ struct WallpaperExplorer: SubviewOfContentView {
                 }
                           .padding(.trailing)
             }
-//                                    if viewModel.urls.isEmpty {
-//                                        VStack {
-//                                            Text("Import")
-//                                                .font(.title)
-//                                                .lineLimit(nil)
-//                                        }
-//                                        .padding()
-//                                        .frame(width: 200, height: 200)
-//                                        .background(Color(nsColor: .controlBackgroundColor))
-//                                        .onTapGesture {
-//                                            AppDelegate.shared.openImportFromFolderPanel()
-//                                        }
-//                                        .onDrop(of: [.folder], isTargeted: $isDropTargeted) { providers in
-//                                            isParseFinished = false
-//                                            // 确认拖入文件数量只有一个
-//                                            if providers.count != 1 { return false }
-//                                            let folder = providers.first!
-//                                            // 确认拖入文件为`文件夹`类型
-//                                            if !folder.hasItemConformingToTypeIdentifier("public.folder") { return false }
-//                                            // 解析文件夹目录位置
-//                                            folder.loadItem(forTypeIdentifier: "public.folder") { item, error in
-//                                                let projectUrl = (item as! URL)
-//                                                self.projectUrl = projectUrl
-//                                                do {
-//                                                    // 根据解析出的目录下的project.json文件得到壁纸信息
-//                                                    let projectData = try Data(contentsOf: projectUrl.appendingPathComponent("project.json"))
-//                                                    project = try JSONDecoder().decode(WEProject.self, from: projectData)
-//                                                    isParseFinished = true
-//                                                } catch {
-//                                                    return
-//                                                }
-//                                            }
-//                                            return true
-//                                        }
-//                                    } else {
-//
-//                                    }
-            
-            //                            ForEach(viewModel.wallpapers) { wallpaper in
-            //                                ZStack {
-            //                                    GifImage(gifName: wallpaper.preview.filename ?? "")
-            //                                            .resizable()
-            //                                            .aspectRatio(contentMode: .fit)
-            //                                            .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
-            //                                            .clipShape(Rectangle())
-            //                                            .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
-            //                                            .selected(index == viewModel.selectedIndex ?? 0)
-            //                                            .animation(.spring, value: imageScaleIndex == index ? 1.2 : 1.0)
-            //                                    VStack {
-            //                                        Spacer()
-            //                                        ZStack {
-            //                                            Rectangle()
-            //                                                .frame(height: 30)
-            //                                                .foregroundStyle(Color.black)
-            //                                                .opacity(imageScaleIndex == index ? 0.4 : 0.2)
-            //                                                .animation(.default, value: imageScaleIndex)
-            //                                            Text("Sumeru【Genshin Impact】")
-            //                                                .font(.footnote)
-            //                                                .lineLimit(2)
-            //                                                .multilineTextAlignment(.center)
-            //                                                .foregroundStyle(Color(white: imageScaleIndex == index ? 0.7 : 0.9))
-            //                                        }
-            //                                    }
-            //                                }
-            //                                .onTapGesture {
-            //                                    withAnimation(.default.speed(2)) {
-            //                                        viewModel.selectedIndex = index
-            //                                    }
-            //                                }
-            //                                .onHover { onHover in
-            //                                    if onHover {
-            //                                        imageScaleIndex = index
-            //                                    }
-            //                                }
-            //                            }
-            //                        }
-            //                        .padding(.trailing)
-            //                        .frame(maxWidth: .infinity)
         }
         .overlay {
             VStack {
                 Spacer()
                 HStack {
-                    ForEach(0..<wallpaperViewModel.maxPage) { page in
+                    ForEach(0..<wallpaperViewModel.maxPage, id: \.self) { page in
                         Button("\(page + 1)") {
                             wallpaperViewModel.currentPage = page + 1
                         }
