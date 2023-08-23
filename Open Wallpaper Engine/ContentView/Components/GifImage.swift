@@ -32,7 +32,7 @@ struct GifImage: NSViewRepresentable {
         nsView.animates = true
         
         if let gifName = self.gifName {
-            if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
+            if let url = Bundle.main.url(forResource: gifName, withExtension: "gif") {
                 if let image = NSImage(contentsOf: url) {
                     let gifRep = image.representations[0] as? NSBitmapImageRep
                     gifRep?.setProperty(.loopCount, withValue: 0)
@@ -66,7 +66,7 @@ struct GifImage: NSViewRepresentable {
     
     private func updateModifiers(_ nsView: NSImageView) {
         if let gifName = self.gifName {
-            if let url = Bundle.main.url(forResource: self.gifName, withExtension: "gif") {
+            if let url = Bundle.main.url(forResource: gifName, withExtension: "gif") {
                 if let image = NSImage(contentsOf: url) {
                     let gifRep = image.representations[0] as? NSBitmapImageRep
                     gifRep?.setProperty(.loopCount, withValue: 0)
