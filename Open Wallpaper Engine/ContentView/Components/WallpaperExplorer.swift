@@ -57,19 +57,13 @@ struct WallpaperExplorer: SubviewOfContentView {
                         .overlay {
                             VStack {
                                 Spacer()
-                                ZStack {
-                                    Rectangle()
-                                        .frame(height: 30)
-                                        .foregroundStyle(Color.black)
-                                        .opacity(imageScaleIndex == index ? 0.4 : 0.2)
-                                        .animation(.default, value: imageScaleIndex)
-                                    Text(wallpaper.project.title)
-                                        .font(.footnote)
-                                        .lineLimit(2)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(Color(white: imageScaleIndex == index ? 0.7 : 0.9))
-                                        .padding(4)
-                                }
+                                Text(wallpaper.project.title)
+                                    .lineLimit(2)
+                                    .frame(maxWidth: .infinity, maxHeight: 30)
+                                    .background(Color(white: 0, opacity: imageScaleIndex == index ? 0.4 : 0.2))
+                                    .font(.footnote)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(Color(white: imageScaleIndex == index ? 0.9 : 0.7))
                             }
                         }
                         .onTapGesture {
