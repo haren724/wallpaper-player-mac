@@ -8,7 +8,18 @@
 import SwiftUI
 import ImageIO
 
-struct WEProjectSchemeColor: Codable, Equatable, Hashable {
+struct WEProjectPropertyOption: Codable, Equatable, Hashable {
+    var label: String
+    var value: String
+}
+
+struct WEProjectProperty: Codable, Equatable, Hashable {
+    // optional
+    var condition: String?
+    var index: Int?
+    var options: [WEProjectPropertyOption]?
+    
+    // must have
     var order: Int
     var text: String
     var type: String
@@ -16,7 +27,7 @@ struct WEProjectSchemeColor: Codable, Equatable, Hashable {
 }
 
 struct WEProjectProperties: Codable, Equatable, Hashable {
-    var schemecolor: WEProjectSchemeColor
+    var schemecolor: WEProjectProperty?
 }
 
 struct WEProjectGeneral: Codable, Equatable, Hashable {
@@ -24,8 +35,8 @@ struct WEProjectGeneral: Codable, Equatable, Hashable {
 }
 
 struct WEProject: Codable, Equatable, Hashable {
-    var contentrating: String
-    var description: String
+    var contentrating: String?
+    var description: String?
     var file: String
     var general: WEProjectGeneral
     var preview: String
