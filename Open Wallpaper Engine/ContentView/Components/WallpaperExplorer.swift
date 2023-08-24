@@ -79,8 +79,9 @@ struct WallpaperExplorer: SubviewOfContentView {
                         }
                         .onHover { onHover in
                             if onHover {
-                                print(index)
                                 imageScaleIndex = index
+                            } else {
+                                imageScaleIndex = -1
                             }
                         }
                         .aspectRatio(contentMode: .fit)
