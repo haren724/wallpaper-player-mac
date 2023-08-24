@@ -40,15 +40,14 @@ struct WallpaperExplorer: SubviewOfContentView {
                 .padding(.top, 50)
             } else {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: viewModel.explorerIconSize, maximum: viewModel.explorerIconSize * 2))], alignment: .leading) {
-                    ForEach(Array(zip(wallpaperViewModel.wallpapers, zip(viewModel.urls.indices, viewModel.urls))), id: \.1.0) { (wallpaper, legacy) in
-                        let (index, url) = legacy
+                    ForEach(Array(wallpaperViewModel.wallpapers.enumerated()), id: \.0) { (index, wallpaper) in
                         GifImage(contentsOf: { (url: URL) in
                             if let selectedProject = try? JSONDecoder()
                                 .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
                                 return url.appending(path: selectedProject.preview)
                             }
                             return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
-                        }(url))
+                        }(wallpaper.wallpaperDirectory))
                         .resizable()
                         .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
                         .clipShape(Rectangle())
