@@ -46,6 +46,12 @@ struct WEProject: Codable, Equatable, Hashable {
     var workshopid: String?
     var type: String?
     var version: Int?
+    
+    static let invalid = Self(file: "",
+                              general: WEProjectGeneral(properties: WEProjectProperties()),
+                              preview: "",
+                              tags: [],
+                              title: "Error")
 }
 
 struct WEWallpaper: Identifiable {

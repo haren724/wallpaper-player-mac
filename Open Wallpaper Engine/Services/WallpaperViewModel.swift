@@ -101,15 +101,13 @@ class WallpaperViewModel: ObservableObject {
     
     /// Show all the wallpaper inside application wallpaper directory, without being filtered
     private var allWallpapers: [WEWallpaper] {
-        if let wallpapers = try? self.urls.map({ url in
-            let project = try JSONDecoder().decode(WEProject.self, from: try Data(contentsOf: url.appending(path: "project.json")))
-            return WEWallpaper(using: project, where: url)
-        }) {
-            return wallpapers
-        }
-        else {
-            return []
-        }
+        self.urls.map({ url in
+            if let data = try? Data(contentsOf: url.appending(path: "project.json")), let project = try? JSONDecoder().decode(WEProject.self, from: data) {
+                return WEWallpaper(using: project, where: url)
+            } else {
+                return WEWallpaper(using: .invalid, where: url)
+            }
+        })
     }
     
     private var filteredWallpapers: [WEWallpaper] {
