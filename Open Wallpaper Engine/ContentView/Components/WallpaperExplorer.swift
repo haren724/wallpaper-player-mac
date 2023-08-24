@@ -6,13 +6,44 @@
 //
 
 import SwiftUI
+import Foundation
+import UniformTypeIdentifiers
 
-struct WallpaperExplorer: SubviewOfContentView {
+struct WallpaperExplorer: SubviewOfContentView,DropDelegate {
+
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        let proposal = DropProposal(operation: .copy)
+        return proposal
+    }
+
+    func performDrop(info: DropInfo) -> Bool {
+        guard let itemProvider = info.itemProviders(for: [UTType.fileURL]).first else { return false }
+        itemProvider.loadItem(forTypeIdentifier: UTType.fileURL.identifier, options: nil) { item, _ in
+            guard let data = item as? Data, let url = URL(dataRepresentation: data, relativeTo: nil) else { return }
+            // Do something with the file url
+            // remember to dispatch on main in case of a @State change
+            guard let wallpaperFolder = try? FileWrapper(url: url)
+            else{print("1");return}
+            guard wallpaperFolder.fileWrappers?["project.json"] != nil
+            else{print("2");return}
+            DispatchQueue.main.async {
+                try? FileManager.default.copyItem(
+                    at: url,
+                    to: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        .appending(path: url.lastPathComponent)
+                )
+            }
+        }
+        return true
+    }
+
     @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
     
     @State var imageScaleIndex: Int = -1
     @State var selectedIndex: Int!
+
+    @State var fileURL: URL?
     
     init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.viewModel = viewModel
@@ -96,7 +127,9 @@ struct WallpaperExplorer: SubviewOfContentView {
                 }
                 .padding(.bottom)
             }
-        }    }
+        }
+        .onDrop(of: [UTType.fileURL], delegate: self)
+            }
 }
 
 // MARK: - View Modifiers Extension
