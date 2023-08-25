@@ -49,6 +49,7 @@ struct ContentView: View {
                                 .animation(.spring(), value: viewModel.isFilterReveal)
                                 
                                 WallpaperExplorer(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
+                                .onDrop(of: [.fileURL], delegate: viewModel)
                                 .contextMenu {
                                     ExplorerGlobalMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
                                 }

@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct WallpaperExplorer: SubviewOfContentView {
+
     @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
     
     @State var imageScaleIndex: Int = -1
     @State var selectedIndex: Int!
+
+    @State var fileURL: URL?
     
     init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.viewModel = viewModel
@@ -96,7 +99,8 @@ struct WallpaperExplorer: SubviewOfContentView {
                 }
                 .padding(.bottom)
             }
-        }    }
+        }
+            }
 }
 
 // MARK: - View Modifiers Extension
