@@ -107,10 +107,11 @@ class ContentViewModel: ObservableObject, DropDelegate {
     
     /// Provide wallpapers information for UI, being filtered by FilterResults and divided in pages
     public var autoRefreshWallpapers: [WEWallpaper] {
-        let startIndex = (self.currentPage - 1) * self.wallpapersPerPage
-        let filteredWallpapers = self.filteredWallpapers
-        let clip = filteredWallpapers[startIndex..<filteredWallpapers.endIndex]
-        return Array(clip.prefix(self.wallpapersPerPage))
+        filteredWallpapers
+//        let startIndex = (self.currentPage - 1) * self.wallpapersPerPage
+//        let filteredWallpapers = self.filteredWallpapers
+//        let clip = filteredWallpapers[startIndex..<filteredWallpapers.endIndex]
+//        return Array(clip.prefix(self.wallpapersPerPage))
     }
     
     /// Caculates the maximium possible page index for all wallpapers in your application wallpaper directory
