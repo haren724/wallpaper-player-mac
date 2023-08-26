@@ -45,6 +45,8 @@ struct GlobalSettings: Codable, Equatable {
     var textureResolution = GSTextureResolutionQuality.automatic
     var reflections = false
     var fps: Double = 30
+    
+    var autoRefresh = true
 }
 
 protocol SettingsPage: View {

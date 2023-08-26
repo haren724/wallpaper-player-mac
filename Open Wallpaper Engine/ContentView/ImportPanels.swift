@@ -35,14 +35,14 @@ extension AppDelegate {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        panel.beginSheetModal(for: self.mainWindowController.window) { response in
+        panel.beginSheetModal(for: self.mainWindowController.window) { [weak self] response in
             if response != .OK { return }
             guard let url = panel.urls.first else { return }
             
             guard let wallpaperFolder = try? FileWrapper(url: url)
             else {
                 DispatchQueue.main.async {
-                    self.contentViewModel.alertImportModal(which: .permissionDenied)
+                    self?.contentViewModel.alertImportModal(which: .permissionDenied)
                 }
                 return
             }
@@ -50,7 +50,7 @@ extension AppDelegate {
             guard wallpaperFolder.fileWrappers?["project.json"] != nil
             else {
                 DispatchQueue.main.async {
-                    self.contentViewModel.alertImportModal(which: .doesNotContainWallpaper)
+                    self?.contentViewModel.alertImportModal(which: .doesNotContainWallpaper)
                 }
                 return
             }

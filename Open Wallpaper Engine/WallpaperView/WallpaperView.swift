@@ -10,9 +10,15 @@ import SwiftUI
 
 struct WallpaperView: View {
     @ObservedObject var viewModel: WallpaperViewModel
-    @EnvironmentObject var contentViewModel: ContentViewModel
     
     var body: some View {
-        VideoWallpaperView(viewModel: viewModel, url: contentViewModel.selectedURL)
+        switch viewModel.currentWallpaper.project.type {
+        case "video":
+            VideoWallpaperView(wallpaperViewModel: viewModel)
+        case "scene":
+            Text("?")
+        default:
+            VideoWallpaperView(wallpaperViewModel: WallpaperViewModel())
+        }
     }
 }

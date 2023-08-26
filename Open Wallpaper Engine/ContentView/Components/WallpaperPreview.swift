@@ -21,11 +21,17 @@ struct WallpaperPreview: SubviewOfContentView {
             ScrollView {
                 VStack(spacing: 16) {
                     VStack {
-                        GifImage(contentsOf: viewModel.selectedURLofGIF)
+                        GifImage(contentsOf: { (url: URL) in
+                            if let selectedProject = try? JSONDecoder()
+                                .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
+                                return url.appending(path: selectedProject.preview)
+                            }
+                            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+                        }(wallpaperViewModel.currentWallpaper.wallpaperDirectory))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 280, height: 280)
-                        Text(viewModel.selectedCurrentTitle)
+                        Text(wallpaperViewModel.currentWallpaper.project.title)
                             .lineLimit(1)
                     }
                     HStack {

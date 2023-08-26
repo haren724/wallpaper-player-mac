@@ -39,10 +39,11 @@ struct ContentView: View {
                         switch viewModel.topTabBarSelection {
                         case 0:
                             ExplorerTopBar(contentViewModel: viewModel)
+                                .environmentObject(globalSettingsViewModel)
                             HStack(spacing: 0) {
                                 HStack(spacing: 0) {
                                     // MARK: Filter Results
-                                    FilterResults(viewModel: self.wallpaperViewModel)
+                                    FilterResults(viewModel: viewModel)
                                 }
                                 .frame(width: viewModel.isFilterReveal ? 225 : 0)
                                 .opacity(viewModel.isFilterReveal ? 1 : 0)
@@ -78,8 +79,7 @@ struct ContentView: View {
             // indicate that this view is initializing
             if !viewModel.isStaging {
                 HStack(spacing: 20) {
-                    ProgressView()
-                    Text("Loading...")
+                    Text("Power Saving Mode, Sleeping...")
                         .font(.largeTitle)
                 }
             }

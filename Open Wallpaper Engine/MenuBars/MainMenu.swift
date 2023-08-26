@@ -54,6 +54,12 @@ extension AppDelegate {
                 let item = NSMenuItem(title: "Show Filter Results", action: #selector(self.toggleFilter), keyEquivalent: "s")
                 item.keyEquivalentModifierMask = [.command, .control]
                 return item
+            }(),
+            .separator(),
+            {
+                let item = NSMenuItem(title: "Enter Full Screen", action: #selector(AppDelegate.shared.mainWindowController.window.toggleFullScreen(_:)), keyEquivalent: "f")
+                item.keyEquivalentModifierMask = [.command, .control]
+                return item
             }()
         ]
         

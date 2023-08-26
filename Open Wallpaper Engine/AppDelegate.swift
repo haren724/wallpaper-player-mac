@@ -128,9 +128,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.wallpaperWindow.canBecomeVisibleWithoutLogin = true
         self.wallpaperWindow.isReleasedWhenClosed = false
         
-        self.wallpaperWindow.contentView = NSHostingView(
-            rootView: WallpaperView(viewModel: self.wallpaperViewModel)
-                .environmentObject(self.contentViewModel)
+        self.wallpaperWindow.contentView = NSHostingView(rootView:
+            WallpaperView(viewModel: self.wallpaperViewModel)
         )
     }
     

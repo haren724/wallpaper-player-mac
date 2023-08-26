@@ -34,6 +34,34 @@ struct WEProjectGeneral: Codable, Equatable, Hashable {
     var properties: WEProjectProperties
 }
 
+enum WorkshopId: Codable, Equatable, Hashable {
+    case int(Int)
+    case string(String)
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(Int.self) {
+            self = .int(x)
+            return
+        }
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        throw DecodingError.typeMismatch(Self.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Workshop ID"))
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .int(let x):
+            try container.encode(x)
+        case .string(let x):
+            try container.encode(x)
+        }
+    }
+}
+
 struct WEProject: Codable, Equatable, Hashable {
     var contentrating: String?
     var description: String?
@@ -43,7 +71,7 @@ struct WEProject: Codable, Equatable, Hashable {
     var tags: [String]
     var title: String
     var visibility: String?
-    var workshopid: String?
+    var workshopid: WorkshopId?
     var type: String?
     var version: Int?
     
@@ -54,8 +82,18 @@ struct WEProject: Codable, Equatable, Hashable {
                               title: "Error")
 }
 
-struct WEWallpaper: Identifiable {
+struct WEWallpaper: Codable, RawRepresentable, Identifiable {
+    
     var id: Int { self.project.hashValue }
+    var rawValue: String {
+        do {
+            let rawValueData = try JSONEncoder().encode(self)
+            return String(data: rawValueData, encoding: .utf8)!
+        } catch {
+            print(error)
+            return ""
+        }
+    }
     
     var wallpaperDirectory: URL
     var project: WEProject
@@ -63,6 +101,35 @@ struct WEWallpaper: Identifiable {
     init(using project: WEProject, where url: URL) {
         self.wallpaperDirectory = url
         self.project = project
+    }
+    
+    enum CodingKeys: CodingKey {
+        case wallpaperDirectory
+        case project
+        // <all the other elements too>
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.wallpaperDirectory = try container.decode(URL.self, forKey: .wallpaperDirectory)
+        self.project = try container.decode(WEProject.self, forKey: .project)
+        // <and so on>
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(wallpaperDirectory, forKey: .wallpaperDirectory)
+        try container.encode(project, forKey: .project)
+        // <and so on>
+    }
+    
+    init?(rawValue: String) {
+        if let rawValueData = rawValue.data(using: .utf8),
+           let wallpaper = try? JSONDecoder().decode(WEWallpaper.self, from: rawValueData) {
+            self = wallpaper
+        } else {
+            return nil
+        }
     }
 }
 

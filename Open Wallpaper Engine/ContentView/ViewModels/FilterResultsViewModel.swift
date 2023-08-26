@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-typealias FilterResultsViewModel = WallpaperViewModel
+typealias FilterResultsViewModel = ContentViewModel
 
 protocol FilterResultsModel: OptionSet where Element == Self, RawValue == Int {
     static var allOptions: [String] { get }

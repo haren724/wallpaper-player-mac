@@ -48,6 +48,14 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         AppDelegate.shared.contentViewModel.isStaging = false
     }
     
+    func windowDidResignKey(_ notification: Notification) {
+        AppDelegate.shared.contentViewModel.isStaging = false
+    }
+    
+    func windowDidResignMain(_ notification: Notification) {
+        AppDelegate.shared.contentViewModel.isStaging = false
+    }
+    
     func windowDidBecomeKey(_ notification: Notification) {
         DispatchQueue.main.async {
             withAnimation {

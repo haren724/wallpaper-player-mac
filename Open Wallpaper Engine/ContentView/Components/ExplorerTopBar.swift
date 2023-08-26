@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ExplorerTopBar: SubviewOfContentView {
-    var viewModel: ContentViewModel
+    @ObservedObject var viewModel: ContentViewModel
+    
+    @EnvironmentObject var globalSettingsViewModel: GlobalSettingsViewModel
     
     init(contentViewModel viewModel: ContentViewModel) {
         self.viewModel = viewModel
@@ -33,6 +35,13 @@ struct ExplorerTopBar: SubviewOfContentView {
                 Label("Filter Results", systemImage: "checklist.checked")
             }
             .buttonStyle(.borderedProminent)
+            if globalSettingsViewModel.settings.autoRefresh {
+                Button {
+                    viewModel.refresh()
+                } label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                }
+            }
             Spacer()
             Button { } label: {
                 Image(systemName: "arrowtriangle.up.fill")

@@ -52,7 +52,7 @@ struct ExplorerGlobalMenu: SubviewOfContentView {
                         .pickerStyle(.inline)
                     }
                     Section {
-                        Picker("Titles per page", selection: $wallpaperViewModel.wallpapersPerPage) {
+                        Picker("Titles per page", selection: $viewModel.wallpapersPerPage) {
                             Text("10 per page").tag(10)
                             Text("25 per page").tag(25)
                             Text("50 per page").tag(50)

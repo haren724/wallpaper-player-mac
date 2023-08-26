@@ -9,6 +9,21 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 class ContentViewModel: ObservableObject, DropDelegate {
+    @AppStorage("SortingBy") var sortingBy: WEWallpaperSortingMethod = .name
+    @AppStorage("SortingSequence") var sortingSequence: WEWallpaperSortingSequence = .increased
+    
+    @AppStorage("FRShowOnly")                   public var showOnly                     =                   FRShowOnly.all
+    @AppStorage("FRType")                       public var type                         =                       FRType.all
+    @AppStorage("FRAgeRating")                  public var ageRating                    =                  FRAgeRating.all
+    @AppStorage("FRWidescreenResolution")       public var widescreenResolution         =       FRWidescreenResolution.all
+    @AppStorage("FRUltraWidescreenResolution")  public var ultraWidescreenResolution    =  FRUltraWidescreenResolution.all
+    @AppStorage("FRDualscreenResolution")       public var dualscreenResolution         =       FRDualscreenResolution.all
+    @AppStorage("FRTriplescreenResolution")     public var triplescreenResolution       =     FRTriplescreenResolution.all
+    @AppStorage("FRPortraitScreenResolution")   public var potraitscreenResolution      =   FRPortraitScreenResolution.all
+    @AppStorage("FRMiscResolution")             public var miscResolution               =             FRMiscResolution.all
+    @AppStorage("FRSource")                     public var source                       =                     FRSource.all
+    @AppStorage("FRTag")                        public var tag                          =                        FRTag.all
+    
     @AppStorage("FilterReveal") var isFilterReveal = false
     @AppStorage("WallpaperURLs") var wallpaperUrls = [URL]()
     @AppStorage("SelectedIndex") var selectedIndex = 0
@@ -22,79 +37,85 @@ class ContentViewModel: ObservableObject, DropDelegate {
     @Published var topTabBarSelection: Int = 0
     @Published var topTabBarHoverSelection: Int = -1
     
+    @Published var imageScaleIndex: Int = -1
+    
+    @Published var wallpapers = [WEWallpaper]()
+    
+    @AppStorage("WallpapersPerPage") var wallpapersPerPage: Int = 2
+    
     var importAlertError: WPImportError? = nil
     
     convenience init(isStaging: Bool, topTabBarSelection: Int = 0) {
         self.init()
+        
+        let wallpapers = autoRefreshWallpapers
+        
         self.isStaging = isStaging
         self.topTabBarSelection = topTabBarSelection
+        self.wallpapers = wallpapers
     }
     
-    var urls: [URL] {
-        get {
-            if let urls = try? FileManager.default.contentsOfDirectory(
-                at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0],
-                includingPropertiesForKeys: nil,
-                options: [.skipsHiddenFiles]) {
-                var filteredURLs = [URL]()
-                for url in urls {
-                    if let files = try! FileWrapper(url: url).fileWrappers, files.contains(where: { (key, _) in
-                        if key == "project.json" {
-                            return true
-                        } else {
-                            return false
-                        }
-                    }) {
-                        filteredURLs.append(url)
-                    }
-                }
-                return filteredURLs
+    /// current page index number is starting from '1'
+    @Published public var currentPage: Int = 1
+//    {
+//        willSet {
+//            self.currentPage = newValue > self.maxPage ? self.maxPage : newValue
+//        }
+//    }
+    
+    private var urls: [URL] {
+        guard let contents = try? FileManager.default.contentsOfDirectory(
+            at: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0],
+            includingPropertiesForKeys: nil,
+            options: .skipsHiddenFiles
+        ) else {
+            return []
+        }
+        return contents
+    }
+    
+    /// Show all the wallpaper inside application wallpaper directory, without being filtered
+    private var allWallpapers: [WEWallpaper] {
+        self.urls.map({ url in
+            if let data = try? Data(contentsOf: url.appending(path: "project.json")), let project = try? JSONDecoder().decode(WEProject.self, from: data) {
+                return WEWallpaper(using: project, where: url)
             } else {
-                return []
+                return WEWallpaper(using: .invalid, where: url)
             }
-        }
-        set {
+        })
+    }
+    
+    private var filteredWallpapers: [WEWallpaper] {
+        let result = allWallpapers.filter { wallpaper in
             
-        }
-    }
-    
-    var selectedURL: URL {
-        get {
-            if self.selectedIndex < self.urls.count {
-                if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
-                    return urls[self.selectedIndex].appending(path: selectedProject.file)
-                }
+            // Age Rating
+            var ageRating: FRAgeRating
+            switch wallpaper.project.contentrating {
+            case "Everyone":
+                ageRating = .everyone
+            case "Questionable":
+                ageRating = .partialNudity
+            case "Mature":
+                ageRating = .mature
+            default:
+                ageRating = .none
             }
-            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+            return self.ageRating.contains(ageRating)
         }
-        set {
-            
-        }
+        return result
     }
     
-    var selectedURLofGIF: URL {
-        if self.selectedIndex < self.urls.count {
-            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
-                return urls[self.selectedIndex].appending(path: selectedProject.preview)
-            }
-        }
-        return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+    /// Provide wallpapers information for UI, being filtered by FilterResults and divided in pages
+    public var autoRefreshWallpapers: [WEWallpaper] {
+        let startIndex = (self.currentPage - 1) * self.wallpapersPerPage
+        let filteredWallpapers = self.filteredWallpapers
+        let clip = filteredWallpapers[startIndex..<filteredWallpapers.endIndex]
+        return Array(clip.prefix(self.wallpapersPerPage))
     }
     
-    func selectedTitle(_ url: URL) -> String {
-        if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
-            return selectedProject.title
-        }
-        return "???"
-    }
-    
-    var selectedCurrentTitle: String {
-        if self.selectedIndex < self.urls.count {
-            if let selectedProject = try? JSONDecoder().decode(WEProject.self, from: Data(contentsOf: urls[self.selectedIndex].appending(path: "project.json"))) {
-                return selectedProject.title
-            }
-        }
-        return "???"
+    /// Caculates the maximium possible page index for all wallpapers in your application wallpaper directory
+    var maxPage: Int {
+        Int(self.filteredWallpapers.count / self.wallpapersPerPage)
     }
     
     func toggleFilter() {
@@ -144,6 +165,27 @@ class ContentViewModel: ObservableObject, DropDelegate {
             }
         }
         return true
+    }
+    
+    public func refresh() {
+        self.wallpapers = autoRefreshWallpapers
+    }
+    
+    /// Provide a filter reset to default function, usually being used to show all wallpapers without filtered
+    public func reset() {
+        self.showOnly                   = .none // notice it's show ONLY, it acts oppositely to the others
+        self.type                       = .all
+        self.ageRating                  = .all
+        self.type                       = .all
+        self.ageRating                  = .all
+        self.widescreenResolution       = .all
+        self.ultraWidescreenResolution  = .all
+        self.dualscreenResolution       = .all
+        self.triplescreenResolution     = .all
+        self.potraitscreenResolution    = .all
+        self.miscResolution             = .all
+        self.source                     = .all
+        self.tag                        = .all
     }
 }
 

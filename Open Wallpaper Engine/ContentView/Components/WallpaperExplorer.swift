@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct WallpaperExplorer: SubviewOfContentView {
-
     @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
-    
-    @State var imageScaleIndex: Int = -1
-    @State var selectedIndex: Int!
-
-    @State var fileURL: URL?
     
     init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.viewModel = viewModel
@@ -25,7 +19,7 @@ struct WallpaperExplorer: SubviewOfContentView {
     var body: some View {
         ScrollView {
             // MARK: Items
-            if wallpaperViewModel.wallpapers.isEmpty {
+            if viewModel.autoRefreshWallpapers.isEmpty {
                 HStack {
                     Spacer()
                     Text("""
@@ -42,65 +36,30 @@ struct WallpaperExplorer: SubviewOfContentView {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 50)
             } else {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: viewModel.explorerIconSize, maximum: viewModel.explorerIconSize * 2))], alignment: .leading) {
-                    ForEach(Array(wallpaperViewModel.wallpapers.enumerated()), id: \.0) { (index, wallpaper) in
-                        GifImage(contentsOf: { (url: URL) in
-                            if let selectedProject = try? JSONDecoder()
-                                .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
-                                return url.appending(path: selectedProject.preview)
-                            }
-                            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
-                        }(wallpaper.wallpaperDirectory))
-                        .resizable()
-                        .scaleEffect(imageScaleIndex == index ? 1.2 : 1.0)
-                        .clipShape(Rectangle())
-                        .border(Color.accentColor, width: imageScaleIndex == index ? 1.0 : 0)
-                        .selected(index == viewModel.selectedIndex)
-                        .animation(.spring(), value: imageScaleIndex == index ? 1.2 : 1.0)
-                        .overlay {
-                            VStack {
-                                Spacer()
-                                Text(wallpaper.project.title)
-                                    .lineLimit(2)
-                                    .frame(maxWidth: .infinity, maxHeight: 30)
-                                    .background(Color(white: 0, opacity: imageScaleIndex == index ? 0.4 : 0.2))
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundStyle(Color(white: imageScaleIndex == index ? 0.9 : 0.7))
-                            }
-                        }
-                        .onTapGesture {
-                            withAnimation(.default.speed(2)) {
-                                viewModel.selectedIndex = index
-                            }
-                        }
-                        .onHover { onHover in
-                            if onHover {
-                                imageScaleIndex = index
-                            } else {
-                                imageScaleIndex = -1
-                            }
-                        }
-                        .aspectRatio(contentMode: .fit)
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: viewModel.explorerIconSize, 
+                                                       maximum: viewModel.explorerIconSize * 2)
+                )], alignment: .leading) {
+                    ForEach(Array(viewModel.autoRefreshWallpapers.enumerated()), id: \.0) { (index, wallpaper) in
+                        ExplorerItem(viewModel: viewModel, wallpaperViewModel: wallpaperViewModel, wallpaper: wallpaper, index: index)
                     }
                 }
-                          .padding(.trailing)
+                .padding(.trailing)
             }
         }
         .overlay {
             VStack {
                 Spacer()
                 HStack {
-                    ForEach(0..<wallpaperViewModel.maxPage, id: \.self) { page in
+                    ForEach(0..<viewModel.maxPage, id: \.self) { page in
                         Button("\(page + 1)") {
-                            wallpaperViewModel.currentPage = page + 1
+                            viewModel.currentPage = page + 1
                         }
                     }
                 }
                 .padding(.bottom)
             }
         }
-            }
+    }
 }
 
 // MARK: - View Modifiers Extension
@@ -121,4 +80,10 @@ extension View {
     func selected(_ selected: Bool = true) -> some View {
         return modifier(SelectedItem(selected))
     }
+}
+
+@available(macOS 14, *)
+#Preview {
+    ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
+        .environmentObject(GlobalSettingsViewModel())
 }
