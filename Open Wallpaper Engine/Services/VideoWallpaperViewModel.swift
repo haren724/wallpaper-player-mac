@@ -11,7 +11,7 @@ import SwiftUI
 class VideoWallpaperViewModel: ObservableObject {
     var currentWallpaper: WEWallpaper {
         willSet {
-            self.player = AVPlayer(url: newValue.wallpaperDirectory.appending(path: newValue.project.file))
+            self.player.replaceCurrentItem(with: AVPlayerItem(url: newValue.wallpaperDirectory.appending(path: newValue.project.file)))
         }
     }
     
