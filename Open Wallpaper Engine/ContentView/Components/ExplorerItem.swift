@@ -27,7 +27,7 @@ struct ExplorerItem: SubviewOfContentView {
         .scaleEffect(viewModel.imageScaleIndex == index ? 1.2 : 1.0)
         .clipShape(Rectangle())
         .border(Color.accentColor, width: viewModel.imageScaleIndex == index ? 1.0 : 0)
-        .selected(index == viewModel.selectedIndex)
+        .selected(wallpaper.wallpaperDirectory == wallpaperViewModel.currentWallpaper.wallpaperDirectory)
         .overlay {
             VStack {
                 Spacer()
