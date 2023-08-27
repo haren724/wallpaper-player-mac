@@ -33,8 +33,8 @@ class VideoWallpaperViewModel: ObservableObject {
         self.currentWallpaper = currentWallpaper
         self.player = AVPlayer(url: currentWallpaper.wallpaperDirectory.appending(path: currentWallpaper.project.file))
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(systemWillSleep), name: NSWorkspace.screensDidSleepNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(systemDidWake), name: NSWorkspace.screensDidWakeNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(systemWillSleep(_:)), name: NSWorkspace.screensDidSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(systemDidWake(_:)), name: NSWorkspace.didWakeNotification, object: nil)
     }
     
     deinit {
@@ -54,14 +54,14 @@ class VideoWallpaperViewModel: ObservableObject {
         self.player.rate = self.playRate
     }
     
-    @objc func systemWillSleep(notification: Notification) {
+    @objc func systemWillSleep(_ notification: Notification) {
         // Handle going to sleep
         print("System is going to sleep")
         // Update your SwiftUI state here if needed
         self.player.rate = self.playRate
     }
         
-    @objc func systemDidWake(notification: Notification) {
+    @objc func systemDidWake(_ notification: Notification) {
         // Handle waking up
         print("System woke up from sleep")
         // Update your SwiftUI state here if needed
