@@ -72,14 +72,15 @@ struct WEProject: Codable, Equatable, Hashable {
     var title: String
     var visibility: String?
     var workshopid: WorkshopId?
-    var type: String?
+    var type: String
     var version: Int?
     
     static let invalid = Self(file: "",
                               general: WEProjectGeneral(properties: WEProjectProperties()),
                               preview: "",
                               tags: [],
-                              title: "Error")
+                              title: "Error", 
+                              type: "video")
 }
 
 struct WEWallpaper: Codable, RawRepresentable, Identifiable {
