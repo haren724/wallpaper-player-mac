@@ -83,7 +83,7 @@ git clone https://github.com/haren724/open-wallpaper-engine-mac
 
 And then open the directory in Xcode.
 ```sh
-open open-wallpaper-engine-mac -a /Application/Xcode.app
+open open-wallpaper-engine-mac -a /Applications/Xcode.app
 ```
 
 Change Signine Certificate to your own or select 'Sign to Run Locally'
