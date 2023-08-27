@@ -35,7 +35,7 @@ struct WallpaperPreview: SubviewOfContentView {
                             .lineLimit(1)
                     }
                     HStack {
-                        Image("we.logo")
+                        Image("we.placeholder")
                             .resizable()
                             .frame(width: 32, height: 32)
                         Text("< Pending >")
