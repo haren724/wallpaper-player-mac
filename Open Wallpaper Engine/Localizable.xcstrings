@@ -71,9 +71,6 @@
     "×8 MSAA is only recommended for powerful high-end desktop graphics cards." : {
 
     },
-    "< Pending >" : {
-
-    },
     "1 per page (developer)" : {
 
     },
@@ -81,9 +78,6 @@
 
     },
     "25 per page" : {
-
-    },
-    "40 MB" : {
 
     },
     "50 per page" : {
@@ -860,7 +854,7 @@
     "Potrait Monitor / Phone" : {
 
     },
-    "Power Saving Mode, Sleeping" : {
+    "Power Saving Mode, Sleeping..." : {
 
     },
     "Process Piority" : {
@@ -1130,6 +1124,9 @@
           }
         }
       }
+    },
+    "Unkown Author" : {
+
     },
     "Unsubscribe" : {
       "localizations" : {
