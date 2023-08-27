@@ -16,6 +16,18 @@ struct WallpaperPreview: SubviewOfContentView {
         self.wallpaperViewModel = wallpaperViewModel
     }
     
+    var author: String {
+        wallpaperViewModel.currentWallpaper.project.title
+    }
+    
+    var wallpaperSize: String {
+        guard let sizeBytes = try? wallpaperViewModel.currentWallpaper.wallpaperDirectory.directoryTotalAllocatedSize(includingSubfolders: true) 
+        else {
+            return "??? MB"
+        }
+        return ByteCountFormatter.string(fromByteCount: Int64(sizeBytes), countStyle: .file)
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -31,14 +43,14 @@ struct WallpaperPreview: SubviewOfContentView {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 280, height: 280)
-                        Text(wallpaperViewModel.currentWallpaper.project.title)
+                        Text(author)
                             .lineLimit(1)
                     }
                     HStack {
                         Image("we.placeholder")
                             .resizable()
                             .frame(width: 32, height: 32)
-                        Text("< Pending >")
+                        Text("Unkown Author")
                     }
                     HStack {
                         HStack(spacing: 5) {
@@ -54,8 +66,8 @@ struct WallpaperPreview: SubviewOfContentView {
                         }
                     }
                     HStack {
-                        Text("Video")
-                        Text("40 MB")
+                        Text(wallpaperViewModel.currentWallpaper.project.type)
+                        Text(wallpaperSize)
                     }
                     .font(.footnote)
                     HStack(spacing: 3) {
@@ -114,15 +126,15 @@ struct WallpaperPreview: SubviewOfContentView {
                             Label("Volume", systemImage: "speaker.wave.3.fill")
                             Spacer()
                             Slider(value: $wallpaperViewModel.playVolume, in: 0...1).frame(width: 100)
-                            Text(String(format: "%.01f", wallpaperViewModel.playVolume))
-                                .frame(width: 25)
+                            Text(String(format: "%.0f", wallpaperViewModel.playVolume * 100) + "%")
+                                .frame(width: 35)
                         }
                         HStack {
                             Label("Playback Rate", systemImage: "play.fill")
                             Spacer()
-                            Slider(value: $wallpaperViewModel.playRate, in: 0...2).frame(width: 100)
-                            Text(String(format: "%.01f", wallpaperViewModel.playRate))
-                                .frame(width: 25)
+                            Slider(value: $wallpaperViewModel.playRate, in: 0...2, step: 0.1).frame(width: 100)
+                            Text(String(format: "%.01fx", wallpaperViewModel.playRate))
+                                .frame(width: 35)
                         }
                     }
                     VStack(spacing: 3) {
@@ -177,6 +189,32 @@ struct WallpaperPreview: SubviewOfContentView {
                 }
             }
             .padding()
+        }
+    }
+}
+
+extension URL {
+    /// check if the URL is a directory and if it is reachable
+    func isDirectoryAndReachable() throws -> Bool {
+        guard try resourceValues(forKeys: [.isDirectoryKey]).isDirectory == true else {
+            return false
+        }
+        return try checkResourceIsReachable()
+    }
+
+    /// returns total allocated size of a the directory including its subFolders or not
+    func directoryTotalAllocatedSize(includingSubfolders: Bool = false) throws -> Int? {
+        guard try isDirectoryAndReachable() else { return nil }
+        if includingSubfolders {
+            guard
+                let urls = FileManager.default.enumerator(at: self, includingPropertiesForKeys: nil)?.allObjects as? [URL] else { return nil }
+            return try urls.lazy.reduce(0) {
+                    (try $1.resourceValues(forKeys: [.totalFileAllocatedSizeKey]).totalFileAllocatedSize ?? 0) + $0
+            }
+        }
+        return try FileManager.default.contentsOfDirectory(at: self, includingPropertiesForKeys: nil).lazy.reduce(0) {
+                 (try $1.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+                    .totalFileAllocatedSize ?? 0) + $0
         }
     }
 }
