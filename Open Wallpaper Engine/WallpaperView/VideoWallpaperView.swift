@@ -20,6 +20,7 @@ struct VideoWallpaperView: NSViewRepresentable {
     
     func makeNSView(context: Context) -> AVPlayerView {
         let view = AVPlayerView()
+        
         view.player = viewModel.player
         
         // make the video boundary extends to fit the full screen without black background border
@@ -43,7 +44,6 @@ struct VideoWallpaperView: NSViewRepresentable {
         
         if selectedWallpaper.wallpaperDirectory.appending(path: selectedWallpaper.project.file) != currentWallpaper.wallpaperDirectory.appending(path: currentWallpaper.project.file) {
             viewModel.currentWallpaper = selectedWallpaper
-            nsView.player = viewModel.player
         }
         
         viewModel.playRate = wallpaperViewModel.playRate
