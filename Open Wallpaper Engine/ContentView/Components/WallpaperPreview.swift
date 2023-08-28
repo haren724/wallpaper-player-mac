@@ -11,13 +11,12 @@ struct WallpaperPreview: SubviewOfContentView {
     @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
     
+    @State var isEditingId = ""
+    @State var title = ""
+    
     init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.viewModel = viewModel
         self.wallpaperViewModel = wallpaperViewModel
-    }
-    
-    var author: String {
-        wallpaperViewModel.currentWallpaper.project.title
     }
     
     var wallpaperSize: String {
@@ -43,8 +42,35 @@ struct WallpaperPreview: SubviewOfContentView {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 280, height: 280)
-                        Text(author)
-                            .lineLimit(1)
+                        HStack {
+                            if isEditingId == "title" {
+                                TextField("Wallpaper Title", text: $title)
+                                    .onSubmit {
+                                        var wallpaper = wallpaperViewModel.currentWallpaper
+                                        
+                                        wallpaper.project.title = title
+                                        
+                                        guard let data = try? JSONEncoder().encode(wallpaper.project) else { return }
+                                        
+                                        try? data.write(to: wallpaper.wallpaperDirectory.appending(path: "project.json"), options: .atomic)
+                                        
+                                        wallpaperViewModel.currentWallpaper = wallpaper
+                                        
+                                        isEditingId = ""
+                                    }
+                            } else {
+                                Text(wallpaperViewModel.currentWallpaper.project.title.isEmpty ? "Untitled" : wallpaperViewModel.currentWallpaper.project.title)
+                                    .frame(minWidth: 50)
+                                    .id("title")
+                                    .lineLimit(1)
+                                    .onTapGesture(count: 2) {
+                                        title = wallpaperViewModel.currentWallpaper.project.title
+                                        isEditingId = "title"
+                                    }
+                                Image(systemName: "square.and.pencil")
+                            }
+                            
+                        }
                     }
                     HStack {
                         Image("we.placeholder")
@@ -217,4 +243,9 @@ extension URL {
                     .totalFileAllocatedSize ?? 0) + $0
         }
     }
+}
+
+#Preview {
+    ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
+        .environmentObject(GlobalSettingsViewModel())
 }
