@@ -15,12 +15,18 @@ Menu
 =================
 
 <!--ts-->
-   * [Presentation](#presentation)
-   * [Installation](#installation)
-   * [Usage](#usage)
-      * [Video Wallpaper](#import-from-wallpaper-engine-on-steam)
-   * [Build](#build)
-   * [Documentation](#documentation)
+- [Open Wallpaper Engine](#open-wallpaper-engine)
+- [Menu](#menu)
+  - [Presentation](#presentation)
+    - [Wallpaper](#wallpaper)
+    - [UI](#ui)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Import from Wallpaper Engine (on Steam)](#import-from-wallpaper-engine-on-steam)
+      - [Notice](#notice)
+  - [Build](#build)
+    - [Prerequisite](#prerequisite)
+  - [Documentation](#documentation)
 <!--te-->
 
 ## Presentation
@@ -35,7 +41,7 @@ Menu
 
 
 ## Installation
-Download the .dmg file to local and drag the `.app` application file under `/Application` folder
+Download the .dmg file to local and drag the `.app` application file under `/Applications` folder
 
 ## Usage
 Hi there!

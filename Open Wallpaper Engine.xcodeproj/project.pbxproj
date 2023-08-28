@@ -49,6 +49,7 @@
 		5EFBB0BB2A2F10EA00E39BEC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFBB0BA2A2F10EA00E39BEC /* main.swift */; };
 		5EFC591D2A81ACBC005F97E2 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC591C2A81ACBC005F97E2 /* StatusBar.swift */; };
 		5EFC591F2A81ACC3005F97E2 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC591E2A81ACC3005F97E2 /* MainMenu.swift */; };
+		DAEE29C62A9CB52100633898 /* WebWallpaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEE29C52A9CB52100633898 /* WebWallpaperViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		5EFBB0BA2A2F10EA00E39BEC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5EFC591C2A81ACBC005F97E2 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		5EFC591E2A81ACC3005F97E2 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		DAEE29C52A9CB52100633898 /* WebWallpaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebWallpaperViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				5E7665252A2DC30D00E0E4B4 /* WEProject.swift */,
 				5EF28EBE2A8986AC0013ABBE /* WallpaperViewModel.swift */,
 				5EF28EC02A8990D90013ABBE /* VideoWallpaperViewModel.swift */,
+				DAEE29C52A9CB52100633898 /* WebWallpaperViewModel.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				5E66A0E42A8BA27600EE79D6 /* FilterResultsViewModel.swift in Sources */,
 				5EC47EAA2A2DB32900120CCC /* ContentView.swift in Sources */,
 				5EA310FC2A88E116001A65F4 /* SceneWallpaperView.swift in Sources */,
+				DAEE29C62A9CB52100633898 /* WebWallpaperViewModel.swift in Sources */,
 				5E32ABFE2A4D595D00A0EEEC /* FilterResults.swift in Sources */,
 				5EAF3F722A870ED400F85685 /* GeneralPage.swift in Sources */,
 				5EDF1E162A93B4B6006617EA /* WallpaperDiscover.swift in Sources */,
@@ -691,7 +695,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.4.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.open-wallpaper-Engine";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
@@ -727,7 +731,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "liveappstudio.open-wallpaper-Engine";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
