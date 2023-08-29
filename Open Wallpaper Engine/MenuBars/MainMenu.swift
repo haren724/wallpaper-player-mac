@@ -46,6 +46,21 @@ extension AppDelegate {
             .init(title: "Close Window", action: #selector(AppDelegate.shared.mainWindowController.window.performClose), keyEquivalent: "w")
         ]
         
+        // Edit Menu
+        let editMenu = NSMenuItem()
+        editMenu.submenu = NSMenu(title: "Edit")
+        editMenu.submenu?.items = [
+            .init(title: "Undo", action: #selector(UndoManager.undo), keyEquivalent: "z"),
+            .init(title: "Redo", action: #selector(UndoManager.redo), keyEquivalent: "Z"),
+            .separator(),
+            .init(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"),
+            .init(title: "Copy", action: #selector(NSText.copy(_:)), keyEquivalent: "c"),
+            .init(title: "Paste", action: #selector(NSText.paste(_:)), keyEquivalent: "v"),
+            .init(title: "Delete All", action: #selector(NSText.delete(_:)), keyEquivalent: String(NSBackspaceCharacter)),
+            .separator(),
+            .init(title: "Select All", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a")
+        ]
+        
         // 查看菜单
         let viewMenu = NSMenuItem()
         viewMenu.submenu = NSMenu(title: "View")
@@ -86,6 +101,7 @@ extension AppDelegate {
         mainMenu.items = [
             appMenu,
             fileMenu,
+            editMenu,
             viewMenu,
             windowMenu,
             helpMenu
