@@ -34,6 +34,7 @@ struct ExplorerItem: SubviewOfContentView {
                 Text(wallpaper.project.title)
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, maxHeight: 30)
+                    .padding(4)
                     .background(Color(white: 0, opacity: viewModel.imageScaleIndex == index ? 0.4 : 0.2))
                     .font(.footnote)
                     .multilineTextAlignment(.center)
