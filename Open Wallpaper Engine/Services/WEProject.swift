@@ -66,9 +66,9 @@ struct WEProject: Codable, Equatable, Hashable {
     var contentrating: String?
     var description: String?
     var file: String
-    var general: WEProjectGeneral
+    var general: WEProjectGeneral?
     var preview: String
-    var tags: [String]
+    var tags: [String]?
     var title: String
     var visibility: String?
     var workshopid: WorkshopId?
@@ -76,9 +76,7 @@ struct WEProject: Codable, Equatable, Hashable {
     var version: Int?
     
     static let invalid = Self(file: "",
-                              general: WEProjectGeneral(properties: WEProjectProperties()),
                               preview: "",
-                              tags: [],
                               title: "Error", 
                               type: "video")
 }
