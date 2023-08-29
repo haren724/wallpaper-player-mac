@@ -49,13 +49,13 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
     
     func windowDidResignKey(_ notification: Notification) {
-        if !AppDelegate.shared.contentViewModel.isDisplaySettingsReveal {
-            AppDelegate.shared.contentViewModel.isStaging = false
-        }
+//        if !AppDelegate.shared.contentViewModel.isDisplaySettingsReveal {
+//            AppDelegate.shared.contentViewModel.isStaging = false
+//        }
     }
     
     func windowDidResignMain(_ notification: Notification) {
-        AppDelegate.shared.contentViewModel.isStaging = false
+//        AppDelegate.shared.contentViewModel.isStaging = false
     }
     
     func windowDidBecomeKey(_ notification: Notification) {
