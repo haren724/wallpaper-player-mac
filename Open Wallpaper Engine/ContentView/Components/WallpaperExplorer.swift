@@ -41,6 +41,10 @@ struct WallpaperExplorer: SubviewOfContentView {
                 )], alignment: .leading) {
                     ForEach(Array(viewModel.autoRefreshWallpapers.enumerated()), id: \.0) { (index, wallpaper) in
                         ExplorerItem(viewModel: viewModel, wallpaperViewModel: wallpaperViewModel, wallpaper: wallpaper, index: index)
+                            .contextMenu {
+                                ExplorerItemMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel, current: wallpaper)
+                                ExplorerGlobalMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
+                            }
                     }
                 }
                 .padding(.trailing)
