@@ -59,9 +59,6 @@
         }
       }
     },
-    "?" : {
-
-    },
     "@haren724" : {
 
     },
@@ -81,14 +78,21 @@
 
     },
     "50 per page" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50/页"
+          }
+        }
+      }
     },
     "50 per Page" : {
       "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "50/页"
           }
         }
@@ -99,7 +103,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "100/页"
           }
         }
@@ -110,7 +114,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "200/页"
           }
         }
@@ -163,13 +167,20 @@
 
     },
     "Add to Favorites" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加到喜爱列表"
+          }
+        }
+      }
     },
     "Add to Playlist" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "添加到播放列表"
           }
         }
@@ -179,20 +190,27 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "添加新的壁纸"
           }
         }
       }
     },
     "Adjust Menu Bar Color" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "调整菜单栏颜色"
+          }
+        }
+      }
     },
     "Advanced" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "高级"
           }
         }
@@ -202,7 +220,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "年龄分级"
           }
         }
@@ -212,7 +230,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "全选"
           }
         }
@@ -222,27 +240,51 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "抗锯齿"
           }
         }
       }
     },
     "Appearance" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "外观"
+          }
+        }
+      }
     },
     "Apple AVKit" : {
 
     },
     "Application Rules" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "为每个应用设置规则"
+          }
+        }
+      }
     },
     "Apply to all Wallpapers" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "应用到所有壁纸"
+          }
+        }
+      }
+    },
+    "Assign Hotkey" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "绑定快捷键"
           }
         }
       }
@@ -251,23 +293,37 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "音频"
           }
         }
       }
     },
     "Audio Output" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "音频输出"
+          }
+        }
+      }
     },
     "Auto" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "自动"
+          }
+        }
+      }
     },
     "Automatic" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "自动"
           }
         }
@@ -277,7 +333,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "自动启动"
           }
         }
@@ -287,20 +343,47 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "基础设置"
           }
         }
       }
     },
     "Below Normal" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "低于正常"
+          }
+        }
+      }
+    },
+    "Browse All By" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "所有内容的打开方式"
+          }
+        }
+      }
+    },
+    "Browse Presets" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "浏览预设"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "取消"
           }
         }
@@ -310,20 +393,27 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "更换"
           }
         }
       }
     },
     "Chinese Simplified" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "简体中文"
+          }
+        }
+      }
     },
     "Choose Display" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "选择显示器"
           }
         }
@@ -333,7 +423,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "评论"
           }
         }
@@ -343,20 +433,27 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "设置"
           }
         }
       }
     },
     "Dark" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "黑色主题"
+          }
+        }
+      }
     },
     "Developer" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "开发者"
           }
         }
@@ -366,7 +463,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "禁用"
           }
         }
@@ -376,7 +473,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "发现"
           }
         }
@@ -386,7 +483,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "显示器休眠"
           }
         }
@@ -396,7 +493,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "显示器选择"
           }
         }
@@ -407,7 +504,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "拖到这导入壁纸"
           }
         }
@@ -417,7 +514,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "双显示器"
           }
         }
@@ -427,42 +524,77 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "编辑"
           }
         }
       }
     },
     "Edited" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "已编辑"
+          }
+        }
+      }
     },
     "Enabled" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "启用"
+          }
+        }
+      }
     },
     "English" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "英文"
+          }
+        }
+      }
     },
     "Errors Only" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "仅错误"
+          }
+        }
+      }
     },
     "Everyone" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "全年龄"
           }
         }
       }
     },
     "Fantasy" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "超棒的"
+          }
+        }
+      }
     },
     "Favorite" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "喜欢"
           }
         }
@@ -472,7 +604,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "文件大小"
           }
         }
@@ -482,47 +614,68 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "过滤结果"
           }
         }
       }
     },
     "Follow System" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "跟随系统"
+          }
+        }
+      }
     },
     "FPS" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "帧率限制"
+            "state" : "needs_review",
+            "value" : "帧率"
           }
         }
       }
     },
     "Fully take over" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "完全托管"
+          }
+        }
+      }
     },
     "Group" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "分组"
+            "state" : "needs_review",
+            "value" : "组"
           }
         }
       }
     },
     "Hello, World!" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "打个胶先"
+          }
+        }
+      }
     },
     "High" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "高画质"
+            "state" : "needs_review",
+            "value" : "高"
           }
         }
       }
@@ -551,8 +704,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "更好的性能"
+            "state" : "needs_review",
+            "value" : "高性能"
           }
         }
       }
@@ -561,24 +714,38 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "更好的品质"
+            "state" : "needs_review",
+            "value" : "高品质"
           }
         }
       }
     },
     "Icon Size" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "图标尺寸"
+          }
+        }
+      }
     },
     "Import Wallpapers from Steam Workshop" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "从Steam创意工坊中导入壁纸"
+          }
+        }
+      }
     },
     "Installed" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "已下载"
+            "state" : "needs_review",
+            "value" : "已安装"
           }
         }
       }
@@ -587,47 +754,68 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "继续播放"
+            "state" : "needs_review",
+            "value" : "继续运行"
           }
         }
       }
     },
     "Language" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "语言"
+          }
+        }
+      }
     },
     "Laptop on battery" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "用电池供电时"
+            "state" : "needs_review",
+            "value" : "当笔记本连接电源时"
           }
         }
       }
     },
     "Large Icons" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "大图标"
+          }
+        }
+      }
     },
     "Last Updated" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "最近添加"
           }
         }
       }
     },
     "Light" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "白色主题"
+          }
+        }
+      }
     },
     "Load" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "加载壁纸"
+            "state" : "needs_review",
+            "value" : "加载"
           }
         }
       }
@@ -636,21 +824,28 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "加载配置"
           }
         }
       }
     },
     "Log Level" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "日志记录等级"
+          }
+        }
+      }
     },
     "Low" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "低画质"
+            "state" : "needs_review",
+            "value" : "低"
           }
         }
       }
@@ -661,21 +856,45 @@
     "Made with ❤️ by" : {
 
     },
+    "Manage Blocklist" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "管理屏蔽列表"
+          }
+        }
+      }
+    },
     "Medium" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "中画质"
+            "state" : "needs_review",
+            "value" : "中"
           }
         }
       }
     },
     "Medium Icons" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "中图标"
+          }
+        }
+      }
     },
     "Mobile" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "手机应用"
+          }
+        }
+      }
     },
     "MSAA x2" : {
 
@@ -690,7 +909,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "静音"
           }
         }
@@ -701,7 +920,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "我的壁纸"
           }
         }
@@ -711,7 +930,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "名称"
           }
         }
@@ -727,33 +946,77 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "全不选"
           }
         }
       }
     },
     "Normal" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "正常"
+          }
+        }
+      }
     },
     "OK" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "保存"
+            "state" : "needs_review",
+            "value" : "好"
           }
         }
       }
     },
     "Only enabled when app is running" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "仅在应用程序运行时启用"
+          }
+        }
+      }
+    },
+    "Open All in Finder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "在访达中打开工作目录"
+          }
+        }
+      }
+    },
+    "Open in Finder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "在访达中打开当前壁纸"
+          }
+        }
+      }
+    },
+    "Open in Workshop" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "在创意工坊中打开"
+          }
+        }
+      }
     },
     "Open Wallpaper" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "打开壁纸文件"
           }
         }
@@ -762,15 +1025,12 @@
     "Open Wallpaper Engine" : {
 
     },
-    "Open Wallpapers Folder in Finder" : {
-
-    },
     "Other Application Focused:" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "焦点转移到其他应用时:"
+            "state" : "needs_review",
+            "value" : "当焦点转移到其他应用时"
           }
         }
       }
@@ -779,8 +1039,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "有其他应用全屏时:"
+            "state" : "needs_review",
+            "value" : "当其他应用程序进入全屏时"
           }
         }
       }
@@ -789,8 +1049,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "有其他应用最大化时:"
+            "state" : "needs_review",
+            "value" : "当其他应用程序最大化时"
           }
         }
       }
@@ -799,8 +1059,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "有其他应用播放声音时:"
+            "state" : "needs_review",
+            "value" : "当其他应用程序播放音频时"
           }
         }
       }
@@ -809,21 +1069,28 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "暂停"
           }
         }
       }
     },
     "Pause when VRAM is exhausted" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "当显存耗尽时暂停"
+          }
+        }
+      }
     },
     "Playback" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "播放设置"
+            "state" : "needs_review",
+            "value" : "回放"
           }
         }
       }
@@ -832,8 +1099,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "倍速播放"
+            "state" : "needs_review",
+            "value" : "回放速率"
           }
         }
       }
@@ -842,7 +1109,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "播放列表"
           }
         }
@@ -855,17 +1122,31 @@
 
     },
     "Power Saving Mode, Sleeping..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "休眠/加载中…"
+          }
+        }
+      }
     },
     "Process Piority" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "进程优先级"
+          }
+        }
+      }
     },
     "Properties" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "参数设置"
+            "state" : "needs_review",
+            "value" : "属性"
           }
         }
       }
@@ -877,8 +1158,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "品质"
+            "state" : "needs_review",
+            "value" : "质量"
           }
         }
       }
@@ -887,29 +1168,80 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "评分"
           }
         }
       }
     },
     "Reflection" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "反射"
+          }
+        }
+      }
     },
     "Reflections" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反射"
+          }
+        }
+      }
+    },
+    "Related Wallpapers" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "相关壁纸"
+          }
+        }
+      }
     },
     "Reload when changing output device" : {
 
     },
     "Remove Wallpaper" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "移除壁纸"
+          }
+        }
+      }
+    },
+    "Report" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "反馈"
+          }
+        }
+      }
+    },
+    "Report & Block" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "举报&拦截"
+          }
+        }
+      }
     },
     "Reset" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "重置"
           }
         }
@@ -919,7 +1251,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "初始化所有配置"
           }
         }
@@ -929,14 +1261,21 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "重置过滤器"
+            "state" : "needs_review",
+            "value" : "重置筛选条件"
           }
         }
       }
     },
     "Resolution" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "分辨率"
+          }
+        }
+      }
     },
     "Restart after crashing" : {
 
@@ -948,8 +1287,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "保存壁纸"
+            "state" : "needs_review",
+            "value" : "保存"
           }
         }
       }
@@ -958,8 +1297,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "导出配置文件"
+            "state" : "needs_review",
+            "value" : "保存配置"
           }
         }
       }
@@ -968,8 +1307,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "主题颜色"
+            "state" : "needs_review",
+            "value" : "风格颜色"
           }
         }
       }
@@ -978,7 +1317,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "搜索"
           }
         }
@@ -988,7 +1327,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "设置"
           }
         }
@@ -998,8 +1337,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "分享JSON"
+            "state" : "needs_review",
+            "value" : "共享JSON"
           }
         }
       }
@@ -1008,7 +1347,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "仅展示:"
           }
         }
@@ -1018,58 +1357,114 @@
 
     },
     "Small Icons" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "小标题"
+          }
+        }
+      }
     },
     "Source" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "来源"
           }
         }
       }
     },
     "Split" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "分隔"
+          }
+        }
+      }
     },
     "Start with macOS" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "跟随macOS启动"
+          }
+        }
+      }
     },
     "Stop (free memory)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "停止（释放内存）"
+          }
+        }
+      }
     },
     "Subscription Date" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "订阅时间"
           }
         }
       }
     },
     "Super High Performance" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "高性能"
+          }
+        }
+      }
     },
     "Tags" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "标签"
           }
         }
       }
     },
     "Texture Resolution" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "纹理分辨率"
+          }
+        }
+      }
     },
     "Theme" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "主题"
+          }
+        }
+      }
     },
     "Titles per page" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "每页壁纸数量"
+          }
+        }
+      }
     },
     "Triple Monitor" : {
       "localizations" : {
@@ -1096,7 +1491,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "类型"
           }
         }
@@ -1106,8 +1501,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "超高的画质"
+            "state" : "needs_review",
+            "value" : "超级"
           }
         }
       }
@@ -1119,27 +1514,41 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "超宽屏"
+            "state" : "needs_review",
+            "value" : "带鱼屏"
           }
         }
       }
     },
     "Unkown Author" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "佚名"
+          }
+        }
+      }
     },
     "Unsubscribe" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "取消订阅"
           }
         }
       }
     },
     "Verbose" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "啰嗦模式"
+          }
+        }
+      }
     },
     "version: %@" : {
 
@@ -1156,19 +1565,40 @@
       }
     },
     "Video" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "视频"
+          }
+        }
+      }
     },
     "Video Framework" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "视频播放框架"
+          }
+        }
+      }
     },
     "View" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "预览"
+          }
+        }
+      }
     },
     "Volume" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "音量"
           }
         }
@@ -1178,7 +1608,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "壁纸编辑器"
           }
         }
@@ -1188,10 +1618,24 @@
 
     },
     "Wallpaper Per Display" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "每台显示器壁纸"
+          }
+        }
+      }
     },
     "Wallpaper Title" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "壁纸标题"
+          }
+        }
+      }
     },
     "We brings you a smoother app animation experience. Powered by the lightweight, modern SwiftUI Framework." : {
 
@@ -1219,7 +1663,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "正在开发哦~"
           }
         }
@@ -1229,7 +1673,7 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "创意工坊"
           }
         }
