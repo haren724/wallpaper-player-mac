@@ -35,7 +35,9 @@ struct ExplorerBottomBar: View {
                         .frame(width: 220)
                 }
                 .buttonStyle(.borderedProminent)
-                Button { } label: {
+                Button { 
+                    AppDelegate.shared.openImportFromFolderPanel()
+                } label: {
                     Label("Open Wallpaper", systemImage: "arrow.up.bin.fill")
                         .frame(width: 220)
                 }
