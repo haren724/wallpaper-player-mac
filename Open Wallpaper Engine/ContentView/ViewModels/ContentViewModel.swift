@@ -5,6 +5,7 @@
 //  Created by Haren on 2023/8/15.
 //
 
+import AVKit
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -147,22 +148,63 @@ class ContentViewModel: ObservableObject, DropDelegate {
             }
             // Do something with the file url
             // remember to dispatch on main in case of a @State change
-            guard let wallpaperFolder = try? FileWrapper(url: url)
+            guard let wallpaper = try? FileWrapper(url: url)
             else{
                 self?.alertImportModal(which: .unkown)
                 return
             }
-            guard wallpaperFolder.fileWrappers?["project.json"] != nil
-            else{
-                self?.alertImportModal(which: .doesNotContainWallpaper)
-                return
-            }
-            DispatchQueue.main.async {
-                try? FileManager.default.copyItem(
-                    at: url,
-                    to: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        .appending(path: url.lastPathComponent)
-                )
+            
+            if wallpaper.isDirectory {
+                guard wallpaper.fileWrappers?["project.json"] != nil
+                else{
+                    self?.alertImportModal(which: .doesNotContainWallpaper)
+                    return
+                }
+                DispatchQueue.main.async {
+                    try? FileManager.default.copyItem(
+                        at: url,
+                        to: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                            .appending(path: url.lastPathComponent)
+                    )
+                }
+            } else if wallpaper.isRegularFile { // hello.mp4
+                guard let filename = wallpaper.filename, filename.suffix(4) == ".mp4" else { return }
+                
+                let wallpaperDirectoryWrapper = FileWrapper(directoryWithFileWrappers: [filename: wallpaper])
+                
+                let projectData = WEProject(file: filename,
+                                            preview: "preview.jpg",
+                                            title: String(filename.prefix(filename.count - 4)),
+                                            type: "video")
+                
+                // Generate a thumbnail (preview) image for importing video wallpaper
+                let asset = AVAsset(url: url)
+                let imageGenerator = AVAssetImageGenerator(asset: asset)
+                imageGenerator.appliesPreferredTrackTransform = true
+                let time = CMTimeMake(value: 1, timescale: 1) // 第一帧的时间
+                imageGenerator.generateCGImagesAsynchronously(forTimes: [NSValue(time: time)]) { (_, cgImage, _, _, error) in
+                    if let error = error {
+                        print(error)
+                    } else if let cgImage = cgImage {
+                        if let data = NSBitmapImageRep(cgImage: cgImage).representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:]) {
+                            wallpaperDirectoryWrapper.addRegularFile(withContents: data, preferredFilename: "preview.jpg")
+                            
+                            wallpaperDirectoryWrapper.addRegularFile(withContents: try! JSONEncoder().encode(projectData), preferredFilename: "project.json")
+                            
+                            // Write to Work Directory
+                            DispatchQueue.main.async {
+                                do {
+                                    try wallpaperDirectoryWrapper.write(
+                                        to: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appending(path: String(filename.prefix(filename.count - 4))),
+                                        originalContentsURL: nil)
+                                } catch {
+                                    print(error)
+                                    return
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         return true
