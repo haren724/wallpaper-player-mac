@@ -205,12 +205,14 @@ struct WallpaperPreview: SubviewOfContentView {
             HStack {
                 Spacer()
                 Button {
-//                        self.mainWindowController.window.performClose(nil)
+                    AppDelegate.shared.mainWindowController.close()
                 } label: {
                     Text("OK").frame(width: 50)
                 }
                 .buttonStyle(.borderedProminent)
-                Button { } label: {
+                Button { 
+                    AppDelegate.shared.mainWindowController.close()
+                } label: {
                     Text("Cancel").frame(width: 50)
                 }
             }
