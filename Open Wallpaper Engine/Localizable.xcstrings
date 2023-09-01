@@ -87,72 +87,6 @@
         }
       }
     },
-    "50 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "50/页"
-          }
-        }
-      }
-    },
-    "100 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "100/页"
-          }
-        }
-      }
-    },
-    "200 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "200/页"
-          }
-        }
-      }
-    },
-    "720 x 1280" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "720 x 1280"
-          }
-        }
-      }
-    },
-    "1080 x 1920" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1080 x 1920"
-          }
-        }
-      }
-    },
-    "1440 x 2560" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1440 x 2560"
-          }
-        }
-      }
-    },
     "2048x2048 MacBook Pro 14''" : {
       "localizations" : {
         "zh-Hans" : {
@@ -495,17 +429,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "显示器选择"
-          }
-        }
-      }
-    },
-    "Drag here to import wallpapers" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "拖到这导入壁纸"
           }
         }
       }
@@ -911,17 +834,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "静音"
-          }
-        }
-      }
-    },
-    "My Wallpapers" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "我的壁纸"
           }
         }
       }
@@ -1476,17 +1388,6 @@
         }
       }
     },
-    "Triple Standard" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "三标准显示器"
-          }
-        }
-      }
-    },
     "Type" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1551,15 +1452,11 @@
       }
     },
     "version: %@" : {
-
-    },
-    "version: v0.1" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本号:v0.1"
+            "value" : "版本号： %@"
           }
         }
       }
