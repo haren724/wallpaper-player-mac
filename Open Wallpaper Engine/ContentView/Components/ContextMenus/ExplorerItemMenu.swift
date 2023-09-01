@@ -84,8 +84,3 @@ struct ExplorerItemMenu: SubviewOfContentView {
         .labelStyle(.titleAndIcon)
     }
 }
-
-#Preview {
-    ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
-        .environmentObject(GlobalSettingsViewModel())
-}

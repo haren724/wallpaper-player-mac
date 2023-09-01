@@ -85,9 +85,3 @@ extension View {
         return modifier(SelectedItem(selected))
     }
 }
-
-@available(macOS 14, *)
-#Preview {
-    ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
-        .environmentObject(GlobalSettingsViewModel())
-}

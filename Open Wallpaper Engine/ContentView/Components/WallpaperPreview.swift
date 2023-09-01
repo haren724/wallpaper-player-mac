@@ -244,8 +244,3 @@ extension URL {
         }
     }
 }
-
-#Preview {
-    ContentView(viewModel: .init(isStaging: true), wallpaperViewModel: .init())
-        .environmentObject(GlobalSettingsViewModel())
-}
