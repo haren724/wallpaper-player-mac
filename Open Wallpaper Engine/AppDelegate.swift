@@ -24,6 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     var importOpenPanel: NSOpenPanel!
     
+    var eventHandler: Any?
+    
     static var shared = AppDelegate()
     
 // MARK: - delegate methods
@@ -135,6 +137,57 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func windowWillClose(_ notification: Notification) {
         globalSettingsViewModel.reset()
+    }
+    
+    func removeEventHandler() {
+        if let eventHandler = self.eventHandler {
+            NSEvent.removeMonitor(eventHandler)
+        }
+    }
+    
+    func setEventHandler() {
+        self.eventHandler = NSEvent.addGlobalMonitorForEvents(matching: [
+            .mouseMoved,
+            .leftMouseUp,
+            .leftMouseDown,
+            .leftMouseDragged,
+            .rightMouseUp,
+            .rightMouseDown,
+            .rightMouseDragged,
+            .mouseEntered,
+            .mouseExited
+        ]) { event in
+            // contentView.subviews.first -> SwiftUIView.subviews.first -> WKWebView
+            let view = self.wallpaperWindow.contentView?.subviews.first?.subviews.first
+            switch event.type {
+            case .mouseMoved:
+                view?.mouseMoved(with: event)
+                
+            case .mouseEntered:
+                view?.mouseEntered(with: event)
+                
+            case .mouseExited:
+                view?.mouseExited(with: event)
+                
+            case .leftMouseUp:
+                fallthrough
+            case .rightMouseUp:
+                view?.mouseUp(with: event)
+                
+            case .leftMouseDown:
+                view?.mouseDown(with: event)
+//            case .rightMouseDown:
+//                view?.mouseDown(with: event)
+                
+            case .leftMouseDragged:
+                fallthrough
+            case .rightMouseDragged:
+                view?.mouseDragged(with: event)
+                
+            default:
+                break
+            }
+        }
     }
     
     func saveCurrentWallpaper() {
