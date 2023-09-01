@@ -19,6 +19,12 @@ struct WallpaperView: View {
 //            Text("?")
         case "web":
             WebWallpaperView(wallpaperViewModel: viewModel)
+                .onAppear {
+                    AppDelegate.shared.setEventHandler()
+                }
+                .onDisappear {
+                    AppDelegate.shared.removeEventHandler()
+                }
         default:
             VideoWallpaperView(wallpaperViewModel: WallpaperViewModel())
         }
