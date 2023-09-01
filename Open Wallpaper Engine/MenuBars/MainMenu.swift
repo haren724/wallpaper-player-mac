@@ -93,7 +93,8 @@ extension AppDelegate {
         let helpMenu = NSMenuItem()
         helpMenu.submenu = NSMenu(title: "Help")
         helpMenu.submenu?.items = [
-            .init(title: "Reset First Launch", action: #selector(resetFirstLaunch), keyEquivalent: "")
+            .init(title: "Reset First Launch", action: #selector(resetFirstLaunch), keyEquivalent: ""),
+            .init(title: "Toggle Desktop Wallpaper Windowo (Debug)", action: #selector(toggleDesktopWallpaperWindow), keyEquivalent: "")
         ]
         
         // 主菜单栏
@@ -108,6 +109,14 @@ extension AppDelegate {
         ]
         
         NSApplication.shared.mainMenu = mainMenu
+    }
+    
+    @objc func toggleDesktopWallpaperWindow() {
+        if wallpaperWindow.isVisible {
+            wallpaperWindow.orderOut(nil)
+        } else {
+            wallpaperWindow.orderFront(nil)
+        }
     }
 }
 
