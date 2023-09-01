@@ -10,7 +10,15 @@ import SwiftUI
 /// Provide Wallpaper Database for WallpaperView and ContentView etc.
 class WallpaperViewModel: ObservableObject {
 
-    @AppStorage("CurrentWallpaper") var currentWallpaper: WEWallpaper = WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!)
+    @AppStorage("CurrentWallpaper") var currentWallpaper: WEWallpaper = WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!) {
+        willSet {
+            AppDelegate.shared.wallpaperWindow.orderOut(nil)
+            AppDelegate.shared.setPlacehoderWallpaper(with: newValue)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                AppDelegate.shared.wallpaperWindow.orderFront(nil)
+            }
+        }
+    }
     
     var lastPlayRate: Float = 1.0
     @Published public var playRate: Float = 1.0 {
