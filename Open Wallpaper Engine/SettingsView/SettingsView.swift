@@ -34,7 +34,6 @@ enum GSTextureResolutionQuality: String, CaseIterable, Identifiable, Codable {
 
 struct GlobalSettings: Codable, Equatable {
     var otherApplicationFocused = GSPlayback.keepRunning
-    var otherApplicationMaximized = GSPlayback.keepRunning
     var otherApplicationFullscreen = GSPlayback.keepRunning
     var otherApplicationPlayingAudio = GSPlayback.keepRunning
     var displayAsleep = GSPlayback.keepRunning

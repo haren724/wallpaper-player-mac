@@ -25,13 +25,6 @@ struct PerformancePage: SettingsPage {
                     Text("Pause").tag(GSPlayback.pause)
                 }
                 
-                Picker("Other Application Maximized:", selection: $viewModel.settings.otherApplicationMaximized) {
-                    Text("Keep Running").tag(GSPlayback.keepRunning)
-                    Text("Mute").tag(GSPlayback.mute)
-                    Text("Pause").tag(GSPlayback.pause)
-                    Text("Stop (free memory)").tag(GSPlayback.stop)
-                }
-                
                 Picker("Other Application Fullscreen:", selection: $viewModel.settings.otherApplicationFullscreen) {
                     Text("Keep Running").tag(GSPlayback.keepRunning)
                     Text("Mute").tag(GSPlayback.mute)
