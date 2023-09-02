@@ -12,6 +12,12 @@
             "state" : "translated",
             "value" : "Approved"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "广受好评"
+          }
         }
       }
     },
@@ -22,6 +28,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Audio Responsive"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "音频响应"
           }
         }
       }
@@ -34,6 +46,12 @@
             "state" : "translated",
             "value" : "Customizable"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可自定义的"
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
             "state" : "translated",
             "value" : "Mobile Compatible"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与移动设备兼容"
+          }
         }
       }
     },
@@ -55,6 +79,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "My Favourites"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的收藏"
           }
         }
       }
@@ -69,39 +99,73 @@
 
     },
     "×8 MSAA is only recommended for powerful high-end desktop graphics cards." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建议仅将 x8 MSAA 用于功能强大的高端台式机显卡。"
+          }
+        }
+      }
     },
     "1 per page (developer)" : {
 
     },
     "10 per page" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 个/页"
+          }
+        }
+      }
     },
     "25 per page" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "25 个/页"
+          }
+        }
+      }
     },
     "50 per page" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "50/页"
+            "value" : "50 个/页"
           }
         }
       }
     },
     "2048x2048 MacBook Pro 14''" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2048 x 2048 MacBook Pro 14\""
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2048x2048 MacBook Pro 14"
+            "value" : "2048 x 2048 MacBook Pro 14\""
           }
         }
       }
     },
     "3840 x 2160" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3840 x 2160"
+          }
+        }
+      }
     },
     "Add to Favorites" : {
       "localizations" : {
@@ -437,7 +501,6 @@
       }
     },
     "Don't ask again for this wallpaper" : {
-
     },
     "Dual Monitor" : {
       "localizations" : {
@@ -614,7 +677,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设置较高的帧率将会使你的电脑变慢！"
+            "value" : "高 FPS 可能会降低电脑的运行速度！"
           }
         }
       }
@@ -624,7 +687,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设置较高的帧率将会使你的电脑变慢！这不是开玩笑，你的电脑将会非常🔥"
+            "value" : "高 FPS 可能会降低电脑的运行速度！这可不是开玩笑，您设置的 FPS 太高了🔥."
           }
         }
       }
@@ -663,8 +726,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "从Steam创意工坊中导入壁纸"
+            "state" : "translated",
+            "value" : "从 Steam 创意工坊中导入壁纸"
           }
         }
       }
@@ -855,17 +918,31 @@
       }
     },
     "Never show this again until next update" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在下次更新之前不再显示"
+          }
+        }
+      }
     },
     "No wallpapers found for your search.\nExpand or reset the categories in the filter sidebar or try another search term." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有找到任何壁纸。 请尝试通过侧栏的选择器来扩大或重置搜索范围，或者尝试换一个词来搜索。"
+          }
+        }
+      }
     },
     "None" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "全不选"
+            "state" : "translated",
+            "value" : "无日志"
           }
         }
       }
@@ -941,7 +1018,14 @@
       }
     },
     "Open Wallpaper Engine" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wallpaper Engine"
+          }
+        }
+      }
     },
     "Open Wallpaper Engine has no control over this file, you must ensure that it comes from a rellable source before proceeding." : {
 
@@ -1046,10 +1130,24 @@
 
     },
     "Post-Processing" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "后处理"
+          }
+        }
+      }
     },
     "Potrait Monitor / Phone" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "纵向显示器/手机"
+          }
+        }
+      }
     },
     "Power Saving Mode, Sleeping..." : {
       "localizations" : {
@@ -1085,7 +1183,14 @@
       }
     },
     "Protect against crashes" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "防崩溃"
+          }
+        }
+      }
     },
     "Quality" : {
       "localizations" : {
@@ -1138,7 +1243,14 @@
       }
     },
     "Reload when changing output device" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改音频输出设备时重新加载"
+          }
+        }
+      }
     },
     "Remove Wallpaper" : {
       "localizations" : {
@@ -1211,10 +1323,24 @@
       }
     },
     "Restart after crashing" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃后重启"
+          }
+        }
+      }
     },
     "Safe start after hibernation" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从休眠后唤醒时使用安全模式"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -1287,7 +1413,14 @@
       }
     },
     "Similar UI Layout to Wallpaper Engine on Steam" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "和 Steam 上的 Wallpaper Engine 具有相似的 UI 布局"
+          }
+        }
+      }
     },
     "Small Icons" : {
       "localizations" : {
@@ -1323,8 +1456,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "跟随macOS启动"
+            "state" : "translated",
+            "value" : "跟随 macOS 启动"
           }
         }
       }
@@ -1430,7 +1563,14 @@
       }
     },
     "Ultra mode adds HDR bloom to supported wallpapers and is only recommended for powerful high-end desktop graphics cards." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "超高模式可将 HDR 高光添加到支持的壁纸中，建议仅用于功能强大的高端台式机显卡。"
+          }
+        }
+      }
     },
     "Ultra Widescreen" : {
       "localizations" : {
@@ -1466,8 +1606,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "啰嗦模式"
+            "state" : "translated",
+            "value" : "详细日志"
           }
         }
       }
@@ -1556,16 +1696,44 @@
       }
     },
     "We brings you a smoother app animation experience. Powered by the lightweight, modern SwiftUI Framework." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过轻量、现代化的 SwiftUI 框架，带来更加顺滑的动画体验"
+          }
+        }
+      }
     },
     "We Take Care of Your Laptop's Battery Life" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们关心你的电池寿命"
+          }
+        }
+      }
     },
     "What's New in Open Wallpaper Engine" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wallpaper Engine 里的新东西"
+          }
+        }
+      }
     },
     "When it comes to without pluging to the power adapter, we reduced the power consumption as much as possible, without just stoping the playback." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当拔下充电器时，我们尽可能的减少壁纸的能源消耗，但并不停止播放。"
+          }
+        }
+      }
     },
     "Widescreen" : {
       "localizations" : {
@@ -1601,13 +1769,34 @@
 
     },
     "You can easily import video type wallpapers from steam workshop of Wallpaper Engine and modify some properties as well, like playback rate, volume, etc." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以轻松的从 Wallpaper Engine 的创意工坊中导入视频类型的壁纸，同时设定一些属性，例如播放速率，音量等。"
+          }
+        }
+      }
     },
     "You may feel familar when using this dynamic desktop wallpaper tool since it almost has the same layout to its ancesstor." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你在使用时也许会感到非常熟悉，因为它和它的原型的 UI 布局几乎完全一致。"
+          }
+        }
+      }
     },
     "Your Presets" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户预设"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
