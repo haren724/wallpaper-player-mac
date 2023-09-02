@@ -92,6 +92,9 @@
     "@haren724" : {
 
     },
+    "%@" : {
+
+    },
     "%lld" : {
 
     },
@@ -134,72 +137,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "50 个/页"
-          }
-        }
-      }
-    },
-    "50 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "500 个/页"
-          }
-        }
-      }
-    },
-    "100 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "100 个/页"
-          }
-        }
-      }
-    },
-    "200 per Page" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "200 个/页"
-          }
-        }
-      }
-    },
-    "720 x 1280" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "720 x 1280"
-          }
-        }
-      }
-    },
-    "1080 x 1920" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1080 x 1920"
-          }
-        }
-      }
-    },
-    "1440 x 2560" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1440 x 2560"
           }
         }
       }
@@ -563,16 +500,7 @@
         }
       }
     },
-    "Drag here to import wallpapers" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "拖拽到此以导入壁纸"
-          }
-        }
-      }
+    "Don't ask again for this wallpaper" : {
     },
     "Dual Monitor" : {
       "localizations" : {
@@ -979,17 +907,6 @@
         }
       }
     },
-    "My Wallpapers" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "我的壁纸"
-          }
-        }
-      }
-    },
     "Name" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1110,6 +1027,12 @@
         }
       }
     },
+    "Open Wallpaper Engine has no control over this file, you must ensure that it comes from a rellable source before proceeding." : {
+
+    },
+    "Opening Unkown %@" : {
+
+    },
     "Other Application Focused:" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1200,6 +1123,12 @@
         }
       }
     },
+    "Please be aware of malware." : {
+
+    },
+    "Please wait %lld seconds." : {
+
+    },
     "Post-Processing" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1229,6 +1158,9 @@
           }
         }
       }
+    },
+    "Proceed" : {
+
     },
     "Process Piority" : {
       "localizations" : {
@@ -1610,17 +1542,6 @@
         }
       }
     },
-    "Triple Standard" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "三标准显示器"
-          }
-        }
-      }
-    },
     "Type" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1692,7 +1613,14 @@
       }
     },
     "version: %@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本号： %@"
+          }
+        }
+      }
     },
     "Video" : {
       "localizations" : {
@@ -1836,6 +1764,9 @@
           }
         }
       }
+    },
+    "You are about to open an external %@ as a wallpaper:" : {
+
     },
     "You can easily import video type wallpapers from steam workshop of Wallpaper Engine and modify some properties as well, like playback rate, volume, etc." : {
       "localizations" : {

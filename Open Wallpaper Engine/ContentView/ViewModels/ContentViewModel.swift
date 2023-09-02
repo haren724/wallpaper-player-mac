@@ -42,6 +42,8 @@ class ContentViewModel: ObservableObject, DropDelegate {
     
     @Published var wallpapers = [WEWallpaper]()
     
+    @Published var isUnsafeWallpaperWarningPresented = false
+    
     @AppStorage("WallpapersPerPage") var wallpapersPerPage: Int = 2
     
     var importAlertError: WPImportError? = nil
@@ -129,6 +131,10 @@ class ContentViewModel: ObservableObject, DropDelegate {
         self.importAlertPresented = true
     }
     
+    func warningUnsafeWallpaperModal(which wallpaper: WEWallpaper) {
+        self.isUnsafeWallpaperWarningPresented = true
+    }
+    
     func dropUpdated(info: DropInfo) -> DropProposal? {
         let proposal = DropProposal(operation: .copy)
         return proposal
@@ -168,7 +174,7 @@ class ContentViewModel: ObservableObject, DropDelegate {
                     )
                 }
             } else if wallpaper.isRegularFile { // hello.mp4
-                guard let filename = wallpaper.filename, filename.suffix(4) == ".mp4" else { return }
+                guard let filename = wallpaper.filename, [".mp4", ".mov"].contains(filename.suffix(4).lowercased()) else { return }
                 
                 let wallpaperDirectoryWrapper = FileWrapper(directoryWithFileWrappers: [filename: wallpaper])
                 

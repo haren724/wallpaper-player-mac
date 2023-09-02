@@ -9,6 +9,8 @@ An open source wallpaper engine for mac (which is not relative to the existing o
 <a href="http://haren724.top/documentation/open_wallpaper_engine">Documentation</a>
 ·
 <a href="https://github.com/haren724/open-wallpaper-engine-mac/blob/main/AUTHORS.md">Authors</a>
+·
+<a href="https://testflight.apple.com/join/9fDQc6dA">Testflight</a>
 </p>
 
 Menu

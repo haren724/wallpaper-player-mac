@@ -10,6 +10,7 @@
 		5E0700E62A859FAD00ADFE2E /* WallpaperNotFound.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5E0700E52A859FAD00ADFE2E /* WallpaperNotFound.mp4 */; };
 		5E2F1E892A57DF2D0081D69D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */; };
 		5E32ABFE2A4D595D00A0EEEC /* FilterResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32ABFD2A4D595D00A0EEEC /* FilterResults.swift */; };
+		5E51A43A2AA30D8B00E46E99 /* UnsafeWallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51A4392AA30D8B00E46E99 /* UnsafeWallpaper.swift */; };
 		5E615E222A7D2F9700A37EB8 /* ImportPanels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E615E212A7D2F9700A37EB8 /* ImportPanels.swift */; };
 		5E66A0DA2A8ADECC00EE79D6 /* TopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E66A0D92A8ADECC00EE79D6 /* TopTabBar.swift */; };
 		5E66A0DD2A8ADF7C00EE79D6 /* ExplorerTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E66A0DC2A8ADF7C00EE79D6 /* ExplorerTopBar.swift */; };
@@ -77,6 +78,7 @@
 		5E1670752A88EDF000D1B199 /* import-panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "import-panel.png"; sourceTree = "<group>"; };
 		5E2F1E882A57DF2D0081D69D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5E32ABFD2A4D595D00A0EEEC /* FilterResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResults.swift; sourceTree = "<group>"; };
+		5E51A4392AA30D8B00E46E99 /* UnsafeWallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeWallpaper.swift; sourceTree = "<group>"; };
 		5E5460C62A83026D00655D85 /* wallpaper-with-windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallpaper-with-windows.png"; sourceTree = "<group>"; };
 		5E5460C72A83027400655D85 /* wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper.png; sourceTree = "<group>"; };
 		5E6091F12A83E85D00D4C36C /* AUTHORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AUTHORS.md; sourceTree = "<group>"; };
@@ -156,9 +158,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E51A4382AA30D6A00E46E99 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				5E66A0EC2A8BABAB00EE79D6 /* DisplaySettings.swift */,
+				5E51A4392AA30D8B00E46E99 /* UnsafeWallpaper.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		5E66A0DB2A8ADED400EE79D6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5E51A4382AA30D6A00E46E99 /* Alerts */,
 				5E66A0EB2A8BAA6500EE79D6 /* ContextMenus */,
 				5E66A0D92A8ADECC00EE79D6 /* TopTabBar.swift */,
 				5E66A0E52A8BA69B00EE79D6 /* WallpaperExplorer.swift */,
@@ -166,7 +178,6 @@
 				5E66A0E72A8BA95600EE79D6 /* WallpaperPreview.swift */,
 				5E66A0DC2A8ADF7C00EE79D6 /* ExplorerTopBar.swift */,
 				5EB4DB872A980532000A1FEA /* ExplorerItem.swift */,
-				5E66A0EC2A8BABAB00EE79D6 /* DisplaySettings.swift */,
 				5E66A0E02A8BA18D00EE79D6 /* GifImage.swift */,
 				5E32ABFD2A4D595D00A0EEEC /* FilterResults.swift */,
 				5E66A0EE2A8BADC900EE79D6 /* ExplorerBottomBar.swift */,
@@ -493,6 +504,7 @@
 				5EFC591F2A81ACC3005F97E2 /* MainMenu.swift in Sources */,
 				5EC47EAC2A2DB3E500120CCC /* WallpaperView.swift in Sources */,
 				5E98F6C72A81D8B200C12E34 /* MainWindow.swift in Sources */,
+				5E51A43A2AA30D8B00E46E99 /* UnsafeWallpaper.swift in Sources */,
 				5E66A0E12A8BA18D00EE79D6 /* GifImage.swift in Sources */,
 				5EF28EBF2A8986AC0013ABBE /* WallpaperViewModel.swift in Sources */,
 				5E66A0DF2A8AE3C900EE79D6 /* ContentViewModel.swift in Sources */,
