@@ -90,6 +90,7 @@ struct PerformancePage: SettingsPage {
                         Text("Edit").frame(width: 100)
                     }
                     .buttonStyle(.borderedProminent)
+                    .disabled(true)
                 }
             } header: {
                 Label("Playback", systemImage: "play.fill")
