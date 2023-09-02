@@ -10,7 +10,24 @@ import SwiftUI
 /// Provide Wallpaper Database for WallpaperView and ContentView etc.
 class WallpaperViewModel: ObservableObject {
 
-    @AppStorage("CurrentWallpaper") var currentWallpaper: WEWallpaper = WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!) {
+    @Published var nextCurrentWallpaper: WEWallpaper =
+    WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!) {
+        willSet {
+            if ["web", "application"].contains(newValue.project.type) {
+                if let trustedWallpapers = UserDefaults.standard.array(forKey: "TrustedWallpapers") as? [String],
+                   trustedWallpapers.contains(newValue.wallpaperDirectory.path()) {
+                    self.currentWallpaper = newValue
+                } else {
+                    AppDelegate.shared.contentViewModel.warningUnsafeWallpaperModal(which: newValue)
+                }
+            } else {
+                self.currentWallpaper = newValue
+            }
+        }
+    }
+    
+    @AppStorage("CurrentWallpaper") var currentWallpaper: WEWallpaper =
+    WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!) {
         willSet {
             AppDelegate.shared.wallpaperWindow.orderOut(nil)
             AppDelegate.shared.setPlacehoderWallpaper(with: newValue)

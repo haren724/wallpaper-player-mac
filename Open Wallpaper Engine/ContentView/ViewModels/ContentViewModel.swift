@@ -42,6 +42,8 @@ class ContentViewModel: ObservableObject, DropDelegate {
     
     @Published var wallpapers = [WEWallpaper]()
     
+    @Published var isUnsafeWallpaperWarningPresented = false
+    
     @AppStorage("WallpapersPerPage") var wallpapersPerPage: Int = 2
     
     var importAlertError: WPImportError? = nil
@@ -127,6 +129,10 @@ class ContentViewModel: ObservableObject, DropDelegate {
     func alertImportModal(which error: WPImportError) {
         self.importAlertError = error
         self.importAlertPresented = true
+    }
+    
+    func warningUnsafeWallpaperModal(which wallpaper: WEWallpaper) {
+        self.isUnsafeWallpaperWarningPresented = true
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {

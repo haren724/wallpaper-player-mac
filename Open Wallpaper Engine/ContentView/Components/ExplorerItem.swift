@@ -16,37 +16,31 @@ struct ExplorerItem: SubviewOfContentView {
     var index: Int
     
     var body: some View {
-        GifImage(contentsOf: { (url: URL) in
-            if let selectedProject = try? JSONDecoder()
-                .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
-                return url.appending(path: selectedProject.preview)
-            }
-            return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
-        }(wallpaper.wallpaperDirectory))
-        .resizable()
-        .scaleEffect(viewModel.imageScaleIndex == index ? 1.2 : 1.0)
-        .clipShape(Rectangle())
-        .border(Color.accentColor, width: viewModel.imageScaleIndex == index ? 1.0 : 0)
+        ZStack(alignment: .bottom) {
+            GifImage(contentsOf: { (url: URL) in
+                if let selectedProject = try? JSONDecoder()
+                    .decode(WEProject.self, from: Data(contentsOf: url.appending(path: "project.json"))) {
+                    return url.appending(path: selectedProject.preview)
+                }
+                return Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!
+            }(wallpaper.wallpaperDirectory))
+            .resizable()
+            .scaleEffect(viewModel.imageScaleIndex == index ? 1.2 : 1.0)
+            .aspectRatio(contentMode: .fit)
+            .clipShape(Rectangle())
+            
+            
+            Text(wallpaper.project.title)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, minHeight: 30)
+                .padding(4)
+                .background(Color(white: 0, opacity: viewModel.imageScaleIndex == index ? 0.4 : 0.2))
+                .font(.footnote)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(Color(white: viewModel.imageScaleIndex == index ? 0.9 : 0.7))
+        }
         .selected(wallpaper.wallpaperDirectory == wallpaperViewModel.currentWallpaper.wallpaperDirectory)
-        .overlay {
-            VStack {
-                Spacer()
-                Text(wallpaper.project.title)
-                    .lineLimit(2)
-                    .frame(maxWidth: .infinity, maxHeight: 30)
-                    .padding(4)
-                    .background(Color(white: 0, opacity: viewModel.imageScaleIndex == index ? 0.4 : 0.2))
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(Color(white: viewModel.imageScaleIndex == index ? 0.9 : 0.7))
-            }
-        }
-        .onTapGesture {
-            withAnimation(.default.speed(2)) {
-                viewModel.selectedIndex = index
-                wallpaperViewModel.currentWallpaper = wallpaper
-            }
-        }
+        .border(Color.accentColor, width: viewModel.imageScaleIndex == index ? 1.0 : 0)
         .onHover { onHover in
             withAnimation {
                 if onHover {
@@ -56,6 +50,11 @@ struct ExplorerItem: SubviewOfContentView {
                 }
             }
         }
-        .aspectRatio(contentMode: .fit)
+        .onTapGesture {
+            withAnimation(.default.speed(2)) {
+                viewModel.selectedIndex = index
+                wallpaperViewModel.nextCurrentWallpaper = wallpaper
+            }
+        }
     }
 }

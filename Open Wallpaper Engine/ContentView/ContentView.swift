@@ -93,8 +93,12 @@ struct ContentView: View {
         }
         .sheet(isPresented: $viewModel.isDisplaySettingsReveal) {
             DisplaySettings(viewModel: viewModel)
-            .padding()
-            .frame(width: 520, height: 450)
+                .padding()
+                .frame(width: 520, height: 450)
+        }
+        .sheet(isPresented: $viewModel.isUnsafeWallpaperWarningPresented) {
+            UnsafeWallpaper(wallpaper: wallpaperViewModel.nextCurrentWallpaper)
+                .frame(width: 600, height: 300)
         }
         .frame(minWidth: 1000, minHeight: 400, idealHeight: 600)
     }
