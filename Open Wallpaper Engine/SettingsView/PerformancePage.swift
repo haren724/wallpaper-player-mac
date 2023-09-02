@@ -19,68 +19,44 @@ struct PerformancePage: SettingsPage {
     var body: some View {
         Form {
             Section {
-                HStack {
-                    Text("Other Application Focused:")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.otherApplicationFocused) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Mute").tag(GSPlayback.mute)
-                        Text("Pause").tag(GSPlayback.pause)
-                    }
-                    .frame(width: 200)
+                Picker("Other Application Focused:", selection: $viewModel.settings.otherApplicationFocused) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Mute").tag(GSPlayback.mute)
+                    Text("Pause").tag(GSPlayback.pause)
                 }
-                HStack {
-                    Text("Other Application Maximized:")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.otherApplicationMaximized) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Mute").tag(GSPlayback.mute)
-                        Text("Pause").tag(GSPlayback.pause)
-                        Text("Stop (free memory)").tag(GSPlayback.stop)
-                    }
-                    .frame(width: 200)
+                
+                Picker("Other Application Maximized:", selection: $viewModel.settings.otherApplicationMaximized) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Mute").tag(GSPlayback.mute)
+                    Text("Pause").tag(GSPlayback.pause)
+                    Text("Stop (free memory)").tag(GSPlayback.stop)
                 }
-                HStack {
-                    Text("Other Application Fullscreen:")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.otherApplicationFullscreen) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Mute").tag(GSPlayback.mute)
-                        Text("Pause").tag(GSPlayback.pause)
-                        Text("Stop (free memory)").tag(GSPlayback.stop)
-                    }
-                    .frame(width: 200)
+                
+                Picker("Other Application Fullscreen:", selection: $viewModel.settings.otherApplicationFullscreen) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Mute").tag(GSPlayback.mute)
+                    Text("Pause").tag(GSPlayback.pause)
+                    Text("Stop (free memory)").tag(GSPlayback.stop)
                 }
-                HStack {
-                    Text("Other Application Playing Audio:")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.otherApplicationPlayingAudio) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Mute").tag(GSPlayback.mute)
-                        Text("Pause").tag(GSPlayback.pause)
-                    }
-                    .frame(width: 200)
+                
+                Picker("Other Application Playing Audio:", selection: $viewModel.settings.otherApplicationPlayingAudio) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Mute").tag(GSPlayback.mute)
+                    Text("Pause").tag(GSPlayback.pause)
                 }
-                HStack {
-                    Text("Display asleep")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.displayAsleep) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Pause").tag(GSPlayback.pause)
-                        Text("Stop (free memory)").tag(GSPlayback.stop)
-                    }
-                    .frame(width: 200)
+                
+                Picker("Display asleep", selection: $viewModel.settings.displayAsleep) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Pause").tag(GSPlayback.pause)
+                    Text("Stop (free memory)").tag(GSPlayback.stop)
                 }
-                HStack {
-                    Text("Laptop on battery")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.laptopOnBattery) {
-                        Text("Keep Running").tag(GSPlayback.keepRunning)
-                        Text("Pause").tag(GSPlayback.pause)
-                        Text("Stop (free memory)").tag(GSPlayback.stop)
-                    }
-                    .frame(width: 200)
+                
+                Picker("Laptop on battery", selection: $viewModel.settings.laptopOnBattery) {
+                    Text("Keep Running").tag(GSPlayback.keepRunning)
+                    Text("Pause").tag(GSPlayback.pause)
+                    Text("Stop (free memory)").tag(GSPlayback.stop)
                 }
+                
                 HStack {
                     Text("Application Rules")
                     Spacer()
