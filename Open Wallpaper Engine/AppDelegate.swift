@@ -33,6 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         saveCurrentWallpaper()
         AppDelegate.shared.setPlacehoderWallpaper(with: wallpaperViewModel.currentWallpaper)
         
+        NSWorkspace.shared.notificationCenter.addObserver(self, 
+                                                          selector: #selector(activateApplicationDidChange(_:)),
+                                                          name: NSWorkspace.didActivateApplicationNotification,
+                                                          object: nil)
+        
         // 创建主视窗
         self.mainWindowController = MainWindowController()
         
