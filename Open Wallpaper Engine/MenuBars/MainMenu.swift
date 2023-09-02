@@ -89,15 +89,23 @@ extension AppDelegate {
             }()
         ]
         
-        // 帮助菜单
+        // Debug Submenu -> Help Menu
+        let debugMenu = NSMenuItem(title: "Debug", action: nil, keyEquivalent: "")
+        debugMenu.submenu = NSMenu()
+        debugMenu.submenu?.items = [
+            .init(title: "Reset First Launch", action: #selector(resetFirstLaunch), keyEquivalent: ""),
+            .init(title: "Toggle Desktop Wallpaper Window (Debug)", action: #selector(toggleDesktopWallpaperWindow), keyEquivalent: ""),
+            .init(title: "Reset All Trusted Wallpapers", action: #selector(resetTrustedWallpapers), keyEquivalent: "")
+        ]
+        
+        // Help Menu
         let helpMenu = NSMenuItem()
         helpMenu.submenu = NSMenu(title: "Help")
         helpMenu.submenu?.items = [
-            .init(title: "Reset First Launch", action: #selector(resetFirstLaunch), keyEquivalent: ""),
-            .init(title: "Toggle Desktop Wallpaper Windowo (Debug)", action: #selector(toggleDesktopWallpaperWindow), keyEquivalent: "")
+            debugMenu
         ]
         
-        // 主菜单栏
+        // Main Menu
         let mainMenu = NSMenu()
         mainMenu.items = [
             appMenu,
@@ -117,6 +125,10 @@ extension AppDelegate {
         } else {
             wallpaperWindow.orderFront(nil)
         }
+    }
+    
+    @objc func resetTrustedWallpapers() {
+        UserDefaults.standard.set([String](), forKey: "TrustedWallpapers")
     }
 }
 
