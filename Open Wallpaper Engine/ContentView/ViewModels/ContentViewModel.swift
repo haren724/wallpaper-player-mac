@@ -174,7 +174,7 @@ class ContentViewModel: ObservableObject, DropDelegate {
                     )
                 }
             } else if wallpaper.isRegularFile { // hello.mp4
-                guard let filename = wallpaper.filename, filename.suffix(4) == ".mp4" else { return }
+                guard let filename = wallpaper.filename, [".mp4", ".mov"].contains(filename.suffix(4).lowercased()) else { return }
                 
                 let wallpaperDirectoryWrapper = FileWrapper(directoryWithFileWrappers: [filename: wallpaper])
                 
