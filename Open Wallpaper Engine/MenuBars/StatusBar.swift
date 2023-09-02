@@ -21,7 +21,7 @@ extension AppDelegate {
     }
     
     @objc func resume() {
-        self.wallpaperViewModel.playRate = self.wallpaperViewModel.lastPlayRate
+        self.wallpaperViewModel.playRate = self.wallpaperViewModel.lastPlayRate == 0 ? 1 : self.wallpaperViewModel.lastPlayRate
     }
     
     @objc func takeScreenshot() {
