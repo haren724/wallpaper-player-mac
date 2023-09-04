@@ -29,13 +29,15 @@ struct ExplorerBottomBar: View {
                 }
                 Spacer()
             }
+            .disabled(true)
             HStack {
                 Button { } label: {
                     Label("Wallpaper Editor", systemImage: "pencil.and.ruler.fill")
                         .frame(width: 220)
                 }
                 .buttonStyle(.borderedProminent)
-                Button { 
+                .disabled(true)
+                Button {
                     AppDelegate.shared.openImportFromFolderPanel()
                 } label: {
                     Label("Open Wallpaper", systemImage: "arrow.up.bin.fill")
