@@ -90,7 +90,14 @@
       }
     },
     "@haren724" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@haren724"
+          }
+        }
+      }
     },
     "%@" : {
 
@@ -157,12 +164,23 @@
         }
       }
     },
-    "3840 x 2160" : {
+    "About" : {
+      "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3840 x 2160"
+            "value" : "关于"
+          }
+        }
+      }
+    },
+    "About Open Wallpaper Engine" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于Open Wallpaper Engine"
           }
         }
       }
@@ -258,7 +276,14 @@
       }
     },
     "Apple AVKit" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Application Rules" : {
       "localizations" : {
@@ -380,6 +405,16 @@
         }
       }
     },
+    "Browse Workshop" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开创意工坊"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "zh-Hans" : {
@@ -420,6 +455,16 @@
         }
       }
     },
+    "Close Window" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭窗口"
+          }
+        }
+      }
+    },
     "Comment" : {
       "localizations" : {
         "zh-Hans" : {
@@ -440,12 +485,62 @@
         }
       }
     },
+    "Copy" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "复制"
+          }
+        }
+      }
+    },
+    "Currently, these settings below are designed for scene wallpapers \nand may not work as expect " : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前以下设置并不会生效，因为它们是为场景类壁纸而设计的。目前还不支持场景壁纸"
+          }
+        }
+      }
+    },
+    "Cut" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剪切"
+          }
+        }
+      }
+    },
     "Dark" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "黑色主题"
+          }
+        }
+      }
+    },
+    "Debug" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调试"
+          }
+        }
+      }
+    },
+    "Delete All" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清空"
           }
         }
       }
@@ -501,6 +596,14 @@
       }
     },
     "Don't ask again for this wallpaper" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开这张壁纸时不再询问"
+          }
+        }
+      }
     },
     "Dual Monitor" : {
       "localizations" : {
@@ -552,6 +655,16 @@
         }
       }
     },
+    "Enter Full Screen" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "切换全屏"
+          }
+        }
+      }
+    },
     "Errors Only" : {
       "localizations" : {
         "zh-Hans" : {
@@ -562,32 +675,22 @@
         }
       }
     },
-    "Everyone" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "全年龄"
-          }
-        }
-      }
-    },
-    "Fantasy" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "超棒的"
-          }
-        }
-      }
-    },
     "Favorite" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "喜欢"
+          }
+        }
+      }
+    },
+    "File" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文件"
           }
         }
       }
@@ -642,6 +745,17 @@
         }
       }
     },
+    "General" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        }
+      }
+    },
     "Group" : {
       "localizations" : {
         "zh-Hans" : {
@@ -658,6 +772,36 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "打个胶先"
+          }
+        }
+      }
+    },
+    "Help" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "帮助"
+          }
+        }
+      }
+    },
+    "Hide" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏"
+          }
+        }
+      }
+    },
+    "Hide Others" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐藏其他"
           }
         }
       }
@@ -718,6 +862,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "图标尺寸"
+          }
+        }
+      }
+    },
+    "Import" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入"
           }
         }
       }
@@ -843,10 +997,24 @@
       }
     },
     "macOS" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS"
+          }
+        }
+      }
     },
     "Made with ❤️ by" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "作者"
+          }
+        }
+      }
     },
     "Manage Blocklist" : {
       "localizations" : {
@@ -889,13 +1057,34 @@
       }
     },
     "MSAA x2" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MSAA x2"
+          }
+        }
+      }
     },
     "MSAA x4" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MSAA x4"
+          }
+        }
+      }
     },
     "MSAA x8" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MSAA x8"
+          }
+        }
+      }
     },
     "Mute" : {
       "localizations" : {
@@ -927,6 +1116,26 @@
         }
       }
     },
+    "New Tag" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建标签"
+          }
+        }
+      }
+    },
+    "No Tags" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无标签"
+          }
+        }
+      }
+    },
     "No wallpapers found for your search.\nExpand or reset the categories in the filter sidebar or try another search term." : {
       "localizations" : {
         "zh-Hans" : {
@@ -942,7 +1151,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "无日志"
+            "value" : "反选"
           }
         }
       }
@@ -1028,10 +1237,24 @@
       }
     },
     "Open Wallpaper Engine has no control over this file, you must ensure that it comes from a rellable source before proceeding." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Wallpaper Engine没有能力控制此壁纸所有可能存在的恶意行为，在继续打开该壁纸之前你必须确认你的壁纸是从可信任的来源下载的"
+          }
+        }
+      }
     },
     "Opening Unkown %@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开未知 %@"
+          }
+        }
+      }
     },
     "Other Application Focused:" : {
       "localizations" : {
@@ -1053,22 +1276,22 @@
         }
       }
     },
-    "Other Application Maximized:" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "当其他应用程序最大化时"
-          }
-        }
-      }
-    },
     "Other Application Playing Audio:" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "当其他应用程序播放音频时"
+          }
+        }
+      }
+    },
+    "Paste" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "粘贴"
           }
         }
       }
@@ -1089,6 +1312,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "当显存耗尽时暂停"
+          }
+        }
+      }
+    },
+    "Performance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "性能"
           }
         }
       }
@@ -1124,10 +1358,35 @@
       }
     },
     "Please be aware of malware." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请警惕恶意行为"
+          }
+        }
+      }
     },
     "Please wait %lld seconds." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请等待%lld秒"
+          }
+        }
+      }
+    },
+    "Plugins" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "插件"
+          }
+        }
+      }
     },
     "Post-Processing" : {
       "localizations" : {
@@ -1160,7 +1419,14 @@
       }
     },
     "Proceed" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "处理中"
+          }
+        }
+      }
     },
     "Process Piority" : {
       "localizations" : {
@@ -1202,12 +1468,42 @@
         }
       }
     },
+    "Quit" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出"
+          }
+        }
+      }
+    },
     "Rating" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "评分"
+          }
+        }
+      }
+    },
+    "Recent Wallpapers" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近使用的壁纸"
+          }
+        }
+      }
+    },
+    "Redo" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重做"
           }
         }
       }
@@ -1292,6 +1588,16 @@
         }
       }
     },
+    "Reset All Trusted Wallpapers" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置所有已信任的壁纸"
+          }
+        }
+      }
+    },
     "Reset Config" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1308,6 +1614,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "重置筛选条件"
+          }
+        }
+      }
+    },
+    "Reset First Launch" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置首次启动标记"
           }
         }
       }
@@ -1382,11 +1698,31 @@
         }
       }
     },
+    "Select All" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全选"
+          }
+        }
+      }
+    },
     "Settings" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "Settings..." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "设置"
           }
         }
@@ -1402,12 +1738,32 @@
         }
       }
     },
+    "Show Filter Results" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示筛选结果"
+          }
+        }
+      }
+    },
     "Show Only:" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "仅展示:"
+          }
+        }
+      }
+    },
+    "Show Open Wallpaper Engine" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示主窗口"
           }
         }
       }
@@ -1492,6 +1848,16 @@
         }
       }
     },
+    "Support & FAQ" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持&帮助"
+          }
+        }
+      }
+    },
     "Tags" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1528,6 +1894,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "每页壁纸数量"
+          }
+        }
+      }
+    },
+    "Toggle Desktop Wallpaper Window (Debug)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开/yin can桌面壁纸窗口"
           }
         }
       }
@@ -1582,12 +1958,32 @@
         }
       }
     },
+    "Undo" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销"
+          }
+        }
+      }
+    },
     "Unkown Author" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "佚名"
+          }
+        }
+      }
+    },
+    "Unmute" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消静音"
           }
         }
       }
@@ -1673,7 +2069,34 @@
       }
     },
     "Wallpaper Engine for Mac" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallpaper Engine for Mac"
+          }
+        }
+      }
+    },
+    "Wallpaper Explorer" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "壁纸浏览器"
+          }
+        }
+      }
+    },
+    "Wallpaper from Folder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单个壁纸"
+          }
+        }
+      }
     },
     "Wallpaper Per Display" : {
       "localizations" : {
@@ -1691,6 +2114,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "壁纸标题"
+          }
+        }
+      }
+    },
+    "Wallpapers in Folders" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "多个壁纸"
           }
         }
       }
@@ -1745,6 +2178,16 @@
         }
       }
     },
+    "Window" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "窗口"
+          }
+        }
+      }
+    },
     "Working on it" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1766,7 +2209,14 @@
       }
     },
     "You are about to open an external %@ as a wallpaper:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你正在打开一个外部%@壁纸"
+          }
+        }
+      }
     },
     "You can easily import video type wallpapers from steam workshop of Wallpaper Engine and modify some properties as well, like playback rate, volume, etc." : {
       "localizations" : {
