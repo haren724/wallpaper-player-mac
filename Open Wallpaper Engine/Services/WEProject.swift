@@ -18,9 +18,9 @@ struct WEProjectProperty: Codable, Equatable, Hashable {
     var condition: String?
     var index: Int?
     var options: [WEProjectPropertyOption]?
+    var order: Int?
     
     // must have
-    var order: Int
     var text: String
     var type: String
     var value: String
