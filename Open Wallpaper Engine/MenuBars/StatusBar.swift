@@ -9,19 +9,39 @@ import Cocoa
 
 extension AppDelegate {
     @objc func mute() {
-        self.wallpaperViewModel.playVolume = 0
+        switch self.wallpaperViewModel.currentWallpaper.project.type.lowercased() {
+        case "video":
+            self.wallpaperViewModel.playVolume = 0
+        default:
+            return
+        }
     }
     
     @objc func unmute() {
-        self.wallpaperViewModel.playVolume = self.wallpaperViewModel.lastPlayVolume
+        switch self.wallpaperViewModel.currentWallpaper.project.type.lowercased() {
+        case "video":
+            self.wallpaperViewModel.playVolume = self.wallpaperViewModel.lastPlayVolume == 0 ? 1 : self.wallpaperViewModel.lastPlayVolume
+        default:
+            return
+        }
     }
     
     @objc func pause() {
-        self.wallpaperViewModel.playRate = 0
+        switch self.wallpaperViewModel.currentWallpaper.project.type.lowercased() {
+        case "video":
+            self.wallpaperViewModel.playRate = 0
+        default:
+            return
+        }
     }
     
     @objc func resume() {
-        self.wallpaperViewModel.playRate = self.wallpaperViewModel.lastPlayRate == 0 ? 1 : self.wallpaperViewModel.lastPlayRate
+        switch self.wallpaperViewModel.currentWallpaper.project.type.lowercased() {
+        case "video":
+            self.wallpaperViewModel.playRate = self.wallpaperViewModel.lastPlayRate == 0 ? 1 : self.wallpaperViewModel.lastPlayRate
+        default:
+            return
+        }
     }
     
     @objc func takeScreenshot() {

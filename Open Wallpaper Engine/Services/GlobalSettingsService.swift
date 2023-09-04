@@ -12,9 +12,7 @@ extension AppDelegate {
         guard let userInfo = notification.userInfo,
               let frontmostApplication = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication else { return }
         
-        guard let bundleID = frontmostApplication.bundleIdentifier else { return }
-        
-        switch bundleID {
+        switch frontmostApplication.bundleIdentifier {
         case "com.apple.finder":
             fallthrough
         case "\(Bundle.main.bundleIdentifier!)":
