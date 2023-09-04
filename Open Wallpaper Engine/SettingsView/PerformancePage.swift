@@ -194,6 +194,7 @@ struct PerformancePage: SettingsPage {
                 }
             } header: {
                 Label("Quality", systemImage: "memorychip.fill")
+                Text("Currently, these settings below are designed for scene wallpapers \nand may not work as expect ")
             }
         }
         .formStyle(.grouped)
