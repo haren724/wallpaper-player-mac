@@ -8,6 +8,7 @@
 import Cocoa
 import SwiftUI
 import AVKit
+import WebKit
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
@@ -52,6 +53,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         // 创建化右上角常驻菜单栏
         setStatusMenu()
+        
+        // 将外部输入传递到壁纸窗口
+        AppDelegate.shared.setEventHandler()
         
         // 显示桌面壁纸
         self.wallpaperWindow.orderFront(nil)
@@ -144,12 +148,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         globalSettingsViewModel.reset()
     }
     
-    func removeEventHandler() {
-        if let eventHandler = self.eventHandler {
-            NSEvent.removeMonitor(eventHandler)
-        }
-    }
-    
     func setEventHandler() {
         self.eventHandler = NSEvent.addGlobalMonitorForEvents(matching: [
             .mouseMoved,
@@ -161,36 +159,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             .rightMouseDragged,
             .mouseEntered,
             .mouseExited
-        ]) { event in
+        ]) { [weak self] event in
             // contentView.subviews.first -> SwiftUIView.subviews.first -> WKWebView
-            let view = self.wallpaperWindow.contentView?.subviews.first?.subviews.first
-            switch event.type {
-            case .mouseMoved:
-                view?.mouseMoved(with: event)
-                
-            case .mouseEntered:
-                view?.mouseEntered(with: event)
-                
-            case .mouseExited:
-                view?.mouseExited(with: event)
-                
-            case .leftMouseUp:
-                fallthrough
-            case .rightMouseUp:
-                view?.mouseUp(with: event)
-                
-            case .leftMouseDown:
-                view?.mouseDown(with: event)
-//            case .rightMouseDown:
-//                view?.mouseDown(with: event)
-                
-            case .leftMouseDragged:
-                fallthrough
-            case .rightMouseDragged:
-                view?.mouseDragged(with: event)
-                
-            default:
-                break
+            if let webview = self?.wallpaperWindow.contentView?.subviews.first?.subviews.first,
+               let frontmostApplication = NSWorkspace.shared.frontmostApplication,
+                   webview is WKWebView,
+                   frontmostApplication.bundleIdentifier == "com.apple.finder" {
+                switch event.type {
+                case .mouseMoved:
+                    webview.mouseMoved(with: event)
+                    
+                case .mouseEntered:
+                    webview.mouseEntered(with: event)
+                    
+                case .mouseExited:
+                    webview.mouseExited(with: event)
+                    
+                case .leftMouseUp:
+                    fallthrough
+                case .rightMouseUp:
+                    webview.mouseUp(with: event)
+                    
+                case .leftMouseDown:
+                    webview.mouseDown(with: event)
+    //            case .rightMouseDown:
+    //                view?.mouseDown(with: event)
+                    
+                case .leftMouseDragged:
+                    fallthrough
+                case .rightMouseDragged:
+                    webview.mouseDragged(with: event)
+                    
+                default:
+                    break
+                }
             }
         }
     }
