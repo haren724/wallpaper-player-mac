@@ -19,7 +19,9 @@ struct WebWallpaperView: NSViewRepresentable {
     }
     
     func makeNSView(context: Context) -> WKWebView {
-        return WKWebView(frame: .zero)
+        let nsView = WKWebView(frame: .zero)
+        nsView.loadFileURL(viewModel.fileUrl, allowingReadAccessTo: viewModel.readAccessURL)
+        return nsView
     }
     
     func updateNSView(_ nsView: WKWebView, context: Context) {
@@ -28,8 +30,7 @@ struct WebWallpaperView: NSViewRepresentable {
         
         if selectedWallpaper.wallpaperDirectory.appending(path: selectedWallpaper.project.file) != currentWallpaper.wallpaperDirectory.appending(path: currentWallpaper.project.file) {
             viewModel.currentWallpaper = selectedWallpaper
+            nsView.loadFileURL(viewModel.fileUrl, allowingReadAccessTo: viewModel.readAccessURL)
         }
-        
-        nsView.loadFileURL(viewModel.fileUrl, allowingReadAccessTo: viewModel.readAccessURL)
     }
 }
