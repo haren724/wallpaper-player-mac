@@ -80,6 +80,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
             try! NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
         }
+        
+        let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        do {
+            let filesURL = try FileManager.default.contentsOfDirectory(at: cacheDirectory,
+                                                                       includingPropertiesForKeys: nil,
+                                                                       options: .skipsHiddenFiles)
+            for url in filesURL {
+                if url.lastPathComponent.contains("staticWP") {
+                    try FileManager.default.removeItem(at: url)
+                }
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
