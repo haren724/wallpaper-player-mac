@@ -11,8 +11,14 @@ struct WallpaperPreview: SubviewOfContentView {
     @ObservedObject var viewModel: ContentViewModel
     @ObservedObject var wallpaperViewModel: WallpaperViewModel
     
+    @Environment(\.undoManager) var undoManager
+    
     @State var isEditingId = ""
     @State var title = ""
+    @State var newTag = ""
+    
+    @State var hoveredTag: String?
+    @State var isTagsHovered = false
     
     init(contentViewModel viewModel: ContentViewModel, wallpaperViewModel: WallpaperViewModel) {
         self.viewModel = viewModel
@@ -80,38 +86,70 @@ struct WallpaperPreview: SubviewOfContentView {
                     }
                     HStack {
                         HStack(spacing: 5) {
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
+                            Image(systemName: "star")
+                            Image(systemName: "star")
+                            Image(systemName: "star")
+                            Image(systemName: "star")
+                            Image(systemName: "star")
                         }
                         .font(.caption)
                         Button { } label: {
                             Image(systemName: "heart")
                         }
+                        .disabled(true)
                     }
                     HStack {
                         Text(wallpaperViewModel.currentWallpaper.project.type)
                         Text(wallpaperSize)
                     }
                     .font(.footnote)
-                    HStack(spacing: 3) {
-                        Text("Fantasy")
-                            .padding(5)
-                            .background(Color(nsColor: NSColor.controlColor))
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("3840 x 2160")
-                            .padding(5)
-                            .background(Color(nsColor: NSColor.controlColor))
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                        Text("Everyone")
-                            .padding(5)
-                            .background(Color(nsColor: NSColor.controlColor))
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                    
+                    ViewThatFits(in: .horizontal) {
+                        tags.animation(.spring(), value: isTagsHovered)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            tags.animation(.spring(), value: isTagsHovered)
+                        }
                     }
-                    .font(.footnote)
-                    .lineLimit(1)
+                    
+                    .onHover { isTagsHovered = $0 }
+                    
+                    if isEditingId == "tags" {
+                        HStack {
+                            Button {
+                                newTag = ""
+                                isEditingId = ""
+                            } label: {
+                                Image(systemName: "arrow.uturn.backward")
+                            }
+                            TextField("New Tag", text: $newTag)
+                                .onSubmit {
+                                    defer {
+                                        newTag = ""
+                                        isEditingId = ""
+                                    }
+                                    
+                                    guard !newTag.isEmpty else { return }
+                                    
+                                    var wallpaper = wallpaperViewModel.currentWallpaper
+                                    
+                                    var tags = wallpaper.project.tags ?? []
+                                    
+                                    tags = Array(Set(tags)) // remove duplicate items
+                                    
+                                    tags.append(newTag)
+                                    
+                                    tags = Array(Set(tags)) // remove duplicate items
+                                    
+                                    wallpaper.project.tags = tags.sorted()
+                                    
+                                    guard let data = try? JSONEncoder().encode(wallpaper.project) else { return }
+                                    
+                                    try? data.write(to: wallpaper.wallpaperDirectory.appending(path: "project.json"), options: .atomic)
+                                    
+                                    wallpaperViewModel.currentWallpaper = wallpaper
+                                }
+                        }
+                    }
                     VStack(spacing: 3) {
                         Button { } label: {
                             Label("Unsubscribe", systemImage: "xmark")
@@ -132,6 +170,7 @@ struct WallpaperPreview: SubviewOfContentView {
                             }
                         }
                     }
+                    .disabled(true)
                     // MARK: Properties
                     HStack(spacing: 3) {
                         Text("Properties")
@@ -148,19 +187,28 @@ struct WallpaperPreview: SubviewOfContentView {
                                 Spacer()
                             }
                         }
-                        HStack {
-                            Label("Volume", systemImage: "speaker.wave.3.fill")
-                            Spacer()
-                            Slider(value: $wallpaperViewModel.playVolume, in: 0...1).frame(width: 100)
-                            Text(String(format: "%.0f", wallpaperViewModel.playVolume * 100) + "%")
-                                .frame(width: 35)
-                        }
-                        HStack {
-                            Label("Playback Rate", systemImage: "play.fill")
-                            Spacer()
-                            Slider(value: $wallpaperViewModel.playRate, in: 0...2, step: 0.1).frame(width: 100)
-                            Text(String(format: "%.01fx", wallpaperViewModel.playRate))
-                                .frame(width: 35)
+                        .opacity(0.5)
+                        .disabled(true)
+                        switch wallpaperViewModel.currentWallpaper.project.type.lowercased() {
+                        case "video":
+                            HStack {
+                                Label("Volume", systemImage: "speaker.wave.3.fill")
+                                Spacer()
+                                Slider(value: $wallpaperViewModel.playVolume, in: 0...1).frame(width: 100)
+                                Text(String(format: "%.0f", wallpaperViewModel.playVolume * 100) + "%")
+                                    .frame(width: 35)
+                            }
+                            HStack {
+                                Label("Playback Rate", systemImage: "play.fill")
+                                Spacer()
+                                Slider(value: $wallpaperViewModel.playRate, in: 0...2, step: 0.1).frame(width: 100)
+                                Text(String(format: "%.01fx", wallpaperViewModel.playRate))
+                                    .frame(width: 35)
+                            }
+                        case "web":
+                            EmptyView()
+                        default:
+                            EmptyView()
                         }
                     }
                     VStack(spacing: 3) {
@@ -172,31 +220,34 @@ struct WallpaperPreview: SubviewOfContentView {
                                     .overlay(Color.accentColor)
                             }
                         }
-                        HStack(spacing: 3) {
-                            Button { } label: {
-                                Label("Load", systemImage: "folder.fill")
-                                    .frame(maxWidth: .infinity)
-                                
+                        Group {
+                            HStack(spacing: 3) {
+                                Button { } label: {
+                                    Label("Load", systemImage: "folder.fill")
+                                        .frame(maxWidth: .infinity)
+                                    
+                                }
+                                Button { } label: {
+                                    Label("Save", systemImage: "square.and.arrow.down.fill")
+                                        .frame(maxWidth: .infinity)
+                                }
                             }
                             Button { } label: {
-                                Label("Save", systemImage: "square.and.arrow.down.fill")
+                                Label("Apply to all Wallpapers", systemImage: "list.bullet.rectangle.fill")
                                     .frame(maxWidth: .infinity)
                             }
+                            Button { } label: {
+                                Label("Share JSON", systemImage: "arrow.2.squarepath")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            Button { } label: {
+                                Label("Reset", systemImage: "arrow.triangle.2.circlepath")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.red)
                         }
-                        Button { } label: {
-                            Label("Apply to all Wallpapers", systemImage: "list.bullet.rectangle.fill")
-                                .frame(maxWidth: .infinity)
-                        }
-                        Button { } label: {
-                            Label("Share JSON", systemImage: "arrow.2.squarepath")
-                                .frame(maxWidth: .infinity)
-                        }
-                        Button { } label: {
-                            Label("Reset", systemImage: "arrow.triangle.2.circlepath")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
+                        .disabled(true)
                     }
                 }
                 .padding([.horizontal, .top])
@@ -218,6 +269,76 @@ struct WallpaperPreview: SubviewOfContentView {
             }
             .padding()
         }
+    }
+    
+    /// Shows all tags about current wallpaper in horizontal
+    var tags: some View {
+        HStack {
+            if let tags = wallpaperViewModel.currentWallpaper.project.tags {
+                ForEach(tags, id: \.self) { tag in
+                    Text(tag)
+                        .padding(5)
+                        .background {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .colorInvert()
+                                .foregroundStyle(Color.primary)
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .stroke(Color.secondary, lineWidth: 1.6)
+                        }
+                        .overlay(alignment: .topTrailing) {
+                            if hoveredTag == tag {
+                                Button {
+                                    var wallpaper = wallpaperViewModel.currentWallpaper
+                                    
+                                    guard var tags = wallpaper.project.tags else { return } // else case seems impossible, however much safer
+                                    
+                                    tags = Array(Set(tags)) // remove duplicate items
+                                    
+                                    guard let index = tags.firstIndex(where: { $0 == tag }) else { return }
+                                    
+                                    tags.remove(at: index)
+                                    
+                                    wallpaper.project.tags = tags
+                                    
+                                    guard let data = try? JSONEncoder().encode(wallpaper.project) else { return }
+                                    
+                                    try? data.write(to: wallpaper.wallpaperDirectory.appending(path: "project.json"), options: .atomic)
+                                    
+                                    wallpaperViewModel.currentWallpaper = wallpaper
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                }
+                                .buttonStyle(.plain)
+                                .foregroundStyle(.white, .red)
+                                .symbolRenderingMode(.palette)
+                                .offset(x: 5, y: -2.5)
+                            }
+                        }
+                        .onHover { hovered in
+                            if hovered {
+                                hoveredTag = tag
+                            } else {
+                                hoveredTag = nil
+                            }
+                        }
+                }
+            } else {
+                Text("No Tags")
+                    .foregroundStyle(Color.secondary)
+            }
+            
+            if isTagsHovered {
+                Button {
+                    isEditingId = "tags"
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.body)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .font(.footnote)
+        .lineLimit(1)
     }
 }
 
