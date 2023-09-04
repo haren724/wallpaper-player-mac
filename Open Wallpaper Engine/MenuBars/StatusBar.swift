@@ -28,65 +28,81 @@ extension AppDelegate {
         try! Process.run(URL(filePath: "/usr/sbin/screencapture"), arguments: ["-Cmup", "~/Picturesscreenshot.png"])
     }
     
+    @objc func browseWorkshop() {
+        // Change tab selection to `Workshop`
+        self.contentViewModel.topTabBarSelection = 2
+        openMainWindow()
+    }
+    
+    @objc func openSupportWebpage() {
+        NSWorkspace.shared.open(URL(string: "https://github.com/haren724/open-wallpaper-engine-mac/wiki")!)
+    }
+    
     func setStatusMenu() {
+        // Recent Wallpapers Submenu
+        let recentWallpapersMenuItem = NSMenuItem(title: String(localized: "Recent Wallpapers"), action: nil, keyEquivalent: "")
+        let recentWallpapersMenu = NSMenu(title: String(localized: "Recent Wallpapers"))
+        recentWallpapersMenu.items = [
+            .init(title: "Comming soon", action: nil, keyEquivalent: "")
+        ]
+        recentWallpapersMenuItem.submenu = recentWallpapersMenu
+        
         let menu = NSMenu()
         menu.items = [
-            .init(title: "Show Open Wallpaper Engine", 
+            .init(title: String(localized: "Show Open Wallpaper Engine"),
                   systemImage: "photo",
                   action: #selector(openMainWindow),
                   keyEquivalent: ""),
             
-            .init(title: "Recent Wallpapers",
-                  systemImage: "", action: nil,
-                  keyEquivalent: ""),
+            recentWallpapersMenuItem,
             
-            .init(title: "Change Screensaver",
-                  systemImage: "moon.stars",
-                  action: nil,
-                  keyEquivalent: ""),
+//            .init(title: "Change Screensaver",
+//                  systemImage: "moon.stars",
+//                  action: nil,
+//                  keyEquivalent: ""),
             
             .separator(),
             
-            .init(title: "Browse Workshop",
+            .init(title: String(localized: "Browse Workshop"),
                   systemImage: "globe",
-                  action: nil,
+                  action: #selector(browseWorkshop),
                   keyEquivalent: ""),
             
-            .init(title: "Create Wallpaper",
-                  systemImage: "pencil.and.ruler.fill",
-                  action: nil,
-                  keyEquivalent: ""),
+//            .init(title: "Create Wallpaper",
+//                  systemImage: "pencil.and.ruler.fill",
+//                  action: nil,
+//                  keyEquivalent: ""),
             
-            .init(title: "Settings",
+            .init(title: String(localized: "Settings"),
                   systemImage: "gearshape.fill",
                   action: #selector(openSettingsWindow),
                   keyEquivalent: ""),
             
             .separator(),
             
-            .init(title: "Support & FAQ",
+            .init(title: String(localized: "Support & FAQ"),
                   systemImage: "person.fill.questionmark",
-                  action: nil,
+                  action: #selector(openSupportWebpage),
                   keyEquivalent: ""),
             
             .separator(),
             
-            .init(title: "Take Screenshot",
-                  systemImage: "camera.fill",
-                  action: #selector(takeScreenshot),
-                  keyEquivalent: ""),
+//            .init(title: "Take Screenshot",
+//                  systemImage: "camera.fill",
+//                  action: #selector(takeScreenshot),
+//                  keyEquivalent: ""),
             
-            .init(title: "Mute",
+            .init(title: String(localized: "Mute"),
                   systemImage: "speaker.slash.fill",
                   action: #selector(AppDelegate.shared.mute),
                   keyEquivalent: ""),
             
-            .init(title: "Pause",
+            .init(title: String(localized: "Pause"),
                   systemImage: "pause.fill",
                   action: #selector(pause),
                   keyEquivalent: ""),
             
-            .init(title: "Quit",
+            .init(title: String(localized: "Quit"),
                   systemImage: "power",
                   action: #selector(NSApplication.terminate(_:)),
                   keyEquivalent: "q")

@@ -68,14 +68,14 @@ class WallpaperViewModel: ObservableObject {
                 for (index, item) in AppDelegate.shared.statusItem.menu!.items.enumerated() {
                     if item.title == "Mute" {
                         AppDelegate.shared.statusItem.menu!.items[index] =
-                            .init(title: "Unmute", systemImage: "speaker.fill", action: #selector(AppDelegate.shared.unmute), keyEquivalent: "")
+                            .init(title: String(localized: "Unmute"), systemImage: "speaker.fill", action: #selector(AppDelegate.shared.unmute), keyEquivalent: "")
                     }
                 }
             } else {
                 for (index, item) in AppDelegate.shared.statusItem.menu!.items.enumerated() {
                     if item.title == "Unmute" {
                         AppDelegate.shared.statusItem.menu!.items[index] =
-                            .init(title: "Mute", systemImage: "speaker.slash.fill", action: #selector(AppDelegate.shared.mute), keyEquivalent: "")
+                            .init(title: String(localized: "Mute"), systemImage: "speaker.slash.fill", action: #selector(AppDelegate.shared.mute), keyEquivalent: "")
                     }
                 }
             }

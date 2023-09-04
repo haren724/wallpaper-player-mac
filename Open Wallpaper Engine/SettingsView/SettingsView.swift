@@ -200,22 +200,22 @@ extension AppDelegate: NSToolbarDelegate {
         case SettingsToolbarIdentifiers.performance:
             toolbarItem.action = #selector(jumpToPerformance)
             toolbarItem.image = NSImage(systemSymbolName: "speedometer", accessibilityDescription: nil)
-            toolbarItem.label = "Performance"
+            toolbarItem.label = String(localized: "Performance")
 
         case SettingsToolbarIdentifiers.general:
             toolbarItem.action = #selector(jumpToGeneral)
             toolbarItem.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)
-            toolbarItem.label = "General"
+            toolbarItem.label = String(localized: "General")
             
         case SettingsToolbarIdentifiers.plugins:
             toolbarItem.action = #selector(jumpToPlugins)
             toolbarItem.image = NSImage(systemSymbolName: "puzzlepiece.extension", accessibilityDescription: nil)
-            toolbarItem.label = "Plugins"
+            toolbarItem.label = String(localized: "Plugins")
             
         case SettingsToolbarIdentifiers.about:
             toolbarItem.action = #selector(jumpToAbout)
             toolbarItem.image = NSImage(systemSymbolName: "person.3", accessibilityDescription: nil)
-            toolbarItem.label = "About"
+            toolbarItem.label = String(localized: "About")
             
         default:
             fatalError()
