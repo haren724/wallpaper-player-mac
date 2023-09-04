@@ -20,7 +20,7 @@ struct WallpaperView: View {
         case "web":
             WebWallpaperView(wallpaperViewModel: viewModel)
         default:
-            VideoWallpaperView(wallpaperViewModel: WallpaperViewModel())
+            EmptyView()
         }
     }
 }
