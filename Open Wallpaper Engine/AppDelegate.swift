@@ -78,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func applicationWillTerminate(_ notification: Notification) {
         if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
-            try! NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
+            try? NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
         }
         
         let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
