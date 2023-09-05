@@ -57,19 +57,7 @@ struct GlobalSettings: Codable, Equatable {
 
 class GlobalSettingsViewModel: ObservableObject {
     @Published var settings: GlobalSettings {
-        didSet {
-            // Save to UserDefault
-            save()
-            
-            switch settings.appearance {
-            case .light:
-                NSApplication.shared.appearance = NSAppearance(named: .aqua)
-            case .dark:
-                NSApplication.shared.appearance = NSAppearance(named: .darkAqua)
-            case .followSystem:
-                break
-            }
-        }
+        didSet { saveAndValidate() }
     }
     
     @Published var selection = 0
@@ -83,6 +71,16 @@ class GlobalSettingsViewModel: ObservableObject {
         } else {
             self.settings = GlobalSettings()
         }
+        
+        // Add observers
+        NotificationCenter.default.addObserver(self, 
+                                               selector: #selector(validate),
+                                               name: NSApplication.didFinishLaunchingNotification,
+                                               object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self,
+                                                          selector: #selector(activateApplicationDidChange(_:)),
+                                                          name: NSWorkspace.didActivateApplicationNotification,
+                                                          object: nil)
     }
     
     func reset() {
@@ -127,10 +125,18 @@ class GlobalSettingsViewModel: ObservableObject {
             self.settings.reflections = true
         }
     }
-}
-
-
-extension AppDelegate {
+    
+    @objc private func validate() {
+        switch settings.appearance {
+        case .light:
+            NSApplication.shared.appearance = NSAppearance(named: .aqua)
+        case .dark:
+            NSApplication.shared.appearance = NSAppearance(named: .darkAqua)
+        case .followSystem:
+            break
+        }
+    }
+    
     @objc func activateApplicationDidChange(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
               let frontmostApplication = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication else { return }
@@ -141,11 +147,11 @@ extension AppDelegate {
         case "\(Bundle.main.bundleIdentifier!)":
             globalSettingsWhenApplicationDidBecomeActive()
         default:
-            switch self.globalSettingsViewModel.settings.otherApplicationFocused {
+            switch self.settings.otherApplicationFocused {
             case .mute:
-                mute()
+                AppDelegate.shared.mute()
             case .pause:
-                pause()
+                AppDelegate.shared.pause()
             case .keepRunning:
                 fallthrough
             default:
@@ -155,15 +161,20 @@ extension AppDelegate {
     }
     
     func globalSettingsWhenApplicationDidBecomeActive() {
-        switch self.globalSettingsViewModel.settings.otherApplicationFocused {
+        switch self.settings.otherApplicationFocused {
         case .mute:
-            unmute()
+            AppDelegate.shared.unmute()
         case .pause:
-            resume()
+            AppDelegate.shared.resume()
         case .keepRunning:
             fallthrough
         default:
             return
         }
+    }
+    
+    private func saveAndValidate() {
+        save()
+        validate()
     }
 }
