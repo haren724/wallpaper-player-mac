@@ -37,22 +37,71 @@ enum GSAppearance: String, CaseIterable, Identifiable, Codable {
     case light, dark, followSystem
 }
 
+enum GSLocalization: String, CaseIterable, Identifiable, Codable {
+    var id: Self { self }
+    case en_US, zh_CN, followSystem
+}
+
+enum GSVideoFramework: String, CaseIterable, Identifiable, Codable {
+    var id: Self { self }
+    case avkit
+}
+
+enum GSProcessPiority: String, CaseIterable, Identifiable, Codable {
+    var id: Self { self }
+    case normal, belowNormal
+}
+
+enum GSLogLevel: String, CaseIterable, Identifiable, Codable {
+    var id: Self { self }
+    case error, verbose, none
+}
+
 struct GlobalSettings: Codable, Equatable {
+    
+    // MARK: Playback
     var otherApplicationFocused = GSPlayback.keepRunning
     var otherApplicationFullscreen = GSPlayback.keepRunning
     var otherApplicationPlayingAudio = GSPlayback.keepRunning
     var displayAsleep = GSPlayback.keepRunning
     var laptopOnBattery = GSPlayback.keepRunning
     
+    // MARK: Quality
     var antiAliasing = GSAntiAliasingQuality.msaa_x2
     var postProcessing = GSPostProcessingQuality.disabled
     var textureResolution = GSTextureResolutionQuality.automatic
     var reflections = false
     var fps: Double = 30
     
-    var autoRefresh = true
+    // MARK: Automatic Setup
+    var safeMode = false
     
+    // MARK: Basic Setup
+    var language = GSLocalization.followSystem
+    
+    // MARK: macOS
+    var adjustMenuBarTint = true
+    
+    // MARK: Appearance
     var appearance = GSAppearance.followSystem
+    
+    // MARK: Audio
+    var audioOutput = true
+    var reloadWhenChangingOutputDevice = true // Not putting in use
+    
+    // MARK: Video
+    var videoFramework = GSVideoFramework.avkit
+    
+    // MARK: Advanced
+    var processPiority = GSProcessPiority.normal // Not putting in use
+    var pauseOnVRAMExhausted = false // Not putting in use
+    var restartAfterCrashing = false // Not putting in use
+    
+    // MARK: Developer
+    var logLevel = GSLogLevel.none
+    
+    // MARK: Misc
+    var autoRefresh = true
 }
 
 class GlobalSettingsViewModel: ObservableObject {
