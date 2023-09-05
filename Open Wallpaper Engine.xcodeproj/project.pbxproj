@@ -120,7 +120,7 @@
 		5EC47E9C2A2DB2E700120CCC /* Open_Wallpaper_EngineUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Open_Wallpaper_EngineUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5EC47EA92A2DB32900120CCC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5EC47EAB2A2DB3E500120CCC /* WallpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperView.swift; sourceTree = "<group>"; };
-		5EDE84CF2AA781350025ABBA /* WhatToTest.zh-CN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.zh-CN.txt"; sourceTree = "<group>"; };
+		5EDE84CF2AA781350025ABBA /* WhatToTest.zh-Hans.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.zh-Hans.txt"; sourceTree = "<group>"; };
 		5EDEBA5D2A2E2A7B003470CB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5EDF1E132A93B06B006617EA /* WorkingInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingInProgress.swift; sourceTree = "<group>"; };
 		5EDF1E152A93B4B6006617EA /* WallpaperDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperDiscover.swift; sourceTree = "<group>"; };
@@ -161,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E0013B52AA7885500BDA280 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				5EDE84CF2AA781350025ABBA /* WhatToTest.zh-Hans.txt */,
+			);
+			path = TestFlight;
+			sourceTree = "<group>";
+		};
 		5E51A4382AA30D6A00E46E99 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,12 +274,12 @@
 		5EC47E6D2A2DB2E600120CCC = {
 			isa = PBXGroup;
 			children = (
+				5E0013B52AA7885500BDA280 /* TestFlight */,
 				B4AD1D0F2AA24E8200471AC8 /* .gitignore */,
 				5E6091F12A83E85D00D4C36C /* AUTHORS.md */,
 				5EF4C24A2A4C9871009831E5 /* CNAME */,
 				5EF4C24B2A4C9872009831E5 /* LICENSE */,
 				5EF4C24C2A4C98FA009831E5 /* README.md */,
-				5EDE84CF2AA781350025ABBA /* WhatToTest.zh-CN.txt */,
 				5EEE8D5D2A7501C800DCE41A /* resources */,
 				5EC47E782A2DB2E600120CCC /* Open Wallpaper Engine */,
 				5EC47E8F2A2DB2E700120CCC /* Open Wallpaper EngineTests */,
