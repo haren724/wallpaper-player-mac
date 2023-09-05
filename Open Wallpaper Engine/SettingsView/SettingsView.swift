@@ -8,105 +8,10 @@
 import Cocoa
 import SwiftUI
 
-enum GSQuality {
-    case low, medium, high, ultra
-}
-
-enum GSPlayback: String, CaseIterable, Identifiable, Codable {
-    var id: Self { self }
-    case keepRunning, mute, pause, stop
-}
-
-enum GSAntiAliasingQuality: String, CaseIterable, Identifiable, Codable {
-    var id: Self { self }
-    case none, msaa_x2, msaa_x4, msaa_x8
-}
-
-enum GSPostProcessingQuality: String, CaseIterable, Identifiable, Codable {
-    var id: Self { self }
-    case disabled, enabled, ultra
-}
-
-enum GSTextureResolutionQuality: String, CaseIterable, Identifiable, Codable {
-    var id: Self { self }
-    case highQuality, highPerformance, automatic
-}
-
-struct GlobalSettings: Codable, Equatable {
-    var otherApplicationFocused = GSPlayback.keepRunning
-    var otherApplicationFullscreen = GSPlayback.keepRunning
-    var otherApplicationPlayingAudio = GSPlayback.keepRunning
-    var displayAsleep = GSPlayback.keepRunning
-    var laptopOnBattery = GSPlayback.keepRunning
-    
-    var antiAliasing = GSAntiAliasingQuality.msaa_x2
-    var postProcessing = GSPostProcessingQuality.disabled
-    var textureResolution = GSTextureResolutionQuality.automatic
-    var reflections = false
-    var fps: Double = 30
-    
-    var autoRefresh = true
-}
-
 protocol SettingsPage: View {
     var viewModel: GlobalSettingsViewModel { get set }
     
     init(globalSettings: GlobalSettingsViewModel)
-}
-
-class GlobalSettingsViewModel: ObservableObject {
-    @Published var settings: GlobalSettings = (try? JSONDecoder()
-        .decode(GlobalSettings.self,
-            from: UserDefaults.standard.data(forKey: "GlobalSettings")
-        ?? Data()))
-    ?? GlobalSettings()
-    
-    @Published var selection = 0
-    
-    @Published var isFirstLaunch = UserDefaults.standard.value(forKey: "IsFirstLaunch") as? Bool ?? true
-    
-    func reset() {
-        settings = (try? JSONDecoder()
-            .decode(GlobalSettings.self,
-                from: UserDefaults.standard.data(forKey: "GlobalSettings")
-            ?? Data()))
-        ?? GlobalSettings()
-    }
-    
-    func save() {
-        let data = try! JSONEncoder().encode(settings)
-        print(String(describing: String(data: data, encoding: .utf8)))
-        UserDefaults.standard.set(data, forKey: "GlobalSettings")
-    }
-    
-    func setQuality(_ quality: GSQuality) {
-        switch quality {
-        case .low:
-            self.settings.antiAliasing = .none
-            self.settings.postProcessing = .disabled
-            self.settings.textureResolution = .highQuality
-            self.settings.fps = 10
-            self.settings.reflections = false
-        case .medium:
-            self.settings.antiAliasing = .none
-            self.settings.postProcessing = .enabled
-            self.settings.textureResolution = .highQuality
-            self.settings.fps = 15
-            self.settings.reflections = true
-        case .high:
-            self.settings.antiAliasing = .msaa_x2
-            self.settings.postProcessing = .enabled
-            self.settings.textureResolution = .highQuality
-            self.settings.fps = 25
-            self.settings.reflections = true
-        case .ultra:
-            self.settings.antiAliasing = .msaa_x2
-            self.settings.postProcessing = .ultra
-            self.settings.textureResolution = .highQuality
-            self.settings.fps = 30
-            self.settings.reflections = true
-        }
-    }
 }
 
 extension AppDelegate {
