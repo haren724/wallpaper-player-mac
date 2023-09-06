@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Combine
 import SwiftUI
 
 enum GSQuality {
@@ -74,6 +75,7 @@ struct GlobalSettings: Codable, Equatable {
     var fps: Double = 30
     
     // MARK: Automatic Setup
+    var autoStart = false
     var safeMode = false
     
     // MARK: Basic Setup
@@ -105,13 +107,18 @@ struct GlobalSettings: Codable, Equatable {
 }
 
 class GlobalSettingsViewModel: ObservableObject {
-    @Published var settings: GlobalSettings {
-        didSet { saveAndValidate() }
+    @Published var settings: GlobalSettings 
+    {
+        didSet { validate() }
     }
     
     @Published var selection = 0
     
     @Published var isFirstLaunch = UserDefaults.standard.value(forKey: "IsFirstLaunch") as? Bool ?? true
+    
+    var didFinishLaunchingNotificationCancellable: Cancellable?
+    var didActivateApplicationNotificationCancellable: Cancellable?
+    var didCurrentWallpaperChangeCancellable: Cancellable?
     
     init() {
         if let data = UserDefaults.standard.data(forKey: "GlobalSettings"),
@@ -122,14 +129,35 @@ class GlobalSettingsViewModel: ObservableObject {
         }
         
         // Add observers
-        NotificationCenter.default.addObserver(self, 
-                                               selector: #selector(validate),
-                                               name: NSApplication.didFinishLaunchingNotification,
-                                               object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver(self,
-                                                          selector: #selector(activateApplicationDidChange(_:)),
-                                                          name: NSWorkspace.didActivateApplicationNotification,
-                                                          object: nil)
+        self.didFinishLaunchingNotificationCancellable =
+        NotificationCenter.default.publisher(for: NSApplication.didFinishLaunchingNotification)
+            .sink { [weak self] _ in self?.didFinishLaunchingNotification() }
+        
+        self.didActivateApplicationNotificationCancellable =
+        NotificationCenter.default.publisher(for: NSWorkspace.didActivateApplicationNotification)
+            .sink { [weak self] _ in self?.activateApplicationDidChange() }
+    }
+    
+    deinit {
+        didActivateApplicationNotificationCancellable?.cancel()
+        didFinishLaunchingNotificationCancellable?.cancel()
+        didCurrentWallpaperChangeCancellable?.cancel()
+    }
+    
+    func didFinishLaunchingNotification() {
+        self.didCurrentWallpaperChangeCancellable =
+        AppDelegate.shared.wallpaperViewModel.$currentWallpaper
+            .sink { self.didCurrentWallpaperChange($0) }
+        
+        self.validate()
+    }
+    
+    func didCurrentWallpaperChange(_ newValue: WEWallpaper) {
+        AppDelegate.shared.wallpaperWindow.orderOut(nil)
+        AppDelegate.shared.setPlacehoderWallpaper(with: newValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            AppDelegate.shared.wallpaperWindow.orderFront(nil)
+        }
     }
     
     func reset() {
@@ -175,20 +203,19 @@ class GlobalSettingsViewModel: ObservableObject {
         }
     }
     
-    @objc private func validate() {
+    private func validate() {
         switch settings.appearance {
         case .light:
-            NSApplication.shared.appearance = NSAppearance(named: .aqua)
+            NSApp.appearance = NSAppearance(named: .aqua)
         case .dark:
-            NSApplication.shared.appearance = NSAppearance(named: .darkAqua)
+            NSApp.appearance = NSAppearance(named: .darkAqua)
         case .followSystem:
-            break
+            NSApp.appearance = nil
         }
     }
     
-    @objc func activateApplicationDidChange(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let frontmostApplication = userInfo["NSWorkspaceApplicationKey"] as? NSRunningApplication else { return }
+    func activateApplicationDidChange() {
+        guard let frontmostApplication = NSWorkspace.shared.frontmostApplication else { return }
         
         switch frontmostApplication.bundleIdentifier {
         case "com.apple.finder":

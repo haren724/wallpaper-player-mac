@@ -29,14 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     static var shared = AppDelegate()
     
-// MARK: - delegate methods
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        saveCurrentWallpaper()
-        AppDelegate.shared.setPlacehoderWallpaper(with: wallpaperViewModel.currentWallpaper)
-        
-        // 创建主视窗
-        self.mainWindowController = MainWindowController()
-        
+    func applicationWillFinishLaunching(_ notification: Notification) {
         // 创建设置视窗
         setSettingsWindow()
         
@@ -49,14 +42,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         // 创建化右上角常驻菜单栏
         setStatusMenu()
         
+        // 创建主视窗
+        self.mainWindowController = MainWindowController()
+        
         // 将外部输入传递到壁纸窗口
         AppDelegate.shared.setEventHandler()
+    }
+    
+// MARK: - delegate methods
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        saveCurrentWallpaper()
+        AppDelegate.shared.setPlacehoderWallpaper(with: wallpaperViewModel.currentWallpaper)
         
         // 显示桌面壁纸
         self.wallpaperWindow.orderFront(nil)
-        
-        // 显示主视窗
-//        self.mainWindowController.showWindow(nil)
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
