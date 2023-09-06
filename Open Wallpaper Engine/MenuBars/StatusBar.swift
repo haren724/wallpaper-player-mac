@@ -72,7 +72,7 @@ extension AppDelegate {
             .init(title: String(localized: "Show Open Wallpaper Engine"),
                   systemImage: "photo",
                   action: #selector(openMainWindow),
-                  keyEquivalent: ""),
+                  keyEquivalent: "o"),
             
             recentWallpapersMenuItem,
             
@@ -86,7 +86,7 @@ extension AppDelegate {
             .init(title: String(localized: "Browse Workshop"),
                   systemImage: "globe",
                   action: #selector(browseWorkshop),
-                  keyEquivalent: ""),
+                  keyEquivalent: "w"),
             
 //            .init(title: "Create Wallpaper",
 //                  systemImage: "pencil.and.ruler.fill",
@@ -96,14 +96,14 @@ extension AppDelegate {
             .init(title: String(localized: "Settings"),
                   systemImage: "gearshape.fill",
                   action: #selector(openSettingsWindow),
-                  keyEquivalent: ""),
+                  keyEquivalent: ","),
             
             .separator(),
             
             .init(title: String(localized: "Support & FAQ"),
                   systemImage: "person.fill.questionmark",
                   action: #selector(openSupportWebpage),
-                  keyEquivalent: ""),
+                  keyEquivalent: "i"),
             
             .separator(),
             
@@ -115,12 +115,12 @@ extension AppDelegate {
             .init(title: String(localized: "Mute"),
                   systemImage: "speaker.slash.fill",
                   action: #selector(AppDelegate.shared.mute),
-                  keyEquivalent: ""),
+                  keyEquivalent: "m"),
             
             .init(title: String(localized: "Pause"),
                   systemImage: "pause.fill",
                   action: #selector(pause),
-                  keyEquivalent: ""),
+                  keyEquivalent: "p"),
             
             .init(title: String(localized: "Quit"),
                   systemImage: "power",
