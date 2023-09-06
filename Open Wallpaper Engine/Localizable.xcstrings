@@ -736,6 +736,7 @@
       }
     },
     "Fully take over" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1177,6 +1178,7 @@
       }
     },
     "Only enabled when app is running" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1449,6 +1451,7 @@
       }
     },
     "Protect against crashes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
