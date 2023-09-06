@@ -18,34 +18,24 @@ struct GeneralPage: SettingsPage {
         Form {
             // MARK: Automatic Startup
             Section {
-                Toggle("Start with macOS", isOn: .constant(true))
-                Toggle("Protect against crashes", isOn: .constant(true))
-                Toggle("Safe start after hibernation", isOn: .constant(true))
+                Toggle("Start with macOS", isOn: $viewModel.settings.autoStart)
+                Toggle("Safe start after hibernation", isOn: $viewModel.settings.safeMode)
             } header: {
                 Label("Automatic Startup", systemImage: "star.fill")
             }
             // MARK: Basic Setup
             Section {
-                Picker("Language", selection: .constant(0)) {
-                    Text("Follow System").tag(0)
-                    Text("English").tag(1)
-                    Text("Chinese Simplified").tag(2)
-                }
+                Picker("Language", selection: $viewModel.settings.language) {
+                    Text("Follow System").tag(GSLocalization.followSystem)
+                    Text("English").tag(GSLocalization.en_US)
+                    Text("Chinese Simplified").tag(GSLocalization.zh_CN)
+                }.disabled(true)
             } header: {
                 Label("Basic Setup", systemImage: "gearshape.fill")
             }
             // MARK: macOS
             Section {
-                HStack {
-                    Text("Adjust Menu Bar Color")
-                    Spacer()
-                    Picker("", selection: .constant(0)) {
-                        Text("Fully take over").tag(0)
-                        Text("Disabled").tag(1)
-                        Text("Only enabled when app is running").tag(2)
-                    }
-                    .frame(width: 200)
-                }
+                Toggle("Adjust Menu Bar Color", isOn: $viewModel.settings.adjustMenuBarTint)
             } header: {
                 Label("macOS", systemImage: "apple.logo")
             }
@@ -54,10 +44,10 @@ struct GeneralPage: SettingsPage {
                 HStack {
                     Text("Theme")
                     Spacer()
-                    Picker("", selection: .constant(0)) {
-                        Text("Light").tag(0)
-                        Text("Dark").tag(1)
-                        Text("Auto").tag(2)
+                    Picker("", selection: $viewModel.settings.appearance) {
+                        Text("Light").tag(GSAppearance.light) 
+                        Text("Dark").tag(GSAppearance.dark)
+                        Text("Auto").tag(GSAppearance.followSystem)
                     }
                     .frame(width: 200)
                 }
@@ -66,10 +56,10 @@ struct GeneralPage: SettingsPage {
             }
             // MARK: Audio
             Section {
-                Toggle(isOn: .constant(true)) {
+                Toggle(isOn: $viewModel.settings.audioOutput) {
                     Text("Audio Output")
                 }
-                Toggle(isOn: .constant(true)) {
+                Toggle(isOn: $viewModel.settings.reloadWhenChangingOutputDevice) {
                     Text("Reload when changing output device")
                 }
             } header: {
@@ -77,29 +67,29 @@ struct GeneralPage: SettingsPage {
             }
             // MARK: Video
             Section {
-                Picker("Video Framework", selection: .constant(0)) {
-                    Text("Apple AVKit").tag(0)
+                Picker("Video Framework", selection: $viewModel.settings.videoFramework) {
+                    Text("Apple AVKit").tag(GSVideoFramework.avkit)
                 }
             } header: {
                 Label("Video", systemImage: "film")
             }
             // MARK: Advanced
             Section {
-                Picker("Process Piority", selection: .constant(0)) {
-                    Text("Normal").tag(0)
-                    Text("Below Normal").tag(1)
+                Picker("Process Piority", selection: $viewModel.settings.processPiority) {
+                    Text("Normal").tag(GSProcessPiority.normal)
+                    Text("Below Normal").tag(GSProcessPiority.belowNormal)
                 }
-                Toggle("Pause when VRAM is exhausted", isOn: .constant(true))
-                Toggle("Restart after crashing", isOn: .constant(true))
+                Toggle("Pause when VRAM is exhausted", isOn: $viewModel.settings.pauseOnVRAMExhausted)
+                Toggle("Restart after crashing", isOn: $viewModel.settings.restartAfterCrashing)
             } header: {
                 Label("Advanced", systemImage: "wrench.and.screwdriver.fill")
             }
             // MARK: Developers
             Section {
-                Picker("Log Level", selection: .constant(0)) {
-                    Text("None").tag(0)
-                    Text("Errors Only").tag(1)
-                    Text("Verbose").tag(2)
+                Picker("Log Level", selection: $viewModel.settings.logLevel) {
+                    Text("None").tag(GSLogLevel.none)
+                    Text("Errors Only").tag(GSLogLevel.error)
+                    Text("Verbose").tag(GSLogLevel.verbose)
                 }
             } header: {
                 Label("Developer", systemImage: "number")
