@@ -44,6 +44,10 @@ class ContentViewModel: ObservableObject, DropDelegate {
     
     @Published var isUnsafeWallpaperWarningPresented = false
     
+    @Published var hoveredWallpaper: WEWallpaper?
+    
+    @Published var isUnsubscribeConfirming = false
+    
     @AppStorage("WallpapersPerPage") var wallpapersPerPage: Int = 2
     
     var importAlertError: WPImportError? = nil
