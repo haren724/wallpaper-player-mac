@@ -1652,6 +1652,7 @@
       }
     },
     "Safe start after hibernation" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
