@@ -545,6 +545,16 @@
         }
       }
     },
+    "Delete Immediately" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "强制删除（不可恢复）"
+          }
+        }
+      }
+    },
     "Developer" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1057,6 +1067,16 @@
         }
       }
     },
+    "Move to Trash" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到废纸篓"
+          }
+        }
+      }
+    },
     "MSAA x2" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1365,6 +1385,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "请警惕恶意行为"
+          }
+        }
+      }
+    },
+    "Please select a valid wallpaper" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择有效的壁纸"
           }
         }
       }
@@ -1998,6 +2028,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "取消订阅"
+          }
+        }
+      }
+    },
+    "Unsubscribe Confirmation" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消订阅确认"
           }
         }
       }
