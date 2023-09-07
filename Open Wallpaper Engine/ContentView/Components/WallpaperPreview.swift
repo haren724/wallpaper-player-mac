@@ -250,6 +250,14 @@ struct WallpaperPreview: SubviewOfContentView {
                         .disabled(true)
                     }
                 }
+                .blur(radius: wallpaperViewModel.currentWallpaper.project == .invalid ? 16.0 : 0)
+                .overlay {
+                    if wallpaperViewModel.currentWallpaper.project == .invalid {
+                        Text("Please select a valid wallpaper")
+                    }
+                }
+                .disabled(wallpaperViewModel.currentWallpaper.project == .invalid ? true : false)
+                .animation(.default, value: wallpaperViewModel.currentWallpaper.project)
                 .padding([.horizontal, .top])
             }
 
