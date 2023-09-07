@@ -47,6 +47,8 @@ struct WallpaperPreview: SubviewOfContentView {
                         }(wallpaperViewModel.currentWallpaper.wallpaperDirectory))
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .background(Color(nsColor: NSColor.controlBackgroundColor))
+                            .clipShape(RoundedRectangle(cornerRadius: 16.0))
                             .frame(width: 280, height: 280)
                         HStack {
                             if isEditingId == "title" {
