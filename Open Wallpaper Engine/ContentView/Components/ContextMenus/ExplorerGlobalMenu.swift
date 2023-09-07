@@ -20,7 +20,7 @@ struct ExplorerGlobalMenu: SubviewOfContentView {
     var body: some View {
         Section {
             Button {
-                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path())
+                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path(percentEncoded: false))
             } label: {
                 Label("Open All in Finder", systemImage: "folder.badge.gearshape")
             }

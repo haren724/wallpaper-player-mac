@@ -27,7 +27,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     
                 } label: {
                     Label("Add to Playlist", systemImage: "plus")
-                }
+                }.disabled(true)
                 Button {
                     
                 } label: {
@@ -37,7 +37,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     
                 } label: {
                     Label("Add to Favorites", systemImage: "heart.fill")
-                }
+                }.disabled(true)
             }
             
             Section {
@@ -45,7 +45,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     
                 } label: {
                     Label("Open in Workshop", systemImage: "cloud.fill")
-                }
+                }.disabled(true)
                 Menu("Related Wallpapers") {
                     Link(destination: URL(string: "https://github.com/haren724/open-wallpaper-engine-mac")!) {
                         Label("Browse All By", systemImage: "person.fill")
@@ -53,7 +53,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     Link(destination: URL(string: "https://github.com/haren724/open-wallpaper-engine-mac")!) {
                         Label("Browse Presets", systemImage: "cloud.fill")
                     }
-                }
+                }.disabled(true)
                 Menu("Report & Block") {
                     Button(role: .destructive) {
                         
@@ -65,7 +65,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     } label: {
                         Label("Manage Blocklist", systemImage: "hand.raised.fill")
                     }
-                }
+                }.disabled(true)
             }
             
             Section {
@@ -73,9 +73,10 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     
                 } label: {
                     Label("Assign Hotkey", systemImage: "command.square")
-                }
+                }.disabled(true)
                 Button {
-                    NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: hoveredWallpaper.wallpaperDirectory.path())
+                    NSWorkspace.shared.selectFile(nil,
+                                                  inFileViewerRootedAtPath: hoveredWallpaper.wallpaperDirectory.path(percentEncoded: false))
                 } label: {
                     Label("Open in Finder", systemImage: "folder.badge.gearshape")
                 }

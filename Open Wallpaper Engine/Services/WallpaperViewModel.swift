@@ -14,7 +14,7 @@ class WallpaperViewModel: ObservableObject {
         willSet {
             if ["web", "application"].contains(newValue.project.type) {
                 if let trustedWallpapers = UserDefaults.standard.array(forKey: "TrustedWallpapers") as? [String],
-                   trustedWallpapers.contains(newValue.wallpaperDirectory.path()) {
+                   trustedWallpapers.contains(newValue.wallpaperDirectory.path(percentEncoded: false)) {
                     self.currentWallpaper = newValue
                 } else {
                     AppDelegate.shared.contentViewModel.warningUnsafeWallpaperModal(which: newValue)

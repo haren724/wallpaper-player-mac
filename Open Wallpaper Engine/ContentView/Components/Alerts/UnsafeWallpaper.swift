@@ -42,7 +42,7 @@ struct UnsafeWallpaper: View {
                     .frame(maxWidth: 100)
                 VStack(alignment: .leading, spacing: 10) {
                     Text("You are about to open an external \((typeStringDict[wallpaper.project.type.lowercased()] ?? "unkown source type file").lowercased()) as a wallpaper:")
-                    Text("\(wallpaper.wallpaperDirectory.path() + wallpaper.project.file)").bold()
+                    Text("\(wallpaper.wallpaperDirectory.path(percentEncoded: false) + wallpaper.project.file)").bold()
                     Text("Open Wallpaper Engine has no control over this file, you must ensure that it comes from a rellable source before proceeding.")
                     Text(seconds > 0 ? "Please wait \(seconds) seconds." : "Please be aware of malware.")
                     Toggle("Don't ask again for this wallpaper", isOn: $isIgnored)
@@ -61,7 +61,7 @@ struct UnsafeWallpaper: View {
                         var trustedWallpapers =
                         UserDefaults.standard.array(forKey: "TrustedWallpapers") as? [String] ?? [String]()
                         
-                        trustedWallpapers.append(AppDelegate.shared.wallpaperViewModel.nextCurrentWallpaper.wallpaperDirectory.path())
+                        trustedWallpapers.append(AppDelegate.shared.wallpaperViewModel.nextCurrentWallpaper.wallpaperDirectory.path(percentEncoded: false))
                         
                         UserDefaults.standard.set(trustedWallpapers, forKey: "TrustedWallpapers")
                     }
