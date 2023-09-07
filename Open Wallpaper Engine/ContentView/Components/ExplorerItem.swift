@@ -26,9 +26,8 @@ struct ExplorerItem: SubviewOfContentView {
             }(wallpaper.wallpaperDirectory))
             .resizable()
             .scaleEffect(viewModel.imageScaleIndex == index ? 1.2 : 1.0)
-            .aspectRatio(contentMode: .fit)
-            .clipShape(Rectangle())
-            
+            .aspectRatio(1.0, contentMode: .fit)
+            .clipped()
             
             Text(wallpaper.project.title)
                 .lineLimit(2)
@@ -38,18 +37,20 @@ struct ExplorerItem: SubviewOfContentView {
                 .font(.footnote)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Color(white: viewModel.imageScaleIndex == index ? 0.9 : 0.7))
+            
+            Spacer()
+                .onHover { onHover in
+                    withAnimation {
+                        if onHover {
+                            viewModel.imageScaleIndex = index
+                        } else {
+                            viewModel.imageScaleIndex = -1
+                        }
+                    }
+                }
         }
         .selected(wallpaper.wallpaperDirectory == wallpaperViewModel.currentWallpaper.wallpaperDirectory)
         .border(Color.accentColor, width: viewModel.imageScaleIndex == index ? 1.0 : 0)
-        .onHover { onHover in
-            withAnimation {
-                if onHover {
-                    viewModel.imageScaleIndex = index
-                } else {
-                    viewModel.imageScaleIndex = -1
-                }
-            }
-        }
         .onTapGesture {
             withAnimation(.default.speed(2)) {
                 viewModel.selectedIndex = index
