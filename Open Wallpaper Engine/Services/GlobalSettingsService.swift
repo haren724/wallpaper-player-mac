@@ -153,11 +153,7 @@ class GlobalSettingsViewModel: ObservableObject {
     }
     
     func didCurrentWallpaperChange(_ newValue: WEWallpaper) {
-        AppDelegate.shared.wallpaperWindow.orderOut(nil)
         AppDelegate.shared.setPlacehoderWallpaper(with: newValue)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            AppDelegate.shared.wallpaperWindow.orderFront(nil)
-        }
     }
     
     func reset() {

@@ -139,7 +139,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.wallpaperWindow.level = NSWindow.Level(Int(CGWindowLevelForKey(.desktopWindow)))
         self.wallpaperWindow.collectionBehavior = .stationary
         
-        self.wallpaperWindow.setFrame(NSScreen.main!.frame, display: true)
+        self.wallpaperWindow.setFrame(NSRect(origin: .zero,
+                                             size: CGSize(width: NSScreen.main!.visibleFrame.size.width,
+                                                          height: NSScreen.main!.visibleFrame.size.height + NSScreen.main!.visibleFrame.origin.y + 1)
+                                            ),
+                                      display: true)
         self.wallpaperWindow.isMovable = false
         self.wallpaperWindow.titlebarAppearsTransparent = true
         self.wallpaperWindow.titleVisibility = .hidden
@@ -157,32 +161,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     func setEventHandler() {
-        self.eventHandler = NSEvent.addGlobalMonitorForEvents(matching: [
-            .mouseMoved,
-            .leftMouseUp,
-            .leftMouseDown,
-            .leftMouseDragged,
-            .rightMouseUp,
-            .rightMouseDown,
-            .rightMouseDragged,
-            .mouseEntered,
-            .mouseExited
-        ]) { [weak self] event in
+        self.eventHandler = NSEvent.addGlobalMonitorForEvents(matching: .any) { [weak self] event in
             // contentView.subviews.first -> SwiftUIView.subviews.first -> WKWebView
             if let webview = self?.wallpaperWindow.contentView?.subviews.first?.subviews.first,
                let frontmostApplication = NSWorkspace.shared.frontmostApplication,
                    webview is WKWebView,
                    frontmostApplication.bundleIdentifier == "com.apple.finder" {
                 switch event.type {
+                case .scrollWheel:
+                    webview.scrollWheel(with: event)
                 case .mouseMoved:
                     webview.mouseMoved(with: event)
-                    
                 case .mouseEntered:
                     webview.mouseEntered(with: event)
-                    
                 case .mouseExited:
                     webview.mouseExited(with: event)
-                    
+
                 case .leftMouseUp:
                     fallthrough
                 case .rightMouseUp:
