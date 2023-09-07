@@ -20,6 +20,9 @@ struct WebWallpaperView: NSViewRepresentable {
     
     func makeNSView(context: Context) -> WKWebView {
         let nsView = WKWebView(frame: .zero)
+        
+        nsView.navigationDelegate = viewModel
+        
         nsView.loadFileURL(viewModel.fileUrl, allowingReadAccessTo: viewModel.readAccessURL)
         return nsView
     }

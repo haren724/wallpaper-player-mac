@@ -8,7 +8,7 @@
 import WebKit
 import SwiftUI
 
-class WebWallpaperViewModel: ObservableObject {
+class WebWallpaperViewModel: NSObject, ObservableObject, WKNavigationDelegate {
     var currentWallpaper: WEWallpaper
     
     var fileUrl: URL {
@@ -21,12 +21,18 @@ class WebWallpaperViewModel: ObservableObject {
     
     init(wallpaper: WEWallpaper) {
         self.currentWallpaper = wallpaper
+        super.init()
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(systemWillSleep(_:)), name: NSWorkspace.screensDidSleepNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(systemDidWake(_:)), name: NSWorkspace.didWakeNotification, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let javascriptStyle = "var css = '*{-webkit-touch-callout:none;-webkit-user-select:none}'; var head = document.head || document.getElementsByTagName('head')[0]; var style = document.createElement('style'); style.type = 'text/css'; style.appendChild(document.createTextNode(css)); head.appendChild(style);"
+        webView.evaluateJavaScript(javascriptStyle, completionHandler: nil)
     }
     
     @objc func systemWillSleep(_ notification: Notification) {
