@@ -8,6 +8,7 @@
 import Cocoa
 import Combine
 import SwiftUI
+import ServiceManagement
 
 enum GSQuality {
     case low, medium, high, ultra
@@ -119,6 +120,7 @@ class GlobalSettingsViewModel: ObservableObject {
     var didFinishLaunchingNotificationCancellable: Cancellable?
     var didActivateApplicationNotificationCancellable: Cancellable?
     var didCurrentWallpaperChangeCancellable: Cancellable?
+    var didAddToLoginItemCancellable: Cancellable?
     
     init() {
         if let data = UserDefaults.standard.data(forKey: "GlobalSettings"),
@@ -132,24 +134,45 @@ class GlobalSettingsViewModel: ObservableObject {
         self.didFinishLaunchingNotificationCancellable =
         NotificationCenter.default.publisher(for: NSApplication.didFinishLaunchingNotification)
             .sink { [weak self] _ in self?.didFinishLaunchingNotification() }
-        
-        self.didActivateApplicationNotificationCancellable =
-        NotificationCenter.default.publisher(for: NSWorkspace.didActivateApplicationNotification)
-            .sink { [weak self] _ in self?.activateApplicationDidChange() }
     }
     
     deinit {
         didActivateApplicationNotificationCancellable?.cancel()
         didFinishLaunchingNotificationCancellable?.cancel()
         didCurrentWallpaperChangeCancellable?.cancel()
+        didAddToLoginItemCancellable?.cancel()
     }
     
     func didFinishLaunchingNotification() {
+        self.didActivateApplicationNotificationCancellable =
+        NotificationCenter.default.publisher(for: NSWorkspace.didActivateApplicationNotification)
+            .sink { [weak self] _ in self?.activateApplicationDidChange() }
+        
         self.didCurrentWallpaperChangeCancellable =
         AppDelegate.shared.wallpaperViewModel.$currentWallpaper
-            .sink { self.didCurrentWallpaperChange($0) }
+            .sink { [weak self] in self?.didCurrentWallpaperChange($0) }
+        
+        self.didAddToLoginItemCancellable =
+        self.$settings
+            .removeDuplicates { $0.autoStart == $1.autoStart }
+            .map { $0.autoStart }
+            .sink { [weak self] in self?.didAddToLoginItem($0) }
+            
         
         self.validate()
+    }
+    
+    func didAddToLoginItem(_ added: Bool) {
+        let appService = SMAppService.mainApp
+        do {
+            if added {
+                try appService.register()
+            } else {
+                try appService.unregister()
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func didCurrentWallpaperChange(_ newValue: WEWallpaper) {
