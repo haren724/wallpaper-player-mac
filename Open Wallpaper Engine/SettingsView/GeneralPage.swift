@@ -19,7 +19,7 @@ struct GeneralPage: SettingsPage {
             // MARK: Automatic Startup
             Section {
                 Toggle("Start with macOS", isOn: $viewModel.settings.autoStart)
-                Toggle("Safe start after hibernation", isOn: $viewModel.settings.safeMode)
+//                Toggle("Safe start after hibernation", isOn: $viewModel.settings.safeMode)
             } header: {
                 Label("Automatic Startup", systemImage: "star.fill")
             }
@@ -41,15 +41,10 @@ struct GeneralPage: SettingsPage {
             }
             // MARK: Appearance
             Section {
-                HStack {
-                    Text("Theme")
-                    Spacer()
-                    Picker("", selection: $viewModel.settings.appearance) {
-                        Text("Light").tag(GSAppearance.light) 
-                        Text("Dark").tag(GSAppearance.dark)
-                        Text("Auto").tag(GSAppearance.followSystem)
-                    }
-                    .frame(width: 200)
+                Picker("Theme", selection: $viewModel.settings.appearance) {
+                    Text("Light").tag(GSAppearance.light)
+                    Text("Dark").tag(GSAppearance.dark)
+                    Text("Auto").tag(GSAppearance.followSystem)
                 }
             } header: {
                 Label("Appearance", systemImage: "paintpalette.fill")
@@ -58,10 +53,10 @@ struct GeneralPage: SettingsPage {
             Section {
                 Toggle(isOn: $viewModel.settings.audioOutput) {
                     Text("Audio Output")
-                }
+                }.disabled(true)
                 Toggle(isOn: $viewModel.settings.reloadWhenChangingOutputDevice) {
                     Text("Reload when changing output device")
-                }
+                }.disabled(true)
             } header: {
                 Label("Audio", systemImage: "speaker.3.fill")
             }
