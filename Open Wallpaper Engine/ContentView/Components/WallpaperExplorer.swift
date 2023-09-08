@@ -43,12 +43,6 @@ struct WallpaperExplorer: SubviewOfContentView {
                         ExplorerItem(viewModel: viewModel, wallpaperViewModel: wallpaperViewModel, wallpaper: wallpaper, index: index)
                             .contextMenu {
                                 ExplorerItemMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel, current: wallpaper)
-                                    .onAppear {
-                                        viewModel.hoveredWallpaper = wallpaper
-                                    }
-                                    .onDisappear {
-                                        viewModel.hoveredWallpaper = nil
-                                    }
                                 ExplorerGlobalMenu(contentViewModel: viewModel, wallpaperViewModel: wallpaperViewModel)
                             }
                             .animation(.spring(), value: viewModel.imageScaleIndex)

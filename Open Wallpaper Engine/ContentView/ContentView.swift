@@ -92,15 +92,19 @@ struct ContentView: View {
                     if url == wallpaperViewModel.currentWallpaper.wallpaperDirectory {
                         wallpaperViewModel.currentWallpaper = WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!)
                     }
+                    viewModel.hoveredWallpaper = nil
                 }
                 Button("Move to Trash") {
                     try? FileManager.default.trashItem(at: url, resultingItemURL: nil)
                     if url == wallpaperViewModel.currentWallpaper.wallpaperDirectory {
                         wallpaperViewModel.currentWallpaper = WEWallpaper(using: .invalid, where: Bundle.main.url(forResource: "WallpaperNotFound", withExtension: "mp4")!)
                     }
+                    viewModel.hoveredWallpaper = nil
                 }
             }
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {
+                viewModel.hoveredWallpaper = nil
+            }
         } message: {
             Text("\(viewModel.hoveredWallpaper?.project.title ?? "invalid wallpaper")")
         }

@@ -29,6 +29,7 @@ struct ExplorerItemMenu: SubviewOfContentView {
                     Label("Add to Playlist", systemImage: "plus")
                 }.disabled(true)
                 Button {
+                    viewModel.hoveredWallpaper = hoveredWallpaper
                     viewModel.isUnsubscribeConfirming = true
                 } label: {
                     Label("Unsubscribe", systemImage: "xmark")
