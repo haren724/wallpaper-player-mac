@@ -49,6 +49,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         AppDelegate.shared.setEventHandler()
     }
     
+    func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+        var dockMenu = self.statusItem.menu?.copy() as! NSMenu?
+        dockMenu?.items.removeLast() // Remove `Quit` menu item
+        return dockMenu
+    }
+    
 // MARK: - delegate methods
     func applicationDidFinishLaunching(_ notification: Notification) {
         saveCurrentWallpaper()
