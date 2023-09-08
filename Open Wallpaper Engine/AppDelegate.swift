@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
-        var dockMenu = self.statusItem.menu?.copy() as! NSMenu?
+        let dockMenu = self.statusItem.menu?.copy() as! NSMenu?
         dockMenu?.items.removeLast() // Remove `Quit` menu item
         return dockMenu
     }
