@@ -40,22 +40,18 @@ struct ExplorerItem: SubviewOfContentView {
             
             Spacer()
                 .onHover { onHover in
-                    withAnimation {
-                        if onHover {
-                            viewModel.imageScaleIndex = index
-                        } else {
-                            viewModel.imageScaleIndex = -1
-                        }
+                    if onHover {
+                        viewModel.imageScaleIndex = index
+                    } else {
+                        viewModel.imageScaleIndex = -1
                     }
                 }
         }
         .selected(wallpaper.wallpaperDirectory == wallpaperViewModel.currentWallpaper.wallpaperDirectory)
         .border(Color.accentColor, width: viewModel.imageScaleIndex == index ? 1.0 : 0)
         .onTapGesture {
-            withAnimation(.default.speed(2)) {
-                viewModel.selectedIndex = index
-                wallpaperViewModel.nextCurrentWallpaper = wallpaper
-            }
+//            viewModel.selectedIndex = index
+            wallpaperViewModel.nextCurrentWallpaper = wallpaper
         }
     }
 }
