@@ -56,6 +56,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         
         // 显示桌面壁纸
         self.wallpaperWindow.orderFront(nil)
+        
+        if globalSettingsViewModel.isFirstLaunch {
+            self.mainWindowController.window.center()
+            self.mainWindowController.window.makeKeyAndOrderFront(nil)
+        }
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -204,7 +209,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             var osWallpaper: URL { NSWorkspace.shared.desktopImageURL(for: .main!)! }
             if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
                 if wallpaper != osWallpaper {
-                    if wallpaper.lastPathComponent.contains("staticWP") {
+                    if !wallpaper.lastPathComponent.contains("staticWP") {
                         return wallpaper
                     }
                 }
