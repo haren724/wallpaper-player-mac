@@ -121,6 +121,7 @@ class GlobalSettingsViewModel: ObservableObject {
     var didActivateApplicationNotificationCancellable: Cancellable?
     var didCurrentWallpaperChangeCancellable: Cancellable?
     var didAddToLoginItemCancellable: Cancellable?
+    var didChangeAdjustMenuBarTintCancellable: Cancellable?
     
     init() {
         if let data = UserDefaults.standard.data(forKey: "GlobalSettings"),
@@ -141,6 +142,7 @@ class GlobalSettingsViewModel: ObservableObject {
         didFinishLaunchingNotificationCancellable?.cancel()
         didCurrentWallpaperChangeCancellable?.cancel()
         didAddToLoginItemCancellable?.cancel()
+        didChangeAdjustMenuBarTintCancellable?.cancel()
     }
     
     func didFinishLaunchingNotification() {
@@ -157,6 +159,12 @@ class GlobalSettingsViewModel: ObservableObject {
             .removeDuplicates { $0.autoStart == $1.autoStart }
             .map { $0.autoStart }
             .sink { [weak self] in self?.didAddToLoginItem($0) }
+        
+        self.didChangeAdjustMenuBarTintCancellable =
+        self.$settings
+            .removeDuplicates { $0.adjustMenuBarTint == $1.adjustMenuBarTint }
+            .map { $0.adjustMenuBarTint }
+            .sink { [weak self] in self?.didChangeAdjustMenuBarTint($0) }
             
         
         self.validate()
@@ -172,6 +180,21 @@ class GlobalSettingsViewModel: ObservableObject {
             }
         } catch {
             print(error)
+        }
+    }
+    
+    func didChangeAdjustMenuBarTint(_ newValue: Bool) {
+        if newValue != true {
+            if let wallpaper = UserDefaults.standard.url(forKey: "OSWallpaper") {
+                try? NSWorkspace.shared.setDesktopImageURL(wallpaper, for: .main!)
+            }
+        } else {
+            do {
+                let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appending(path: "staticWP_\(AppDelegate.shared.wallpaperViewModel.currentWallpaper.wallpaperDirectory.hashValue).tiff")
+                try NSWorkspace.shared.setDesktopImageURL(url, for: .main!)
+            } catch {
+                print(error)
+            }
         }
     }
     

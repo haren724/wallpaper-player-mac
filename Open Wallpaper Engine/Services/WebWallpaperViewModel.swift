@@ -33,6 +33,21 @@ class WebWallpaperViewModel: NSObject, ObservableObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let javascriptStyle = "var css = '*{-webkit-touch-callout:none;-webkit-user-select:none}'; var head = document.head || document.getElementsByTagName('head')[0]; var style = document.createElement('style'); style.type = 'text/css'; style.appendChild(document.createTextNode(css)); head.appendChild(style);"
         webView.evaluateJavaScript(javascriptStyle, completionHandler: nil)
+        
+        if AppDelegate.shared.globalSettingsViewModel.settings.adjustMenuBarTint {
+            webView.takeSnapshot(with: nil) { [weak self] nsImage, error in
+                guard let self = self else { return }
+                if let data = nsImage?.tiffRepresentation {
+                    do {
+                        let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appending(path: "staticWP_\(self.currentWallpaper.wallpaperDirectory.hashValue).tiff")
+                        try data.write(to: url, options: .atomic)
+                        try NSWorkspace.shared.setDesktopImageURL(url, for: .main!)
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
+        }
     }
     
     @objc func systemWillSleep(_ notification: Notification) {
