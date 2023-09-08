@@ -120,7 +120,7 @@ struct ContentView: View {
             UnsafeWallpaper(wallpaper: wallpaperViewModel.nextCurrentWallpaper)
                 .frame(width: 600, height: 300)
         }
-        .frame(minWidth: 1000, minHeight: 400, idealHeight: 600)
+        .frame(minWidth: 1000, minHeight: 640, idealHeight: 800)
     }
 }
 
