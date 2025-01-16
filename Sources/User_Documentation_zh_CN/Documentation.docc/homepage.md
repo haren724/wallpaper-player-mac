@@ -1,7 +1,7 @@
 # ``User_Documentation_zh_CN``
 
 @Metadata {
-    @DisplayName("Wallpaper Player")
+    @DisplayName("Wallpaper Player (Chinese Simplified)")
     @DocumentationExtension(mergeBehavior: override)
     @PageImage(
                purpose: icon,

@@ -1,7 +1,7 @@
-# ``UserDocumentation_en_US``
+# ``User_Documentation_en_US``
 
 @Metadata {
-    @DisplayName("Wallpaper Player")
+    @DisplayName("Wallpaper Player (English)")
     @DocumentationExtension(mergeBehavior: override)
     @PageImage(
                purpose: icon,
