@@ -4,5 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Wallpaper Player User Documentation"
+    name: "Wallpaper_Player_User_Documentation",
+    products: [.library(name: "Wallpaper_Player_User_Documentation", targets: ["UserDocumentation"])],
+    targets: [.target(name: "UserDocumentation")]
 )
