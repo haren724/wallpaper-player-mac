@@ -42,7 +42,7 @@ jobs:
       run: |
         mkdir -p ./docs/zh_cn
         swift package --allow-writing-to-directory ./docs/zh_cn \
-        generate-documentation --product "User_Documentation_zh_CN" \
+        generate-documentation --target "User_Documentation_zh_CN" \
         --disable-indexing \
         --transform-for-static-hosting \
         --hosting-base-path "wallpaper-player-mac/zh_cn" \
