@@ -31,6 +31,7 @@ jobs:
         swift-version: '6.0.0'
     - name: Generate Docs (en_US)
       run: |
+        mkdir -p ./docs/en_us
         swift package --allow-writing-to-directory ./docs/en_us \
         generate-documentation --target "User_Documentation_en_US" \
         --disable-indexing \
@@ -39,6 +40,7 @@ jobs:
         --output-path ./docs/en_us
     - name: Generate Docs (zh_CN)
       run: |
+        mkdir -p ./docs/zh_cn
         swift package --allow-writing-to-directory ./docs/zh_cn \
         generate-documentation --product "User_Documentation_zh_CN" \
         --disable-indexing \
