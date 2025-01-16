@@ -22,11 +22,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.2.2
     - name: Set up Pages
-      uses: actions/configure-pages@v1
+      uses: actions/configure-pages@v5.0.0
     - name: Set up Swift
-      uses: swift-actions/setup-swift@v2
+      uses: swift-actions/setup-swift@v2.2.0
       with:
         swift-version: '5.9'
     - name: Generate Docs
@@ -38,7 +38,7 @@ jobs:
         disable-indexing: 'true'
         hosting-base-path: wallpaper-player-mac
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         path: ./docs
 
