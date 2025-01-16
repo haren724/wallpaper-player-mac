@@ -32,7 +32,7 @@ jobs:
     - name: Generate Docs
       run: |
         swift package --allow-writing-to-directory ./docs \
-        generate-documentation --target "UserDocumentation" \
+        generate-documentation --product "Wallpaper_Player_Documentation" \
         --disable-indexing \
         --transform-for-static-hosting \
         --hosting-base-path "wallpaper-player-mac" \
