@@ -7,6 +7,6 @@
 
 import Foundation
 
-class UserDocumentation {
+class User_Documentation {
     
 }
